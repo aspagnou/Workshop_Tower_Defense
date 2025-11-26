@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public ItemSO currItem;
-
+    
     public Image itemImage;
     public RectTransform itemTransform;
 
@@ -30,6 +30,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         else
         {
             itemImage.sprite = null;
+
         }
 
         itemTransform.anchoredPosition = Vector3.zero;
