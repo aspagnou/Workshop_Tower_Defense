@@ -40,45 +40,45 @@ public class OutputSlot : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-       // cg.blocksRaycasts = false;
+        cg.blocksRaycasts = false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        //bool foundSlot = false;
-        //foreach (GameObject overObj in eventData.hovered)
-        //{
-        //    if (overObj != gameObject)
-        //    {
-        //        if (overObj.GetComponent<GearSlot>())
-        //        {
-        //            GearSlot outputSlot = overObj.GetComponent<GearSlot>();
-        //            GearSO prevGear = currGear;
-        //            currGear = outputSlot.currGear;
-        //            outputSlot.currGear = prevGear;
-        //            outputSlot.gearTransform.anchoredPosition = Vector3.zero;
-        //            outputSlot.UpdateSlotData();
-        //            UpdateSlotData();
-        //            foundSlot = true;
-        //            resourceManager.ClearSlots();
-        //        }
-        //    }
-        //}
-        //if (!foundSlot)
-        //{
-        //    gearTransform.anchoredPosition = Vector3.zero;
-        //}
-        //cg.blocksRaycasts = true;
+        bool foundSlot = false;
+        foreach (GameObject overObj in eventData.hovered)
+        {
+            if (overObj != gameObject)
+            {
+                if (overObj.GetComponent<GearSlot>())
+                {
+                    GearSlot outputSlot = overObj.GetComponent<GearSlot>();
+                    GearSO prevGear = currGear;
+                    currGear = outputSlot.currGear;
+                    outputSlot.currGear = prevGear;
+                    outputSlot.gearTransform.anchoredPosition = Vector3.zero;
+                    outputSlot.UpdateSlotData();
+                    UpdateSlotData();
+                    foundSlot = true;
+                    resourceManager.ClearSlots();
+                }
+            }
+        }
+        if (!foundSlot)
+        {
+            gearTransform.anchoredPosition = Vector3.zero;
+        }
+        cg.blocksRaycasts = true;
     }
 
-    //public void OnDrag(PointerEventData eventData)
-    //{
-    //    if (currGear != null)
-    //    {
-    //        Debug.Log("Je Drag");
-    //        gearTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-    //    }
-    //}
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (currGear != null)
+        {
+            Debug.Log("Je Drag");
+            gearTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

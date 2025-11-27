@@ -40,7 +40,35 @@ public class GearSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        gearTransform.anchoredPosition = Vector3.zero;
+        bool foundSlot = false;
+
+        foreach (GameObject overObj in eventData.hovered)
+        {
+            if (overObj != gameObject)
+            {
+                if (overObj.GetComponent<GearSlot>())
+                {
+                    GearSlot itemSlot = overObj.GetComponent<GearSlot>();
+
+                    GearSO prevGear = currGear;
+
+                    currGear = itemSlot.currGear; 
+                    itemSlot.currGear = prevGear;
+
+                    itemSlot.gearTransform.anchoredPosition = Vector3.zero;
+                    itemSlot.UpdateSlotData();
+                    UpdateSlotData();
+
+                    foundSlot = true;
+                }
+            }
+        }
+
+        if (!foundSlot)
+        {
+            gearTransform.anchoredPosition = Vector3.zero;
+        }
+
         cg.blocksRaycasts = true;
     }
 
