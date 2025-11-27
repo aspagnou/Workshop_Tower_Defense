@@ -5,6 +5,7 @@ public class ResourceManager : MonoBehaviour
     public ItemSO[] resources;
     
     [SerializeField] private UI_Manager ui_Manager;
+    public ItemSlot[] craftingSlots;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,7 @@ public class ResourceManager : MonoBehaviour
             foreach (ItemSO resource in resources)
             {
                 AddResource(resource, 1);
-                ui_Manager.SpawnResource(resource.index);
+                
                 Debug.Log($"Added Resource. New Amount: {resource.amount}");
             }
         }
@@ -35,6 +36,7 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(ItemSO resource, int amount)
     {
         resource.amount += amount;
+        ui_Manager.SpawnResource(resource.index);
         ui_Manager.UpdateResourceText(resource.amount,resource.index);
     }
     public void UseResource(ItemSO resource, int amount)
@@ -47,5 +49,24 @@ public class ResourceManager : MonoBehaviour
         }
         ui_Manager.UpdateResourceText(resource.amount, resource.index);
     }
-    
+
+    public void ClearSlots() 
+    {
+        foreach(ItemSlot itemSlot in craftingSlots) 
+        {
+            itemSlot.currItem = null;
+            itemSlot.UpdateSlotData();
+        }
+    }
+    public void CancelCraft() 
+    {
+        foreach(ItemSlot itemSlot in craftingSlots) 
+        {
+            if(itemSlot.currItem != null) 
+            {
+                AddResource(itemSlot.currItem, 1);
+            }
+        }
+        ClearSlots();
+    }
 }

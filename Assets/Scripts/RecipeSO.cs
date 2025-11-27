@@ -9,5 +9,6 @@ public class RecipeSO : ScriptableObject
     public ItemSO[] midRow = new ItemSO[3];
     public ItemSO[] bottomRow = new ItemSO[3];
 
-    public ItemSO output;
+    //public ItemSO output;
+    public GearSO output;
 }

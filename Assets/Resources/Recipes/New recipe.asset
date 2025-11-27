@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c53ea9b1ce76ad48a158cf81531e758, type: 3}
-  m_Name: Hexagon
+  m_Name: New recipe
   m_EditorClassIdentifier: 
   topRow:
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
@@ -18,10 +18,10 @@ MonoBehaviour:
   - {fileID: 0}
   midRow:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   - {fileID: 0}
   bottomRow:
-  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   output: {fileID: 11400000, guid: ca82a15de7ddfce4c9fa16017cf24b01, type: 2}

@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86405562c22602f4e88d60df33a295ee, type: 3}
-  m_Name: Diamond
+  m_Script: {fileID: 11500000, guid: ff1d28a585f5cd149823a5754dc5e1f8, type: 3}
+  m_Name: Gear1
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 3625043607559282579, guid: fdedeaaf0a04eea418eca0b11148f58a, type: 3}
-  itemName: diamond
-  amount: 5
-  index: 3
+  gearName: Test
+  gearIcon: {fileID: -9095717837082945937, guid: 4169287d75c6d9649812f6ff39abb51d, type: 3}

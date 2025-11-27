@@ -11,7 +11,7 @@ public class RecipeManager : MonoBehaviour
     private List<ItemSlot[]> allSlots = new List<ItemSlot[]>();
 
     [Space(10)]
-    public ItemSlot outputSlot;
+    public OutputSlot outputSlot;
 
     private List<RecipeSO> recipes = new List<RecipeSO>();
 
@@ -74,13 +74,13 @@ public class RecipeManager : MonoBehaviour
 
             if (correctPlacement)
             {
-                outputSlot.currItem = recipe.output;
+                outputSlot.currGear = recipe.output;
                 outputSlot.UpdateSlotData();
                 break;
             }
             else
             {
-                outputSlot.currItem = null;
+                outputSlot.currGear = null;
                 outputSlot.UpdateSlotData();
             }
         }
