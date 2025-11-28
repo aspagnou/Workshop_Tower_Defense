@@ -14,6 +14,9 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
     private CanvasGroup cg;
     public Canvas canvas;
 
+    
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,15 +29,22 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         if (currItem != null)
         {
             itemImage.sprite = currItem.itemIcon;
+            // Réinitialiser l'alpha à 1 si un item est présent
+            Color newColor = itemImage.color;
+            newColor.a = 1f;
+            itemImage.color = newColor;
         }
         else
         {
             itemImage.sprite = null;
-
+            // Mettre l'alpha à 0 si aucun item n'est présent
+            Color newColor = itemImage.color;
+            newColor.a = 0f;
+            itemImage.color = newColor;
         }
-
         itemTransform.anchoredPosition = Vector3.zero;
     }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {

@@ -30,9 +30,17 @@ public class OutputSlot : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
         if (currGear != null)
         {
             gearImage.sprite = currGear.gearIcon;
+            // Réinitialiser l'alpha à 1 si un item est présent
+            Color newColor = gearImage.color;
+            newColor.a = 1f;
+            gearImage.color = newColor;
         }
         else
         {
+            // Mettre l'alpha à 0 si aucun item n'est présent
+            Color newColor = gearImage.color;
+            newColor.a = 0f;
+            gearImage.color = newColor;
             gearImage.sprite = null;
         }
         gearTransform.anchoredPosition = Vector3.zero;

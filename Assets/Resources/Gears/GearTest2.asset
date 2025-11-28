@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff1d28a585f5cd149823a5754dc5e1f8, type: 3}
-  m_Name: Gear1
+  m_Name: GearTest2
   m_EditorClassIdentifier: 
-  gearName: Test
-  gearIcon: {fileID: -9095717837082945937, guid: 4169287d75c6d9649812f6ff39abb51d, type: 3}
+  gearName: 
+  gearIcon: {fileID: 0}
   height: 1
-  width: 2
+  width: 1
