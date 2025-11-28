@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GearTest2
   m_EditorClassIdentifier: 
   gearName: 
-  gearIcon: {fileID: 0}
+  gearIcon: {fileID: 21300000, guid: cbb5822c10ef94a48abf617ae2ad1e3f, type: 3}
   height: 1
   width: 1
