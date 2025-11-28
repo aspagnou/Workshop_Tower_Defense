@@ -6,8 +6,11 @@ public class UI_Manager : MonoBehaviour
     [Header("Ressource_Icons")]
     public RectTransform[] rectImages;
     [SerializeField] private GameObject[] ressourceIcon;
-    [SerializeField] private TMP_Text[] ressourceText;
+    [SerializeField] private TMP_Text[] ressourceTextCraft, ressourceTextHUD;
     [SerializeField] private GameObject craftMenu;
+
+    [Header("Gear Inventory")]
+    [SerializeField] private GameObject gearInventoryMenu;
 
     public void SpawnResource(int index)
     {
@@ -23,7 +26,8 @@ public class UI_Manager : MonoBehaviour
 
     public void UpdateResourceText(int amount, int index)
     {
-        ressourceText[index].text = amount + "x";
+        ressourceTextCraft[index].text = amount + "x";
+        ressourceTextHUD[index].text = amount + "x";
     }
     public void ShowCraftMenu() 
     {
@@ -32,5 +36,13 @@ public class UI_Manager : MonoBehaviour
     public void HideCraftMenu() 
     {
         craftMenu?.SetActive(false);
+    }
+    public void HideGearMenu() 
+    {
+        gearInventoryMenu?.SetActive(false);
+    }
+    public void ShowGearMenu() 
+    {
+        gearInventoryMenu?.SetActive(true);
     }
 }

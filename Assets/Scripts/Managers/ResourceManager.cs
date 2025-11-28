@@ -31,6 +31,10 @@ public class ResourceManager : MonoBehaviour
                 Debug.Log($"Added Resource. New Amount: {resource.amount}");
             }
         }
+        if (Input.GetKeyDown(KeyCode.A)) 
+        {
+            ui_Manager.ShowGearMenu();
+        }
 
     }
     public void AddResource(ItemSO resource, int amount)
