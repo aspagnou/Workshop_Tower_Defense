@@ -7,6 +7,7 @@ public class UI_Manager : MonoBehaviour
     public RectTransform[] rectImages;
     [SerializeField] private GameObject[] ressourceIcon;
     [SerializeField] private TMP_Text[] ressourceText;
+    [SerializeField] private GameObject craftMenu;
 
     public void SpawnResource(int index)
     {
@@ -23,5 +24,13 @@ public class UI_Manager : MonoBehaviour
     public void UpdateResourceText(int amount, int index)
     {
         ressourceText[index].text = amount + "x";
+    }
+    public void ShowCraftMenu() 
+    {
+        craftMenu.SetActive(true);
+    }
+    public void HideCraftMenu() 
+    {
+        craftMenu?.SetActive(false);
     }
 }
