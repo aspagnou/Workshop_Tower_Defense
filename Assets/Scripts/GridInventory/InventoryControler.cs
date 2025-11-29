@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryControler : MonoBehaviour
 {
     [HideInInspector]
-    private ItemGrid selectedItemGrid;
+    public ItemGrid selectedItemGrid;
 
     public ItemGrid SelectedItemGrid { 
         get => selectedItemGrid;
@@ -16,7 +16,8 @@ public class InventoryControler : MonoBehaviour
         } 
     }
 
-    InventoryItem selectedItem;
+    
+    public InventoryItem selectedItem;
     InventoryItem overlapItem;
     RectTransform rectTransform;
 
@@ -29,29 +30,28 @@ public class InventoryControler : MonoBehaviour
     private void Awake()
     {
         inventoryHighlight= GetComponent<InventoryHighlight>();
+        
     }
     private void Update()
     {
         ItemIconDrag();
-
         
-        if (Input.GetKeyDown(KeyCode.E)) 
-        {
-            if (selectedItem == null)
-                CreateRandomItem();
-        }
+        Debug.Log("Selected grid: " + (selectedItem != null ? selectedItem.name : "null"));
 
         if (selectedItemGrid == null) 
         { 
             inventoryHighlight.Show(false);
             return; 
         }
+        
 
         HandleHighLight();
 
         if (Input.GetMouseButtonDown(0))
         {
+            
             LeftMouseButtonPress();
+            
         }
     }
     Vector2Int oldPosition;
@@ -96,7 +96,7 @@ public class InventoryControler : MonoBehaviour
         }
     }
 
-    private void CreateRandomItem()
+    public void CreateItem(ItemData item)
     {
         InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
 
@@ -105,8 +105,8 @@ public class InventoryControler : MonoBehaviour
 
         rectTransform.SetParent(canvasTransform);
 
-        int selectedItemID = UnityEngine.Random.Range(0, items.Count);
-        inventoryItem.Set(items[selectedItemID]);
+        //int selectedItemID = UnityEngine.Random.Range(0, items.Count);
+        inventoryItem.Set(item);
 
     }
 
@@ -139,6 +139,7 @@ public class InventoryControler : MonoBehaviour
 
     private void PlaceItem(Vector2Int tiledGridPosition)
     {
+        Debug.Log("Tentative de placement de l'item");
         bool complete =selectedItemGrid.PlaceItem(selectedItem, tiledGridPosition.x, tiledGridPosition.y, ref overlapItem);
         if (complete)
         {
@@ -147,10 +148,37 @@ public class InventoryControler : MonoBehaviour
             {
                 selectedItem = overlapItem;
                 overlapItem = null;
-                rectTransform = selectedItem.GetComponent<RectTransform>();
+                rectTransform = selectedItem.GetComponent<RectTransform>(); 
             }
         }
         
+
+
+    }
+
+    public void TryEquipInFirstFreeGearSlot()
+    {
+        GearSlot[] allGearSlots = FindObjectsByType<GearSlot>(FindObjectsSortMode.InstanceID);
+        Debug.Log("Nombre de GearSlots trouvés : " + allGearSlots.Length);
+        if (selectedItem == null) return;
+        if (selectedItemGrid != null) return;
+
+        GearSO gear = selectedItem.itemData.relatedGear;
+        if (gear == null) return;
+
+        // Trouver le premier slot libre    
+        foreach (GearSlot slot in allGearSlots)
+        {
+            if (slot.currGear == null)
+            {
+                slot.currGear = gear;
+                slot.UpdateSlotData();
+
+                Destroy(selectedItem.gameObject);
+                selectedItem = null;
+                return;
+            }
+        }
     }
 
     private void PickUpItem(Vector2Int tiledGridPosition)

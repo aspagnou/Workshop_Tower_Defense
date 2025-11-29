@@ -7,4 +7,5 @@ public class ItemData : ScriptableObject
     public int height = 1;
 
     public Sprite itemIcon;
+    public GearSO relatedGear;
 }

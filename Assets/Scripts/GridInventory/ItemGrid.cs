@@ -22,7 +22,7 @@ public class ItemGrid : MonoBehaviour
         Init(gridSizeWidth, gridSizeHeight);
     }
 
-    private void Init(int width, int height)
+    public void Init(int width, int height)
     {
         inventoryItemSlot = new InventoryItem[width, height];
         Vector2 size = new Vector2(width * TileSizeWidth, height * TileSizeHeight);

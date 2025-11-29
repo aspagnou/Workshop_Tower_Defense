@@ -16,13 +16,13 @@ public class DragDropThing : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     }
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log($"Dragging {eventData.position}");
+        //Debug.Log($"Dragging {eventData.position}");
         transform.position = eventData.position;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log($"Begin Drag {eventData.position}");
+        //Debug.Log($"Begin Drag {eventData.position}");
 
         if (_resetPositionOnRelease)
             _startPosition = transform.position;
@@ -30,7 +30,7 @@ public class DragDropThing : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log($"End Drag {eventData.position}");
+        //Debug.Log($"End Drag {eventData.position}");
 
         var hits = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, hits);
@@ -38,7 +38,7 @@ public class DragDropThing : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         var hit = hits.FirstOrDefault(t => t.gameObject.CompareTag("Droppable"));
         if (hit.isValid)
         {
-            Debug.Log($"Dropped {gameObject} on {hit.gameObject}");
+            //Debug.Log($"Dropped {gameObject} on {hit.gameObject}");
             hit.gameObject.TryGetComponent<ItemSlot>(out ItemSlot itemSlot);
             if (itemSlot != null)
             {

@@ -9,6 +9,8 @@ public class GearSO : ScriptableObject
     public int height=1;
     public int width=1;
 
+    public ItemData gearInventoryData;
+
 
 
 }

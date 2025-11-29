@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff1d28a585f5cd149823a5754dc5e1f8, type: 3}
-  m_Name: GearTest2
+  m_Name: Arc
   m_EditorClassIdentifier: 
   gearName: 
-  gearIcon: {fileID: 21300000, guid: cbb5822c10ef94a48abf617ae2ad1e3f, type: 3}
+  gearIcon: {fileID: 21300000, guid: 4fbcfed3ca036c84eaad15a8062626d4, type: 3}
   height: 1
   width: 1

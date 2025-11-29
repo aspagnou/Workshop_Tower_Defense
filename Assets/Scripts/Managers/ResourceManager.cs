@@ -28,7 +28,7 @@ public class ResourceManager : MonoBehaviour
             {
                 AddResource(resource, 1);
                 
-                Debug.Log($"Added Resource. New Amount: {resource.amount}");
+                //Debug.Log($"Added Resource. New Amount: {resource.amount}");
             }
         }
         if (Input.GetKeyDown(KeyCode.A)) 

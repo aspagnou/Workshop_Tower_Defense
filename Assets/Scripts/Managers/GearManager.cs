@@ -1,18 +1,26 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GearManager : MonoBehaviour
 {
     public GearSlot[] gearSlots;
+    private InventoryControler inventoryControler;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        inventoryControler = FindAnyObjectByType(typeof(InventoryControler)) as InventoryControler;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (inventoryControler != null)
+            {
+                inventoryControler.TryEquipInFirstFreeGearSlot();
+            }
+        }
     }
     public void AddGear(GearSO gear) 
     {

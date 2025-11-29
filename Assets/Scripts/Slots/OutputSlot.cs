@@ -92,7 +92,7 @@ public class OutputSlot : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
     {
         if (Time.time - lastClickTime < doubleClickTimeThreshold)
         {
-            Debug.Log("Double-clic détecté ! + current gear "+currGear);
+            //Debug.Log("Double-clic détecté ! + current gear "+currGear);
             if (currGear != null && !gearManager.IsFullGear())
             {
                 gearManager.AddGear(currGear);
@@ -106,6 +106,6 @@ public class OutputSlot : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Souris sur : " + gameObject.name);
+       
     }
 }
