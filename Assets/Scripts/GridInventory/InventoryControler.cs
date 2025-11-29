@@ -37,7 +37,8 @@ public class InventoryControler : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.E)) 
         {
-            CreateRandomItem();
+            if (selectedItem == null)
+                CreateRandomItem();
         }
 
         if (selectedItemGrid == null) 
@@ -58,6 +59,12 @@ public class InventoryControler : MonoBehaviour
     private void HandleHighLight()
     {
         Vector2Int positionOnGrid = GetTileGridPosition();
+
+        if(oldPosition == positionOnGrid)
+        {
+            return;
+        }
+        oldPosition = positionOnGrid;
         if (selectedItem == null)
         {
             itemToHighLight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
