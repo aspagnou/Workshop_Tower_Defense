@@ -42,19 +42,31 @@ public class ItemGrid : MonoBehaviour
         return tileGridPosition;
     }
 
-    public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY) 
+    public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem overlapItem)
     {
-        if (BoundryCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height)==false)
+        if (BoundryCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height) == false)
         {
             return false;
         }
+
+        if (OverlapCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height, ref overlapItem) == false)
+        {
+            overlapItem = null;
+            return false;
+        }
+        if (overlapItem != null) // remove the overlapped item from the grid
+        {
+            CleanGridReference(overlapItem);
+
+        }
+
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(this.rectTransform);
 
         // pour dire que l'item occupe plusieurs slots
         for (int x = 0; x < inventoryItem.itemData.width; x++)
         {
-            for(int y = 0; y < inventoryItem.itemData.height; y++)
+            for (int y = 0; y < inventoryItem.itemData.height; y++)
             {
                 inventoryItemSlot[posX + x, posY + y] = inventoryItem;
             }
@@ -63,11 +75,45 @@ public class ItemGrid : MonoBehaviour
         inventoryItem.OnGridPositionY = posY;
         inventoryItemSlot[posX, posY] = inventoryItem;
 
+        // positionnement de l'item dans la grille
+        Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
+
+        rectTransform.localPosition = position;
+        return true;
+    }
+
+    public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)
+    {
         Vector2 position = new Vector2();
         position.x = posX * TileSizeWidth + TileSizeWidth * inventoryItem.itemData.width / 2;
-        position.y = -(posY *TileSizeHeight + TileSizeHeight * inventoryItem.itemData.height / 2);
+        position.y = -(posY * TileSizeHeight + TileSizeHeight * inventoryItem.itemData.height / 2);
+        return position;
+    }
 
-        rectTransform.localPosition = position; 
+    // verifie si l'item overlap avec un autre item
+    private bool OverlapCheck(int posX, int posY, int width, int height, ref InventoryItem overlapItem) 
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (inventoryItemSlot[posX + x, posY + y] != null)
+                {
+                    if (overlapItem == null)
+                    {
+                        overlapItem = inventoryItemSlot[posX + x, posY + y];
+                    }
+                    else {                         // multiple overlap not allowed
+                        if(overlapItem != inventoryItemSlot[posX + x, posY + y]) 
+                        {
+                            return false;
+                        }
+                            
+                    }
+
+                }
+            }
+        }
         return true;
     }
 
@@ -77,15 +123,20 @@ public class ItemGrid : MonoBehaviour
 
         if (toReturn == null) { return null; }
 
-        for (int i = 0; i < toReturn.itemData.width; i++)
+        CleanGridReference(toReturn);
+
+        return toReturn;
+    }
+
+    private void CleanGridReference(InventoryItem item)
+    {
+        for (int i = 0; i < item.itemData.width; i++)
         {
-            for (int j = 0; j < toReturn.itemData.height; j++)
+            for (int j = 0; j < item.itemData.height; j++)
             {
-                inventoryItemSlot[toReturn.onGridPositionX + i, toReturn.OnGridPositionY + j] = null;
+                inventoryItemSlot[item.onGridPositionX + i, item.OnGridPositionY + j] = null;
             }
         }
-        
-        return toReturn;
     }
 
     // verifie si la position est dans la grille
@@ -102,7 +153,7 @@ public class ItemGrid : MonoBehaviour
         return true;
     }
 
-    bool BoundryCheck(int posX, int posY, int width, int height)
+    public bool BoundryCheck(int posX, int posY, int width, int height)
     {
         if(PositionCheck(posX, posY) == false)
         {
@@ -115,5 +166,10 @@ public class ItemGrid : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    internal InventoryItem GetItem(int x, int y)
+    {
+       return inventoryItemSlot[x, y];
     }
 }
