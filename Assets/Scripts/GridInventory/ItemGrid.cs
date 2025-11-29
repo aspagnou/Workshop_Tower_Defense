@@ -10,8 +10,8 @@ public class ItemGrid : MonoBehaviour
 
     InventoryItem[,] inventoryItemSlot;
 
-    [SerializeField] int gridSizeWidth = 10;
-    [SerializeField] int gridSizeHeight = 10;
+    public int gridSizeWidth = 10;
+    public int gridSizeHeight = 10;
 
     [HideInInspector]
     public GearSO[] gearsEquiped;
@@ -182,4 +182,57 @@ public class ItemGrid : MonoBehaviour
     {
        return inventoryItemSlot[x, y];
     }
+
+    // ----------------------Resize Grid -----------------
+    public void ResizeGrid(int newWidth, int newHeight)
+    {
+        // Sauvegarde ancienne grille
+        InventoryItem[,] oldGrid = inventoryItemSlot;
+
+        int oldWidth = oldGrid.GetLength(0);
+        int oldHeight = oldGrid.GetLength(1);
+
+        // Création nouvelle grille
+        inventoryItemSlot = new InventoryItem[newWidth, newHeight];
+
+        // Mettre à jour la taille visuelle
+        rectTransform.sizeDelta = new Vector2(newWidth * TileSizeWidth, newHeight * TileSizeHeight);
+
+        // Re-copie des items
+        for (int x = 0; x < oldWidth; x++)
+        {
+            for (int y = 0; y < oldHeight; y++)
+            {
+                InventoryItem item = oldGrid[x, y];
+                if (item != null)
+                {
+                    // Recopier uniquement le "slot racine"
+                    if (item.onGridPositionX == x && item.OnGridPositionY == y)
+                    {
+                        // Placement dans la nouvelle grille
+                        for (int ix = 0; ix < item.itemData.width; ix++)
+                        {
+                            for (int iy = 0; iy < item.itemData.height; iy++)
+                            {
+                                inventoryItemSlot[x + ix, y + iy] = item;
+                            }
+                        }
+
+                        // Mise à jour graphique
+                        item.GetComponent<RectTransform>().localPosition =
+                            CalculatePositionOnGrid(item, item.onGridPositionX, item.OnGridPositionY);
+                    }
+                }
+            }
+        }
+
+        gridSizeWidth = newWidth;
+        gridSizeHeight = newHeight;
+    }
+    [ContextMenu("Increase Grid")]
+    public void IncreaseGrid_DebugButton()
+    {
+        ResizeGrid(gridSizeWidth + 2, gridSizeHeight + 2);
+    }
+
 }

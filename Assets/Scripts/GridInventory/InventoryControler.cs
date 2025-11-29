@@ -43,7 +43,10 @@ public class InventoryControler : MonoBehaviour
     {
         ItemIconDrag();
         
-        
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            TryEquipInFirstFreeGearSlot();
+        }
 
         if (selectedItemGrid == null) 
         { 
@@ -166,7 +169,7 @@ public class InventoryControler : MonoBehaviour
     public void TryEquipInFirstFreeGearSlot()
     {
         
-        Debug.Log("Nombre de GearSlots trouvés : " + allGearSlots.Length);
+        
         if (selectedItem == null) return;
         if (selectedItemGrid != null) return;
 
