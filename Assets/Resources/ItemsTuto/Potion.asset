@@ -15,3 +15,4 @@ MonoBehaviour:
   width: 1
   height: 2
   itemIcon: {fileID: 21300000, guid: bb8ebc84c7814144e91c337461313ff9, type: 3}
+  relatedGear: {fileID: 11400000, guid: 8da8df1b57c5e024dafa785513d63f96, type: 2}

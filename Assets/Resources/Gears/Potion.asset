@@ -16,3 +16,4 @@ MonoBehaviour:
   gearIcon: {fileID: 21300000, guid: bb8ebc84c7814144e91c337461313ff9, type: 3}
   height: 1
   width: 1
+  gearInventoryData: {fileID: 11400000, guid: 27bb50edc6c92ca498bbdbabf9fdc6ab, type: 2}

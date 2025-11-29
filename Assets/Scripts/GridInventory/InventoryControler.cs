@@ -25,6 +25,9 @@ public class InventoryControler : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
 
+    [Header("Gear Slots")]
+    public GearSlot[] allGearSlots;
+
     InventoryHighlight inventoryHighlight;
 
     private void Awake()
@@ -158,7 +161,7 @@ public class InventoryControler : MonoBehaviour
 
     public void TryEquipInFirstFreeGearSlot()
     {
-        GearSlot[] allGearSlots = FindObjectsByType<GearSlot>(FindObjectsSortMode.InstanceID);
+        
         Debug.Log("Nombre de GearSlots trouvés : " + allGearSlots.Length);
         if (selectedItem == null) return;
         if (selectedItemGrid != null) return;
