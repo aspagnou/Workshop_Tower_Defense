@@ -15,8 +15,10 @@ public class InventoryControler : MonoBehaviour
             inventoryHighlight.SetParent(value);
         } 
     }
+    public  InventoryMemory memory;
 
-    
+
+
     public InventoryItem selectedItem;
     InventoryItem overlapItem;
     RectTransform rectTransform;
@@ -33,13 +35,15 @@ public class InventoryControler : MonoBehaviour
     private void Awake()
     {
         inventoryHighlight= GetComponent<InventoryHighlight>();
-        
+        inventoryHighlight = GetComponent<InventoryHighlight>();
+        memory = FindAnyObjectByType<InventoryMemory>();
+
     }
     private void Update()
     {
         ItemIconDrag();
         
-        Debug.Log("Selected grid: " + (selectedItem != null ? selectedItem.name : "null"));
+        
 
         if (selectedItemGrid == null) 
         { 

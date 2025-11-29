@@ -3,54 +3,67 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDropThing : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragDropThing : MonoBehaviour, IPointerClickHandler
 {
     private ResourceManager resourceManager;
-    public bool _resetPositionOnRelease = true;
+
     [SerializeField] private ItemSO resource;
-    Vector3 _startPosition;
+    public bool resetPositionOnRelease = true;
+
+    private bool isSelected = false;
+    private Vector3 startPosition;
 
     void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
     }
-    public void OnDrag(PointerEventData eventData)
+
+    void Update()
     {
-        //Debug.Log($"Dragging {eventData.position}");
-        transform.position = eventData.position;
+        // Si l’item est sélectionné, il suit la souris
+        if (isSelected)
+        {
+            transform.position = Input.mousePosition;
+        }
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        //Debug.Log($"Begin Drag {eventData.position}");
+        // 1er clic  Sélectionne l’objet
+        if (!isSelected)
+        {
+            isSelected = true;
+            startPosition = transform.position;
+            return;
+        }
 
-        if (_resetPositionOnRelease)
-            _startPosition = transform.position;
-    }
+        // 2e clic  Tentative de placement
+        isSelected = false;
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        //Debug.Log($"End Drag {eventData.position}");
-
+        // Raycast UI sous le clic
         var hits = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, hits);
 
         var hit = hits.FirstOrDefault(t => t.gameObject.CompareTag("Droppable"));
+
         if (hit.isValid)
         {
-            //Debug.Log($"Dropped {gameObject} on {hit.gameObject}");
-            hit.gameObject.TryGetComponent<ItemSlot>(out ItemSlot itemSlot);
-            if (itemSlot != null)
+            // On a cliqué sur un slot valide
+            if (hit.gameObject.TryGetComponent<ItemSlot>(out ItemSlot itemSlot))
             {
-                itemSlot.currItem=resource;
+                itemSlot.currItem = resource;
                 itemSlot.UpdateSlotData();
+
                 resourceManager.UseResource(resource, 1);
+
                 Destroy(gameObject);
             }
-            return;
         }
-
-        if (_resetPositionOnRelease)
-            transform.position = _startPosition;
+        else
+        {
+            // Clique hors d'un "Droppable"  Retour à la position d’origine
+            if (resetPositionOnRelease)
+                transform.position = startPosition;
+        }
     }
 }

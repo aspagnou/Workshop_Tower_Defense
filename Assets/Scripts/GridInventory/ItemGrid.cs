@@ -13,7 +13,8 @@ public class ItemGrid : MonoBehaviour
     [SerializeField] int gridSizeWidth = 10;
     [SerializeField] int gridSizeHeight = 10;
 
-    
+    [HideInInspector]
+    public GearSO[] gearsEquiped;
 
     RectTransform rectTransform;
     private void Start()
@@ -42,6 +43,7 @@ public class ItemGrid : MonoBehaviour
         return tileGridPosition;
     }
 
+    // ----------------------------- Place ITEM IN GRID ------
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem overlapItem)
     {
         if (BoundryCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height) == false)
@@ -56,15 +58,12 @@ public class ItemGrid : MonoBehaviour
         }
         if (overlapItem != null) // remove the overlapped item from the grid
         {
+            FindAnyObjectByType<InventoryMemory>().RemoveGear(overlapItem.itemData.relatedGear);
             CleanGridReference(overlapItem);
-
         }
-
         RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
         rectTransform.SetParent(this.rectTransform);
-
-        // pour dire que l'item occupe plusieurs slots
-        for (int x = 0; x < inventoryItem.itemData.width; x++)
+        for (int x = 0; x < inventoryItem.itemData.width; x++)// pour dire que l'item occupe plusieurs slots
         {
             for (int y = 0; y < inventoryItem.itemData.height; y++)
             {
@@ -79,9 +78,29 @@ public class ItemGrid : MonoBehaviour
         Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
 
         rectTransform.localPosition = position;
+        FindAnyObjectByType<InventoryMemory>().AddGear(inventoryItem.itemData.relatedGear);
+
         return true;
+        
+    }
+    // ----------------------------- PICK UP ITEM FROM GRID ------
+    public InventoryItem PickUpItem(int x, int y)
+    {
+        InventoryItem toReturn = inventoryItemSlot[x, y];
+
+        if (toReturn == null) { return null; }
+        FindAnyObjectByType<InventoryMemory>().RemoveGear(toReturn.itemData.relatedGear);
+        CleanGridReference(toReturn);
+
+        return toReturn;
     }
 
+
+
+
+
+
+    //----------------------------- Calculate Position on Grid ------
     public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)
     {
         Vector2 position = new Vector2();
@@ -117,18 +136,9 @@ public class ItemGrid : MonoBehaviour
         return true;
     }
 
-    public InventoryItem PickUpItem(int x, int y)
-    {
-        InventoryItem toReturn = inventoryItemSlot[x, y];
+    
 
-        if (toReturn == null) { return null; }
-
-        CleanGridReference(toReturn);
-
-        return toReturn;
-    }
-
-    private void CleanGridReference(InventoryItem item)
+    private void CleanGridReference(InventoryItem item) // nettoie les references de l'item dans la grille
     {
         for (int i = 0; i < item.itemData.width; i++)
         {
@@ -140,7 +150,7 @@ public class ItemGrid : MonoBehaviour
     }
 
     // verifie si la position est dans la grille
-    bool PositionCheck(int posX,int posY) 
+    bool PositionCheck(int posX,int posY)  
     {
         if(posX < 0 || posY < 0 )
         {
@@ -153,7 +163,7 @@ public class ItemGrid : MonoBehaviour
         return true;
     }
 
-    public bool BoundryCheck(int posX, int posY, int width, int height)
+    public bool BoundryCheck(int posX, int posY, int width, int height) // verifie si l'item est dans les limites de la grille
     {
         if(PositionCheck(posX, posY) == false)
         {
@@ -166,9 +176,9 @@ public class ItemGrid : MonoBehaviour
             return false;
         }
         return true;
-    }
+    } 
 
-    internal InventoryItem GetItem(int x, int y)
+    internal InventoryItem GetItem(int x, int y) // get the item at the specified grid position
     {
        return inventoryItemSlot[x, y];
     }

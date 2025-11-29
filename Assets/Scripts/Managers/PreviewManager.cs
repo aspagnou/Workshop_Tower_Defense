@@ -33,7 +33,7 @@ public class PreviewManager : MonoBehaviour
             Debug.LogWarning("Aucune recette trouvée dans le dossier Resources/Recipes/");
         }
 
-        foreach(RecipeSO recipe in recipes) {Debug.Log(recipe.name); }
+        //foreach(RecipeSO recipe in recipes) {Debug.Log(recipe.name); }
         
         
     }
