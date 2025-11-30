@@ -354,14 +354,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoints:
-  - {fileID: 1272177949}
-  - {fileID: 650795196}
-  - {fileID: 1187788389}
-  - {fileID: 1849182898}
-  - {fileID: 668554676}
-  - {fileID: 1910644887}
-  - {fileID: 653378992}
-  - {fileID: 1513255771}
+  - {fileID: 178314982}
+  - {fileID: 1651731277}
+  - {fileID: 2117460568}
+  - {fileID: 1460742045}
+  - {fileID: 166472422}
+  - {fileID: 1257952258}
+  - {fileID: 2111478508}
+  - {fileID: 958199788}
   waves:
   - {fileID: 1621958221}
   - {fileID: 1031773882}
@@ -770,6 +770,7 @@ MonoBehaviour:
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 4
 --- !u!4 &925583623
@@ -903,14 +904,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoints:
-  - {fileID: 1272177949}
-  - {fileID: 650795196}
-  - {fileID: 1187788389}
-  - {fileID: 1849182898}
-  - {fileID: 668554676}
-  - {fileID: 1910644887}
-  - {fileID: 653378992}
-  - {fileID: 1513255771}
+  - {fileID: 178314982}
+  - {fileID: 1651731277}
+  - {fileID: 2117460568}
+  - {fileID: 1460742045}
+  - {fileID: 166472422}
+  - {fileID: 1257952258}
+  - {fileID: 2111478508}
+  - {fileID: 958199788}
   enemy:
   - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
@@ -918,6 +919,7 @@ MonoBehaviour:
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 7
 --- !u!4 &1031773883
@@ -1169,6 +1171,69 @@ Transform:
   - {fileID: 958199788}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1236883932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236883934}
+  - component: {fileID: 1236883933}
+  m_Layer: 0
+  m_Name: Wave (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1236883933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236883932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084469d6ca874534fa37e0db5401517b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 178314982}
+  - {fileID: 1651731277}
+  - {fileID: 2117460568}
+  - {fileID: 1460742045}
+  - {fileID: 166472422}
+  - {fileID: 1257952258}
+  - {fileID: 2111478508}
+  - {fileID: 958199788}
+  enemy:
+  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  numberOfEnemies: 4
+  spawnInterval: 2
+  spawnTimer: 0
+  enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
+  waveActive: 0
+  delayBetweenWaveSetByThisWave: 7
+--- !u!4 &1236883934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236883932}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.5, y: 1, z: 6.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2063247810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257952257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1406,71 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1357105393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357105395}
+  - component: {fileID: 1357105394}
+  m_Layer: 0
+  m_Name: Wave (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1357105394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357105393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084469d6ca874534fa37e0db5401517b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 1272177949}
+  - {fileID: 650795196}
+  - {fileID: 1187788389}
+  - {fileID: 1849182898}
+  - {fileID: 668554676}
+  - {fileID: 1910644887}
+  - {fileID: 653378992}
+  - {fileID: 1513255771}
+  enemy:
+  - {fileID: 6296802755904404096, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  numberOfEnemies: 10
+  spawnInterval: 2
+  spawnTimer: 0
+  enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
+  waveActive: 0
+  delayBetweenWaveSetByThisWave: 3
+--- !u!4 &1357105395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357105393}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2063247810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369297698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,6 +1639,7 @@ MonoBehaviour:
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 3
 --- !u!4 &1399736995
@@ -1698,6 +1829,62 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1595567623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1595567625}
+  - component: {fileID: 1595567624}
+  m_Layer: 0
+  m_Name: Wave (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1595567624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595567623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084469d6ca874534fa37e0db5401517b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 1703157980}
+  - {fileID: 807938203}
+  enemy:
+  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  numberOfEnemies: 3
+  spawnInterval: 2
+  spawnTimer: 0
+  enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
+  waveActive: 0
+  delayBetweenWaveSetByThisWave: 4
+--- !u!4 &1595567625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595567623}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 1, z: 6.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2063247810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1621958220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,6 +1929,7 @@ MonoBehaviour:
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
 --- !u!4 &1621958222
@@ -2068,6 +2256,62 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1721912706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721912708}
+  - component: {fileID: 1721912707}
+  m_Layer: 0
+  m_Name: Wave
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1721912707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721912706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 084469d6ca874534fa37e0db5401517b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 1703157980}
+  - {fileID: 807938203}
+  enemy:
+  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  numberOfEnemies: 2
+  spawnInterval: 2
+  spawnTimer: 0
+  enemiesSpawned: 0
+  nbrEnemiesKillCond: 0
+  waveActive: 0
+  delayBetweenWaveSetByThisWave: 5
+--- !u!4 &1721912708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721912706}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.66, y: 8.47, z: 4.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2063247810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1737638677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2279,6 +2523,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2063247808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063247810}
+  - component: {fileID: 2063247809}
+  m_Layer: 0
+  m_Name: WaveManager (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2063247809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063247808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29ade628956cfc429d61c40fc7ad0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 178314982}
+  - {fileID: 1651731277}
+  - {fileID: 2117460568}
+  - {fileID: 1460742045}
+  - {fileID: 166472422}
+  - {fileID: 1257952258}
+  - {fileID: 2111478508}
+  - {fileID: 958199788}
+  waves:
+  - {fileID: 1721912707}
+  - {fileID: 1236883933}
+  - {fileID: 1595567624}
+  - {fileID: 1357105394}
+  currentWaveIndex: -1
+  TimeToStartFirstWave: 5
+--- !u!4 &2063247810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063247808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1721912708}
+  - {fileID: 1236883934}
+  - {fileID: 1595567625}
+  - {fileID: 1357105395}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2111478507
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,3 +2770,4 @@ SceneRoots:
   - {fileID: 1208056458}
   - {fileID: 149421592}
   - {fileID: 649215969}
+  - {fileID: 2063247810}
