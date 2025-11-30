@@ -31,6 +31,7 @@ public class S_Wave : MonoBehaviour
 
     private void OnEnable()
     {
+        numberOfEnemies = _enemyList.Count;
         nbrEnemiesKillCond = _enemyList.Count;
         _enemyStack = new Queue<S_Enemy>(_enemyList);
     }
@@ -58,13 +59,15 @@ public class S_Wave : MonoBehaviour
             }
         }
 
-        if (nbrEnemiesKillCond <= 0) //enemiesSpawned >= numberOfEnemies &&
+        if (nbrEnemiesKillCond <= 0 || _enemyList.Count == 0 ) //enemiesSpawned >= numberOfEnemies &&
         {
             waveActive = false;
             Debug.Log("Wave completed");
             GetComponentInParent<S_WaveManager>().StartNextWave(delayBetweenWaveSetByThisWave);
             gameObject.SetActive(false);
         }
+
+
     }
 
     private void OneEnemyIsDead(S_Enemy deadEn)
