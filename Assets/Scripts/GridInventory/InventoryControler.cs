@@ -35,7 +35,7 @@ public class InventoryControler : MonoBehaviour
     private void Awake()
     {
         inventoryHighlight= GetComponent<InventoryHighlight>();
-        inventoryHighlight = GetComponent<InventoryHighlight>();
+        
         memory = FindAnyObjectByType<InventoryMemory>();
 
     }
