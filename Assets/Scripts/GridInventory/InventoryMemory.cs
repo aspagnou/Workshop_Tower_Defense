@@ -29,12 +29,15 @@ public class InventoryMemory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             
-            Debug.Log("Mémoire actuelle : " + storedGears.Count);
-            foreach (var g in storedGears)
-            {
-                Debug.Log(" - " + g.name);
-            }
         }
     }
 
+    public void DisplayInventory()
+    {
+        Debug.Log("Mémoire actuelle : " + storedGears.Count);
+        foreach (var g in storedGears)
+        {
+            Debug.Log(" - " + g.name);
+        }
+    }
 }

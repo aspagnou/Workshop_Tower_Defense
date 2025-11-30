@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -17,10 +17,12 @@ public class ItemGrid : MonoBehaviour
     public GearSO[] gearsEquiped;
 
     RectTransform rectTransform;
+    private InventoryMemory relatedTowerInventory;
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
+        relatedTowerInventory = GetComponentInParent<InventoryMemory>();
     }
 
     public void Init(int width, int height)
@@ -78,7 +80,7 @@ public class ItemGrid : MonoBehaviour
         Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
 
         rectTransform.localPosition = position;
-        FindAnyObjectByType<InventoryMemory>().AddGear(inventoryItem.itemData.relatedGear);
+        relatedTowerInventory.AddGear(inventoryItem.itemData.relatedGear);
 
         return true;
         
@@ -89,7 +91,7 @@ public class ItemGrid : MonoBehaviour
         InventoryItem toReturn = inventoryItemSlot[x, y];
 
         if (toReturn == null) { return null; }
-        FindAnyObjectByType<InventoryMemory>().RemoveGear(toReturn.itemData.relatedGear);
+        relatedTowerInventory.RemoveGear(toReturn.itemData.relatedGear);
         CleanGridReference(toReturn);
 
         return toReturn;
