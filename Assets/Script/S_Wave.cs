@@ -16,6 +16,8 @@ public class S_Wave : MonoBehaviour
 
     public int enemiesSpawned = 0; //Counter for Spawned enemies
 
+    public int nbrEnemiesKillCond = 0; //Checking how many enemies remains
+
     public bool waveActive = false; //Check if the wave is active
 
     [SerializeField] public int delayBetweenWaveSetByThisWave;
@@ -46,6 +48,11 @@ public class S_Wave : MonoBehaviour
         }
     }
 
+    private void OneEnemyIsDead(S_Enemy deadEn)
+    {
+
+    }
+
 
    
 
@@ -53,10 +60,13 @@ public class S_Wave : MonoBehaviour
     {
         int rand = Random.Range(0, enemy.Length); // Randomely select an enemy type from the array
         GameObject newEnemy = Instantiate(enemy[rand], transform.position, Quaternion.identity);
-        newEnemy.GetComponent<S_EnemyMovement>().WayPoints = wayPoints;
-        enemiesSpawned++;
+        newEnemy.GetComponent<S_Enemy>().WayPoints = wayPoints;
+        
 
-        if (enemiesSpawned >= numberOfEnemies)
+        enemiesSpawned++;
+        nbrEnemiesKillCond++;
+
+        if (enemiesSpawned >= numberOfEnemies) //&& nbrEnemiesKillCond == 0
         {
             waveActive = false;
             Debug.Log("Wave completed");
@@ -65,4 +75,7 @@ public class S_Wave : MonoBehaviour
         }
 
     }
+
+
+    
 }

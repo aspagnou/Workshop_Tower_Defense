@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5734749554589003491}
   - component: {fileID: 2815669147154018819}
   m_Layer: 0
-  m_Name: Enemy_Classical
+  m_Name: Enemy_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6296802755904404096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000000104308114, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975bb254ff25f494fb4a96a8d1c506d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  rotationSpeed: 0.5
+  speed: 1
+  rotationSpeed: 0.25
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}

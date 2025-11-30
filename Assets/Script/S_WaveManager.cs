@@ -11,12 +11,14 @@ public class S_WaveManager : MonoBehaviour
 
     public int TimeToStartFirstWave = 5;
 
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         foreach (S_Wave wave in waves)
         {
-            wave.wayPoints = wayPoints;
+           wayPoints = wave.wayPoints ;
         }
 
         StartNextWave(TimeToStartFirstWave);

@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class S_EnemyMovement : MonoBehaviour
+public class S_Enemy : MonoBehaviour
 {
+
+    [Header ("Movement")]
     
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
@@ -10,6 +14,17 @@ public class S_EnemyMovement : MonoBehaviour
 
     public Transform[] WayPoints;
     public Transform currentWayPoint;
+
+    public Action<S_Enemy> OnDead;
+
+    [Header("Economy")]
+    [SerializeField] private float nbreMana = 20;
+    //[SerializeField] private GameObject scrapType; Pour plus tard pour l'inventaire
+
+    [Header("Damage")]
+    [SerializeField] private float lifePoints = 50;
+    [SerializeField] private float nexusDamage = 10;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,6 +73,15 @@ public class S_EnemyMovement : MonoBehaviour
 
     void StopAndApplyDamageToBase()
     {
-        Destroy(gameObject);
+        
+    Destroy(gameObject);
+        
+        
+    }
+
+    private void OnDestroy()
+    {
+        OnDead.Invoke(this);
+
     }
 }
