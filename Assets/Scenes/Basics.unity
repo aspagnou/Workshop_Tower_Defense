@@ -673,7 +673,7 @@ Transform:
   m_GameObject: {fileID: 807938202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.12, y: 18.54, z: 34.34}
+  m_LocalPosition: {x: -6.46, y: 18.54, z: 34.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -764,15 +764,16 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 1703157980}
   - {fileID: 807938203}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  numberOfEnemies: 3
+  numberOfEnemies: 2
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 4
+  delayBetweenWaveSetByThisWave: 1
+  _enemyList:
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!4 &925583623
 Transform:
   m_ObjectHideFlags: 0
@@ -912,16 +913,18 @@ MonoBehaviour:
   - {fileID: 1257952258}
   - {fileID: 2111478508}
   - {fileID: 958199788}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
   numberOfEnemies: 4
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 7
+  delayBetweenWaveSetByThisWave: 1
+  _enemyList:
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
 --- !u!4 &1031773883
 Transform:
   m_ObjectHideFlags: 0
@@ -1209,9 +1212,6 @@ MonoBehaviour:
   - {fileID: 1257952258}
   - {fileID: 2111478508}
   - {fileID: 958199788}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
   numberOfEnemies: 4
   spawnInterval: 2
   spawnTimer: 0
@@ -1219,6 +1219,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 7
+  _enemyList: []
 --- !u!4 &1236883934
 Transform:
   m_ObjectHideFlags: 0
@@ -1444,11 +1445,6 @@ MonoBehaviour:
   - {fileID: 1910644887}
   - {fileID: 653378992}
   - {fileID: 1513255771}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
-  - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
-  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   numberOfEnemies: 10
   spawnInterval: 2
   spawnTimer: 0
@@ -1456,6 +1452,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 3
+  _enemyList: []
 --- !u!4 &1357105395
 Transform:
   m_ObjectHideFlags: 0
@@ -1630,18 +1627,17 @@ MonoBehaviour:
   - {fileID: 1910644887}
   - {fileID: 653378992}
   - {fileID: 1513255771}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
-  - {fileID: 6296802755904404096, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
-  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  numberOfEnemies: 10
+  numberOfEnemies: 3
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 3
+  delayBetweenWaveSetByThisWave: 1
+  _enemyList:
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!4 &1399736995
 Transform:
   m_ObjectHideFlags: 0
@@ -1861,8 +1857,6 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 1703157980}
   - {fileID: 807938203}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   numberOfEnemies: 3
   spawnInterval: 2
   spawnTimer: 0
@@ -1870,6 +1864,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 4
+  _enemyList: []
 --- !u!4 &1595567625
 Transform:
   m_ObjectHideFlags: 0
@@ -1923,15 +1918,16 @@ MonoBehaviour:
   - {fileID: 1910644887}
   - {fileID: 653378992}
   - {fileID: 1513255771}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   numberOfEnemies: 2
   spawnInterval: 2
   spawnTimer: 0
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 5
+  delayBetweenWaveSetByThisWave: 1
+  _enemyList:
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!4 &1621958222
 Transform:
   m_ObjectHideFlags: 0
@@ -2288,8 +2284,6 @@ MonoBehaviour:
   wayPoints:
   - {fileID: 1703157980}
   - {fileID: 807938203}
-  enemy:
-  - {fileID: 6296802755904404096, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   numberOfEnemies: 2
   spawnInterval: 2
   spawnTimer: 0
@@ -2297,6 +2291,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
+  _enemyList: []
 --- !u!4 &1721912708
 Transform:
   m_ObjectHideFlags: 0
