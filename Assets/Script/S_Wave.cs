@@ -11,7 +11,7 @@ public class S_Wave : MonoBehaviour
 
     public int numberOfEnemies = 5; //Number of enemies spawning in the wave
 
-    public float spawnInterval = 2f; //Time interval between enemy spawns
+    [SerializeField] public float spawnInterval; //Time interval between enemy spawns
 
     public float spawnTimer; //Timer tracking the spawn interval
 
@@ -42,8 +42,10 @@ public class S_Wave : MonoBehaviour
     public void StartWave()
     {
         waveActive = true;
+        GetComponentInParent<S_WaveManager>().countDown = delayBetweenWaveSetByThisWave;
         spawnTimer = spawnInterval;
         enemiesSpawned = 0;
+        
     }
     // Update is called once per frame
     void Update()
@@ -59,13 +61,7 @@ public class S_Wave : MonoBehaviour
             }
         }
 
-        if (nbrEnemiesKillCond <= 0 || _enemyList.Count == 0 ) //enemiesSpawned >= numberOfEnemies &&
-        {
-            waveActive = false;
-            Debug.Log("Wave completed");
-            GetComponentInParent<S_WaveManager>().StartNextWave(delayBetweenWaveSetByThisWave);
-            gameObject.SetActive(false);
-        }
+        
 
 
     }
@@ -93,9 +89,15 @@ public class S_Wave : MonoBehaviour
         _enemyList.Add(enemyInstance);
 
         enemiesSpawned++;
-        
 
-        
+        if (enemiesSpawned >= numberOfEnemies) // && nbrEnemiesKillCond <= 0 || _enemyList.Count == 0
+        {
+            waveActive = false;
+            Debug.Log("Wave completed");
+            GetComponentInParent<S_WaveManager>().StartNextWave(delayBetweenWaveSetByThisWave);
+            gameObject.SetActive(false);
+        }
+
 
     }
 
