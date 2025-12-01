@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class S_WaveManager : MonoBehaviour
 {
@@ -8,13 +10,22 @@ public class S_WaveManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI nextWaveLabel;
 
+    [Header("Wave system")]
+
     public Transform[] wayPoints; //Array of waypoints for the enemies to follow
 
     public S_Wave[] waves;
 
     public int currentWaveIndex = -1;
 
-    [SerializeField] private int TimeToStartFirstWave;
+    [Header("SpawnPoints")]
+
+    public Transform spawnpointsParent;
+    public Transform[] spawnpointsChildrens;
+
+    [Header("Timing")]
+
+    [SerializeField] public int TimeToStartFirstWave;
 
     public float countDown;
 
@@ -26,6 +37,12 @@ public class S_WaveManager : MonoBehaviour
     void Start()
     {
         countDown = TimeToStartFirstWave;
+        spawnpointsChildrens = new Transform[spawnpointsParent.transform.childCount];
+
+        for (int i = 0; i < spawnpointsChildrens.Length; i++)
+        {
+            spawnpointsChildrens[i] = spawnpointsParent.GetChild(i);
+        }
        
 
         foreach (S_Wave wave in waves)
@@ -45,12 +62,12 @@ public class S_WaveManager : MonoBehaviour
 
     void startWaves()
     {
+        
         if (currentWaveIndex < waves.Length - 1)
         {
             currentWaveIndex++;
-            countDown = waves[currentWaveIndex].delayBetweenWaveSetByThisWave;
             waves[currentWaveIndex].StartWave();
-            
+            countDown = waves[currentWaveIndex].delayBetweenWaveSetByThisWave;
         }
     }
 
@@ -59,6 +76,6 @@ public class S_WaveManager : MonoBehaviour
     {
         countDown -= Time.deltaTime;
         waveCounterLabel.text = Mathf.Round(currentWaveIndex+1).ToString();
-        nextWaveLabel.text = Mathf.Round(countDown+2).ToString();
+        nextWaveLabel.text = Mathf.Round(countDown).ToString();
     }
 }
