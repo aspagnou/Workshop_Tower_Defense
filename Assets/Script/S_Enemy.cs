@@ -20,12 +20,13 @@ public class S_Enemy : MonoBehaviour
     public Action<S_Enemy> OnDead;
 
     [Header("Economy")]
-    [SerializeField] private float nbreMana = 20;
+    public float nbreMana = 20;
+    [SerializeField] private LayerMask layers;
     //[SerializeField] private GameObject scrapType; Pour plus tard pour l'inventaire
 
     [Header("Damage")]
-    [SerializeField] private float lifePoints = 50;
-    [SerializeField] private float nexusDamage = 10;
+    [SerializeField] public float lifePoints = 50;
+    [SerializeField] public float nexusDamage = 10;
     [SerializeField] private float timeToExplode = 2;
     
 
@@ -37,7 +38,13 @@ public class S_Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   //lifePoints check
+        if (lifePoints <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        // Direction system and waypoints
         float distToCurrentWaypoint = Vector3.Distance(transform.position, currentWayPoint.position);
 
         if (distToCurrentWaypoint < 0.1f && currentWaypointIndex < WayPoints.Length - 1)
@@ -55,6 +62,8 @@ public class S_Enemy : MonoBehaviour
         }
 
         MoveTowards(currentWayPoint);
+
+        
 
     }
 
@@ -77,13 +86,14 @@ public class S_Enemy : MonoBehaviour
     private IEnumerator StopAndApplyDamageToBase()
     {
     yield return new WaitForSeconds(timeToExplode);
+        nbreMana = 0;
+        Destroy(gameObject);
 
-    Destroy(gameObject);
- 
+    
     }
 
-  
-
+    
+    
 
     private void OnDestroy()
     {

@@ -194,6 +194,7 @@ public class S_Wave : MonoBehaviour
         _enemyList6.Remove(deadEn);
         _enemyList7.Remove(deadEn);
         nbrEnemiesKillCond--;
+        GetComponentInParent<S_WaveManager>().totalMana += deadEn.nbreMana;
     }
 
 

@@ -5,12 +5,17 @@ using System.Collections.Generic;
 
 public class S_WaveManager : MonoBehaviour
 {
+
     [Header("Text UI")]
     [SerializeField] private TextMeshProUGUI waveCounterLabel;
     
     [SerializeField] private TextMeshProUGUI nextWaveLabel;
+    [SerializeField] private TextMeshProUGUI ManaLabel;
+    public float totalMana;
 
     [Header("Wave system")]
+
+    [SerializeField] private GameObject nexus;
 
     public Transform[] wayPoints; //Array of waypoints for the enemies to follow
 
@@ -77,5 +82,6 @@ public class S_WaveManager : MonoBehaviour
         countDown -= Time.deltaTime;
         waveCounterLabel.text = Mathf.Round(currentWaveIndex+1).ToString();
         nextWaveLabel.text = Mathf.Round(countDown).ToString();
+        ManaLabel.text = Mathf.Round(totalMana).ToString();
     }
 }

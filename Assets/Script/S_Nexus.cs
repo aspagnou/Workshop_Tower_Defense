@@ -3,7 +3,7 @@ using UnityEngine;
 public class S_Nexus : MonoBehaviour
 {
 
-    [SerializeField] public float pvNexus = 100f;
+    [SerializeField] public float pvNexus = 1000f;
     public float _pvNexus => pvNexus;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,4 +20,6 @@ public class S_Nexus : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }
