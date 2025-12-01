@@ -125,6 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rotationSpeed: 0.25
+  timeToSpawn: 0
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}
+  nbreMana: 20
+  lifePoints: 50
+  nexusDamage: 10
+  timeToExplode: 4

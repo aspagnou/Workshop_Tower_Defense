@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -25,7 +26,7 @@ public class S_Enemy : MonoBehaviour
     [Header("Damage")]
     [SerializeField] private float lifePoints = 50;
     [SerializeField] private float nexusDamage = 10;
-    [SerializeField] private int timeToExplode = 2;
+    [SerializeField] private float timeToExplode = 2;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,7 +51,7 @@ public class S_Enemy : MonoBehaviour
         }
         else if (distToCurrentWaypoint < 0.1f && currentWaypointIndex == WayPoints.Length - 1)
         {
-            StopAndApplyDamageToBase(timeToExplode);
+            StartCoroutine (StopAndApplyDamageToBase());
         }
 
         MoveTowards(currentWayPoint);
@@ -73,9 +74,10 @@ public class S_Enemy : MonoBehaviour
 
     }
 
-    public void StopAndApplyDamageToBase(int timeToExplode)
+    private IEnumerator StopAndApplyDamageToBase()
     {
-    
+    yield return new WaitForSeconds(timeToExplode);
+
     Destroy(gameObject);
  
     }
