@@ -183,13 +183,16 @@ public class ItemGrid : MonoBehaviour
             return false;
         }
         return true;
-    } 
-
-    internal InventoryItem GetItem(int x, int y) // get the item at the specified grid position
-    {
-       return inventoryItemSlot[x, y];
     }
 
+    internal InventoryItem GetItem(int x, int y)
+    {
+        if (x < 0 || y < 0 || x >= gridSizeWidth || y >= gridSizeHeight)
+        {
+            return null;
+        }
+        return inventoryItemSlot[x, y];
+    }
 
 
 

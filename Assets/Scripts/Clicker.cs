@@ -32,7 +32,7 @@ public class Clicker : MonoBehaviour
            
             if (tower != null)
             {
-                ui_Manager.ShowCraftMenu();
+                ui_Manager.ShowGearMenu();
                 SelectTower(tower);
                 tower.inventoryMemory.DisplayInventory();
                 

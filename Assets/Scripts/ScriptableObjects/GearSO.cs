@@ -18,7 +18,7 @@ public class GearSO : ScriptableObject
     public float percentAttackDamage;
     public float percentRange;
     public float percentAttackSpeed;
-    
 
+  
 
 }

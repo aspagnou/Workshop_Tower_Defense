@@ -39,7 +39,7 @@ public class UI_Manager : MonoBehaviour
     public void ShowCraftMenu() 
     {
         Debug.Log("Jactive");
-        gearInventoryMenu.SetActive(true);
+        craftMenu.SetActive(true);
     }
     public void HideCraftMenu() 
     {

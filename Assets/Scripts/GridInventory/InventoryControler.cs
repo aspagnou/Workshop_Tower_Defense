@@ -69,42 +69,48 @@ public class InventoryControler : MonoBehaviour
     private void HandleHighLight()
     {
         Vector2Int positionOnGrid = GetTileGridPosition();
-
-        if(oldPosition == positionOnGrid)
+        if (oldPosition == positionOnGrid)
         {
             return;
         }
         oldPosition = positionOnGrid;
+
+        // Vérifier si les coordonnées sont valides
+        if (positionOnGrid.x < 0 || positionOnGrid.y < 0 ||
+            positionOnGrid.x >= selectedItemGrid.gridSizeWidth ||
+            positionOnGrid.y >= selectedItemGrid.gridSizeHeight)
+        {
+            inventoryHighlight.Show(false);
+            return;
+        }
+
         if (selectedItem == null)
         {
             itemToHighLight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
             if (itemToHighLight != null)
             {
-                // show highlight
                 inventoryHighlight.Show(true);
                 inventoryHighlight.SetSize(itemToHighLight);
-                
                 inventoryHighlight.SetPosition(selectedItemGrid, itemToHighLight);
             }
             else
             {
                 inventoryHighlight.Show(false);
             }
-
         }
-        else {
-            // show highlight where the item will be placed
+        else
+        {
             inventoryHighlight.Show(selectedItemGrid.BoundryCheck(
-                positionOnGrid.x, 
+                positionOnGrid.x,
                 positionOnGrid.y,
                 selectedItem.itemData.width,
                 selectedItem.itemData.height)
-                );
+            );
             inventoryHighlight.SetSize(selectedItem);
-            
-            inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x,positionOnGrid.y);
+            inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, positionOnGrid.y);
         }
     }
+
 
     public void CreateItem(ItemData item)
     {

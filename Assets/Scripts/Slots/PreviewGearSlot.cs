@@ -43,4 +43,6 @@ public class PreviewGearSlot : MonoBehaviour
         }
         gearTransform.anchoredPosition = Vector3.zero;
     }
+
+    
 }
