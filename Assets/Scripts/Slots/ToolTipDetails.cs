@@ -8,13 +8,17 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public float toolTipDelay = 0.2f;
     float timer;
 
-    private PreviewGearSlot PreviewGearSlot;
+    private PreviewGearSlot previewGearSlot;
+    private OutputSlot outputSlot;
+    private GearSlot gearSlot;
 
     bool hasMouse;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PreviewGearSlot = GetComponent<PreviewGearSlot>();
+        previewGearSlot = GetComponent<PreviewGearSlot>();
+        outputSlot = GetComponent<OutputSlot>();
+        gearSlot = GetComponent<GearSlot>();
         hasMouse = false;
     }
 
@@ -27,11 +31,19 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             if (timer >= toolTipDelay) 
             {
                 
-                if (PreviewGearSlot != null)
+                if (previewGearSlot != null)
                 {
-                    ToolTipManager.Instance.Show(PreviewGearSlot.currGear);
+                    ToolTipManager.Instance.Show(previewGearSlot.currGear);
                 }
-                
+                if (outputSlot != null)
+                {
+                    ToolTipManager.Instance.Show(outputSlot.currGear);
+                }
+                if (gearSlot != null)
+                {
+                    ToolTipManager.Instance.Show(gearSlot.currGear);
+                }
+
             }
         }
     }

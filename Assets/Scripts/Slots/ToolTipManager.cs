@@ -52,6 +52,7 @@ public class ToolTipManager : MonoBehaviour
 
     public void Show(GearSO gear)
     {
+        if (gear == null) return;
         toolTipCanvasGroup.alpha = 0;
         Title.text = gear.gearName;
 
