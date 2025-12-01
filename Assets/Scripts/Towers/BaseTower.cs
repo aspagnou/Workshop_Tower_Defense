@@ -9,6 +9,7 @@ public class BaseTower : MonoBehaviour
     public GameObject gridUI;
     public ItemGrid itemGrid;
     public InventoryMemory inventoryMemory;
+    private RectTransform fixRectTransform;
     
 
     [Header("Base Tower Stats")]
@@ -29,6 +30,7 @@ public class BaseTower : MonoBehaviour
     void Start()
     {
         mainCanvas = GameObject.FindWithTag("MainCanvas");
+        fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
         
     }
 
@@ -88,15 +90,29 @@ public class BaseTower : MonoBehaviour
 
         Debug.Log($"Stats recalculées : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
     }
-    public void HideGrid()
-    {
-        gridUI.transform.SetParent(this.transform);
-    }
+
 
     public void ShowGrid()
     {
+        // 1. Changer le parent de la grille vers le canvas
         gridUI.transform.SetParent(mainCanvas.transform);
-        
+
+        // 2. Récupérer le RectTransform de la grille et de l'objet de référence
+        RectTransform gridRectTransform = gridUI.GetComponent<RectTransform>();
+        RectTransform referenceRectTransform = fixRectTransform;
+
+        // 3. Copier les propriétés du RectTransform de référence vers la grille
+        gridRectTransform.anchoredPosition = referenceRectTransform.anchoredPosition;
+        gridRectTransform.sizeDelta = referenceRectTransform.sizeDelta;
+        gridRectTransform.localRotation = referenceRectTransform.localRotation;
+        gridRectTransform.localScale = referenceRectTransform.localScale;
+
+       
+    }
+
+    public void HideGrid()
+    {
+        gridUI.transform.SetParent(this.transform);
     }
     // ----------------------------------------------------
 

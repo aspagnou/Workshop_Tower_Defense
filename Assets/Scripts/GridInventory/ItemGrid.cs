@@ -12,6 +12,7 @@ public class ItemGrid : MonoBehaviour
 
     public int gridSizeWidth = 10;
     public int gridSizeHeight = 10;
+    public RectTransform fixRectTransform;
 
     [HideInInspector]
     public GearSO[] gearsEquiped;
@@ -85,6 +86,10 @@ public class ItemGrid : MonoBehaviour
         return true;
         
     }
+
+
+
+
     // ----------------------------- PICK UP ITEM FROM GRID ------
     public InventoryItem PickUpItem(int x, int y)
     {
@@ -184,6 +189,10 @@ public class ItemGrid : MonoBehaviour
     {
        return inventoryItemSlot[x, y];
     }
+
+
+
+
 
     // ----------------------Resize Grid -----------------
     public void ResizeGrid(int newWidth, int newHeight)
