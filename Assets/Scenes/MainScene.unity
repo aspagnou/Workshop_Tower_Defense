@@ -1722,6 +1722,7 @@ MonoBehaviour:
   towerLayer:
     serializedVersion: 2
     m_Bits: 64
+  ui_Manager: {fileID: 785203868}
 --- !u!1 &332663228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +2968,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 700548139}
+  m_Father: {fileID: 1869484863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3471,7 +3472,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1869484863}
-  - {fileID: 552978720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &701909502
@@ -6398,6 +6398,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 330585550}
+        m_TargetAssemblyTypeName: Clicker, Assembly-CSharp
+        m_MethodName: DeselectTower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1208440973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8156,6 +8168,7 @@ RectTransform:
   - {fileID: 973450452}
   - {fileID: 639667481}
   - {fileID: 830659030}
+  - {fileID: 552978720}
   m_Father: {fileID: 700548139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8419,8 +8432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -200.75, y: 153.375}
-  m_SizeDelta: {x: 401.5, y: 306.75}
+  m_AnchoredPosition: {x: -208.75, y: 153.375}
+  m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1964573474
 MonoBehaviour:
@@ -8435,8 +8448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
+    m_Left: 75
+    m_Right: 75
     m_Top: 25
     m_Bottom: 25
   m_ChildAlignment: 0
@@ -9178,8 +9191,8 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 8038286105063874183}
+  - {fileID: 771819215}
   - {fileID: 541492339}
   - {fileID: 736660311}
   - {fileID: 785203867}
   - {fileID: 700548139}
-  - {fileID: 771819215}

@@ -1,8 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UI_Manager : MonoBehaviour
 {
+    
+
     [Header("Ressource_Icons")]
     public RectTransform[] rectImages;
     [SerializeField] private GameObject[] ressourceIcon;
@@ -12,6 +15,10 @@ public class UI_Manager : MonoBehaviour
     [Header("Gear Inventory")]
     [SerializeField] private GameObject gearInventoryMenu;
 
+    private void Start()
+    {
+        HideGearMenu();
+    }
     public void SpawnResource(int index)
     {
         // Instancie l'icône comme enfant de rectImage
@@ -31,18 +38,28 @@ public class UI_Manager : MonoBehaviour
     }
     public void ShowCraftMenu() 
     {
-        craftMenu.SetActive(true);
+        Debug.Log("Jactive");
+        gearInventoryMenu.SetActive(true);
     }
     public void HideCraftMenu() 
     {
         craftMenu?.SetActive(false);
+
     }
     public void HideGearMenu() 
     {
+       
+           
         gearInventoryMenu?.SetActive(false);
+        
     }
     public void ShowGearMenu() 
     {
         gearInventoryMenu?.SetActive(true);
+    }
+
+    private void Update()
+    {
+        
     }
 }

@@ -234,7 +234,7 @@ public class ItemGrid : MonoBehaviour
     [ContextMenu("Increase Grid")]
     public void IncreaseGrid_DebugButton()
     {
-        ResizeGrid(gridSizeWidth + 2, gridSizeHeight + 2);
+        ResizeGrid(gridSizeWidth + 2, gridSizeHeight);
     }
 
 }

@@ -9,6 +9,7 @@ public class BaseTower : MonoBehaviour
     public GameObject gridUI;
     public ItemGrid itemGrid;
     public InventoryMemory inventoryMemory;
+    
 
     [Header("Base Tower Stats")]
     public float baseAttackDamage;
@@ -28,6 +29,7 @@ public class BaseTower : MonoBehaviour
     void Start()
     {
         mainCanvas = GameObject.FindWithTag("MainCanvas");
+        
     }
 
     // Update is called once per frame
@@ -94,6 +96,7 @@ public class BaseTower : MonoBehaviour
     public void ShowGrid()
     {
         gridUI.transform.SetParent(mainCanvas.transform);
+        
     }
     // ----------------------------------------------------
 

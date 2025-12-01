@@ -4,7 +4,7 @@ public class Clicker : MonoBehaviour
 {
     public Camera cam;           // Laisse vide  prend automatiquement Camera.main
     public LayerMask towerLayer; // Met "Tower" dans l’inspecteur
-
+    [SerializeField] private UI_Manager ui_Manager;
     private BaseTower currentSelectedTower = null;
 
     private void Start()
@@ -29,13 +29,13 @@ public class Clicker : MonoBehaviour
         {
             Debug.Log("Clicked on tower: " + hit.collider.gameObject.name);
             BaseTower tower = hit.collider.GetComponent<BaseTower>();
-            
+           
             if (tower != null)
             {
+                ui_Manager.ShowCraftMenu();
                 SelectTower(tower);
                 tower.inventoryMemory.DisplayInventory();
-
-
+                
             }
         }
         else
@@ -63,14 +63,16 @@ public class Clicker : MonoBehaviour
         currentSelectedTower.ShowGrid();
     }
 
-    private void DeselectTower()
+    public void DeselectTower()
     {
+        Debug.Log("Je ferme");
         if (currentSelectedTower != null)
         {
+            
             currentSelectedTower.HideGrid();
             currentSelectedTower = null;
         }
-    }
+    } 
 }
 
 
