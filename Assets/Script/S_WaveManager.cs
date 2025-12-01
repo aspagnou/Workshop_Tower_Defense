@@ -15,7 +15,7 @@ public class S_WaveManager : MonoBehaviour
 
     [Header("Wave system")]
 
-    [SerializeField] private GameObject nexus;
+    [SerializeField] public GameObject nexus;
 
     public Transform[] wayPoints; //Array of waypoints for the enemies to follow
 

@@ -21,6 +21,8 @@ public class S_Wave : MonoBehaviour
 
     public bool waveActive = false; //Check if the wave is active
 
+    
+
     [SerializeField] public int delayBetweenWaveSetByThisWave;
     [Space(12)]
 
@@ -100,7 +102,10 @@ public class S_Wave : MonoBehaviour
         _enemyStack7 = new Queue<S_Enemy>(_enemyList7);
     }
     void Start()
-    {   //Automatic set up waypoints 1
+    {   
+        
+        
+        //Automatic set up waypoints 1
         wayPoints = new Transform[wayPointsParent.transform.childCount];
 
         for (int i = 0; i < wayPoints.Length; i++)
@@ -195,6 +200,7 @@ public class S_Wave : MonoBehaviour
         _enemyList7.Remove(deadEn);
         nbrEnemiesKillCond--;
         GetComponentInParent<S_WaveManager>().totalMana += deadEn.nbreMana;
+       
     }
 
 
