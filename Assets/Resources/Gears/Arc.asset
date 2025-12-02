@@ -22,3 +22,5 @@ MonoBehaviour:
   percentAttackDamage: 0
   percentRange: 0
   percentAttackSpeed: 0
+  recycleRessources:
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}

@@ -22,3 +22,6 @@ MonoBehaviour:
   percentAttackDamage: 0
   percentRange: 10
   percentAttackSpeed: 20
+  recycleRessources:
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}

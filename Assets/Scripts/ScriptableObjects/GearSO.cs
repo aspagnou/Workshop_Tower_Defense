@@ -19,6 +19,9 @@ public class GearSO : ScriptableObject
     public float percentRange;
     public float percentAttackSpeed;
 
-  
+    [Header("Scraps when recycling")]
+    public ItemSO[] recycleRessources;
+
+
 
 }

@@ -8,4 +8,6 @@ public class ItemData : ScriptableObject
 
     public Sprite itemIcon;
     public GearSO relatedGear;
+
+    
 }
