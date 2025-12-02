@@ -1,43 +1,59 @@
 using System;
+using System.Net.Http.Headers;
+using System.Resources;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 using UnityEngine.UI;
-using System.Net.Http.Headers;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ToolTipManager : MonoBehaviour
 {
+    [Header("Base Tooltip")]
+
     public Canvas parentCanvas;
     public Transform toolTipTransform;
     public static ToolTipManager Instance;
     public TMP_Text Title, Details;
     public CanvasGroup toolTipCanvasGroup;
     [SerializeField] private Transform lineSpawnTransform;
+    [SerializeField] GameObject statLinePrefab;
 
+    [Space (20)]
 
+    [Header("Recycle ToolTip")]
+    bool isShowingBase;
+    bool isShowingRecycle;
+    public CanvasGroup recycleCanvasGroup;
+    [SerializeField] GameObject RecycleToolTip;
+    [SerializeField] private Transform recycleLineSpawnTransform;
+    [SerializeField] GameObject recycleLinePrefab;
+    public Sprite[] Scraps;
 
-
-    bool isShowing;
-
+    [Header("icons")]
     // Icônes pour chaque stat
     public Sprite attackDamageIcon;
     public Sprite rangeIcon;
     public Sprite attackSpeedIcon;
     public Sprite criticalChanceIcon;
 
-    [SerializeField] GameObject statLinePrefab;
+    
+    private InventoryControler inventoryControler;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Instance = this;
-        isShowing = false;
+        isShowingBase = false;
+        isShowingRecycle = false;
+        inventoryControler = FindAnyObjectByType<InventoryControler>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 movePos;
-        if (isShowing) 
+        if (isShowingBase) 
         {
             if (toolTipCanvasGroup.alpha < 1) 
             {
@@ -46,6 +62,13 @@ public class ToolTipManager : MonoBehaviour
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out movePos);
             toolTipTransform.position = parentCanvas.transform.TransformPoint(movePos);
 
+        }
+        if (isShowingRecycle) 
+        {
+            if (recycleCanvasGroup.alpha < 1) 
+            {
+                recycleCanvasGroup.alpha += Time.deltaTime * 3;
+            }
         }
     }
 
@@ -77,7 +100,7 @@ public class ToolTipManager : MonoBehaviour
         AddStatLine(attackSpeedIcon, gear.percentAttackSpeed, true);
 
         toolTipTransform.gameObject.SetActive(true);
-        isShowing = true;
+        isShowingBase = true;
     }
 
     // Méthode pour ajouter une ligne de stat
@@ -110,6 +133,61 @@ public class ToolTipManager : MonoBehaviour
     public void Hide()
     {
         toolTipTransform.gameObject.SetActive(false);
-        isShowing = false;
+        isShowingBase = false;
+    }
+
+    public void ShowRecycle() 
+    {
+        GearSO gear = inventoryControler.selectedItem.itemData.relatedGear;
+        if (gear == null) return;
+
+        recycleCanvasGroup.alpha = 0;
+        // Supprime les anciennes lignes (si elles existent)
+        foreach (Transform child in recycleLineSpawnTransform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (ItemSO item in gear.recycleRessources) 
+        {
+            int i= 0;   
+            if (item != null)
+            {
+                if (inventoryControler.selectedItem != null)
+                {
+                    
+                    int amount = gear.amounts[i];
+                    AddRecycleLine(item.itemIcon, amount);
+                    i++;
+                }
+                
+            }
+        }
+        RecycleToolTip.SetActive(true);
+        isShowingRecycle = true;
+    }
+    public void AddRecycleLine(Sprite icon,float value) 
+    {
+        if (value == 0) return; // Ne pas afficher si la valeur est 0
+        Debug.Log("Jajoute une ligne");
+        // Instancie une nouvelle ligne
+        GameObject statLine = Instantiate(recycleLinePrefab, recycleLineSpawnTransform);
+
+        // Récupère les composants de la ligne
+        Image iconImage = statLine.transform.GetChild(0).GetComponent<Image>();
+        TMP_Text scrapText = statLine.transform.GetChild(1).GetComponent<TMP_Text>();
+        Debug.Log(iconImage);
+        Debug.Log(scrapText);
+
+        // Configure l'icône
+        iconImage.sprite = icon;
+        iconImage.gameObject.SetActive(icon != null);
+        scrapText.text = $"+{value}";
+        
+    }
+
+    public void HideRecycle() 
+    {
+        RecycleToolTip.SetActive(false);
+        isShowingRecycle = false;
     }
 }

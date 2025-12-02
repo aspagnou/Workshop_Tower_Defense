@@ -15,12 +15,18 @@ public class GearRecycler : MonoBehaviour
     {
         if (inventoryControler.selectedItem != null) 
         {
-            Destroy(inventoryControler.selectedItem.gameObject);
+            int i = 0;
+            
             foreach (ItemSO item in inventoryControler.selectedItem.itemData.relatedGear.recycleRessources)
             {
-                if(item != null)
-                    resourceManager.AddResource(item, 1);
+                if(item != null) 
+                {
+                    int amount = inventoryControler.selectedItem.itemData.relatedGear.amounts[i];
+                    resourceManager.AddResource(item, amount);
+                    i++;
+                }
             }
+            Destroy(inventoryControler.selectedItem.gameObject);
             Debug.Log("J'ajoute une ressource");
         }
     }

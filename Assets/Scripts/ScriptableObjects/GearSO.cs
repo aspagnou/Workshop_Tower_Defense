@@ -21,7 +21,8 @@ public class GearSO : ScriptableObject
 
     [Header("Scraps when recycling")]
     public ItemSO[] recycleRessources;
+    public int[] amounts;
 
-
+   
 
 }
