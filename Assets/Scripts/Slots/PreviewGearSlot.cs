@@ -30,7 +30,7 @@ public class PreviewGearSlot : MonoBehaviour
             gearImage.sprite = currGear.gearIcon;
             // Réinitialiser l'alpha à 1 si un item est présent
             Color newColor = gearImage.color;
-            newColor.a = 1f;
+            newColor.a = 0.6f;
             gearImage.color = newColor;
         }
         else

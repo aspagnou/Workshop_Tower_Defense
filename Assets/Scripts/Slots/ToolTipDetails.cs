@@ -3,15 +3,16 @@ using UnityEngine.EventSystems;
 
 public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string TitleText;
-    public string DetailsText;
+    
     public float toolTipDelay = 0.2f;
     float timer;
 
     private PreviewGearSlot previewGearSlot;
     private OutputSlot outputSlot;
     private GearSlot gearSlot;
+    private InventoryItem inventoryItem;
 
+    public bool gridDetection;
     bool hasMouse;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +20,7 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         previewGearSlot = GetComponent<PreviewGearSlot>();
         outputSlot = GetComponent<OutputSlot>();
         gearSlot = GetComponent<GearSlot>();
+        inventoryItem = GetComponent<InventoryItem>();
         hasMouse = false;
     }
 
@@ -43,12 +45,17 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 {
                     ToolTipManager.Instance.Show(gearSlot.currGear);
                 }
+                if ( inventoryItem != null) 
+                {
+                    ToolTipManager.Instance.Show(inventoryItem.itemData.relatedGear);
+                }
 
             }
         }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Debug.Log(inventoryItem + " touché ");
         timer = 0;
         hasMouse = true;
     }

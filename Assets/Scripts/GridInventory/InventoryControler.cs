@@ -16,7 +16,7 @@ public class InventoryControler : MonoBehaviour
         } 
     }
     public BaseTower selectedTower;
-
+    private ToolTipManager toolTipManager;
 
 
     public InventoryItem selectedItem;
@@ -35,7 +35,7 @@ public class InventoryControler : MonoBehaviour
     private void Awake()
     {
         inventoryHighlight= GetComponent<InventoryHighlight>();
-        
+        toolTipManager = FindAnyObjectByType<ToolTipManager>();
        
 
     }
@@ -87,15 +87,20 @@ public class InventoryControler : MonoBehaviour
         if (selectedItem == null)
         {
             itemToHighLight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
-            if (itemToHighLight != null)
+            if (itemToHighLight != null) 
             {
                 inventoryHighlight.Show(true);
                 inventoryHighlight.SetSize(itemToHighLight);
                 inventoryHighlight.SetPosition(selectedItemGrid, itemToHighLight);
+                if (selectedItem == null) 
+                {
+                    toolTipManager.Show(itemToHighLight.itemData.relatedGear);
+                }
             }
             else
             {
                 inventoryHighlight.Show(false);
+                toolTipManager.Hide();
             }
         }
         else
