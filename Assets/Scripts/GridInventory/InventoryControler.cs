@@ -81,6 +81,7 @@ public class InventoryControler : MonoBehaviour
             positionOnGrid.y >= selectedItemGrid.gridSizeHeight)
         {
             inventoryHighlight.Show(false);
+            toolTipManager.Hide();
             return;
         }
 
@@ -208,6 +209,7 @@ public class InventoryControler : MonoBehaviour
         if (selectedItem != null)
         {
             rectTransform = selectedItem.GetComponent<RectTransform>();
+            toolTipManager.Hide();
         }
     }
 
@@ -215,6 +217,7 @@ public class InventoryControler : MonoBehaviour
     {
         if (selectedItem != null)
         {
+            toolTipManager.Hide();
             rectTransform.position = Input.mousePosition;
         }
     }

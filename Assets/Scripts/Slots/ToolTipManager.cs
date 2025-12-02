@@ -39,6 +39,7 @@ public class ToolTipManager : MonoBehaviour
 
     
     private InventoryControler inventoryControler;
+    private ToolTipManager toolTipManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +48,7 @@ public class ToolTipManager : MonoBehaviour
         isShowingBase = false;
         isShowingRecycle = false;
         inventoryControler = FindAnyObjectByType<InventoryControler>();
+        toolTipManager = FindAnyObjectByType<ToolTipManager>();
     }
 
     // Update is called once per frame
@@ -55,13 +57,14 @@ public class ToolTipManager : MonoBehaviour
         Vector2 movePos;
         if (isShowingBase) 
         {
+            
             if (toolTipCanvasGroup.alpha < 1) 
             {
                 toolTipCanvasGroup.alpha += Time.deltaTime*3;
             }
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out movePos);
             toolTipTransform.position = parentCanvas.transform.TransformPoint(movePos);
-
+            
         }
         if (isShowingRecycle) 
         {

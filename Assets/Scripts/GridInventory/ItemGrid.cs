@@ -13,7 +13,7 @@ public class ItemGrid : MonoBehaviour
     public int gridSizeWidth = 10;
     public int gridSizeHeight = 10;
     public RectTransform fixRectTransform;
-
+    private ToolTipManager tooltipManager;
     [HideInInspector]
     public GearSO[] gearsEquiped;
 
@@ -24,6 +24,7 @@ public class ItemGrid : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
         relatedTowerInventory = GetComponentInParent<InventoryMemory>();
+        tooltipManager = FindAnyObjectByType<ToolTipManager>();
     }
 
     public void Init(int width, int height)
@@ -93,12 +94,13 @@ public class ItemGrid : MonoBehaviour
     // ----------------------------- PICK UP ITEM FROM GRID ------
     public InventoryItem PickUpItem(int x, int y)
     {
+        tooltipManager.Hide();
         InventoryItem toReturn = inventoryItemSlot[x, y];
 
         if (toReturn == null) { return null; }
         relatedTowerInventory.RemoveGear(toReturn.itemData.relatedGear);
         CleanGridReference(toReturn);
-
+        
         return toReturn;
     }
 
