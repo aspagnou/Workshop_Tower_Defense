@@ -10,7 +10,7 @@ public class S_Enemy : MonoBehaviour
     
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float timeToSpawn;
+    [SerializeField] public float timeToSpawn;
 
     public int currentWaypointIndex = 0;
 
@@ -22,7 +22,7 @@ public class S_Enemy : MonoBehaviour
     [Header("Economy")]
     public float nbreMana = 20;
     [SerializeField] private LayerMask layers;
-    //[SerializeField] private GameObject scrapType; Pour plus tard pour l'inventaire
+    
 
     [Header("Damage")]
     [SerializeField] public float lifePoints = 50;

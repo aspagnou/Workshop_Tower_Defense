@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   rotationSpeed: 1
-  timeToSpawn: 0
+  timeToSpawn: 1
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}

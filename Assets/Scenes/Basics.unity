@@ -2255,12 +2255,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfEnemies: 2
-  spawnInterval: 2
+  spawnInterval: 1
   spawnTimer: 0
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 15
+  delayBetweenWaveSetByThisWave: 10
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
@@ -2760,10 +2760,11 @@ MonoBehaviour:
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 15
+  delayBetweenWaveSetByThisWave: 10
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent: {fileID: 1737638678}
   wayPoints:
   - {fileID: 178314982}
@@ -2776,26 +2777,32 @@ MonoBehaviour:
   - {fileID: 958199788}
   _enemyList2:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent2: {fileID: 1208056458}
   wayPoints2: []
   _enemyList3:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent3: {fileID: 1998105281}
   wayPoints3: []
   _enemyList4:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent4: {fileID: 1524938197}
   wayPoints4: []
   _enemyList5:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent5: {fileID: 149421592}
   wayPoints5: []
   _enemyList6:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent6: {fileID: 1240168359}
   wayPoints6: []
   _enemyList7:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent7: {fileID: 400597276}
   wayPoints7: []
 --- !u!4 &1031773883
@@ -3816,12 +3823,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfEnemies: 3
-  spawnInterval: 2
+  spawnInterval: 1
   spawnTimer: 0
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 15
+  delayBetweenWaveSetByThisWave: 10
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   wayPointsParent: {fileID: 1737638678}
@@ -4291,21 +4298,23 @@ MonoBehaviour:
   enemiesSpawned: 0
   nbrEnemiesKillCond: 0
   waveActive: 0
-  delayBetweenWaveSetByThisWave: 20
+  delayBetweenWaveSetByThisWave: 10
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   wayPointsParent: {fileID: 1737638678}
   wayPoints: []
   _enemyList2:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   wayPointsParent2: {fileID: 1208056458}
   wayPoints2: []
   _enemyList3:
   - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
-  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
   wayPointsParent3: {fileID: 1998105281}
   wayPoints3: []
   _enemyList4:

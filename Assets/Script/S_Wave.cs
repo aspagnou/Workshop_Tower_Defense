@@ -21,10 +21,9 @@ public class S_Wave : MonoBehaviour
 
     public bool waveActive = false; //Check if the wave is active
 
-    
-
     [SerializeField] public int delayBetweenWaveSetByThisWave;
-    [Space(12)]
+    public int countDownBetween;
+
 
     [Header("Spawner1")]
     public Queue<S_Enemy> _enemyStack;
@@ -32,42 +31,42 @@ public class S_Wave : MonoBehaviour
 
     public Transform wayPointsParent;
     public Transform[] wayPoints;
-    [Space(50)]
+    
 
     [Header("Spawner2")]
     public Queue<S_Enemy> _enemyStack2;
     [SerializeField] private List<S_Enemy> _enemyList2;
     public Transform wayPointsParent2;
     public Transform[] wayPoints2;
-    [Space(12)]
+  
 
     [Header("Spawner3")]
     public Queue<S_Enemy> _enemyStack3;
     [SerializeField] private List<S_Enemy> _enemyList3;
     public Transform wayPointsParent3;
     public Transform[] wayPoints3;
-    [Space(12)]
+   
 
     [Header("Spawner4")]
     public Queue<S_Enemy> _enemyStack4;
     [SerializeField] private List<S_Enemy> _enemyList4;
     public Transform wayPointsParent4;
     public Transform[] wayPoints4;
-    [Space(12)]
+   
 
     [Header("Spawner5")]
     public Queue<S_Enemy> _enemyStack5;
     [SerializeField] private List<S_Enemy> _enemyList5;
     public Transform wayPointsParent5;
     public Transform[] wayPoints5;
-    [Space(12)]
+  
 
     [Header("Spawner6")]
     public Queue<S_Enemy> _enemyStack6;
     [SerializeField] private List<S_Enemy> _enemyList6;
     public Transform wayPointsParent6;
     public Transform[] wayPoints6;
-    [Space(12)]
+ 
 
     [Header("Spawner7")]
     public Queue<S_Enemy> _enemyStack7;
@@ -102,8 +101,8 @@ public class S_Wave : MonoBehaviour
         _enemyStack7 = new Queue<S_Enemy>(_enemyList7);
     }
     void Start()
-    {   
-        
+    {
+       
         
         //Automatic set up waypoints 1
         wayPoints = new Transform[wayPointsParent.transform.childCount];
@@ -173,20 +172,28 @@ public class S_Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(delayBetweenWaveSetByThisWave);
+        countDownBetween = delayBetweenWaveSetByThisWave;
+
         if (waveActive)
         {
-            spawnTimer -= Time.deltaTime; 
+
+            spawnTimer -= Time.deltaTime;
 
             if (spawnTimer <= 0f && enemiesSpawned < numberOfEnemies)
             {
                 SpawnEnemy();
                 spawnTimer = spawnInterval;
             }
+
+            //if (enemiesSpawned == numberOfEnemies)
+            //{
+            //    spawnInterval = 0.1f;
+            //}
+
+
+
         }
-
-        
-
-
     }
 
     private void OneEnemyIsDead(S_Enemy deadEn)
@@ -220,6 +227,7 @@ public class S_Wave : MonoBehaviour
 
             _enemyList.Add(enemyInstance);
 
+            //spawnInterval = enemyCandidate.timeToSpawn;
             enemiesSpawned++;
         }
 
@@ -232,6 +240,7 @@ public class S_Wave : MonoBehaviour
 
             _enemyList2.Add(enemyInstance2);
 
+            //spawnInterval = enemyCandidate2.timeToSpawn;
             enemiesSpawned++;
         }
 
@@ -244,6 +253,7 @@ public class S_Wave : MonoBehaviour
 
             _enemyList3.Add(enemyInstance3);
 
+            //spawnInterval = enemyCandidate3.timeToSpawn;
             enemiesSpawned++;
         }
         

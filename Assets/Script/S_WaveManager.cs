@@ -33,6 +33,7 @@ public class S_WaveManager : MonoBehaviour
     [SerializeField] public int TimeToStartFirstWave;
 
     public float countDown;
+    
 
     
 
@@ -42,6 +43,8 @@ public class S_WaveManager : MonoBehaviour
     void Start()
     {
         countDown = TimeToStartFirstWave;
+
+        //Get all spwaners in a list
         spawnpointsChildrens = new Transform[spawnpointsParent.transform.childCount];
 
         for (int i = 0; i < spawnpointsChildrens.Length; i++)
@@ -50,10 +53,10 @@ public class S_WaveManager : MonoBehaviour
         }
        
 
-        foreach (S_Wave wave in waves)
-        {
-           wayPoints = wave.wayPoints ;
-        }
+        //foreach (S_Wave wave in waves)
+        //{
+        //   wayPoints = wave.wayPoints ;
+        //}
 
         StartNextWave(TimeToStartFirstWave);
     }
@@ -62,7 +65,7 @@ public class S_WaveManager : MonoBehaviour
     {
         
         Invoke("startWaves", delayBetweenWavesSetByPreviousWave);
-
+        
     }
 
     void startWaves()
@@ -70,9 +73,10 @@ public class S_WaveManager : MonoBehaviour
         
         if (currentWaveIndex < waves.Length - 1)
         {
+            
             currentWaveIndex++;
             waves[currentWaveIndex].StartWave();
-            countDown = waves[currentWaveIndex].delayBetweenWaveSetByThisWave;
+            countDown = waves[currentWaveIndex].countDownBetween;
         }
     }
 
