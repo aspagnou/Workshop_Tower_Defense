@@ -60,6 +60,13 @@ public class UI_Manager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            ShowCraftMenu();
+        }
+        if (Input.GetKeyDown(KeyCode.R)) 
+        {
+            HideCraftMenu();
+        }
     }
 }

@@ -33,10 +33,7 @@ public class InventoryMemory : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            
-        }
+     
     }
 
     public void DisplayInventory()

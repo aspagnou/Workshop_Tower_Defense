@@ -6,6 +6,7 @@ public class Clicker : MonoBehaviour
     public LayerMask towerLayer; // Met "Tower" dans l’inspecteur
     [SerializeField] private UI_Manager ui_Manager;
     private BaseTower currentSelectedTower = null;
+    
 
     private void Start()
     {
@@ -31,11 +32,9 @@ public class Clicker : MonoBehaviour
             BaseTower tower = hit.collider.GetComponent<BaseTower>();
            
             if (tower != null)
-            {
-                ui_Manager.ShowGearMenu();
+            {  
                 SelectTower(tower);
-                tower.inventoryMemory.DisplayInventory();
-                
+                tower.OnTowerSelected();
             }
         }
         else
@@ -45,9 +44,9 @@ public class Clicker : MonoBehaviour
         }
     }
 
-    private void SelectTower(BaseTower tower)
+    public void SelectTower(BaseTower tower)
     {
-        // Si on clique la même tour  toggle
+        // Si on clique la même tour, toggle
         if (tower == currentSelectedTower)
         {
             DeselectTower();
@@ -56,11 +55,13 @@ public class Clicker : MonoBehaviour
 
         // Fermer l’ancienne
         if (currentSelectedTower != null)
-            currentSelectedTower.HideGrid();
+        {
+            currentSelectedTower.OnTowerDeselected();
+        }
 
         // Ouvrir la nouvelle
         currentSelectedTower = tower;
-        currentSelectedTower.ShowGrid();
+        currentSelectedTower.OnTowerSelected();
     }
 
     public void DeselectTower()
@@ -68,11 +69,20 @@ public class Clicker : MonoBehaviour
         Debug.Log("Je ferme");
         if (currentSelectedTower != null)
         {
-            
-            currentSelectedTower.HideGrid();
+            currentSelectedTower.OnTowerDeselected();
             currentSelectedTower = null;
         }
-    } 
+    }
+
+    public void OpenTowerInventoryGrid() 
+    {
+        if (currentSelectedTower != null) 
+        { 
+            currentSelectedTower.ShowGrid();
+            currentSelectedTower.inventoryMemory.DisplayInventory();
+            ui_Manager.ShowGearMenu();
+        }
+    }
 }
 
 

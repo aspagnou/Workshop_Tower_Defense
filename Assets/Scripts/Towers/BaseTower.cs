@@ -10,6 +10,7 @@ public class BaseTower : MonoBehaviour
     public ItemGrid itemGrid;
     public InventoryMemory inventoryMemory;
     private RectTransform fixRectTransform;
+
     
 
     [Header("Base Tower Stats")]
@@ -37,14 +38,7 @@ public class BaseTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ShowGrid();
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            HideGrid();
-        }
+        
     }
 
     //----------------------------- GEAR EQUIP/UNEQUIP ------
@@ -115,5 +109,15 @@ public class BaseTower : MonoBehaviour
         gridUI.transform.SetParent(this.transform);
     }
     // ----------------------------------------------------
+
+    public void OnTowerSelected()
+    {
+        TowerSelectMenuManager.Instance.ShowTowerSelectMenu(this);
+    }
+    public void OnTowerDeselected()
+    {
+        TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+        HideGrid();
+    }
 
 }

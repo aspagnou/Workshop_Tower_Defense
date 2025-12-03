@@ -43,10 +43,7 @@ public class InventoryControler : MonoBehaviour
     {
         ItemIconDrag();
         
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            TryEquipInFirstFreeGearSlot();
-        }
+        
 
         if (selectedItemGrid == null) 
         { 
@@ -61,7 +58,7 @@ public class InventoryControler : MonoBehaviour
         {
             
             LeftMouseButtonPress();
-            
+               
         }
     }
     Vector2Int oldPosition;

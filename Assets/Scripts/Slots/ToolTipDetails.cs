@@ -45,10 +45,7 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 {
                     ToolTipManager.Instance.Show(gearSlot.currGear);
                 }
-                if ( inventoryItem != null) 
-                {
-                    ToolTipManager.Instance.Show(inventoryItem.itemData.relatedGear);
-                }
+                
 
             }
         }

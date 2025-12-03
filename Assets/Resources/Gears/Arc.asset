@@ -24,4 +24,7 @@ MonoBehaviour:
   percentAttackSpeed: 0
   recycleRessources:
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
-  amounts: 01000000
+  - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+  - {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
+  amounts: 01000000050000000500000005000000

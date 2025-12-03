@@ -55,25 +55,38 @@ public class ToolTipManager : MonoBehaviour
     void Update()
     {
         Vector2 movePos;
-        if (isShowingBase) 
+        if (isShowingBase)
         {
-            
-            if (toolTipCanvasGroup.alpha < 1) 
+            if (toolTipCanvasGroup.alpha < 1)
             {
-                toolTipCanvasGroup.alpha += Time.deltaTime*3;
+                toolTipCanvasGroup.alpha += Time.deltaTime * 3;
             }
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out movePos);
+
+            // Vérifie si la souris est toujours sur un objet UI
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                Hide();
+                return;
+            }
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                parentCanvas.transform as RectTransform,
+                Input.mousePosition,
+                parentCanvas.worldCamera,
+                out movePos
+            );
             toolTipTransform.position = parentCanvas.transform.TransformPoint(movePos);
-            
         }
-        if (isShowingRecycle) 
+
+        if (isShowingRecycle)
         {
-            if (recycleCanvasGroup.alpha < 1) 
+            if (recycleCanvasGroup.alpha < 1)
             {
                 recycleCanvasGroup.alpha += Time.deltaTime * 3;
             }
         }
     }
+
 
 
     public void Show(GearSO gear)

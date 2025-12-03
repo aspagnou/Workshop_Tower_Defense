@@ -191,6 +191,7 @@ public class ItemGrid : MonoBehaviour
     {
         if (x < 0 || y < 0 || x >= gridSizeWidth || y >= gridSizeHeight)
         {
+            tooltipManager.Hide();
             return null;
         }
         return inventoryItemSlot[x, y];

@@ -125,6 +125,15 @@ MonoBehaviour:
   gridUI: {fileID: 2384073878758901224}
   itemGrid: {fileID: 0}
   inventoryMemory: {fileID: 741925592922327412}
+  baseAttackDamage: 0
+  baseRange: 0
+  baseAttackSpeed: 0
+  baseCriticalChance: 0
+  currentAttackDamage: 0
+  currentRange: 0
+  currentAttackSpeed: 0
+  currentCriticalChance: 0
+  equippedGears: []
 --- !u!1001 &3132767047679619772
 PrefabInstance:
   m_ObjectHideFlags: 0
