@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Clicker : MonoBehaviour
@@ -8,7 +9,7 @@ public class Clicker : MonoBehaviour
     [SerializeField] private UI_Manager ui_Manager;
     public   BaseTower currentSelectedTower = null;
     private bool isGridOpen = false;
-    private bool isUpgradeOpen = false;
+    public bool isUpgradeOpen = false;
 
 
     private void Awake()
@@ -26,6 +27,7 @@ public class Clicker : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
             HandleClick();
+        if (Input.GetKeyDown(KeyCode.F)) { DeselectTower(); }
     }
 
     private void HandleClick()
@@ -49,18 +51,13 @@ public class Clicker : MonoBehaviour
 
     public void SelectTower(BaseTower tower)
     {
-        // Si on clique la même tour, toggle
-        //if (tower == currentSelectedTower)
-        //{
-        //    DeselectTower();
-        //    return;
-        //}
-
         // Fermer l’ancienne
         if (currentSelectedTower != null)
         {
             // Vérifie si la grille est ouverte
             isGridOpen = currentSelectedTower.gridUI.activeSelf;
+            // Vérifie si le menu d'upgrade est ouvert
+            isUpgradeOpen = TowerSelectMenuManager.Instance != null && TowerSelectMenuManager.Instance.upGradeMenu.activeSelf;
             currentSelectedTower.OnTowerDeselected();
         }
 
@@ -73,10 +70,17 @@ public class Clicker : MonoBehaviour
         {
             currentSelectedTower.ShowGrid();
             currentSelectedTower.inventoryMemory.DisplayInventory();
-
             ui_Manager.ShowGearMenu();
         }
+
+        // Ouvrir automatiquement le menu d'upgrade de la nouvelle tour seulement si le menu d'upgrade était ouvert
+        if (isUpgradeOpen)
+        {
+            TowerSelectMenuManager.Instance.ShowUpgradeMenu();
+        }
     }
+
+
 
 
 
@@ -87,10 +91,11 @@ public class Clicker : MonoBehaviour
         {
             currentSelectedTower.OnTowerDeselected();
             ui_Manager.HideGearMenu();
-            TowerSelectMenuManager.Instance.HideUpgradeMenu(); ;
+            TowerSelectMenuManager.Instance.HideUpgradeMenu();
             currentSelectedTower = null;
         }
         isGridOpen = false;
+        isUpgradeOpen = false;
     }
 
     public void OpenTowerInventoryGrid() 

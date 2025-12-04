@@ -11,7 +11,7 @@ public class BaseTower : MonoBehaviour
     public InventoryMemory inventoryMemory;
     private RectTransform fixRectTransform;
 
-    private int level = 1;
+    
 
     [Header("Base Tower Stats")]
     public float baseAttackDamage;
@@ -125,6 +125,7 @@ public class BaseTower : MonoBehaviour
     public void OnTowerDeselected()
     {
         TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+        
         HideGrid();
         
     }

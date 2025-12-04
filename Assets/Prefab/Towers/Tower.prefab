@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridUI: {fileID: 2384073878758901224}
-  itemGrid: {fileID: 0}
+  itemGrid: {fileID: 886195416633796091}
   inventoryMemory: {fileID: 741925592922327412}
   baseAttackDamage: 0
   baseRange: 0
@@ -148,13 +148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6871afdf0ef1e3409699ee1d9c5372b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1_scraps:
-  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
-  - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
-  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
-  level1_costs: 080000000800000006000000
+  upgradeLevels:
+  - scraps:
+    - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+    - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
+    - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+    costs: 040000000400000004000000
+  - scraps:
+    - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+    - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
+    - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+    - {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
+    costs: 08000000080000000800000008000000
   costLinePrefab: {fileID: 2569726068507241836, guid: 46d4af10cb868c049aa8e847dfe827f1, type: 3}
-  lineSpawnTransform: {fileID: 0}
+  currentLevel: 0
 --- !u!1001 &3132767047679619772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293,6 +300,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85d3f52a0f707124c98fcd2e6d52f1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &886195416633796091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2825363358804825927, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
+  m_PrefabInstance: {fileID: 3132767047679619772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1a45bde83adc940b6763d5f6ccc281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2384073878758901224 stripped

@@ -1484,6 +1484,14 @@ PrefabInstance:
       propertyPath: 'level1_costs.Array.data[2]'
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[1]'
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4630020649443479882, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: m_Camera
       value: 
@@ -11820,10 +11828,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
-    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
-      propertyPath: lineSpawnTransform
-      value: 
-      objectReference: {fileID: 1017417562}
     - target: {fileID: 4731179121687873164, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

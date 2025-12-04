@@ -53,16 +53,23 @@ public class TowerSelectMenuManager : MonoBehaviour
         currentlySelectedTower = null;
     }
 
-    public void ShowUpgradeMenu() 
+    public void ShowUpgradeMenu()
     {
-        upGradeMenu.SetActive(true);
-        Clicker.Instance.currentSelectedTower = currentlySelectedTower;
-        upgradeManager = currentlySelectedTower.towerUpgradeManager;
-        upgradeManager.Show();
+        if (Clicker.Instance.currentSelectedTower != null)
+        {
+            upGradeMenu.SetActive(true);
+            currentlySelectedTower = Clicker.Instance.currentSelectedTower;
+            upgradeManager = currentlySelectedTower.towerUpgradeManager;
+            upgradeManager.Show(upgradeManager.currentLevel);
+            Clicker.Instance.isUpgradeOpen = true;
+        }
     }
-    public void HideUpgradeMenu() 
+
+
+    public void HideUpgradeMenu()
     {
         upGradeMenu.SetActive(false);
+        Clicker.Instance.isUpgradeOpen = false;
     }
     public void ConfirmUpgrade() 
     {

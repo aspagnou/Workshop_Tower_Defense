@@ -41,18 +41,31 @@ public class ResourceManager : MonoBehaviour
     {
         resource.amount += amount;
         ui_Manager.SpawnResource(resource.index);
-        ui_Manager.UpdateResourceText(resource.amount,resource.index);
+        ui_Manager.UpdateResourceText(resource.amount, resource.index);
+
+        // Met à jour les couleurs des lignes de coût
+        if (Clicker.Instance.currentSelectedTower != null)
+        {
+            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+        }
     }
+
     public void UseResource(ItemSO resource, int amount)
     {
         resource.amount -= amount;
         if (resource.amount <= 0)
         {
             resource.amount = 0;
-            
         }
         ui_Manager.UpdateResourceText(resource.amount, resource.index);
+
+        // Met à jour les couleurs des lignes de coût
+        if (Clicker.Instance.currentSelectedTower != null)
+        {
+            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+        }
     }
+
 
     public void ClearSlots() 
     {
