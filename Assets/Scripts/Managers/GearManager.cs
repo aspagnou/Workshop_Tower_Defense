@@ -3,11 +3,13 @@ using UnityEngine.EventSystems;
 
 public class GearManager : MonoBehaviour
 {
+    public static GearManager Instance;
     public GearSlot[] gearSlots;
     private InventoryControler inventoryControler;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
         inventoryControler = FindAnyObjectByType(typeof(InventoryControler)) as InventoryControler;
     }
 
@@ -45,4 +47,5 @@ public class GearManager : MonoBehaviour
         }
         return true;
     }
+
 }

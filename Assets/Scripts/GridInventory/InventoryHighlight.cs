@@ -3,8 +3,20 @@ using UnityEngine;
 public class InventoryHighlight : MonoBehaviour
 {
     [SerializeField] private RectTransform highlighter;
+    [SerializeField] private GameObject highlighterPrefab;
+    private GameObject mainCanvas;
 
-
+    private void Start()
+    {
+        mainCanvas = GameObject.FindWithTag("MainCanvas");
+    }
+    private void Update()
+    {
+        if (highlighter == null) 
+        {
+            highlighter = Instantiate(highlighterPrefab, mainCanvas.transform).GetComponent<RectTransform>();
+        }
+    }
     public void Show(bool b) 
     {
         highlighter.gameObject.SetActive(b);

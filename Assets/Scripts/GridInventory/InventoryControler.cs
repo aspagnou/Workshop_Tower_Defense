@@ -30,7 +30,7 @@ public class InventoryControler : MonoBehaviour
     [Header("Gear Slots")]
     public GearSlot[] allGearSlots;
 
-    InventoryHighlight inventoryHighlight;
+    public InventoryHighlight inventoryHighlight;
 
     private void Awake()
     {
@@ -198,6 +198,20 @@ public class InventoryControler : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void RetrieveGear(GearSO gear) 
+    {
+        foreach (GearSlot slot in allGearSlots)
+        {
+            if (slot.currGear == null)
+            {
+                slot.currGear = gear;
+                slot.UpdateSlotData();
+                return;
+            }
+        }
+        ResourceManager.Instance.AddMana(100);
     }
 
     private void PickUpItem(Vector2Int tiledGridPosition)

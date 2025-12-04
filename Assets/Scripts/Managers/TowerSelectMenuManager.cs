@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class TowerSelectMenuManager : MonoBehaviour
 {
     public static TowerSelectMenuManager Instance;
-
+    ItemGrid saveGrid;
     [Header("SelectMenu")]
     public GameObject towerSelectPanel;
     public Camera cam;
@@ -15,11 +15,14 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject upGradeMenu;
     private BaseTower currentlySelectedTower;
     private TowerUpgrade upgradeManager;
+    private InventoryControler inventoryControler;
 
     void Awake()
     {
         Instance = this;
         towerSelectPanel.SetActive(false);
+        inventoryControler=FindAnyObjectByType<InventoryControler>();
+        saveGrid= GameObject.FindWithTag("FixGridSpawn").GetComponent<ItemGrid>();
     }
 
     public void ShowTowerSelectMenu(BaseTower tower)
@@ -80,11 +83,17 @@ public class TowerSelectMenuManager : MonoBehaviour
 
     public void SellTower() 
     {
-        
+        InventoryMemory gearInventory = Clicker.Instance.currentSelectedTower.inventoryMemory;
         TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.GetComponent<TowerUpgrade>();
         if (towerUpgrade != null) 
         {
             ResourceManager.Instance.AddMana(towerUpgrade.sellAmount);
+            foreach(GearSO gear in gearInventory.storedGears) 
+            {
+                inventoryControler.RetrieveGear(gear);
+                inventoryControler.inventoryHighlight.SetParent(saveGrid);
+                
+            }
             Clicker.Instance.DeselectTower();
             Destroy(towerUpgrade.gameObject);
         }
