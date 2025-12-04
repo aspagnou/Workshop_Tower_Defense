@@ -1,8 +1,12 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance;
+    public int mana = 0;
+    [SerializeField] TMP_Text manaText;
     public ItemSO[] resources;
     
     [SerializeField] private UI_Manager ui_Manager;
@@ -16,7 +20,8 @@ public class ResourceManager : MonoBehaviour
         {
             resource.amount = 0;
             ui_Manager.UpdateResourceText(resource.amount,resource.index);
-        }   
+        }
+        UpdateManaText();
     }
 
     // Update is called once per frame
@@ -27,9 +32,8 @@ public class ResourceManager : MonoBehaviour
             foreach (ItemSO resource in resources)
             {
                 AddResource(resource, 1);
-                
-                //Debug.Log($"Added Resource. New Amount: {resource.amount}");
             }
+            AddMana(100);
         }
         if (Input.GetKeyDown(KeyCode.A)) 
         {
@@ -66,6 +70,30 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
+    public void AddMana(int amount) 
+    {
+        mana += amount;
+        UpdateManaText();
+        if (Clicker.Instance.currentSelectedTower != null)
+        {
+            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+        }
+    }
+
+    public void SpendMana(int amount) 
+    {
+        mana-= amount;
+        if (mana <= 0) { mana = 0; }
+        UpdateManaText();
+        if (Clicker.Instance.currentSelectedTower != null)
+        {
+            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+        }
+    }
+    private void UpdateManaText()
+    {
+        manaText.text = $"x {mana}";
+    }
 
     public void ClearSlots() 
     {

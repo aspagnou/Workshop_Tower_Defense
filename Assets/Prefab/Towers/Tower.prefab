@@ -154,12 +154,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
     - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
     costs: 040000000400000004000000
+    manaCost: 500
   - scraps:
     - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
     - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
     - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
     - {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
     costs: 08000000080000000800000008000000
+    manaCost: 800
+  manaIcon: {fileID: 21300000, guid: 45ea9a6e0c301fc4ab9bd6396f2eeb16, type: 3}
   costLinePrefab: {fileID: 2569726068507241836, guid: 46d4af10cb868c049aa8e847dfe827f1, type: 3}
   currentLevel: 0
 --- !u!1001 &3132767047679619772

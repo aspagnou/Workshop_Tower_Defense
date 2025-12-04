@@ -77,5 +77,17 @@ public class TowerSelectMenuManager : MonoBehaviour
         upgradeManager = currentlySelectedTower.towerUpgradeManager;
         upgradeManager.ConfirmUpgrade();
     }
+
+    public void SellTower() 
+    {
+        
+        TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.GetComponent<TowerUpgrade>();
+        if (towerUpgrade != null) 
+        {
+            ResourceManager.Instance.AddMana(towerUpgrade.sellAmount);
+            Clicker.Instance.DeselectTower();
+            Destroy(towerUpgrade.gameObject);
+        }
+    }
     
 }

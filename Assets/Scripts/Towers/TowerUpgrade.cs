@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 
 public class TowerUpgrade : MonoBehaviour
 {
     [Header("Upgrade Levels")]
     public UpgradeLevel[] upgradeLevels;
-
+    public int sellAmount = 100;
+    [HideInInspector]public int currentLevel = 0;
+    
+    [SerializeField] Sprite manaIcon;
     [SerializeField] GameObject costLinePrefab;
+
+    private GameObject manaCostLine;
     private Transform lineSpawnTransform;
     private Clicker clicker;
-    public int currentLevel = 0;
+    
 
     private List<GameObject> costLines = new List<GameObject>();
 
@@ -49,7 +55,37 @@ public class TowerUpgrade : MonoBehaviour
         {
             AddCostLine(upgradeLevels[level].scraps[i].itemIcon, upgradeLevels[level].costs[i], upgradeLevels[level].scraps[i].index);
         }
+        AddManaCostLine(level);
+
     }
+
+    private void AddManaCostLine(int level)
+    {
+        GameObject statLine = Instantiate(costLinePrefab, lineSpawnTransform);
+        manaCostLine = statLine; // Stocke la ligne de coût du mana
+
+        // Récupère les composants de la ligne
+        Image iconImage = statLine.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        TMP_Text costText = statLine.transform.GetChild(1).GetComponent<TMP_Text>();
+
+        // Configure l'icône
+        iconImage.sprite = manaIcon;
+        iconImage.gameObject.SetActive(manaIcon != null);
+
+        // Configure le texte
+        costText.text = $"x{upgradeLevels[level].manaCost}";
+
+        // Vérifie si la quantité de mana est suffisante
+        if (ResourceManager.Instance.mana >= upgradeLevels[level].manaCost)
+        {
+            costText.color = Color.green; // Vert si assez de mana
+        }
+        else
+        {
+            costText.color = Color.red; // Rouge si pas assez de mana
+        }
+    }
+
 
     public void AddCostLine(Sprite icon, int value, int resourceIndex)
     {
@@ -120,6 +156,24 @@ public class TowerUpgrade : MonoBehaviour
                 }
             }
         }
+
+        // Mettre à jour la couleur de la ligne de coût du mana
+        if (manaCostLine != null)
+        {
+            Debug.Log("ajout de mana");
+            TMP_Text manaCostText = manaCostLine.transform.GetChild(1).GetComponent<TMP_Text>();
+            if (manaCostText != null)
+            {
+                if (ResourceManager.Instance.mana >= upgradeLevels[currentLevel].manaCost)
+                {
+                    manaCostText.color = Color.green; // Vert si assez de mana
+                }
+                else
+                {
+                    manaCostText.color = Color.red; // Rouge si pas assez de mana
+                }
+            }
+        }
     }
 
     public void ConfirmUpgrade()
@@ -140,6 +194,11 @@ public class TowerUpgrade : MonoBehaviour
                 return;
             }
         }
+        // vérifie le mana
+        if ( ResourceManager.Instance.mana < upgradeLevels[currentLevel].manaCost) 
+        {
+            return;
+        }
 
         // Enlève les scraps
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
@@ -147,12 +206,18 @@ public class TowerUpgrade : MonoBehaviour
             ResourceManager.Instance.UseResource(upgradeLevels[currentLevel].scraps[i], upgradeLevels[currentLevel].costs[i]);
             UI_Manager.Instance.RemoveResourceIcons(upgradeLevels[currentLevel].scraps[i].index, upgradeLevels[currentLevel].costs[i]);
         }
+        // Enleve le mana
+        ResourceManager.Instance.SpendMana(upgradeLevels[currentLevel].manaCost);
 
         // Passe au niveau suivant
         currentLevel++;
+        sellAmount += 50;
         ItemGrid grid = Clicker.Instance.currentSelectedTower.itemGrid;
         if (grid!= null)
             grid.ResizeGrid(grid.gridSizeWidth+1, grid.gridSizeHeight);
         Show(currentLevel);
     }
+    
+    
+    
 }
