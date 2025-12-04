@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
+    public static ResourceManager Instance;
     public ItemSO[] resources;
     
     [SerializeField] private UI_Manager ui_Manager;
@@ -10,13 +11,12 @@ public class ResourceManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
         foreach (ItemSO resource in resources)
         {
             resource.amount = 0;
             ui_Manager.UpdateResourceText(resource.amount,resource.index);
-        }
-        
-        
+        }   
     }
 
     // Update is called once per frame

@@ -26,14 +26,14 @@ public class BaseTower : MonoBehaviour
     public float currentCriticalChance;
 
     public List<GearSO> equippedGears = new List<GearSO>();
-    public TowerUpgradeManager towerUpgradeManager;
+    public TowerUpgrade towerUpgradeManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCanvas = GameObject.FindWithTag("MainCanvas");
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
-        towerUpgradeManager =GetComponent<TowerUpgradeManager>();
+        towerUpgradeManager =GetComponent<TowerUpgrade>();
         gridUI.SetActive(false);
 
     }

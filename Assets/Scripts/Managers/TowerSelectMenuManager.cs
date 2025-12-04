@@ -14,7 +14,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     [Header("Upgrade Menu")]
     public GameObject upGradeMenu;
     private BaseTower currentlySelectedTower;
-    private TowerUpgradeManager upgradeManager;
+    private TowerUpgrade upgradeManager;
 
     void Awake()
     {
@@ -57,12 +57,18 @@ public class TowerSelectMenuManager : MonoBehaviour
     {
         upGradeMenu.SetActive(true);
         Clicker.Instance.currentSelectedTower = currentlySelectedTower;
-        TowerUpgradeManager towerMenu = currentlySelectedTower.towerUpgradeManager;
-        towerMenu.Show();
+        upgradeManager = currentlySelectedTower.towerUpgradeManager;
+        upgradeManager.Show();
     }
     public void HideUpgradeMenu() 
     {
         upGradeMenu.SetActive(false);
+    }
+    public void ConfirmUpgrade() 
+    {
+        Clicker.Instance.currentSelectedTower = currentlySelectedTower;
+        upgradeManager = currentlySelectedTower.towerUpgradeManager;
+        upgradeManager.ConfirmUpgrade();
     }
     
 }

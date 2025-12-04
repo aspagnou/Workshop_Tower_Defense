@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerUpgradeManager : MonoBehaviour
+public class TowerUpgrade : MonoBehaviour
 {
 
     [Header("Level 1 Upgrade Costs")]
@@ -68,4 +68,28 @@ public class TowerUpgradeManager : MonoBehaviour
         // Configure le texte
         costText.text = $"x{value}";
     }
+
+    public void ConfirmUpgrade()
+    {
+        for (int i = 0; i < level1_costs.Length; i++)
+        {
+            if (ResourceManager.Instance.resources[i].amount >= level1_costs[i])
+            {
+                continue;
+            }
+            else
+            {
+                Debug.Log("Not enough resources");
+                return;
+            }
+        }
+
+        // Enlève les Scraps
+        for (int i = 0; i < level1_costs.Length; i++)
+        {
+            ResourceManager.Instance.UseResource(level1_scraps[i], level1_costs[i]);
+            UI_Manager.Instance.RemoveResourceIcons(level1_scraps[i].index, level1_costs[i]);
+        }
+    }
+
 }
