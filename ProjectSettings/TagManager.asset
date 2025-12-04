@@ -7,6 +7,7 @@ TagManager:
   - Droppable
   - MainCanvas
   - FixGridSpawn
+  - CostContainer
   layers:
   - Default
   - TransparentFX

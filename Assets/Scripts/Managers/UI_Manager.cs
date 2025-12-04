@@ -58,6 +58,8 @@ public class UI_Manager : MonoBehaviour
         gearInventoryMenu?.SetActive(true);
     }
 
+    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) 

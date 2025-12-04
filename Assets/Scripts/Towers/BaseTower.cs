@@ -11,7 +11,7 @@ public class BaseTower : MonoBehaviour
     public InventoryMemory inventoryMemory;
     private RectTransform fixRectTransform;
 
-    
+    private int level = 1;
 
     [Header("Base Tower Stats")]
     public float baseAttackDamage;
@@ -26,13 +26,16 @@ public class BaseTower : MonoBehaviour
     public float currentCriticalChance;
 
     public List<GearSO> equippedGears = new List<GearSO>();
+    public TowerUpgradeManager towerUpgradeManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCanvas = GameObject.FindWithTag("MainCanvas");
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
-        
+        towerUpgradeManager =GetComponent<TowerUpgradeManager>();
+        gridUI.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -88,6 +91,7 @@ public class BaseTower : MonoBehaviour
 
     public void ShowGrid()
     {
+        gridUI.SetActive(true);
         // 1. Changer le parent de la grille vers le canvas
         gridUI.transform.SetParent(mainCanvas.transform);
 
@@ -106,7 +110,11 @@ public class BaseTower : MonoBehaviour
 
     public void HideGrid()
     {
-        gridUI.transform.SetParent(this.transform);
+        if (gridUI != null)
+        {
+            gridUI.transform.SetParent(this.transform);
+            gridUI.SetActive(false);
+        }
     }
     // ----------------------------------------------------
 
@@ -118,6 +126,7 @@ public class BaseTower : MonoBehaviour
     {
         TowerSelectMenuManager.Instance.HideTowerSelectMenu();
         HideGrid();
+        
     }
 
 }

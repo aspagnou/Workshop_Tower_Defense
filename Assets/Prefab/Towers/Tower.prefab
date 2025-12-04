@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7961010061751540765}
   - component: {fileID: 6582981015893648539}
   - component: {fileID: 2320531369581669587}
+  - component: {fileID: 1874853833063233487}
   m_Layer: 6
   m_Name: Tower
   m_TagString: Untagged
@@ -134,6 +135,26 @@ MonoBehaviour:
   currentAttackSpeed: 0
   currentCriticalChance: 0
   equippedGears: []
+  towerUpgradeManager: {fileID: 0}
+--- !u!114 &1874853833063233487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513403617039848939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6871afdf0ef1e3409699ee1d9c5372b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level1_scraps:
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+  - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+  level1_costs: 080000000800000006000000
+  costLinePrefab: {fileID: 2569726068507241836, guid: 46d4af10cb868c049aa8e847dfe827f1, type: 3}
+  lineSpawnTransform: {fileID: 0}
 --- !u!1001 &3132767047679619772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,6 +178,14 @@ PrefabInstance:
     - target: {fileID: 1730145755496974038, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825363358804825927, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
+      propertyPath: gridSizeWidth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825363358804825927, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
+      propertyPath: gridSizeHeight
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2825363358804825927, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: relatedTowerInventory

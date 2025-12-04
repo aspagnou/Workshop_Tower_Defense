@@ -2,16 +2,24 @@ using UnityEngine;
 
 public class Clicker : MonoBehaviour
 {
+    public static Clicker Instance;
     public Camera cam;           // Laisse vide  prend automatiquement Camera.main
     public LayerMask towerLayer; // Met "Tower" dans l’inspecteur
     [SerializeField] private UI_Manager ui_Manager;
-    private BaseTower currentSelectedTower = null;
-    
+    public   BaseTower currentSelectedTower = null;
+    private bool isGridOpen = false;
+    private bool isUpgradeOpen = false;
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         if (cam == null)
             cam = Camera.main;
+        
     }
 
     private void Update()
@@ -36,33 +44,41 @@ public class Clicker : MonoBehaviour
                 SelectTower(tower);
                 tower.OnTowerSelected();
             }
-        }
-        else
-        {
-            // Clic dans le vide  fermer
-            //DeselectTower();
-        }
+        }  
     }
 
     public void SelectTower(BaseTower tower)
     {
         // Si on clique la même tour, toggle
-        if (tower == currentSelectedTower)
-        {
-            DeselectTower();
-            return;
-        }
+        //if (tower == currentSelectedTower)
+        //{
+        //    DeselectTower();
+        //    return;
+        //}
 
         // Fermer l’ancienne
         if (currentSelectedTower != null)
         {
+            // Vérifie si la grille est ouverte
+            isGridOpen = currentSelectedTower.gridUI.activeSelf;
             currentSelectedTower.OnTowerDeselected();
         }
 
         // Ouvrir la nouvelle
         currentSelectedTower = tower;
         currentSelectedTower.OnTowerSelected();
+
+        // Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille était ouverte
+        if (isGridOpen)
+        {
+            currentSelectedTower.ShowGrid();
+            currentSelectedTower.inventoryMemory.DisplayInventory();
+
+            ui_Manager.ShowGearMenu();
+        }
     }
+
+
 
     public void DeselectTower()
     {
@@ -70,8 +86,11 @@ public class Clicker : MonoBehaviour
         if (currentSelectedTower != null)
         {
             currentSelectedTower.OnTowerDeselected();
+            ui_Manager.HideGearMenu();
+            TowerSelectMenuManager.Instance.HideUpgradeMenu(); ;
             currentSelectedTower = null;
         }
+        isGridOpen = false;
     }
 
     public void OpenTowerInventoryGrid() 
@@ -81,6 +100,14 @@ public class Clicker : MonoBehaviour
             currentSelectedTower.ShowGrid();
             currentSelectedTower.inventoryMemory.DisplayInventory();
             ui_Manager.ShowGearMenu();
+            isGridOpen = true;
+        }
+    }
+    public void CloseTowerInventoryGrid()
+    {
+        if ( currentSelectedTower != null) 
+        {
+            currentSelectedTower.HideGrid();
         }
     }
 }

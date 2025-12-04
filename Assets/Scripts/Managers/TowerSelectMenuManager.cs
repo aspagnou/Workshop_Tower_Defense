@@ -5,12 +5,16 @@ public class TowerSelectMenuManager : MonoBehaviour
 {
     public static TowerSelectMenuManager Instance;
 
+    [Header("SelectMenu")]
     public GameObject towerSelectPanel;
     public Camera cam;
     public GameObject mainCanvas;
     public Vector3 positionOffset = new Vector3(0, 100, 0); // Offset vertical de 100 pixels
 
+    [Header("Upgrade Menu")]
+    public GameObject upGradeMenu;
     private BaseTower currentlySelectedTower;
+    private TowerUpgradeManager upgradeManager;
 
     void Awake()
     {
@@ -48,4 +52,17 @@ public class TowerSelectMenuManager : MonoBehaviour
         towerSelectPanel.SetActive(false);
         currentlySelectedTower = null;
     }
+
+    public void ShowUpgradeMenu() 
+    {
+        upGradeMenu.SetActive(true);
+        Clicker.Instance.currentSelectedTower = currentlySelectedTower;
+        TowerUpgradeManager towerMenu = currentlySelectedTower.towerUpgradeManager;
+        towerMenu.Show();
+    }
+    public void HideUpgradeMenu() 
+    {
+        upGradeMenu.SetActive(false);
+    }
+    
 }
