@@ -51,10 +51,13 @@ public class Wave : MonoBehaviour
 
         waveActive = true;
         manager.nbreEnemies = numberOfEnemies;
+        
 
         spawnTimer = spawnInterval;
         enemiesSpawned = 0;
-        
+        manager.nbreSpawnedEnemies = 0;
+
+
     }
     // Update is called once per frame
     void Update()
@@ -66,7 +69,7 @@ public class Wave : MonoBehaviour
         {
             spawnTimer -= Time.deltaTime;
 
-            if (spawnTimer <= 0f && enemiesSpawned < numberOfEnemies)
+            if (spawnTimer <= 0f && enemiesSpawned < numberOfEnemies)// manager.totalEnemies
             {
                 SpawnEnemy();
                 spawnTimer = spawnInterval;
@@ -104,15 +107,16 @@ public class Wave : MonoBehaviour
 
             //spawnInterval = enemyCandidate.timeToSpawn;
             enemiesSpawned++;
+            
         }
 
 
-        if (enemiesSpawned >= numberOfEnemies) 
+        if (enemiesSpawned >= manager.totalEnemies) //numberOfEnemies
         {
             waveActive = false;
             Debug.Log("Wave completed");
             manager.StartNextWave(manager.TimeBetweenWaves);
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
 

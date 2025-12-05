@@ -6,6 +6,7 @@ public class SpawnerManager : MonoBehaviour
 {
 
     public int totalEnemiesPerWave;
+    
     public SpawnerManager spawnerManager;
     public WaveManager[] allWavesManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,15 +32,19 @@ public class SpawnerManager : MonoBehaviour
     {
         
         totalEnemiesPerWave = 0;
+        
         for (int i = 0; i < allWavesManager.Length; i++)
         {
             totalEnemiesPerWave += allWavesManager[i].nbreEnemies;
         }
         Debug.Log("J'aiFait");
     }
+
+    
     // Update is called once per frame
     void Update()
     {
         
+
     }
 }

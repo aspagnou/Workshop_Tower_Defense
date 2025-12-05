@@ -40,7 +40,9 @@ public class WaveManager : MonoBehaviour
 
     [Header("Spawning System")]
     public int nbreEnemies;
-
+    public int totalEnemies;
+    public int nbreSpawnedEnemies;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -101,6 +103,10 @@ public class WaveManager : MonoBehaviour
             waves[currentWaveIndex].StartWave();
         }
         spawnerManager.CalculTotalEnemies(); //Test
+        
+        totalEnemies = spawnerManager.totalEnemiesPerWave;
+        
+        
     }
 
 
