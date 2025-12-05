@@ -9,7 +9,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject towerSelectPanel;
     public Camera cam;
     public GameObject mainCanvas;
-    public Vector3 positionOffset = new Vector3(0, 100, 0); // Offset vertical de 100 pixels
+    public Vector3 worldOffset = new Vector3(0, 2f, 0);
 
     [Header("Upgrade Menu")]
     public GameObject upGradeMenu;
@@ -29,32 +29,30 @@ public class TowerSelectMenuManager : MonoBehaviour
     {
         currentlySelectedTower = tower;
 
-        // Convertir la position de la tour en position écran
-        Vector3 towerScreenPosition = cam.WorldToScreenPoint(tower.transform.position);
+        // Position de base = position de la tour
+        Vector3 worldPos = tower.transform.position;
 
-        // Ajouter l'offset
-        towerScreenPosition += positionOffset;
+        // Offset vertical (en unités monde)
+        worldPos += new Vector3(0, 2f, 0); // Ajuste la hauteur selon ta scène
 
-        // Convertir la position écran en position locale dans le MainCanvas
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            mainCanvas.GetComponent<RectTransform>(),
-            towerScreenPosition,
-            null,
-            out Vector2 localPosition
-        );
+        // Appliquer la position au panel
+        towerSelectPanel.transform.position = worldPos;
 
-        // Appliquer la position locale au panel
-        towerSelectPanel.GetComponent<RectTransform>().localPosition = localPosition;
+        // Toujours orienter le panel vers la caméra
+        towerSelectPanel.transform.LookAt(cam.transform);
+        towerSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
 
         // Activer le panel
         towerSelectPanel.SetActive(true);
     }
+
 
     public void HideTowerSelectMenu()
     {
         towerSelectPanel.SetActive(false);
         currentlySelectedTower = null;
     }
+
 
     public void ShowUpgradeMenu()
     {
