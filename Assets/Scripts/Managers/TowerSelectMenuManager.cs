@@ -17,14 +17,41 @@ public class TowerSelectMenuManager : MonoBehaviour
     private TowerUpgrade upgradeManager;
     private InventoryControler inventoryControler;
 
+    [Space (10)]
+    [Header("SlotMenu")] 
+    public GameObject slotSelectPanel;
+    public Vector3 slotWorldOffset = new Vector3(0, 2f, 0);
+    private TowerSlot currentlySelectedTowerSlot;
     void Awake()
     {
         Instance = this;
         towerSelectPanel.SetActive(false);
-        inventoryControler=FindAnyObjectByType<InventoryControler>();
+        slotSelectPanel.SetActive(false);
+        inventoryControler =FindAnyObjectByType<InventoryControler>();
         saveGrid= GameObject.FindWithTag("FixGridSpawn").GetComponent<ItemGrid>();
     }
 
+    // Slot Menu
+    public void ShowSlotTowerMenu(TowerSlot towerSlot) 
+    {
+        currentlySelectedTowerSlot = towerSlot;
+        Vector3 worldPos = towerSlot.transform.position;
+        worldPos += slotWorldOffset; // Ajuste la hauteur selon ta scène
+
+        slotSelectPanel.transform.position = worldPos;
+        slotSelectPanel.transform.LookAt(cam.transform);
+        slotSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
+        slotSelectPanel.SetActive(true);
+        HideTowerSelectMenu();
+
+    }
+    public void HideSlotTowerMenu() 
+    {
+        slotSelectPanel.SetActive(false);
+        currentlySelectedTowerSlot = null;
+    }
+
+    // Tower Select Menu
     public void ShowTowerSelectMenu(BaseTower tower)
     {
         currentlySelectedTower = tower;
@@ -33,7 +60,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         Vector3 worldPos = tower.transform.position;
 
         // Offset vertical (en unités monde)
-        worldPos += new Vector3(0, 2f, 0); // Ajuste la hauteur selon ta scène
+        worldPos += worldOffset; // Ajuste la hauteur selon ta scène
 
         // Appliquer la position au panel
         towerSelectPanel.transform.position = worldPos;
@@ -44,16 +71,15 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         // Activer le panel
         towerSelectPanel.SetActive(true);
+        HideSlotTowerMenu();
     }
-
-
     public void HideTowerSelectMenu()
     {
         towerSelectPanel.SetActive(false);
         currentlySelectedTower = null;
     }
 
-
+    // Upgrade Menu
     public void ShowUpgradeMenu()
     {
         if (Clicker.Instance.currentSelectedTower != null)
@@ -65,8 +91,6 @@ public class TowerSelectMenuManager : MonoBehaviour
             Clicker.Instance.isUpgradeOpen = true;
         }
     }
-
-
     public void HideUpgradeMenu()
     {
         upGradeMenu.SetActive(false);
@@ -79,6 +103,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         upgradeManager.ConfirmUpgrade();
     }
 
+    // Sell Tower
     public void SellTower() 
     {
         InventoryMemory gearInventory = Clicker.Instance.currentSelectedTower.inventoryMemory;
@@ -97,4 +122,9 @@ public class TowerSelectMenuManager : MonoBehaviour
         }
     }
     
+    // SpawnTower
+    public void SpawnTowerFromSlot(int i) 
+    {
+        Clicker.Instance.currentSelectedTowerSlot.SpawnTower(i);
+    }
 }

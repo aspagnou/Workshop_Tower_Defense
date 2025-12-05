@@ -88,11 +88,15 @@ public class UI_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ShowCraftMenu();
+            if ( craftMenu.activeSelf)
+            {
+                HideCraftMenu();
+            }
+            else
+            {
+                ShowCraftMenu();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            HideCraftMenu();
-        }
+        
     }
 }

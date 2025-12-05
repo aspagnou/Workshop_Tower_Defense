@@ -4,10 +4,15 @@ using UnityEngine;
 public class Clicker : MonoBehaviour
 {
     public static Clicker Instance;
-    public Camera cam;           // Laisse vide  prend automatiquement Camera.main
-    public LayerMask towerLayer; // Met "Tower" dans l’inspecteur
+
+    public Camera cam;           
+    public LayerMask towerLayer; 
     [SerializeField] private UI_Manager ui_Manager;
-    public   BaseTower currentSelectedTower = null;
+
+    [HideInInspector]
+    public  BaseTower currentSelectedTower = null;
+    public TowerSlot currentSelectedTowerSlot = null;
+
     private bool isGridOpen = false;
     public bool isUpgradeOpen = false;
 
@@ -38,13 +43,18 @@ public class Clicker : MonoBehaviour
         // On touche une tour ?
         if (Physics.Raycast(ray, out hit,999f, towerLayer))
         {
-            Debug.Log("Clicked on tower: " + hit.collider.gameObject.name);
             BaseTower tower = hit.collider.GetComponent<BaseTower>();
-           
             if (tower != null)
             {  
                 SelectTower(tower);
                 tower.OnTowerSelected();
+            }
+
+            TowerSlot towerSlot = hit.collider.GetComponent<TowerSlot>();
+            if (towerSlot != null)
+            {
+                currentSelectedTowerSlot = towerSlot;
+                TowerSelectMenuManager.Instance.ShowSlotTowerMenu(towerSlot);
             }
         }  
     }

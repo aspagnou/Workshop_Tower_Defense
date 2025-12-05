@@ -34,18 +34,23 @@ public class ItemGrid : MonoBehaviour
         rectTransform.sizeDelta = size;
     }
 
-    Vector2 positionOnTheGrid = new Vector2();
-    Vector2Int tileGridPosition = new Vector2Int();
+    //Vector2 positionOnTheGrid = new Vector2();
+    //Vector2Int tileGridPosition = new Vector2Int();
     public Vector2Int GetTileGridPosition(Vector2 mousePosition)
     {
-        positionOnTheGrid.x = mousePosition.x - rectTransform.position.x;
-        positionOnTheGrid.y = rectTransform.position.y - mousePosition.y;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform,
+            mousePosition,
+            null,
+            out Vector2 localPos
+        );
 
-        tileGridPosition.x = (int)(positionOnTheGrid.x / TileSizeWidth);
-        tileGridPosition.y = (int)(positionOnTheGrid.y / TileSizeHeight);
+        int x = (int)(localPos.x / TileSizeWidth);
+        int y = (int)(-localPos.y / TileSizeHeight);
 
-        return tileGridPosition;
+        return new Vector2Int(x, y);
     }
+
 
     // ----------------------------- Place ITEM IN GRID ------
     public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem overlapItem)
@@ -159,18 +164,17 @@ public class ItemGrid : MonoBehaviour
     }
 
     // verifie si la position est dans la grille
-    bool PositionCheck(int posX,int posY)  
+    bool PositionCheck(int posX, int posY)
     {
-        if(posX < 0 || posY < 0 )
-        {
+        if (posX < 0 || posY < 0)
             return false;
-        }
-        if(posX >= gridSizeHeight || posY >= gridSizeHeight)
-        {
+
+        if (posX >= gridSizeWidth || posY >= gridSizeHeight)
             return false;
-        }
+
         return true;
     }
+
 
     public bool BoundryCheck(int posX, int posY, int width, int height) // verifie si l'item est dans les limites de la grille
     {

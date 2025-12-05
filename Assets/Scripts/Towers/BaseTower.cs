@@ -10,7 +10,7 @@ public class BaseTower : MonoBehaviour
     public ItemGrid itemGrid;
     public InventoryMemory inventoryMemory;
     private RectTransform fixRectTransform;
-
+    public int spawnCost = 100;
     
 
     [Header("Base Tower Stats")]
