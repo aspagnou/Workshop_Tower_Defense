@@ -30,6 +30,13 @@ public class InventoryControler : MonoBehaviour
     [Header("Gear Slots")]
     public GearSlot[] allGearSlots;
 
+    [Header("Tooltip Delay")]
+    public float inventoryToolTipDelay = 0.25f;
+    private float inventoryTooltipTimer = 0f;
+    private bool inventoryHoveringItem = false;
+    private InventoryItem lastHoveredItem = null;
+
+
     public InventoryHighlight inventoryHighlight;
 
     private void Awake()
@@ -42,8 +49,9 @@ public class InventoryControler : MonoBehaviour
     private void Update()
     {
         ItemIconDrag();
-        
-        
+        HandleInventoryTooltipDelay();
+
+
 
         if (selectedItemGrid == null) 
         { 
@@ -66,10 +74,10 @@ public class InventoryControler : MonoBehaviour
     private void HandleHighLight()
     {
         Vector2Int positionOnGrid = GetTileGridPosition();
+
         if (oldPosition == positionOnGrid)
-        {
             return;
-        }
+
         oldPosition = positionOnGrid;
 
         // Vérifier si les coordonnées sont valides
@@ -79,38 +87,60 @@ public class InventoryControler : MonoBehaviour
         {
             inventoryHighlight.Show(false);
             toolTipManager.Hide();
+            inventoryHoveringItem = false;
+            lastHoveredItem = null;
             return;
         }
 
+        // -----------------------------
+        //  CAS : AUCUN ITEM SÉLECTIONNÉ (hover dans la grille)
+        // -----------------------------
         if (selectedItem == null)
         {
             itemToHighLight = selectedItemGrid.GetItem(positionOnGrid.x, positionOnGrid.y);
-            if (itemToHighLight != null) 
+
+            if (itemToHighLight != null)
             {
                 inventoryHighlight.Show(true);
                 inventoryHighlight.SetSize(itemToHighLight);
                 inventoryHighlight.SetPosition(selectedItemGrid, itemToHighLight);
-                if (selectedItem == null) 
+
+                // --- Gestion délai tooltip ---
+                if (lastHoveredItem != itemToHighLight)
                 {
-                    toolTipManager.Show(itemToHighLight.itemData.relatedGear);
+                    lastHoveredItem = itemToHighLight;
+                    inventoryTooltipTimer = 0f;
+                    inventoryHoveringItem = true;
+                    toolTipManager.Hide();
                 }
             }
             else
             {
+                // Pas d’item sous la souris
                 inventoryHighlight.Show(false);
                 toolTipManager.Hide();
+                inventoryHoveringItem = false;
+                lastHoveredItem = null;
             }
         }
+        // -----------------------------
+        //  CAS : ITEM TENUE PAR LA SOURIS (drag)
+        // -----------------------------
         else
         {
+            // En mode drag  pas de tooltip
+            inventoryHoveringItem = false;
+            lastHoveredItem = null;
+
             inventoryHighlight.Show(selectedItemGrid.BoundryCheck(
                 positionOnGrid.x,
                 positionOnGrid.y,
                 selectedItem.itemData.width,
-                selectedItem.itemData.height)
-            );
+                selectedItem.itemData.height));
+
             inventoryHighlight.SetSize(selectedItem);
-            inventoryHighlight.SetPosition(selectedItemGrid, selectedItem, positionOnGrid.x, positionOnGrid.y);
+            inventoryHighlight.SetPosition(selectedItemGrid, selectedItem,
+                positionOnGrid.x, positionOnGrid.y);
         }
     }
 
@@ -232,5 +262,19 @@ public class InventoryControler : MonoBehaviour
             rectTransform.position = Input.mousePosition;
         }
     }
+    private void HandleInventoryTooltipDelay()
+    {
+        if (!inventoryHoveringItem || lastHoveredItem == null)
+            return;
+
+        inventoryTooltipTimer += Time.deltaTime;
+
+        if (inventoryTooltipTimer >= inventoryToolTipDelay)
+        {
+            toolTipManager.Show(lastHoveredItem.itemData.relatedGear);
+            inventoryHoveringItem = false; // Pour éviter spam
+        }
+    }
+
 }
 

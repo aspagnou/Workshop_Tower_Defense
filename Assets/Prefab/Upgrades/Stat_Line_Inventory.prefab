@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1760648946599617159}
   - component: {fileID: 423046528546800266}
   - component: {fileID: 7626378996323793069}
+  - component: {fileID: 3147744090920739669}
   m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
@@ -138,6 +139,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3147744090920739669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439570094921062506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3afbf18a3af466f4a98269a2517d11fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
+  moveUpAmount: 0
 --- !u!1001 &322344495967275595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,12 +288,20 @@ PrefabInstance:
 '
       objectReference: {fileID: 0}
     - target: {fileID: 5720765850716761190, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
+      propertyPath: m_margin.z
+      value: 10.280739
+      objectReference: {fileID: 0}
+    - target: {fileID: 5720765850716761190, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
       propertyPath: m_fontSizeMin
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5720765850716761190, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6044754234675209437, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
+      propertyPath: m_Name
+      value: Value
       objectReference: {fileID: 0}
     - target: {fileID: 7884182739557339635, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
       propertyPath: m_Spacing

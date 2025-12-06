@@ -11,8 +11,12 @@ public class BaseTower : MonoBehaviour
     public ItemGrid itemGrid;
     public InventoryMemory inventoryMemory;
     private RectTransform fixRectTransform;
+
+    [Header("Tower Price")]
     public int spawnCost = 100;
+
     
+
 
     [Header("Base Tower Stats")]
     public float baseAttackDamage;
@@ -134,11 +138,25 @@ public class BaseTower : MonoBehaviour
     public void UpdateStats()
     {
         TMP_Text[] statLines = UI_Manager.Instance.statLines;
+        var feedback = UI_Manager.Instance.statsUpFeedback;
+
+        // Calcul des deltas
+        float deltaDamage = currentAttackDamage - float.Parse(statLines[0].text);
+        float deltaSpeed = currentAttackSpeed - float.Parse(statLines[1].text);
+        float deltaCrit = currentCriticalChance - float.Parse(statLines[2].text.Replace("%", ""));
+        float deltaRange = currentRange - float.Parse(statLines[3].text);
+
+        // Met à jour les valeurs affichées
         statLines[0].text = $"{currentAttackDamage}";
         statLines[1].text = $"{currentAttackSpeed}";
         statLines[2].text = $"{currentCriticalChance}%";
         statLines[3].text = $"{currentRange}";
 
-
+        // Si un feedback existe, on l'affiche
+        feedback[0]?.ShowChange(deltaDamage);
+        feedback[1]?.ShowChange(deltaSpeed);
+        feedback[2]?.ShowChange(deltaCrit);
+        feedback[3]?.ShowChange(deltaRange);
     }
+
 }
