@@ -5,8 +5,8 @@ using System;
 
 public class ItemGrid : MonoBehaviour
 {
-    public const float TileSizeWidth = 32f;
-    public const float TileSizeHeight = 32f;
+    public const float TileSizeWidth = 50f;
+    public const float TileSizeHeight = 50f;
 
     InventoryItem[,] inventoryItemSlot;
 

@@ -126,6 +126,7 @@ MonoBehaviour:
   gridUI: {fileID: 2384073878758901224}
   itemGrid: {fileID: 886195416633796091}
   inventoryMemory: {fileID: 741925592922327412}
+  spawnCost: 100
   baseAttackDamage: 0
   baseRange: 0
   baseAttackSpeed: 0
@@ -174,6 +175,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4731179121687873164}
     m_Modifications:
+    - target: {fileID: 249184397858819053, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 66de550b9ad77cf48b95bb28ef42f5d8, type: 3}
     - target: {fileID: 751042890398463828, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: m_Name
       value: SpatialGearInventory
@@ -189,6 +194,14 @@ PrefabInstance:
     - target: {fileID: 1730145755496974038, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730145755496974038, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730145755496974038, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2825363358804825927, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: gridSizeWidth
@@ -268,11 +281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5031563890842502820, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 846.78186
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5031563890842502820, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 350.25107
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5031563890842502820, guid: c1acc89ae7c219647bd6ddae29f4f3c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

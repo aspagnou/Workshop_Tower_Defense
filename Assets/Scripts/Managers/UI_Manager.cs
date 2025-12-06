@@ -12,6 +12,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private TMP_Text[] ressourceTextCraft, ressourceTextHUD;
     [SerializeField] private GameObject craftMenu;
     [SerializeField] private GameObject gearInventoryMenu;
+    public TMP_Text[] statLines;
 
     // Dictionnaire pour stocker les icônes instanciées par type de ressource
     private Dictionary<int, List<GameObject>> spawnedIcons = new Dictionary<int, List<GameObject>>();
@@ -83,6 +84,8 @@ public class UI_Manager : MonoBehaviour
     {
         gearInventoryMenu?.SetActive(true);
     }
+
+
 
     private void Update()
     {

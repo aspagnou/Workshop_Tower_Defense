@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -86,6 +87,7 @@ public class BaseTower : MonoBehaviour
         }
 
         Debug.Log($"Stats recalculées : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
+        UpdateStats();
     }
 
 
@@ -104,8 +106,8 @@ public class BaseTower : MonoBehaviour
         gridRectTransform.sizeDelta = referenceRectTransform.sizeDelta;
         gridRectTransform.localRotation = referenceRectTransform.localRotation;
         gridRectTransform.localScale = referenceRectTransform.localScale;
+        UpdateStats();
 
-       
     }
 
     public void HideGrid()
@@ -129,5 +131,14 @@ public class BaseTower : MonoBehaviour
         HideGrid();
         
     }
+    public void UpdateStats()
+    {
+        TMP_Text[] statLines = UI_Manager.Instance.statLines;
+        statLines[0].text = $"{currentAttackDamage}";
+        statLines[1].text = $"{currentAttackSpeed}";
+        statLines[2].text = $"{currentCriticalChance}%";
+        statLines[3].text = $"{currentRange}";
 
+
+    }
 }
