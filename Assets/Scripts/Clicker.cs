@@ -1,5 +1,6 @@
-using UnityEditor.Rendering;
+﻿using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Clicker : MonoBehaviour
 {
@@ -37,36 +38,92 @@ public class Clicker : MonoBehaviour
 
     private void HandleClick()
     {
+        // 0️⃣ Empêche de fermer quoi que ce soit si on clique sur l’UI
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        // On touche une tour ?
-        if (Physics.Raycast(ray, out hit,999f, towerLayer))
+        if (Physics.Raycast(ray, out hit, 999f, towerLayer))
         {
             BaseTower tower = hit.collider.GetComponent<BaseTower>();
-            if (tower != null)
-            {  
-                SelectTower(tower);
-                tower.OnTowerSelected();
-            }
-
             TowerSlot towerSlot = hit.collider.GetComponent<TowerSlot>();
+
+            // ------------------------------------------------------
+            // 🟦 1️⃣ Gestion TowerSlot + SlotMenu
+            // ------------------------------------------------------
             if (towerSlot != null)
             {
+                // Si menu slot déjà ouvert et même slot -> fermer
+                if (TowerSelectMenuManager.Instance.IsSlotMenuOpen &&
+                    TowerSelectMenuManager.Instance.IsCurrentSlot(towerSlot))
+                {
+                    TowerSelectMenuManager.Instance.HideSlotTowerMenu();
+                    return;
+                }
+
+                // Si menu tower était ouvert → on le ferme
+                if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
+                {
+                    TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+                }
+
+                // Ouvrir le menu pour ce slot
                 currentSelectedTowerSlot = towerSlot;
                 TowerSelectMenuManager.Instance.ShowSlotTowerMenu(towerSlot);
+                return;
             }
-        }  
+
+            // ------------------------------------------------------
+            // 🟥 2️⃣ Gestion Tour + TowerSelectMenu
+            // ------------------------------------------------------
+            if (tower != null)
+            {
+                // Si tower menu ouvert + même tour -> fermer
+                if (TowerSelectMenuManager.Instance.IsTowerMenuOpen &&
+                    TowerSelectMenuManager.Instance.IsCurrentTower(tower))
+                {
+                    TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+                    return;
+                }
+
+                // Si slot menu ouvert → fermer
+                if (TowerSelectMenuManager.Instance.IsSlotMenuOpen)
+                {
+                    TowerSelectMenuManager.Instance.HideSlotTowerMenu();
+                }
+
+                // Sélection de tour
+                SelectTower(tower);
+                tower.OnTowerSelected();
+                return;
+            }
+        }
+
+        // ------------------------------------------------------
+        // 🟩 3️⃣ Aucun hit → clic dans le vide
+        // ------------------------------------------------------
+        // Fermer SlotMenu si ouvert
+        if (TowerSelectMenuManager.Instance.IsSlotMenuOpen)
+            TowerSelectMenuManager.Instance.HideSlotTowerMenu();
+
+        // Fermer TowerMenu si ouvert
+        if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
+            TowerSelectMenuManager.Instance.HideTowerSelectMenu();
     }
+
+
+
 
     public void SelectTower(BaseTower tower)
     {
-        // Fermer l�ancienne
+        // Fermer l’ancienne
         if (currentSelectedTower != null)
         {
-            // V�rifie si la grille est ouverte
+            // Vérifie si la grille est ouverte
             isGridOpen = currentSelectedTower.gridUI.activeSelf;
-            // V�rifie si le menu d'upgrade est ouvert
+            // Vérifie si le menu d'upgrade est ouvert
             isUpgradeOpen = TowerSelectMenuManager.Instance != null && TowerSelectMenuManager.Instance.upGradeMenu.activeSelf;
             currentSelectedTower.OnTowerDeselected();
         }
@@ -75,7 +132,7 @@ public class Clicker : MonoBehaviour
         currentSelectedTower = tower;
         currentSelectedTower.OnTowerSelected();
 
-        // Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille �tait ouverte
+        // Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille était ouverte
         if (isGridOpen)
         {
             currentSelectedTower.ShowGrid();
@@ -83,7 +140,7 @@ public class Clicker : MonoBehaviour
             ui_Manager.ShowGearMenu();
         }
 
-        // Ouvrir automatiquement le menu d'upgrade de la nouvelle tour seulement si le menu d'upgrade �tait ouvert
+        // Ouvrir automatiquement le menu d'upgrade de la nouvelle tour seulement si le menu d'upgrade était ouvert
         if (isUpgradeOpen)
         {
             TowerSelectMenuManager.Instance.ShowUpgradeMenu();

@@ -10,6 +10,9 @@ public class TowerSelectMenuManager : MonoBehaviour
     public Camera cam;
     public GameObject mainCanvas;
     public Vector3 worldOffset = new Vector3(0, 2f, 0);
+    public bool IsTowerMenuOpen => towerSelectPanel.activeSelf;
+
+    
 
     [Header("Upgrade Menu")]
     public GameObject upGradeMenu;
@@ -22,6 +25,10 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject slotSelectPanel;
     public Vector3 slotWorldOffset = new Vector3(0, 2f, 0);
     private TowerSlot currentlySelectedTowerSlot;
+    public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
+
+    
+
     void Awake()
     {
         Instance = this;
@@ -126,5 +133,13 @@ public class TowerSelectMenuManager : MonoBehaviour
     public void SpawnTowerFromSlot(int i) 
     {
         Clicker.Instance.currentSelectedTowerSlot.SpawnTower(i);
+    }
+    public bool IsCurrentSlot(TowerSlot slot)
+    {
+        return currentlySelectedTowerSlot == slot;
+    }
+    public bool IsCurrentTower(BaseTower tower)
+    {
+        return currentlySelectedTower == tower;
     }
 }
