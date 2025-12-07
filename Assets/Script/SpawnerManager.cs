@@ -10,6 +10,7 @@ public class SpawnerManager : MonoBehaviour
     public Dictionary<EnemyType, int> totalEnemiesPerWave = new();
     public int totalSpawnedEnemiesPerWave;
     public int currentSpawnerIndex = 0;
+    public int timeBetweenWaves;
     
     public SpawnerManager spawnerManager;
     public WaveManager[] allWavesManager;
@@ -73,13 +74,13 @@ public class SpawnerManager : MonoBehaviour
             Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
         }
 
-        if (totalEnemiesPerWave[EnemyType.Global] == 0)
+        if (totalEnemiesPerWave[EnemyType.Global] == 0 && currentSpawnerIndex < allWavesManager[0].waves.Length-1)
         {
             currentSpawnerIndex++;
             CalculTotalEnemies(currentSpawnerIndex);
             for (int i = 0; i < allWavesManager.Length; i++)
             {
-                allWavesManager[i].StartNextWave(allWavesManager[i].TimeBetweenWaves);
+                allWavesManager[i].StartNextWave(timeBetweenWaves);
             }
         }
     }

@@ -30,7 +30,7 @@ public class WaveManager : MonoBehaviour
 
     [Header("Timing")]
     [SerializeField] public int TimeToStartFirstWave = 5;
-    [SerializeField] public int TimeBetweenWaves;
+    
     [SerializeField] public int timeModif;
     //[SerializeField] public float spawnInterval; //Time interval between enemy spawns
     //public float spawnTimer; //Timer tracking the spawn interval
@@ -86,7 +86,7 @@ public class WaveManager : MonoBehaviour
         }
 
         //Start the first Wave
-        StartNextWave(TimeBetweenWaves);
+        StartNextWave(spawnerManager.timeBetweenWaves);
 
     }
 
@@ -95,7 +95,7 @@ public class WaveManager : MonoBehaviour
         
         Invoke("startWaves", delayBetweenWavesSetByPreviousWave);
         //TimeBetweenWaves = TimeBetweenWaves * timeModif;
-        countDown = TimeBetweenWaves;
+        countDown = spawnerManager.timeBetweenWaves;
 
     }
 
