@@ -35,10 +35,10 @@ public class ResourceManager : MonoBehaviour
             }
             AddMana(100);
         }
-        if (Input.GetKeyDown(KeyCode.A)) 
-        {
-            ui_Manager.ShowGearMenu();
-        }
+        //if (Input.GetKeyDown(KeyCode.A)) 
+        //{
+        //    ui_Manager.ShowGearMenu();
+        //}
 
     }
     public void AddResource(ItemSO resource, int amount)

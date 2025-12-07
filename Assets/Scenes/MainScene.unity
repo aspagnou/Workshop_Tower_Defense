@@ -2676,6 +2676,7 @@ GameObject:
   - component: {fileID: 330585548}
   - component: {fileID: 330585549}
   - component: {fileID: 330585550}
+  - component: {fileID: 330585551}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2868,6 +2869,26 @@ MonoBehaviour:
   currentSelectedTower: {fileID: 0}
   currentSelectedTowerSlot: {fileID: 0}
   isUpgradeOpen: 0
+--- !u!114 &330585551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affa46c69920b5041b09b36405d328d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  fastMultiplier: 2
+  minBounds: {x: -20, y: -20}
+  maxBounds: {x: 20, y: 20}
+  zoomSpeed: 3
+  zoomSmoothness: 5
+  minZoom: 20
+  maxZoom: 60
 --- !u!1 &332663228
 GameObject:
   m_ObjectHideFlags: 0
@@ -8507,7 +8528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &973450452
 RectTransform:
   m_ObjectHideFlags: 0
