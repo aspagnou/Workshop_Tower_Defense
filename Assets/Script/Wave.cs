@@ -26,8 +26,8 @@ public class Wave : MonoBehaviour
 
 
     [Header("Spawner1")]
-    public Queue<S_Enemy> _enemyStack;
-    [SerializeField]private List<S_Enemy> _enemyList;
+    public Queue<Enemy> _enemyStack;
+    [SerializeField]private List<Enemy> _enemyList;
 
     
     
@@ -40,7 +40,7 @@ public class Wave : MonoBehaviour
     {   //Spawner1
         numberOfEnemies = _enemyList.Count;
         
-        _enemyStack = new Queue<S_Enemy>(_enemyList);  
+        _enemyStack = new Queue<Enemy>(_enemyList);  
     }
     void Start()
     {
@@ -82,7 +82,7 @@ public class Wave : MonoBehaviour
         }
     }
 
-    private void OneEnemyIsDead(S_Enemy deadEn)
+    private void OneEnemyIsDead(Enemy deadEn)
     {
         _enemyList.Remove(deadEn);
         
@@ -98,9 +98,9 @@ public class Wave : MonoBehaviour
     {
         if (_enemyStack.Count > 0)
         {
-            S_Enemy enemyCandidate = _enemyStack.Dequeue();
-            S_Enemy enemyInstance = Instantiate(enemyCandidate, manager.spawnPoint.transform.position, Quaternion.identity);
-            enemyInstance.GetComponent<S_Enemy>().WayPoints = manager.wayPoints;
+            Enemy enemyCandidate = _enemyStack.Dequeue();
+            Enemy enemyInstance = Instantiate(enemyCandidate, manager.spawnPoint.transform.position, Quaternion.identity);
+            enemyInstance.GetComponent<Enemy>().WayPoints = manager.wayPoints;
             enemyInstance.OnDead += OneEnemyIsDead;
 
             _enemyList.Add(enemyInstance);
@@ -111,7 +111,7 @@ public class Wave : MonoBehaviour
         }
 
 
-        if (enemiesSpawned >= manager.totalEnemies) //numberOfEnemies
+        if (enemiesSpawned >= numberOfEnemies) // manager.totalEnemies
         {
             waveActive = false;
             Debug.Log("Wave completed");

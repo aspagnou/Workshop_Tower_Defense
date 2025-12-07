@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class S_Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
     [Header ("Movement")]
@@ -17,15 +17,16 @@ public class S_Enemy : MonoBehaviour
     public Transform[] WayPoints;
     public Transform currentWayPoint;
 
-    public Action<S_Enemy> OnDead;
+    public Action<Enemy> OnDead;
 
     [Header("Economy")]
     public float nbreMana = 20;
     [SerializeField] private LayerMask layers;
-    
+
 
     [Header("Damage")]
-    [SerializeField] public float lifePoints = 50;
+    [SerializeField] public int lifePoints = 50;
+    private int currentHealth;
     [SerializeField] public float nexusDamage = 10;
     [SerializeField] private float timeToExplode = 2;
     
@@ -33,6 +34,7 @@ public class S_Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentHealth = lifePoints; 
         currentWayPoint = WayPoints[0];
     }
 
@@ -92,7 +94,14 @@ public class S_Enemy : MonoBehaviour
     
     }
 
-    
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0) 
+        { 
+            Destroy(gameObject);
+        }
+    }
     
 
     private void OnDestroy()

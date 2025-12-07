@@ -26,51 +26,51 @@ public class S_Wave : MonoBehaviour
 
 
     [Header("Spawner1")]
-    public Queue<S_Enemy> _enemyStack;
-    [SerializeField]private List<S_Enemy> _enemyList;
+    public Queue<Enemy> _enemyStack;
+    [SerializeField]private List<Enemy> _enemyList;
 
     public Transform wayPointsParent;
     public Transform[] wayPoints;
     
 
     [Header("Spawner2")]
-    public Queue<S_Enemy> _enemyStack2;
-    [SerializeField] private List<S_Enemy> _enemyList2;
+    public Queue<Enemy> _enemyStack2;
+    [SerializeField] private List<Enemy> _enemyList2;
     public Transform wayPointsParent2;
     public Transform[] wayPoints2;
   
 
     [Header("Spawner3")]
-    public Queue<S_Enemy> _enemyStack3;
-    [SerializeField] private List<S_Enemy> _enemyList3;
+    public Queue<Enemy> _enemyStack3;
+    [SerializeField] private List<Enemy> _enemyList3;
     public Transform wayPointsParent3;
     public Transform[] wayPoints3;
    
 
     [Header("Spawner4")]
-    public Queue<S_Enemy> _enemyStack4;
-    [SerializeField] private List<S_Enemy> _enemyList4;
+    public Queue<Enemy> _enemyStack4;
+    [SerializeField] private List<Enemy> _enemyList4;
     public Transform wayPointsParent4;
     public Transform[] wayPoints4;
    
 
     [Header("Spawner5")]
-    public Queue<S_Enemy> _enemyStack5;
-    [SerializeField] private List<S_Enemy> _enemyList5;
+    public Queue<Enemy> _enemyStack5;
+    [SerializeField] private List<Enemy> _enemyList5;
     public Transform wayPointsParent5;
     public Transform[] wayPoints5;
   
 
     [Header("Spawner6")]
-    public Queue<S_Enemy> _enemyStack6;
-    [SerializeField] private List<S_Enemy> _enemyList6;
+    public Queue<Enemy> _enemyStack6;
+    [SerializeField] private List<Enemy> _enemyList6;
     public Transform wayPointsParent6;
     public Transform[] wayPoints6;
  
 
     [Header("Spawner7")]
-    public Queue<S_Enemy> _enemyStack7;
-    [SerializeField] private List<S_Enemy> _enemyList7;
+    public Queue<Enemy> _enemyStack7;
+    [SerializeField] private List<Enemy> _enemyList7;
     public Transform wayPointsParent7;
     public Transform[] wayPoints7;
 
@@ -80,25 +80,25 @@ public class S_Wave : MonoBehaviour
     {   //Spawner1
         numberOfEnemies = _enemyList.Count + _enemyList2.Count + _enemyList3.Count + _enemyList4.Count + _enemyList5.Count + _enemyList6.Count + _enemyList7.Count;
         nbrEnemiesKillCond = _enemyList.Count + _enemyList2.Count + _enemyList3.Count + _enemyList4.Count + _enemyList5.Count + _enemyList6.Count + _enemyList7.Count;
-        _enemyStack = new Queue<S_Enemy>(_enemyList);
+        _enemyStack = new Queue<Enemy>(_enemyList);
 
         //Spawner2
-        _enemyStack2 = new Queue<S_Enemy>(_enemyList2);
+        _enemyStack2 = new Queue<Enemy>(_enemyList2);
         
         //Spawner3
-        _enemyStack3 = new Queue<S_Enemy>(_enemyList3);
+        _enemyStack3 = new Queue<Enemy>(_enemyList3);
         
         //Spawner4
-        _enemyStack4 = new Queue<S_Enemy>(_enemyList4);
+        _enemyStack4 = new Queue<Enemy>(_enemyList4);
 
         //Spawner5
-        _enemyStack5 = new Queue<S_Enemy>(_enemyList5);
+        _enemyStack5 = new Queue<Enemy>(_enemyList5);
         
         //Spawner6
-        _enemyStack6 = new Queue<S_Enemy>(_enemyList6);
+        _enemyStack6 = new Queue<Enemy>(_enemyList6);
         
         //Spawner7
-        _enemyStack7 = new Queue<S_Enemy>(_enemyList7);
+        _enemyStack7 = new Queue<Enemy>(_enemyList7);
     }
     void Start()
     {
@@ -196,7 +196,7 @@ public class S_Wave : MonoBehaviour
         }
     }
 
-    private void OneEnemyIsDead(S_Enemy deadEn)
+    private void OneEnemyIsDead(Enemy deadEn)
     {
         _enemyList.Remove(deadEn);
         _enemyList2.Remove(deadEn);
@@ -220,9 +220,9 @@ public class S_Wave : MonoBehaviour
         //newEnemy.GetComponent<S_Enemy>().WayPoints = wayPoints;
         if (_enemyStack.Count > 0)
         {
-            S_Enemy enemyCandidate = _enemyStack.Dequeue();
-            S_Enemy enemyInstance = Instantiate(enemyCandidate, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[0].transform.position, Quaternion.identity);
-            enemyInstance.GetComponent<S_Enemy>().WayPoints = wayPoints;
+            Enemy enemyCandidate = _enemyStack.Dequeue();
+            Enemy enemyInstance = Instantiate(enemyCandidate, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[0].transform.position, Quaternion.identity);
+            enemyInstance.GetComponent<Enemy>().WayPoints = wayPoints;
             enemyInstance.OnDead += OneEnemyIsDead;
 
             _enemyList.Add(enemyInstance);
@@ -233,9 +233,9 @@ public class S_Wave : MonoBehaviour
 
         if (_enemyStack2.Count > 0)
         {
-            S_Enemy enemyCandidate2 = _enemyStack2.Dequeue();
-            S_Enemy enemyInstance2 = Instantiate(enemyCandidate2, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[1].transform.position, Quaternion.identity);
-            enemyInstance2.GetComponent<S_Enemy>().WayPoints = wayPoints2;
+            Enemy enemyCandidate2 = _enemyStack2.Dequeue();
+            Enemy enemyInstance2 = Instantiate(enemyCandidate2, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[1].transform.position, Quaternion.identity);
+            enemyInstance2.GetComponent<Enemy>().WayPoints = wayPoints2;
             enemyInstance2.OnDead += OneEnemyIsDead;
 
             _enemyList2.Add(enemyInstance2);
@@ -246,9 +246,9 @@ public class S_Wave : MonoBehaviour
 
         if (_enemyStack3.Count > 0)
         {
-            S_Enemy enemyCandidate3 = _enemyStack3.Dequeue();
-            S_Enemy enemyInstance3 = Instantiate(enemyCandidate3, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[2].transform.position, Quaternion.identity);
-            enemyInstance3.GetComponent<S_Enemy>().WayPoints = wayPoints3;
+            Enemy enemyCandidate3 = _enemyStack3.Dequeue();
+            Enemy enemyInstance3 = Instantiate(enemyCandidate3, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[2].transform.position, Quaternion.identity);
+            enemyInstance3.GetComponent<Enemy>().WayPoints = wayPoints3;
             enemyInstance3.OnDead += OneEnemyIsDead;
 
             _enemyList3.Add(enemyInstance3);
@@ -259,9 +259,9 @@ public class S_Wave : MonoBehaviour
         
         if (_enemyStack4.Count > 0)
         {
-            S_Enemy enemyCandidate4 = _enemyStack4.Dequeue();
-            S_Enemy enemyInstance4 = Instantiate(enemyCandidate4, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[3].transform.position, Quaternion.identity);
-            enemyInstance4.GetComponent<S_Enemy>().WayPoints = wayPoints4;
+            Enemy enemyCandidate4 = _enemyStack4.Dequeue();
+            Enemy enemyInstance4 = Instantiate(enemyCandidate4, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[3].transform.position, Quaternion.identity);
+            enemyInstance4.GetComponent<Enemy>().WayPoints = wayPoints4;
             enemyInstance4.OnDead += OneEnemyIsDead;
 
             _enemyList4.Add(enemyInstance4);
@@ -271,9 +271,9 @@ public class S_Wave : MonoBehaviour
 
         if (_enemyStack5.Count > 0)
         {
-            S_Enemy enemyCandidate5 = _enemyStack5.Dequeue();
-            S_Enemy enemyInstance5 = Instantiate(enemyCandidate5, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[4].transform.position, Quaternion.identity);
-            enemyInstance5.GetComponent<S_Enemy>().WayPoints = wayPoints5;
+            Enemy enemyCandidate5 = _enemyStack5.Dequeue();
+            Enemy enemyInstance5 = Instantiate(enemyCandidate5, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[4].transform.position, Quaternion.identity);
+            enemyInstance5.GetComponent<Enemy>().WayPoints = wayPoints5;
             enemyInstance5.OnDead += OneEnemyIsDead;
 
             _enemyList5.Add(enemyInstance5);
@@ -283,9 +283,9 @@ public class S_Wave : MonoBehaviour
 
         if (_enemyStack6.Count > 0)
         {
-            S_Enemy enemyCandidate6 = _enemyStack6.Dequeue();
-            S_Enemy enemyInstance6 = Instantiate(enemyCandidate6, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[5].transform.position, Quaternion.identity);
-            enemyInstance6.GetComponent<S_Enemy>().WayPoints = wayPoints6;
+            Enemy enemyCandidate6 = _enemyStack6.Dequeue();
+            Enemy enemyInstance6 = Instantiate(enemyCandidate6, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[5].transform.position, Quaternion.identity);
+            enemyInstance6.GetComponent<Enemy>().WayPoints = wayPoints6;
             enemyInstance6.OnDead += OneEnemyIsDead;
 
             _enemyList6.Add(enemyInstance6);
@@ -296,9 +296,9 @@ public class S_Wave : MonoBehaviour
 
         if (_enemyStack7.Count > 0)
         {
-            S_Enemy enemyCandidate7 = _enemyStack7.Dequeue();
-            S_Enemy enemyInstance7 = Instantiate(enemyCandidate7, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[6].transform.position, Quaternion.identity);
-            enemyInstance7.GetComponent<S_Enemy>().WayPoints = wayPoints7;
+            Enemy enemyCandidate7 = _enemyStack7.Dequeue();
+            Enemy enemyInstance7 = Instantiate(enemyCandidate7, GetComponentInParent<S_WaveManager>().spawnpointsChildrens[6].transform.position, Quaternion.identity);
+            enemyInstance7.GetComponent<Enemy>().WayPoints = wayPoints7;
             enemyInstance7.OnDead += OneEnemyIsDead;
 
             _enemyList7.Add(enemyInstance7);
