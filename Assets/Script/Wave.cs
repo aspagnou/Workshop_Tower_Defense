@@ -6,7 +6,7 @@ public class Wave : MonoBehaviour
 {
 
 
-
+    public SpawnerManager spawnerManager;
     public WaveManager manager;
 
     public int numberOfEnemies = 5; //Number of enemies spawning in the wave
@@ -27,7 +27,7 @@ public class Wave : MonoBehaviour
 
     [Header("Spawner1")]
     public Queue<Enemy> _enemyStack;
-    [SerializeField]private List<Enemy> _enemyList;
+    [SerializeField]public List<Enemy> _enemyList;
 
     
     
@@ -60,7 +60,7 @@ public class Wave : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
         
@@ -84,7 +84,7 @@ public class Wave : MonoBehaviour
 
     private void OneEnemyIsDead(Enemy deadEn)
     {
-        _enemyList.Remove(deadEn);
+        
         
         nbrEnemiesKillCond--;
         manager.totalMana += deadEn.nbreMana;
@@ -103,21 +103,23 @@ public class Wave : MonoBehaviour
             enemyInstance.GetComponent<Enemy>().WayPoints = manager.wayPoints;
             enemyInstance.OnDead += OneEnemyIsDead;
 
-            _enemyList.Add(enemyInstance);
+            spawnerManager.RemoveEnemy(enemyInstance);
 
             //spawnInterval = enemyCandidate.timeToSpawn;
             enemiesSpawned++;
+            spawnerManager.totalSpawnedEnemiesPerWave++;
             
         }
 
 
-        if (enemiesSpawned >= numberOfEnemies) // manager.totalEnemies
-        {
-            waveActive = false;
-            Debug.Log("Wave completed");
-            manager.StartNextWave(manager.TimeBetweenWaves);
-            gameObject.SetActive(false);
-        }
+        //if (spawnerManager.totalSpawnedEnemiesPerWave == spawnerManager.totalEnemiesPerWave) 
+        //{
+        //    waveActive = false;
+        //    spawnerManager.totalSpawnedEnemiesPerWave = 0;
+        //    Debug.Log("Wave completed");
+        //    manager.StartNextWave(manager.TimeBetweenWaves);
+        //    gameObject.SetActive(false);
+        //}
 
 
     }

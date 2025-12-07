@@ -42,18 +42,11 @@ public class WaveManager : MonoBehaviour
     public int nbreEnemies;
     public int totalEnemies;
     public int nbreSpawnedEnemies;
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-   
-
-    void Start()
+    private void OnEnable()
     {
-        
-      
-        countDown = TimeToStartFirstWave;
-
         //Get all waves automatically
         Transform parent = waveManager.transform;
 
@@ -67,6 +60,16 @@ public class WaveManager : MonoBehaviour
         }
 
         waves = wavesList.ToArray();
+    }
+
+
+    void Start()
+    {
+        
+      
+        countDown = TimeToStartFirstWave;
+
+       
 
         foreach (Wave w in waves)
         {
@@ -84,6 +87,7 @@ public class WaveManager : MonoBehaviour
 
         //Start the first Wave
         StartNextWave(TimeBetweenWaves);
+
     }
 
     public void StartNextWave(int delayBetweenWavesSetByPreviousWave)
@@ -102,9 +106,9 @@ public class WaveManager : MonoBehaviour
             currentWaveIndex++;
             waves[currentWaveIndex].StartWave();
         }
-        spawnerManager.CalculTotalEnemies(); //Test
         
-        totalEnemies = spawnerManager.totalEnemiesPerWave;
+        
+        //totalEnemies = spawnerManager.totalEnemiesPerWave;
         
         
     }

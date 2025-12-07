@@ -3,9 +3,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+public enum EnemyType
+{
+    Flying,
+    Rapid,
+    Normal,
+    Heavy,
+    Global,
+
+}
 public class Enemy : MonoBehaviour
 {
-
+    public EnemyType enemyType;
+    
     [Header ("Movement")]
     
     [SerializeField] private float speed;
@@ -13,6 +23,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float timeToSpawn;
 
     public int currentWaypointIndex = 0;
+
 
     public Transform[] WayPoints;
     public Transform currentWayPoint;

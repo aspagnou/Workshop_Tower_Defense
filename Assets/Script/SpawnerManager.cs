@@ -1,17 +1,23 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SpawnerManager : MonoBehaviour
 {
-
-    public int totalEnemiesPerWave;
+    
+    public Dictionary<EnemyType, int> totalEnemiesPerWave = new();
+    public int totalSpawnedEnemiesPerWave;
+    public int currentSpawnerIndex = 0;
     
     public SpawnerManager spawnerManager;
     public WaveManager[] allWavesManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        totalEnemiesPerWave[EnemyType.Global] = 0;
+
         Transform parent = spawnerManager.transform;
 
         List<WaveManager> wavesManagerList = new List<WaveManager>();
@@ -25,21 +31,58 @@ public class SpawnerManager : MonoBehaviour
 
         allWavesManager = wavesManagerList.ToArray();
 
-        CalculTotalEnemies();
+        CalculTotalEnemies(currentSpawnerIndex);
     }
 
-    public void CalculTotalEnemies()
+    public void CalculTotalEnemies(int currentWaveIndex)
     {
         
-        totalEnemiesPerWave = 0;
+        
         
         for (int i = 0; i < allWavesManager.Length; i++)
         {
-            totalEnemiesPerWave += allWavesManager[i].nbreEnemies;
+            for (int j = 0; j < allWavesManager[i].waves[currentWaveIndex]._enemyList.Count; j++)
+            {
+                
+                if (totalEnemiesPerWave.ContainsKey(allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType))
+                {
+                    totalEnemiesPerWave[allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType] += 1;
+                }
+                else
+                {
+                    totalEnemiesPerWave[allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType] = 1;
+                }
+
+                totalEnemiesPerWave[EnemyType.Global] ++;
+            }
+           
         }
-        Debug.Log("J'aiFait");
+        foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
+        {
+            Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
+        }
     }
 
+    public void RemoveEnemy(Enemy enemy)
+    {
+        totalEnemiesPerWave[enemy.enemyType] -= 1;
+        totalEnemiesPerWave[EnemyType.Global]--; 
+
+        foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
+        {
+            Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
+        }
+
+        if (totalEnemiesPerWave[EnemyType.Global] == 0)
+        {
+            currentSpawnerIndex++;
+            CalculTotalEnemies(currentSpawnerIndex);
+            for (int i = 0; i < allWavesManager.Length; i++)
+            {
+                allWavesManager[i].StartNextWave(allWavesManager[i].TimeBetweenWaves);
+            }
+        }
+    }
     
     // Update is called once per frame
     void Update()

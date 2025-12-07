@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975bb254ff25f494fb4a96a8d1c506d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 2
   speed: 2
   rotationSpeed: 0.5
   timeToSpawn: 2
