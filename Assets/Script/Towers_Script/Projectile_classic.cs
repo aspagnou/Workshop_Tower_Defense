@@ -4,11 +4,13 @@ public class Projectile_classic : MonoBehaviour
 {
     public float speed = 20f;
     public float lifeTime = 3f;
-    public int damage = 10;
+    public float damage = 10f;
+    public bool isCritical = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         Destroy(gameObject, lifeTime);
     }
 
@@ -24,7 +26,7 @@ public class Projectile_classic : MonoBehaviour
         if (target != null)
         {
             Debug.Log("Arrow hit enemy, dealing " + damage + " damage.");
-            target.TakeDamage(damage);
+            target.TakeDamage(Mathf.RoundToInt(damage));
             Destroy(gameObject);
         }
     }

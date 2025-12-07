@@ -4,11 +4,16 @@ public class Projectile_Canon : MonoBehaviour
 {
     public float speed = 20f;
     public float lifeTime = 3f;
-    public int damage = 10;
+
+    public float explosionRadius = 3f;
+    public float damage = 10f;
+
+    public bool isCritical = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         Destroy(gameObject, lifeTime);
     }
 
@@ -20,12 +25,28 @@ public class Projectile_Canon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Enemy target = other.GetComponent<Enemy>();
-        if (target != null)
+        Explode();
+    }
+
+    void Explode()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        foreach (Collider hit in hits)
         {
-            Debug.Log("Arrow hit enemy, dealing " + damage + " damage.");
-            target.TakeDamage(damage);
-            Destroy(gameObject);
+            Enemy enemy = hit.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(Mathf.RoundToInt(damage));
+            }
         }
+        
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }
