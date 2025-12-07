@@ -111,6 +111,8 @@ public class Clicker : MonoBehaviour
         // Fermer TowerMenu si ouvert
         if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
             TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+        // Désélectionner la tour actuelle
+        DeselectTower();
     }
 
 

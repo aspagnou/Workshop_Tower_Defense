@@ -70,8 +70,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7a7892caff211fb45a51c16efcd2ede5, type: 2}
+  m_sharedMaterial: {fileID: -3747789793452911072, guid: 7a7892caff211fb45a51c16efcd2ede5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 4
-  moveUpAmount: 0
 --- !u!1001 &322344495967275595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,6 +262,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2916333803377954638, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916333803377954638, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4604830874657484814, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
