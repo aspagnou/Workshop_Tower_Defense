@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975bb254ff25f494fb4a96a8d1c506d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   speed: 6
   rotationSpeed: 3
   timeToSpawn: 1
@@ -133,7 +134,7 @@ MonoBehaviour:
   nbreMana: 15
   layers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   lifePoints: 50
   nexusDamage: 10
   timeToExplode: 1

@@ -134,7 +134,7 @@ MonoBehaviour:
   nbreMana: 50
   layers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   lifePoints: 50
   nexusDamage: 10
   timeToExplode: 4
