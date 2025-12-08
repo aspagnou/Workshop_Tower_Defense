@@ -3,16 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Droppable
+  - MainCanvas
+  - FixGridSpawn
+  - CostContainer
+  - Highlighter
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Enemy
-  - Nexus
+  - Tower
+  - 
   - 
   - 
   - 
