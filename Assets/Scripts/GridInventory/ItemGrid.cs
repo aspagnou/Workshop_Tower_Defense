@@ -1,0 +1,259 @@
+    using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+
+public class ItemGrid : MonoBehaviour
+{
+    public const float TileSizeWidth = 50f;
+    public const float TileSizeHeight = 50f;
+
+    InventoryItem[,] inventoryItemSlot;
+
+    public int gridSizeWidth = 10;
+    public int gridSizeHeight = 10;
+    public RectTransform fixRectTransform;
+    private ToolTipManager tooltipManager;
+    [HideInInspector]
+    public GearSO[] gearsEquiped;
+
+    RectTransform rectTransform;
+    private InventoryMemory relatedTowerInventory;
+    private void Start()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        Init(gridSizeWidth, gridSizeHeight);
+        relatedTowerInventory = GetComponentInParent<InventoryMemory>();
+        tooltipManager = FindAnyObjectByType<ToolTipManager>();
+    }
+
+    public void Init(int width, int height)
+    {
+        inventoryItemSlot = new InventoryItem[width, height];
+        Vector2 size = new Vector2(width * TileSizeWidth, height * TileSizeHeight);
+        rectTransform.sizeDelta = size;
+    }
+
+    //Vector2 positionOnTheGrid = new Vector2();
+    //Vector2Int tileGridPosition = new Vector2Int();
+    public Vector2Int GetTileGridPosition(Vector2 mousePosition)
+    {
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            rectTransform,
+            mousePosition,
+            null,
+            out Vector2 localPos
+        );
+
+        int x = (int)(localPos.x / TileSizeWidth);
+        int y = (int)(-localPos.y / TileSizeHeight);
+
+        return new Vector2Int(x, y);
+    }
+
+
+    // ----------------------------- Place ITEM IN GRID ------
+    public bool PlaceItem(InventoryItem inventoryItem, int posX, int posY, ref InventoryItem overlapItem)
+    {
+        if (BoundryCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height) == false)
+        {
+            return false;
+        }
+
+        if (OverlapCheck(posX, posY, inventoryItem.itemData.width, inventoryItem.itemData.height, ref overlapItem) == false)
+        {
+            overlapItem = null;
+            return false;
+        }
+        if (overlapItem != null) // remove the overlapped item from the grid
+        {
+            FindAnyObjectByType<InventoryMemory>().RemoveGear(overlapItem.itemData.relatedGear);
+            CleanGridReference(overlapItem);
+        }
+        RectTransform rectTransform = inventoryItem.GetComponent<RectTransform>();
+        rectTransform.SetParent(this.rectTransform);
+        for (int x = 0; x < inventoryItem.itemData.width; x++)// pour dire que l'item occupe plusieurs slots
+        {
+            for (int y = 0; y < inventoryItem.itemData.height; y++)
+            {
+                inventoryItemSlot[posX + x, posY + y] = inventoryItem;
+            }
+        }
+        inventoryItem.onGridPositionX = posX;
+        inventoryItem.OnGridPositionY = posY;
+        inventoryItemSlot[posX, posY] = inventoryItem;
+
+        // positionnement de l'item dans la grille
+        Vector2 position = CalculatePositionOnGrid(inventoryItem, posX, posY);
+
+        rectTransform.localPosition = position;
+        relatedTowerInventory.AddGear(inventoryItem.itemData.relatedGear);
+
+        return true;
+        
+    }
+
+
+
+
+    // ----------------------------- PICK UP ITEM FROM GRID ------
+    public InventoryItem PickUpItem(int x, int y)
+    {
+        tooltipManager.Hide();
+        InventoryItem toReturn = inventoryItemSlot[x, y];
+
+        if (toReturn == null) { return null; }
+        relatedTowerInventory.RemoveGear(toReturn.itemData.relatedGear);
+        CleanGridReference(toReturn);
+        
+        return toReturn;
+    }
+
+
+
+
+
+
+    //----------------------------- Calculate Position on Grid ------
+    public Vector2 CalculatePositionOnGrid(InventoryItem inventoryItem, int posX, int posY)
+    {
+        Vector2 position = new Vector2();
+        position.x = posX * TileSizeWidth + TileSizeWidth * inventoryItem.itemData.width / 2;
+        position.y = -(posY * TileSizeHeight + TileSizeHeight * inventoryItem.itemData.height / 2);
+        return position;
+    }
+
+    // verifie si l'item overlap avec un autre item
+    private bool OverlapCheck(int posX, int posY, int width, int height, ref InventoryItem overlapItem) 
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if (inventoryItemSlot[posX + x, posY + y] != null)
+                {
+                    if (overlapItem == null)
+                    {
+                        overlapItem = inventoryItemSlot[posX + x, posY + y];
+                    }
+                    else {                         // multiple overlap not allowed
+                        if(overlapItem != inventoryItemSlot[posX + x, posY + y]) 
+                        {
+                            return false;
+                        }
+                            
+                    }
+
+                }
+            }
+        }
+        return true;
+    }
+
+    
+
+    private void CleanGridReference(InventoryItem item) // nettoie les references de l'item dans la grille
+    {
+        for (int i = 0; i < item.itemData.width; i++)
+        {
+            for (int j = 0; j < item.itemData.height; j++)
+            {
+                inventoryItemSlot[item.onGridPositionX + i, item.OnGridPositionY + j] = null;
+            }
+        }
+    }
+
+    // verifie si la position est dans la grille
+    bool PositionCheck(int posX, int posY)
+    {
+        if (posX < 0 || posY < 0)
+            return false;
+
+        if (posX >= gridSizeWidth || posY >= gridSizeHeight)
+            return false;
+
+        return true;
+    }
+
+
+    public bool BoundryCheck(int posX, int posY, int width, int height) // verifie si l'item est dans les limites de la grille
+    {
+        if(PositionCheck(posX, posY) == false)
+        {
+            return false;
+        }
+        posX += width-1;
+        posY += height-1;
+        if (PositionCheck(posX, posY) == false)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    internal InventoryItem GetItem(int x, int y)
+    {
+        if (x < 0 || y < 0 || x >= gridSizeWidth || y >= gridSizeHeight)
+        {
+            tooltipManager.Hide();
+            return null;
+        }
+        return inventoryItemSlot[x, y];
+    }
+
+
+
+
+    // ----------------------Resize Grid -----------------
+    public void ResizeGrid(int newWidth, int newHeight)
+    {
+        // Sauvegarde ancienne grille
+        InventoryItem[,] oldGrid = inventoryItemSlot;
+
+        int oldWidth = oldGrid.GetLength(0);
+        int oldHeight = oldGrid.GetLength(1);
+
+        // Création nouvelle grille
+        inventoryItemSlot = new InventoryItem[newWidth, newHeight];
+
+        // Mettre à jour la taille visuelle
+        rectTransform.sizeDelta = new Vector2(newWidth * TileSizeWidth, newHeight * TileSizeHeight);
+
+        // Re-copie des items
+        for (int x = 0; x < oldWidth; x++)
+        {
+            for (int y = 0; y < oldHeight; y++)
+            {
+                InventoryItem item = oldGrid[x, y];
+                if (item != null)
+                {
+                    // Recopier uniquement le "slot racine"
+                    if (item.onGridPositionX == x && item.OnGridPositionY == y)
+                    {
+                        // Placement dans la nouvelle grille
+                        for (int ix = 0; ix < item.itemData.width; ix++)
+                        {
+                            for (int iy = 0; iy < item.itemData.height; iy++)
+                            {
+                                inventoryItemSlot[x + ix, y + iy] = item;
+                            }
+                        }
+
+                        // Mise à jour graphique
+                        item.GetComponent<RectTransform>().localPosition =
+                            CalculatePositionOnGrid(item, item.onGridPositionX, item.OnGridPositionY);
+                    }
+                }
+            }
+        }
+
+        gridSizeWidth = newWidth;
+        gridSizeHeight = newHeight;
+    }
+    [ContextMenu("Increase Grid")]
+    public void IncreaseGrid_DebugButton()
+    {
+        ResizeGrid(gridSizeWidth + 2, gridSizeHeight);
+    }
+
+}
