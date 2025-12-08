@@ -5,18 +5,26 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance;
+    [Header("Mana")]
     public int mana = 0;
     [SerializeField] TMP_Text manaText;
-    public ItemSO[] resources;
-    
+
+    [Header("scraps")]
+    public ItemSO[] scraps;
+
+    [Header("References")]
     [SerializeField] private UI_Manager ui_Manager;
-    public ItemSlot[] craftingSlots;
     
+
+    public ItemSlot[] craftingSlots;
+    public event Action<int> OnManaChanged;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Instance = this;
-        foreach (ItemSO resource in resources)
+        foreach (ItemSO resource in scraps)
         {
             resource.amount = 0;
             ui_Manager.UpdateResourceText(resource.amount,resource.index);
@@ -29,16 +37,12 @@ public class ResourceManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            foreach (ItemSO resource in resources)
+            foreach (ItemSO resource in scraps)
             {
                 AddResource(resource, 1);
             }
             AddMana(100);
         }
-        //if (Input.GetKeyDown(KeyCode.A)) 
-        //{
-        //    ui_Manager.ShowGearMenu();
-        //}
 
     }
     public void AddResource(ItemSO resource, int amount)
@@ -74,9 +78,11 @@ public class ResourceManager : MonoBehaviour
     {
         mana += amount;
         UpdateManaText();
+        DispatchManaChanged();
         if (Clicker.Instance.currentSelectedTower != null)
         {
             Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+            
         }
     }
 
@@ -85,10 +91,15 @@ public class ResourceManager : MonoBehaviour
         mana-= amount;
         if (mana <= 0) { mana = 0; }
         UpdateManaText();
+        DispatchManaChanged();
         if (Clicker.Instance.currentSelectedTower != null)
         {
             Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
         }
+    }
+    private void DispatchManaChanged()
+    {
+        OnManaChanged?.Invoke(mana);
     }
     private void UpdateManaText()
     {

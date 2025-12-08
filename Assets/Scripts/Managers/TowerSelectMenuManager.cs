@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,8 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject slotSelectPanel;
     public Vector3 slotWorldOffset = new Vector3(0, 2f, 0);
     private TowerSlot currentlySelectedTowerSlot;
+    public TMP_Text[] slotCostTexts;
+    public GameObject[] towerPrefabs;
     public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
 
     
@@ -49,15 +52,23 @@ public class TowerSelectMenuManager : MonoBehaviour
         slotSelectPanel.transform.LookAt(cam.transform);
         slotSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
         slotSelectPanel.SetActive(true);
+        currentlySelectedTowerSlot.UpdateCostText();
+        // On s'abonne AU MOMENT où le menu apparaît
+        ResourceManager.Instance.OnManaChanged += UI_Manager.Instance.UpdateSlotColorText;
+
+        // On force une mise à jour immédiate
+        UI_Manager.Instance.UpdateSlotColorText(ResourceManager.Instance.mana);
         HideTowerSelectMenu();
 
     }
     public void HideSlotTowerMenu() 
     {
         slotSelectPanel.SetActive(false);
+        ResourceManager.Instance.OnManaChanged -= UI_Manager.Instance.UpdateSlotColorText;
         currentlySelectedTowerSlot = null;
     }
 
+   
     // Tower Select Menu
     public void ShowTowerSelectMenu(BaseTower tower)
     {

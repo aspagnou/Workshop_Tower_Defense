@@ -106,7 +106,7 @@ public class TowerUpgrade : MonoBehaviour
         costText.text = $"x{value}";
 
         // Vérifie si la quantité de ressource est suffisante
-        if (ResourceManager.Instance.resources[resourceIndex].amount >= value)
+        if (ResourceManager.Instance.scraps[resourceIndex].amount >= value)
         {
             costText.color = Color.green; // Vert si assez de ressources
         }
@@ -145,7 +145,7 @@ public class TowerUpgrade : MonoBehaviour
                     int resourceIndex = upgradeLevels[currentLevel].scraps[i].index;
                     int requiredAmount = upgradeLevels[currentLevel].costs[i];
 
-                    if (ResourceManager.Instance.resources[resourceIndex].amount >= requiredAmount)
+                    if (ResourceManager.Instance.scraps[resourceIndex].amount >= requiredAmount)
                     {
                         costText.color = Color.green; // Vert si assez de ressources
                     }
@@ -188,7 +188,7 @@ public class TowerUpgrade : MonoBehaviour
         // Vérifie les ressources disponibles
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
         {
-            if (ResourceManager.Instance.resources[i].amount < upgradeLevels[currentLevel].costs[i])
+            if (ResourceManager.Instance.scraps[i].amount < upgradeLevels[currentLevel].costs[i])
             {
                 Debug.Log("Not enough resources");
                 return;

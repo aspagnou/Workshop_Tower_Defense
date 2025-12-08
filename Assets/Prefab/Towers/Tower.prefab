@@ -126,7 +126,7 @@ MonoBehaviour:
   gridUI: {fileID: 2384073878758901224}
   itemGrid: {fileID: 886195416633796091}
   inventoryMemory: {fileID: 741925592922327412}
-  spawnCost: 100
+  spawnCost: 250
   baseAttackDamage: 0
   baseRange: 0
   baseAttackSpeed: 0

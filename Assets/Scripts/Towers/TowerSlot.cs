@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
 {
     [SerializeField] private GameObject[] towerPrefabs;
+    private TMP_Text[] costsText;
     private ResourceManager resourceManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,4 +33,18 @@ public class TowerSlot : MonoBehaviour
         }
         
     }
+    public void UpdateCostText() 
+    {
+        
+        costsText = TowerSelectMenuManager.Instance.slotCostTexts;
+        for (int i = 0; i < towerPrefabs.Length; i++)
+        {
+            costsText[i].text = towerPrefabs[i].GetComponent<BaseTower>().spawnCost.ToString();
+        }
+        
+    }
+   
+    
+
+    
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,6 +25,8 @@ public class UI_Manager : MonoBehaviour
     {
         Instance = this;
         HideGearMenu();
+        HideCraftMenu();
+        
         // Initialiser le dictionnaire
         for (int i = 0; i < ressourceIcon.Length; i++)
         {
@@ -46,6 +49,7 @@ public class UI_Manager : MonoBehaviour
         spawnedIcons[index].Add(newIcon);
     }
 
+    // Supprime les icônes de ressource en fonction de l'index et de la quantité
     public void RemoveResourceIcons(int index, int quantity)
     {
         // Vérifie si l'index est valide
@@ -67,6 +71,7 @@ public class UI_Manager : MonoBehaviour
         ressourceTextHUD[index].text = amount + "x";
     }
 
+    // Affiche ou masque le menu d'artisanat
     public void ShowCraftMenu()
     {
         Debug.Log("Jactive");
@@ -78,6 +83,7 @@ public class UI_Manager : MonoBehaviour
         craftMenu?.SetActive(false);
     }
 
+    // Affiche ou masque le menu d'inventaire d'équipement
     public void HideGearMenu()
     {
         gearInventoryMenu?.SetActive(false);
@@ -87,6 +93,33 @@ public class UI_Manager : MonoBehaviour
     {
         gearInventoryMenu?.SetActive(true);
     }
+
+    // Met à jour la couleur du texte des coûts dans le menu de sélection des tours
+    private void OnEnable()
+    {
+        if (ResourceManager.Instance != null)
+            ResourceManager.Instance.OnManaChanged += UpdateSlotColorText;
+    }
+
+    private void OnDisable()
+    {
+        if (ResourceManager.Instance != null)
+            ResourceManager.Instance.OnManaChanged -= UpdateSlotColorText;
+    }
+
+    public void UpdateSlotColorText(int mana)
+    {
+        GameObject[] towerPrefabs = TowerSelectMenuManager.Instance.towerPrefabs;
+        TMP_Text[] costsText = TowerSelectMenuManager.Instance.slotCostTexts;
+
+        for (int i = 0; i < towerPrefabs.Length; i++)
+        {
+            int cost = towerPrefabs[i].GetComponent<BaseTower>().spawnCost;
+
+            costsText[i].color = (mana < cost) ? Color.red : Color.white;
+        }
+    }
+    
 
 
 

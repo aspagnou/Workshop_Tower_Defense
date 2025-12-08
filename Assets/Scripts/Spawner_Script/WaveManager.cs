@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     [Header("Text UI")]
     [SerializeField] private TextMeshProUGUI waveCounterLabel;
     [SerializeField] private TextMeshProUGUI nextWaveLabel;
-    [SerializeField] private TextMeshProUGUI ManaLabel;
+    //[SerializeField] private TextMeshProUGUI ManaLabel;
     public float totalMana;
 
     [Header("Wave system")]
@@ -118,12 +118,12 @@ public class WaveManager : MonoBehaviour
     void Update()
     {
         countDown -= Time.deltaTime;
-        waveCounterLabel.text = Mathf.Round(currentWaveIndex+1).ToString();
-        nextWaveLabel.text = Mathf.Round(countDown).ToString();
+        waveCounterLabel.text = $"Wave {currentWaveIndex + 1} / 12";
+        nextWaveLabel.text = $"Next Wave In : {Mathf.Round(countDown)}s";
         if (countDown <= 0)
         {
-            nextWaveLabel.text = ("Spawning");
+            nextWaveLabel.text = ("Spawning ...");
         }
-        ManaLabel.text = Mathf.Round(totalMana).ToString();
+        //ManaLabel.text = Mathf.Round(totalMana).ToString();
     }
 }
