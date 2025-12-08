@@ -33,8 +33,8 @@ Transform:
   - {fileID: 1248593952111384230}
   - {fileID: 8678481799529005562}
   - {fileID: 358223502150071481}
-  - {fileID: 7597237668230272166}
   - {fileID: 503916166425829276}
+  - {fileID: 7597237668230272166}
   - {fileID: 1902404246717458960}
   - {fileID: 2010550728935428716}
   m_Father: {fileID: 8113667270721879700}
@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3574a9a108fb0074dac2be63ebabba87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerManager: {fileID: 0}
+  manager: {fileID: 0}
   numberOfEnemies: 5
   spawnInterval: 1
   spawnTimer: 0
@@ -125,8 +127,6 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
-  wayPointsParent: {fileID: 5033686773183896353}
-  wayPoints: []
 --- !u!1 &3260202346894187618
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3574a9a108fb0074dac2be63ebabba87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerManager: {fileID: 0}
+  manager: {fileID: 0}
   numberOfEnemies: 5
   spawnInterval: 1
   spawnTimer: 0
@@ -471,8 +473,6 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  wayPointsParent: {fileID: 5033686773183896353}
-  wayPoints: []
 --- !u!1 &6608237986910428117
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,20 +782,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveCounterLabel: {fileID: 0}
   nextWaveLabel: {fileID: 0}
-  ManaLabel: {fileID: 0}
   totalMana: 0
-  nexus: {fileID: 0}
+  spawnerManager: {fileID: 0}
   waveManager: {fileID: 5643111127907971478}
   waves: []
   currentWaveIndex: -1
+  wayPointsParent: {fileID: 0}
+  wayPoints: []
   spawnPoint: {fileID: 1149339465507818143}
   TimeToStartFirstWave: 5
-  TimeBetweenWaves: 5
-  spawnInterval: 0
-  spawnTimer: 0
-  enemiesSpawned: 0
+  timeModif: 0
   countDown: 0
   nbreEnemies: 0
+  totalEnemies: 0
+  nbreSpawnedEnemies: 0
 --- !u!1 &9165316109292412446
 GameObject:
   m_ObjectHideFlags: 0
