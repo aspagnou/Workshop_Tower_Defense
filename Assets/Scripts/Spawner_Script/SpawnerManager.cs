@@ -88,7 +88,10 @@ public class SpawnerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentSpawnerIndex == 13)
+        {
+            Debug.Log("Congrats");
+        }
 
     }
 }

@@ -105,7 +105,7 @@ public class Wave : MonoBehaviour
 
             spawnerManager.RemoveEnemy(enemyInstance);
 
-            //spawnInterval = enemyCandidate.timeToSpawn;
+            spawnInterval = enemyCandidate.timeToSpawn;
             enemiesSpawned++;
             spawnerManager.totalSpawnedEnemiesPerWave++;
             
