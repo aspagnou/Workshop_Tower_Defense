@@ -74,7 +74,7 @@ public class UI_Manager : MonoBehaviour
     // Affiche ou masque le menu d'artisanat
     public void ShowCraftMenu()
     {
-        Debug.Log("Jactive");
+        //Debug.Log("Jactive");
         craftMenu.SetActive(true);
     }
 

@@ -188,7 +188,7 @@ public class InventoryControler : MonoBehaviour
 
     private void PlaceItem(Vector2Int tiledGridPosition)
     {
-        Debug.Log("Tentative de placement de l'item");
+        //Debug.Log("Tentative de placement de l'item");
         bool complete =selectedItemGrid.PlaceItem(selectedItem, tiledGridPosition.x, tiledGridPosition.y, ref overlapItem);
         if (complete)
         {

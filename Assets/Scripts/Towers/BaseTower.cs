@@ -39,19 +39,19 @@ public class BaseTower : MonoBehaviour
     public TowerUpgrade towerUpgradeManager;
 
     // Targeting
-    private Transform target;
+    public Transform target;
 
     // Attack cooldown
     private float attackCooldown = 0f;
 
     [SerializeField] private Transform pivot;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
+    public Transform firePoint;
 
     [SerializeField] private float rotationSpeed=5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         mainCanvas = GameObject.FindWithTag("MainCanvas");
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
@@ -60,12 +60,18 @@ public class BaseTower : MonoBehaviour
         
         RecalculateStats();
         UpdateRangeCircle();
+        ApplySpecialTowerStats();
         HideRange();
+        
 
     }
 
+    protected virtual void ApplySpecialTowerStats()
+    {
+        // Par défaut, ne fait rien.
+    }
     // Update is called once per frame
-    
+
 
     //----------------------------- GEAR EQUIP/UNEQUIP ------
     public void EquipGear(GearSO gear)
@@ -110,14 +116,18 @@ public class BaseTower : MonoBehaviour
             currentAttackSpeed *= (1 + gear.percentAttackSpeed / 100);
         }
 
-        Debug.Log($"Stats recalculées : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
+        //Debug.Log($"Stats recalculées : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
         UpdateStats();
         UpdateRangeCircle();
+        ApplySpecialTowerStats();
     }
 
 
     public void ShowGrid()
     {
+        if (mainCanvas == null) Debug.LogError("mainCanvas is NULL !");
+        if (gridUI == null) Debug.LogError("gridUI is NULL !");
+        if (fixRectTransform == null) Debug.LogError("fixRectTransform is NULL !");
         gridUI.SetActive(true);
         // 1. Changer le parent de la grille vers le canvas
         gridUI.transform.SetParent(mainCanvas.transform);
@@ -146,6 +156,7 @@ public class BaseTower : MonoBehaviour
     public void ShowRange() 
     { 
         rangeCirclePrefab.SetActive(true);
+        //Debug.Log("Showing Range Circle");
         UpdateRangeCircle();
     }
     public void HideRange() 
@@ -205,7 +216,7 @@ public class BaseTower : MonoBehaviour
     void Update()
     {
         FindTarget();
-
+        
         if (target != null)
         {
             AimAtTarget();
@@ -215,15 +226,16 @@ public class BaseTower : MonoBehaviour
 
     void FindTarget()
     {
-        Enemy[] allEnemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+       
         if (canAttackAerial == false) 
         {
+            Enemy[] allEnemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
             // Trouver uniquement les ennemis terrestres
-            
+
             List<Enemy> groundEnemies = new List<Enemy>();
             foreach (Enemy enemy in allEnemies)
             {
-                if (enemy != null && enemy.enemyType == EnemyType.Flying)
+                if (enemy != null && enemy.enemyType != EnemyType.Flying)
                 {
                     groundEnemies.Add(enemy);
                 }
@@ -250,11 +262,12 @@ public class BaseTower : MonoBehaviour
         }
         else 
         {
+            Enemy[] allEnemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
             // Trouver tous les ennemis aériens
             List<Enemy> aerialEnemies = new List<Enemy>();
             foreach (Enemy enemy in allEnemies)
             {
-                if (enemy != null && enemy.enemyType != EnemyType.Flying)
+                if (enemy != null && enemy.enemyType == EnemyType.Flying)
                 {
                     aerialEnemies.Add(enemy);
                 }
@@ -284,7 +297,7 @@ public class BaseTower : MonoBehaviour
     }
 
 
-    void AimAtTarget()
+    protected virtual void AimAtTarget()
     {
         if (target == null) return;
 
@@ -302,7 +315,7 @@ public class BaseTower : MonoBehaviour
 
 
 
-    void Shoot()
+    protected virtual void Shoot()
     {
         // Si pas de cible → ne pas tirer
         if (target == null) return;

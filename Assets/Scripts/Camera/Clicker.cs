@@ -157,7 +157,7 @@ public class Clicker : MonoBehaviour
 
     public void DeselectTower()
     {
-        Debug.Log("Je ferme");
+        //Debug.Log("Je ferme");
         if (currentSelectedTower != null)
         {
             currentSelectedTower.OnTowerDeselected();

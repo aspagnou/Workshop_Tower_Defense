@@ -22,7 +22,7 @@ public class InventoryMemory : MonoBehaviour
         {
             storedGears.Add(gear);
             linkedTower.EquipGear(gear);
-            Debug.Log("Gear ajouté : " + gear.name);
+            //Debug.Log("Gear ajouté : " + gear.name);
         }
     }
 
@@ -33,7 +33,7 @@ public class InventoryMemory : MonoBehaviour
         {
             storedGears.Remove(gear);
             linkedTower.UnequipGear(gear);
-            Debug.Log("Gear retiré : " + gear.name);
+            //Debug.Log("Gear retiré : " + gear.name);
         }
     }
     void Update()
@@ -43,10 +43,10 @@ public class InventoryMemory : MonoBehaviour
 
     public void DisplayInventory()
     {
-        Debug.Log("Mémoire actuelle : " + storedGears.Count);
+        //Debug.Log("Mémoire actuelle : " + storedGears.Count);
         foreach (var g in storedGears)
         {
-            Debug.Log(" - " + g.name);
+           // Debug.Log(" - " + g.name);
         }
     }
 }
