@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile_Canon : MonoBehaviour
 {
@@ -9,15 +9,17 @@ public class Projectile_Canon : MonoBehaviour
     public float damage = 10f;
 
     public bool isCritical = false;
+    public LayerMask contactLayers;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Explosion Indicator")]
+    public GameObject explosionIndicatorPrefab;
+    public float indicatorDuration = 0.5f;
+
     void Start()
     {
-        
         Destroy(gameObject, lifeTime);
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -25,11 +27,22 @@ public class Projectile_Canon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Explode();
+        // 🔥 Vérifie si le layer de l'objet est dans le LayerMask
+        if (IsInLayerMask(other.gameObject.layer, contactLayers))
+        {
+            Explode();
+        }
+    }
+
+    bool IsInLayerMask(int layer, LayerMask mask)
+    {
+        return (mask.value & (1 << layer)) != 0;
     }
 
     void Explode()
     {
+        ShowExplosionIndicator();
+
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider hit in hits)
@@ -40,13 +53,20 @@ public class Projectile_Canon : MonoBehaviour
                 enemy.TakeDamage(Mathf.RoundToInt(damage));
             }
         }
-        
+
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmosSelected()
+    void ShowExplosionIndicator()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+        if (explosionIndicatorPrefab == null)
+            return;
+
+        GameObject indicator = Instantiate(explosionIndicatorPrefab, transform.position, Quaternion.identity);
+
+        // Scale la sphère selon le radius
+        indicator.transform.localScale = Vector3.one * (explosionRadius * 2f);
+
+        Destroy(indicator, indicatorDuration);
     }
 }

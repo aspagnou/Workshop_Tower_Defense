@@ -60,7 +60,7 @@ public class SpawnerManager : MonoBehaviour
         }
         foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
         {
-            Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
+            //Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
         }
     }
 
@@ -71,7 +71,7 @@ public class SpawnerManager : MonoBehaviour
 
         foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
         {
-            Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
+            //Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
         }
 
         if (totalEnemiesPerWave[EnemyType.Global] == 0 && currentSpawnerIndex < allWavesManager[0].waves.Length-1)

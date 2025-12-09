@@ -28,6 +28,8 @@ public class TowerSelectMenuManager : MonoBehaviour
     private TowerSlot currentlySelectedTowerSlot;
     public TMP_Text[] slotCostTexts;
     public GameObject[] towerPrefabs;
+    [SerializeField] GameObject slotPrefab;
+
     public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
 
     
@@ -126,6 +128,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     {
         InventoryMemory gearInventory = Clicker.Instance.currentSelectedTower.inventoryMemory;
         TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.GetComponent<TowerUpgrade>();
+        Instantiate(slotPrefab, towerUpgrade.gameObject.transform.position,Quaternion.identity);
         if (towerUpgrade != null) 
         {
             ResourceManager.Instance.AddMana(towerUpgrade.sellAmount);

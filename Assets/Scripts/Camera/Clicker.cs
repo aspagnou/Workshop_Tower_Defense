@@ -70,6 +70,8 @@ public class Clicker : MonoBehaviour
                 }
 
                 // Ouvrir le menu pour ce slot
+                if (currentSelectedTower != null)
+                    currentSelectedTower.OnTowerDeselected();
                 currentSelectedTowerSlot = towerSlot;
                 TowerSelectMenuManager.Instance.ShowSlotTowerMenu(towerSlot);
                 return;

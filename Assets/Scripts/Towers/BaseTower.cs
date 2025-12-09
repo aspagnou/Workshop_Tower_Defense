@@ -16,6 +16,9 @@ public class BaseTower : MonoBehaviour
     [Header("Tower Price")]
     public int spawnCost = 100;
 
+    [Header("Range Circle")]
+    public GameObject rangeCirclePrefab;
+
     [Header("Base Tower Stats")]
     public float baseAttackDamage;
     public float baseRange;
@@ -29,6 +32,9 @@ public class BaseTower : MonoBehaviour
     public float currentAttackSpeed;
     public float currentCriticalChance;
 
+    [Header("Aerial ?")]
+    public bool canAttackAerial = false;
+
     public List<GearSO> equippedGears = new List<GearSO>();
     public TowerUpgrade towerUpgradeManager;
 
@@ -41,7 +47,8 @@ public class BaseTower : MonoBehaviour
     [SerializeField] private Transform pivot;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
-    private float rotationSpeed;
+
+    [SerializeField] private float rotationSpeed=5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,7 +57,10 @@ public class BaseTower : MonoBehaviour
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
         towerUpgradeManager =GetComponent<TowerUpgrade>();
         gridUI.SetActive(false);
+        
         RecalculateStats();
+        UpdateRangeCircle();
+        HideRange();
 
     }
 
@@ -92,6 +102,7 @@ public class BaseTower : MonoBehaviour
             currentRange += gear.flatRange;
             currentAttackSpeed += gear.flatAttackSpeed;
             currentCriticalChance += gear.flatCriticalChance;
+            if (currentCriticalChance > 100f) currentCriticalChance = 100f;
 
             //percentage bonuses
             currentAttackDamage *= (1 + gear.percentAttackDamage/100);
@@ -101,6 +112,7 @@ public class BaseTower : MonoBehaviour
 
         Debug.Log($"Stats recalculées : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
         UpdateStats();
+        UpdateRangeCircle();
     }
 
 
@@ -131,18 +143,29 @@ public class BaseTower : MonoBehaviour
             gridUI.SetActive(false);
         }
     }
+    public void ShowRange() 
+    { 
+        rangeCirclePrefab.SetActive(true);
+        UpdateRangeCircle();
+    }
+    public void HideRange() 
+    { 
+        rangeCirclePrefab.SetActive(false);
+    }
     // ----------------------------------------------------
 
     public void OnTowerSelected()
     {
         TowerSelectMenuManager.Instance.ShowTowerSelectMenu(this);
+        ShowRange();
     }
     public void OnTowerDeselected()
     {
         TowerSelectMenuManager.Instance.HideTowerSelectMenu();
         
         HideGrid();
-        
+        HideRange();
+
     }
     public void UpdateStats()
     {
@@ -168,6 +191,16 @@ public class BaseTower : MonoBehaviour
         feedback[3]?.ShowChange(deltaRange);
     }
 
+    public void UpdateRangeCircle()
+    {
+        RectTransform rt = rangeCirclePrefab.GetComponent<RectTransform>();
+
+        float baseRadius = 500f;    // rayon de ton image (1000 px / 2)
+        float scale = currentRange / baseRadius;
+
+        rt.sizeDelta = new Vector2(1000f * scale, 1000f * scale);
+    }
+
     // ----------------------------------------------------
     void Update()
     {
@@ -182,37 +215,91 @@ public class BaseTower : MonoBehaviour
 
     void FindTarget()
     {
-        Enemy[] enemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-
-        float shortestDistance = Mathf.Infinity;
-        Enemy nearestEnemy = null;
-
-        foreach (Enemy enemy in enemies)
+        Enemy[] allEnemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        if (canAttackAerial == false) 
         {
-            if (enemy == null)
-                continue;
-
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < shortestDistance && distance <= currentRange)
+            // Trouver uniquement les ennemis terrestres
+            
+            List<Enemy> groundEnemies = new List<Enemy>();
+            foreach (Enemy enemy in allEnemies)
             {
-                shortestDistance = distance;
-                nearestEnemy = enemy;
+                if (enemy != null && enemy.enemyType == EnemyType.Flying)
+                {
+                    groundEnemies.Add(enemy);
+                }
             }
-        }
+            float shortestDistance = Mathf.Infinity;
+            Enemy nearestEnemy = null;
+            foreach (Enemy enemy in groundEnemies)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < shortestDistance && distance <= currentRange)
+                {
+                    Debug.Log("Ground Enemy found within range");
+                    shortestDistance = distance;
+                    nearestEnemy = enemy;
+                }
+            }
+            if (nearestEnemy != null)
+                target = nearestEnemy.transform;
+            else
+                target = null;
+            Debug.Log("No ground enemy in range");
+            return;
 
-        if (nearestEnemy != null)
-            target = nearestEnemy.transform;
-        else
-            target = null;
+        }
+        else 
+        {
+            // Trouver tous les ennemis aériens
+            List<Enemy> aerialEnemies = new List<Enemy>();
+            foreach (Enemy enemy in allEnemies)
+            {
+                if (enemy != null && enemy.enemyType != EnemyType.Flying)
+                {
+                    aerialEnemies.Add(enemy);
+                }
+                float shortestDistance = Mathf.Infinity;
+                Enemy nearestEnemy = null;
+                foreach (Enemy airEnemy in aerialEnemies)
+                {
+                    float distance = Vector3.Distance(transform.position, airEnemy.transform.position);
+                    if (distance < shortestDistance && distance <= currentRange)
+                    {
+                        Debug.Log("Aerial Enemy found within range");
+                        shortestDistance = distance;
+                        nearestEnemy = enemy;
+                    }
+                }
+                if (nearestEnemy != null)
+                    target = nearestEnemy.transform;
+                else
+                    target = null;
+                Debug.Log("No Air enemy in range");
+                return;
+
+            }
+
+        }
+        
     }
 
 
     void AimAtTarget()
     {
+        if (target == null) return;
+
         Vector3 direction = target.position - pivot.position;
+        direction.y = 0f; // Optionnel : verrouille la rotation en 2D sur l'axe Y
+
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        pivot.rotation = Quaternion.Lerp(pivot.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+
+        pivot.rotation = Quaternion.Lerp(
+            pivot.rotation,
+            lookRotation,
+            Time.deltaTime * rotationSpeed
+        );
     }
+
 
 
     void Shoot()
