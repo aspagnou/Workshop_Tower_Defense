@@ -35,6 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7974300144858805272}
+  - {fileID: 2349823201650525109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3776240391391867146
@@ -167,6 +168,68 @@ MonoBehaviour:
   currentLevel: 0
   manaIcon: {fileID: 21300000, guid: bdbb8987d2a196e439930512a6e54db7, type: 3}
   costLinePrefab: {fileID: 2569726068507241836, guid: 46d4af10cb868c049aa8e847dfe827f1, type: 3}
+--- !u!1001 &2816586767533384798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4731179121687873164}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.024
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.014350176
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+      propertyPath: m_Name
+      value: AM_Flying_tower_LVL_3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+--- !u!4 &2349823201650525109 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8e916f29c2cd0648b0921aa351209ab, type: 3}
+  m_PrefabInstance: {fileID: 2816586767533384798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3132767047679619772
 PrefabInstance:
   m_ObjectHideFlags: 0
