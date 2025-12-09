@@ -80,6 +80,13 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         if(!foundSlot)
         {
             itemTransform.anchoredPosition = Vector3.zero;
+            if ( currItem != null)
+            {
+                ResourceManager.Instance.AddResource(currItem,1);
+                currItem = null;
+                UpdateSlotData();
+                
+            }
         }
 
         cg.blocksRaycasts = true;

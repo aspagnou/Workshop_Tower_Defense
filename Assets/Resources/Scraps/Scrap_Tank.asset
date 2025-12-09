@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86405562c22602f4e88d60df33a295ee, type: 3}
-  m_Name: Diamond
+  m_Name: Scrap_Tank
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 3625043607559282579, guid: fdedeaaf0a04eea418eca0b11148f58a, type: 3}
+  itemIcon: {fileID: 21300000, guid: 6e462f6cf7f954e4a99753c0ca912fc3, type: 3}
   itemName: diamond
-  amount: 5
+  amount: 6
   index: 3

@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 public class InventoryMemory : MonoBehaviour
 {
-    BaseTower linkedTower;
+    
     public List<GearSO> storedGears = new List<GearSO>();
-    void Start()
+    public BaseTower linkedTower; // sérialisable pour pouvoir assigner manuellement
+
+    void Awake()
     {
-        linkedTower = GetComponentInParent<BaseTower>();
+        if (linkedTower == null)
+            linkedTower = GetComponentInParent<BaseTower>();
     }
+
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void AddGear(GearSO gear)

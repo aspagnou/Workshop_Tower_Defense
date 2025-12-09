@@ -1,8 +1,9 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class BaseTower : MonoBehaviour
 {
@@ -15,14 +16,12 @@ public class BaseTower : MonoBehaviour
     [Header("Tower Price")]
     public int spawnCost = 100;
 
-    
-
-
     [Header("Base Tower Stats")]
     public float baseAttackDamage;
     public float baseRange;
     public float baseAttackSpeed;
     public float baseCriticalChance;
+    public float critMultiplier = 2f;
 
     [Header("Current Tower Stats")]
     public float currentAttackDamage;
@@ -33,6 +32,17 @@ public class BaseTower : MonoBehaviour
     public List<GearSO> equippedGears = new List<GearSO>();
     public TowerUpgrade towerUpgradeManager;
 
+    // Targeting
+    private Transform target;
+
+    // Attack cooldown
+    private float attackCooldown = 0f;
+
+    [SerializeField] private Transform pivot;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
+    private float rotationSpeed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,14 +50,12 @@ public class BaseTower : MonoBehaviour
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
         towerUpgradeManager =GetComponent<TowerUpgrade>();
         gridUI.SetActive(false);
+        RecalculateStats();
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     //----------------------------- GEAR EQUIP/UNEQUIP ------
     public void EquipGear(GearSO gear)
@@ -56,7 +64,7 @@ public class BaseTower : MonoBehaviour
 
         equippedGears.Add(gear);
         RecalculateStats();
-        Debug.Log("Gear équipé : " + gear.gearName);
+        Debug.Log("Gear Ã©quipÃ© : " + gear.gearName);
     }
 
     public void UnequipGear(GearSO gear)
@@ -65,7 +73,7 @@ public class BaseTower : MonoBehaviour
 
         equippedGears.Remove(gear);
         RecalculateStats();
-        Debug.Log("Gear retiré : " + gear.gearName);
+        Debug.Log("Gear retirÃ© : " + gear.gearName);
     }
 
     public void RecalculateStats()
@@ -74,6 +82,7 @@ public class BaseTower : MonoBehaviour
         currentAttackDamage = baseAttackDamage;
         currentRange = baseRange;
         currentAttackSpeed = baseAttackSpeed;
+        currentCriticalChance = baseCriticalChance;
 
         // application des bonus
         foreach (var gear in equippedGears)
@@ -90,7 +99,7 @@ public class BaseTower : MonoBehaviour
             currentAttackSpeed *= (1 + gear.percentAttackSpeed / 100);
         }
 
-        Debug.Log($"Stats recalculées : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
+        Debug.Log($"Stats recalculÃ©es : dmg={currentAttackDamage}, range={currentRange}, aspd={currentAttackSpeed}");
         UpdateStats();
     }
 
@@ -101,11 +110,11 @@ public class BaseTower : MonoBehaviour
         // 1. Changer le parent de la grille vers le canvas
         gridUI.transform.SetParent(mainCanvas.transform);
 
-        // 2. Récupérer le RectTransform de la grille et de l'objet de référence
+        // 2. RÃ©cupÃ©rer le RectTransform de la grille et de l'objet de rÃ©fÃ©rence
         RectTransform gridRectTransform = gridUI.GetComponent<RectTransform>();
         RectTransform referenceRectTransform = fixRectTransform;
 
-        // 3. Copier les propriétés du RectTransform de référence vers la grille
+        // 3. Copier les propriÃ©tÃ©s du RectTransform de rÃ©fÃ©rence vers la grille
         gridRectTransform.anchoredPosition = referenceRectTransform.anchoredPosition;
         gridRectTransform.sizeDelta = referenceRectTransform.sizeDelta;
         gridRectTransform.localRotation = referenceRectTransform.localRotation;
@@ -143,14 +152,14 @@ public class BaseTower : MonoBehaviour
         // Calcul des deltas
         float deltaDamage = currentAttackDamage - float.Parse(statLines[0].text);
         float deltaSpeed = currentAttackSpeed - float.Parse(statLines[1].text);
-        float deltaCrit = currentCriticalChance - float.Parse(statLines[2].text.Replace("%", ""));
+        float deltaCrit = currentCriticalChance - float.Parse(statLines[2].text);/*.Replace("%", ""));*/
         float deltaRange = currentRange - float.Parse(statLines[3].text);
 
-        // Met à jour les valeurs affichées
-        statLines[0].text = $"{currentAttackDamage}";
-        statLines[1].text = $"{currentAttackSpeed}";
-        statLines[2].text = $"{currentCriticalChance}%";
-        statLines[3].text = $"{currentRange}";
+        // Met Ã  jour les valeurs affichÃ©es
+        statLines[0].text = $"{currentAttackDamage:F0}";
+        statLines[1].text = $"{currentAttackSpeed:F1}";
+        statLines[2].text = $"{currentCriticalChance:F0}";
+        statLines[3].text = $"{currentRange:F0}";
 
         // Si un feedback existe, on l'affiche
         feedback[0]?.ShowChange(deltaDamage);
@@ -159,4 +168,107 @@ public class BaseTower : MonoBehaviour
         feedback[3]?.ShowChange(deltaRange);
     }
 
+    // ----------------------------------------------------
+    void Update()
+    {
+        FindTarget();
+
+        if (target != null)
+        {
+            AimAtTarget();
+            Shoot();
+        }
+    }
+
+    void FindTarget()
+    {
+        Enemy[] enemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+
+        float shortestDistance = Mathf.Infinity;
+        Enemy nearestEnemy = null;
+
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy == null)
+                continue;
+
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < shortestDistance && distance <= currentRange)
+            {
+                shortestDistance = distance;
+                nearestEnemy = enemy;
+            }
+        }
+
+        if (nearestEnemy != null)
+            target = nearestEnemy.transform;
+        else
+            target = null;
+    }
+
+
+    void AimAtTarget()
+    {
+        Vector3 direction = target.position - pivot.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        pivot.rotation = Quaternion.Lerp(pivot.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    }
+
+
+    void Shoot()
+    {
+        // Si pas de cible â†’ ne pas tirer
+        if (target == null) return;
+
+        // Gestion cooldown basÃ© sur attack speed
+        if (attackCooldown > 0f)
+        {
+            attackCooldown -= Time.deltaTime;
+            return;
+        }
+
+        // Calcul critique
+        bool isCrit = Random.value <= (currentCriticalChance / 100f);
+        float finalDamage = isCrit ? currentAttackDamage * critMultiplier : currentAttackDamage;
+
+        // Instancier projectile
+        Quaternion rot = Quaternion.LookRotation(target.position - firePoint.position);
+        SpawnProjectile(rot);
+
+        // Reset cooldown en fonction de la vitesse dâ€™attaque
+        attackCooldown = 1f / currentAttackSpeed;
+    }
+
+
+    void SpawnProjectile(Quaternion rotation)
+    {
+        //calcul critique
+        bool isCrit = Random.value <= (currentCriticalChance / 100f);
+        float finalDamage = isCrit ? currentAttackDamage * critMultiplier : currentAttackDamage;
+
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, rotation);
+
+        //For classical projectile
+        Projectile_classic pC = proj.GetComponent<Projectile_classic>();
+        if (pC != null)
+        {
+            pC.damage = finalDamage;
+            pC.isCritical = isCrit;
+        }
+        //For canon projectile
+        Projectile_Canon pCa = proj.GetComponent<Projectile_Canon>();
+        if (pCa != null)
+        {
+            pCa.damage = finalDamage;
+            pCa.isCritical = isCrit;
+        }
+
+        if (isCrit) Debug.Log("Crit" + finalDamage);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, currentRange);
+    }
 }
