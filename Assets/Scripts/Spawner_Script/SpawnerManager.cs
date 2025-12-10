@@ -6,9 +6,15 @@ using UnityEngine.Rendering;
 
 public class SpawnerManager : MonoBehaviour
 {
-    
+    public Nexus nexus;
+
     public Dictionary<EnemyType, int> totalEnemiesPerWave = new();
     public int totalSpawnedEnemiesPerWave;
+
+    //public Dictionary<EnemyType, int> totalEnemiesToKill = new();
+    //public int remainingEnemies;
+    public int totalEnemiesToKill;
+
     public int currentSpawnerIndex = 0;
     public int timeBetweenWaves;
     
@@ -18,6 +24,8 @@ public class SpawnerManager : MonoBehaviour
     void Start()
     {
         totalEnemiesPerWave[EnemyType.Global] = 0;
+
+        //totalEnemiesToKill[EnemyType.Global] = 0;
 
         Transform parent = spawnerManager.transform;
 
@@ -48,10 +56,15 @@ public class SpawnerManager : MonoBehaviour
                 if (totalEnemiesPerWave.ContainsKey(allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType))
                 {
                     totalEnemiesPerWave[allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType] += 1;
+
+                    //totalEnemiesToKill[allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType] += 1;
                 }
                 else
                 {
                     totalEnemiesPerWave[allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType] = 1;
+
+                    //totalEnemiesToKill[allWavesManager[i].waves[currentWaveIndex]._enemyList[j].enemyType] = 1;
+
                 }
 
                 totalEnemiesPerWave[EnemyType.Global] ++;
@@ -69,10 +82,10 @@ public class SpawnerManager : MonoBehaviour
         totalEnemiesPerWave[enemy.enemyType] -= 1;
         totalEnemiesPerWave[EnemyType.Global]--; 
 
-        foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
-        {
-            Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
-        }
+        //foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
+        //{
+        //    Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
+        //}
 
         if (totalEnemiesPerWave[EnemyType.Global] == 0 && currentSpawnerIndex < allWavesManager[0].waves.Length-1)
         {
@@ -84,14 +97,40 @@ public class SpawnerManager : MonoBehaviour
             }
         }
     }
-    
+
+    //public void RemoveEnemyToKill(Enemy enemy)
+    //{
+    //    totalEnemiesToKill[enemy.enemyType] -= 1;
+    //    totalEnemiesToKill[EnemyType.Global]--;
+
+    //    foreach (KeyValuePair<EnemyType, int> item in totalEnemiesToKill)
+    //    {
+    //        Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
+    //    }
+
+    //    if (totalEnemiesToKill[EnemyType.Global] == 0 && currentSpawnerIndex < allWavesManager[0].waves.Length - 1)
+    //    {
+    //        currentSpawnerIndex++;
+    //        CalculTotalEnemies(currentSpawnerIndex);
+    //        for (int i = 0; i < allWavesManager.Length; i++)
+    //        {
+    //            allWavesManager[i].StartNextWave(timeBetweenWaves);
+    //        }
+    //    }
+    //}
+
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (currentSpawnerIndex == 13 && ) //&& nexus life < 0
+        if (currentSpawnerIndex == 11 && totalEnemiesToKill == 0 && nexus.currentHealth > 0) //&& nexus life < 0
         {
             Debug.Log("Congrats");
         }
 
+        if (nexus.currentHealth <= 0)
+        {
+            Debug.Log("You suck");
+        }
     }
 }

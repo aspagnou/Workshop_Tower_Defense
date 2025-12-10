@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     [Header("Damage")]
     [SerializeField] public int lifePoints = 50;
     private int currentHealth;
-    [SerializeField] public float nexusDamage = 10;
+    [SerializeField] public int nexusDamage = 10;
     [SerializeField] private float timeToExplode = 2;
     
 
