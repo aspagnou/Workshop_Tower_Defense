@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="New recipe",menuName ="Item Manager/New Recipe")]
 public class RecipeSO : ScriptableObject
 {
+    public int tier;
     public ItemSO[] topRow = new ItemSO[3];
     public ItemSO[] midRow = new ItemSO[3];
     public ItemSO[] bottomRow = new ItemSO[3];

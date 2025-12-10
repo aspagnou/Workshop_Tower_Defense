@@ -33,12 +33,12 @@ public class StatChangeFeedback : MonoBehaviour
 
         if (delta > 0)
         {
-            txt.text = $"+{delta}";
+            txt.text = $"+{delta:F1}";  // <- 1 chiffre après la virgule
             txt.color = Color.green;
         }
         else if (delta < 0)
         {
-            txt.text = $"{delta}";
+            txt.text = $"{delta:F1}";   // <- 1 chiffre après la virgule
             txt.color = Color.red;
         }
         else
@@ -48,7 +48,6 @@ public class StatChangeFeedback : MonoBehaviour
         }
 
         float timer = 0f;
-        //Vector3 startPos = txt.rectTransform.localPosition;
 
         while (timer < duration)
         {
@@ -59,12 +58,10 @@ public class StatChangeFeedback : MonoBehaviour
             c.a = 1f - t;
             txt.color = c;
 
-            //txt.rectTransform.localPosition = startPos + Vector3.up * (moveUpAmount * t);
-
             yield return null;
         }
 
         txt.enabled = false;
-        //txt.rectTransform.localPosition = startPos;
     }
+
 }

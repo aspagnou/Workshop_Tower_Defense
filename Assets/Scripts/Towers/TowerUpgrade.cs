@@ -15,6 +15,7 @@ public class TowerUpgrade : MonoBehaviour
     
     [SerializeField] Sprite manaIcon;
     [SerializeField] GameObject costLinePrefab;
+    
 
     private GameObject manaCostLine;
     private Transform lineSpawnTransform;
@@ -46,7 +47,7 @@ public class TowerUpgrade : MonoBehaviour
         // Vérifie que le niveau est valide
         if (level < 0 || level >= upgradeLevels.Length)
         {
-            Debug.LogError("Niveau d'upgrade invalide.");
+            
             return;
         }
 
@@ -123,7 +124,7 @@ public class TowerUpgrade : MonoBehaviour
     {
         if (currentLevel < 0 || currentLevel >= upgradeLevels.Length)
         {
-            Debug.LogError("Niveau d'upgrade invalide.");
+            //Debug.LogError("Niveau d'upgrade invalide.");
             return;
         }
 
@@ -178,7 +179,7 @@ public class TowerUpgrade : MonoBehaviour
 
     public void ConfirmUpgrade()
     {
-        // Vérifie que le niveau est valide
+        //Vérifie que le niveau est valide
         if (currentLevel < 0 || currentLevel >= upgradeLevels.Length)
         {
             Debug.LogError("Niveau d'upgrade invalide.");
@@ -211,6 +212,7 @@ public class TowerUpgrade : MonoBehaviour
 
         // Passe au niveau suivant
         currentLevel++;
+        Debug.Log("Upgrade successful to level " + currentLevel);
         sellAmount += 50;
         ItemGrid grid = Clicker.Instance.currentSelectedTower.itemGrid;
         if (grid!= null)

@@ -21,12 +21,12 @@ public class UI_Manager : MonoBehaviour
     // Dictionnaire pour stocker les icônes instanciées par type de ressource
     private Dictionary<int, List<GameObject>> spawnedIcons = new Dictionary<int, List<GameObject>>();
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
         HideGearMenu();
         HideCraftMenu();
-        
+
         // Initialiser le dictionnaire
         for (int i = 0; i < ressourceIcon.Length; i++)
         {
@@ -74,7 +74,7 @@ public class UI_Manager : MonoBehaviour
     // Affiche ou masque le menu d'artisanat
     public void ShowCraftMenu()
     {
-        Debug.Log("Jactive");
+        //Debug.Log("Jactive");
         craftMenu.SetActive(true);
     }
 

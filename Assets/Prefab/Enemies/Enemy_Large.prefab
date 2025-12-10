@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2538855332913698566}
   - component: {fileID: 5734749554589003491}
   - component: {fileID: 2815669147154018819}
-  - component: {fileID: 3389108944404496488}
-  m_Layer: 6
+  - component: {fileID: -441973373468182913}
+  m_Layer: 7
   m_Name: Enemy_Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}
+  deathScrap: {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
   nbreMana: 50
   layers:
     serializedVersion: 2
@@ -138,7 +139,8 @@ MonoBehaviour:
   lifePoints: 50
   nexusDamage: 10
   timeToExplode: 4
---- !u!54 &3389108944404496488
+  damageTextPrefab: {fileID: 790610433474755077, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
+--- !u!54 &-441973373468182913
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +159,11 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

@@ -1,4 +1,4 @@
-using TMPro;
+Ôªøusing TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +6,7 @@ public class TowerSelectMenuManager : MonoBehaviour
 {
     public static TowerSelectMenuManager Instance;
     ItemGrid saveGrid;
+
     [Header("SelectMenu")]
     public GameObject towerSelectPanel;
     public Camera cam;
@@ -13,91 +14,83 @@ public class TowerSelectMenuManager : MonoBehaviour
     public Vector3 worldOffset = new Vector3(0, 2f, 0);
     public bool IsTowerMenuOpen => towerSelectPanel.activeSelf;
 
-    
-
     [Header("Upgrade Menu")]
     public GameObject upGradeMenu;
     private BaseTower currentlySelectedTower;
     private TowerUpgrade upgradeManager;
     private InventoryControler inventoryControler;
+    public GameObject maxLevelPanel;
 
-    [Space (10)]
-    [Header("SlotMenu")] 
+    [Space(10)]
+    [Header("SlotMenu")]
     public GameObject slotSelectPanel;
     public Vector3 slotWorldOffset = new Vector3(0, 2f, 0);
     private TowerSlot currentlySelectedTowerSlot;
     public TMP_Text[] slotCostTexts;
     public GameObject[] towerPrefabs;
-    public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
+    [SerializeField] GameObject slotPrefab;
 
-    
+    public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
 
     void Awake()
     {
         Instance = this;
         towerSelectPanel.SetActive(false);
         slotSelectPanel.SetActive(false);
-        inventoryControler =FindAnyObjectByType<InventoryControler>();
-        saveGrid= GameObject.FindWithTag("FixGridSpawn").GetComponent<ItemGrid>();
+        inventoryControler = FindAnyObjectByType<InventoryControler>();
+        saveGrid = GameObject.FindWithTag("FixGridSpawn").GetComponent<ItemGrid>();
+        HideUpgradeMenu();
     }
 
-    // Slot Menu
-    public void ShowSlotTowerMenu(TowerSlot towerSlot) 
+    // Slot Menu -------------------------------------------------------------------
+    public void ShowSlotTowerMenu(TowerSlot towerSlot)
     {
         currentlySelectedTowerSlot = towerSlot;
         Vector3 worldPos = towerSlot.transform.position;
-        worldPos += slotWorldOffset; // Ajuste la hauteur selon ta scËne
+        worldPos += slotWorldOffset;
 
         slotSelectPanel.transform.position = worldPos;
         slotSelectPanel.transform.LookAt(cam.transform);
         slotSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
         slotSelectPanel.SetActive(true);
+
         currentlySelectedTowerSlot.UpdateCostText();
-        // On s'abonne AU MOMENT o˘ le menu apparaÓt
+
         ResourceManager.Instance.OnManaChanged += UI_Manager.Instance.UpdateSlotColorText;
-
-        // On force une mise ‡ jour immÈdiate
         UI_Manager.Instance.UpdateSlotColorText(ResourceManager.Instance.mana);
-        HideTowerSelectMenu();
 
+        HideTowerSelectMenu();
     }
-    public void HideSlotTowerMenu() 
+
+    public void HideSlotTowerMenu()
     {
         slotSelectPanel.SetActive(false);
         ResourceManager.Instance.OnManaChanged -= UI_Manager.Instance.UpdateSlotColorText;
         currentlySelectedTowerSlot = null;
     }
 
-   
-    // Tower Select Menu
+    // Tower Select Menu -----------------------------------------------------------
     public void ShowTowerSelectMenu(BaseTower tower)
     {
         currentlySelectedTower = tower;
 
-        // Position de base = position de la tour
-        Vector3 worldPos = tower.transform.position;
+        Vector3 worldPos = tower.transform.position + worldOffset;
 
-        // Offset vertical (en unitÈs monde)
-        worldPos += worldOffset; // Ajuste la hauteur selon ta scËne
-
-        // Appliquer la position au panel
         towerSelectPanel.transform.position = worldPos;
-
-        // Toujours orienter le panel vers la camÈra
         towerSelectPanel.transform.LookAt(cam.transform);
         towerSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
 
-        // Activer le panel
         towerSelectPanel.SetActive(true);
         HideSlotTowerMenu();
     }
+
     public void HideTowerSelectMenu()
     {
         towerSelectPanel.SetActive(false);
         currentlySelectedTower = null;
     }
 
-    // Upgrade Menu
+    // Upgrade Menu ----------------------------------------------------------------
     public void ShowUpgradeMenu()
     {
         if (Clicker.Instance.currentSelectedTower != null)
@@ -105,50 +98,70 @@ public class TowerSelectMenuManager : MonoBehaviour
             upGradeMenu.SetActive(true);
             currentlySelectedTower = Clicker.Instance.currentSelectedTower;
             upgradeManager = currentlySelectedTower.towerUpgradeManager;
+
             upgradeManager.Show(upgradeManager.currentLevel);
             Clicker.Instance.isUpgradeOpen = true;
+
+            // V√©rifie si on est au niveau max
+            maxLevelPanel.SetActive(upgradeManager.currentLevel >= 2);
         }
     }
+
     public void HideUpgradeMenu()
     {
         upGradeMenu.SetActive(false);
         Clicker.Instance.isUpgradeOpen = false;
     }
-    public void ConfirmUpgrade() 
+
+    public void ConfirmUpgrade()
     {
         Clicker.Instance.currentSelectedTower = currentlySelectedTower;
         upgradeManager = currentlySelectedTower.towerUpgradeManager;
+
         upgradeManager.ConfirmUpgrade();
+
+        // üî• Mise √† jour imm√©diate apr√®s l'am√©lioration
+        maxLevelPanel.SetActive(upgradeManager.currentLevel >= 2);
+
+        // R√©affiche les co√ªts mis √† jour si pas encore au max
+        if (upgradeManager.currentLevel < upgradeManager.upgradeLevels.Length)
+            upgradeManager.Show(upgradeManager.currentLevel);
     }
 
-    // Sell Tower
-    public void SellTower() 
+    // Sell Tower ------------------------------------------------------------------
+    public void SellTower()
     {
         InventoryMemory gearInventory = Clicker.Instance.currentSelectedTower.inventoryMemory;
         TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.GetComponent<TowerUpgrade>();
-        if (towerUpgrade != null) 
+
+        Instantiate(slotPrefab, towerUpgrade.gameObject.transform.position, Quaternion.identity);
+
+        if (towerUpgrade != null)
         {
             ResourceManager.Instance.AddMana(towerUpgrade.sellAmount);
-            foreach(GearSO gear in gearInventory.storedGears) 
+
+            foreach (GearSO gear in gearInventory.storedGears)
             {
                 inventoryControler.RetrieveGear(gear);
                 inventoryControler.inventoryHighlight.SetParent(saveGrid);
-                
             }
+
             Clicker.Instance.DeselectTower();
             Destroy(towerUpgrade.gameObject);
         }
     }
-    
-    // SpawnTower
-    public void SpawnTowerFromSlot(int i) 
+
+    // Spawn Tower From Slot -------------------------------------------------------
+    public void SpawnTowerFromSlot(int i)
     {
         Clicker.Instance.currentSelectedTowerSlot.SpawnTower(i);
     }
+
     public bool IsCurrentSlot(TowerSlot slot)
     {
         return currentlySelectedTowerSlot == slot;
     }
+
     public bool IsCurrentTower(BaseTower tower)
     {
         return currentlySelectedTower == tower;

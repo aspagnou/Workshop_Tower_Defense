@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -7,17 +6,15 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public ItemSO currItem;
-    
+
     public Image itemImage;
     public RectTransform itemTransform;
 
     private CanvasGroup cg;
     public Canvas canvas;
 
-    
-    
+    private bool hasDragged = false; // <--- AJOUTÉ
 
-    // Start is called before the first frame update
     void Start()
     {
         cg = GetComponent<CanvasGroup>();
@@ -29,7 +26,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         if (currItem != null)
         {
             itemImage.sprite = currItem.itemIcon;
-            // Réinitialiser l'alpha à 1 si un item est présent
             Color newColor = itemImage.color;
             newColor.a = 1f;
             itemImage.color = newColor;
@@ -37,7 +33,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         else
         {
             itemImage.sprite = null;
-            // Mettre l'alpha à 0 si aucun item n'est présent
             Color newColor = itemImage.color;
             newColor.a = 0f;
             itemImage.color = newColor;
@@ -45,24 +40,31 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         itemTransform.anchoredPosition = Vector3.zero;
     }
 
-
     public void OnPointerDown(PointerEventData eventData)
     {
+        hasDragged = false; // <--- RESET
         cg.blocksRaycasts = false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        cg.blocksRaycasts = true;
+
+        // 🔒 Si on n’a pas bougé → simple clic → on ne supprime pas
+        if (!hasDragged)
+        {
+            itemTransform.anchoredPosition = Vector3.zero;
+            return;
+        }
+
         bool foundSlot = false;
 
-        foreach(GameObject overObj in eventData.hovered)
+        foreach (GameObject overObj in eventData.hovered)
         {
-            if(overObj != gameObject)
+            if (overObj != gameObject)
             {
-                if (overObj.GetComponent<ItemSlot>())
+                if (overObj.TryGetComponent<ItemSlot>(out ItemSlot itemSlot))
                 {
-                    ItemSlot itemSlot = overObj.GetComponent<ItemSlot>();
-
                     ItemSO prevItem = currItem;
 
                     currItem = itemSlot.currItem;
@@ -77,18 +79,25 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
             }
         }
 
-        if(!foundSlot)
+        if (!foundSlot)
         {
+            // ❌ Drag + drop hors d’un slot → supprimer l’item
             itemTransform.anchoredPosition = Vector3.zero;
-        }
 
-        cg.blocksRaycasts = true;
+            if (currItem != null)
+            {
+                ResourceManager.Instance.AddResource(currItem, 1);
+                currItem = null;
+                UpdateSlotData();
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (currItem != null)
         {
+            hasDragged = true; // <--- IMPORTANT
             itemTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
     }

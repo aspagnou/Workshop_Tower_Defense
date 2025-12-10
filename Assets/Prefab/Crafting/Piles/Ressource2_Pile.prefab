@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1166240007979839307, guid: 863644859b57c684aa24caeb46e3cbe2, type: 3}
       propertyPath: m_Name
-      value: Ressource2_Pile Variant
+      value: Ressource2_Pile
       objectReference: {fileID: 0}
     - target: {fileID: 7104936194188025266, guid: 863644859b57c684aa24caeb46e3cbe2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f559527a4571236419c09226a6cde1e1, type: 3}
+      objectReference: {fileID: 21300000, guid: 65c56baefb6b7c54694f4be4a6eb66a6, type: 3}
     - target: {fileID: 7104936194188025266, guid: 863644859b57c684aa24caeb46e3cbe2, type: 3}
       propertyPath: m_Color.b
       value: 1

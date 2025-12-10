@@ -52,7 +52,7 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(inventoryItem + " touché ");
+        //Debug.Log(inventoryItem + " touché ");
         timer = 0;
         hasMouse = true;
     }
