@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c53ea9b1ce76ad48a158cf81531e758, type: 3}
-  m_Name: Engrenage2
+  m_Name: T1_Gear1
   m_EditorClassIdentifier: 
+  tier: 1
   topRow:
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   midRow:
-  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   - {fileID: 0}
   bottomRow:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  output: {fileID: 11400000, guid: 78486320688d48749b8e108d0e906e63, type: 2}
+  - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+  output: {fileID: 11400000, guid: 8da8df1b57c5e024dafa785513d63f96, type: 2}

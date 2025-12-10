@@ -48,7 +48,7 @@ public class Projectile_Canon : MonoBehaviour
         foreach (Collider hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && enemy.enemyType != EnemyType.Flying)
             {
                 enemy.TakeDamage(Mathf.RoundToInt(damage));
             }

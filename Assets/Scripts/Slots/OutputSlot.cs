@@ -15,7 +15,7 @@ public class OutputSlot : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
 
     public Canvas canvas;
     private float lastClickTime = 0f;
-    [SerializeField] private float doubleClickTimeThreshold = 0.3f;
+    //[SerializeField] private float doubleClickTimeThreshold = 0.3f;
 
     void Start()
     {
@@ -90,17 +90,14 @@ public class OutputSlot : MonoBehaviour,  IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (Time.time - lastClickTime < doubleClickTimeThreshold)
+        if (currGear != null && !gearManager.IsFullGear())
         {
-            //Debug.Log("Double-clic détecté ! + current gear "+currGear);
-            if (currGear != null && !gearManager.IsFullGear())
-            {
-                gearManager.AddGear(currGear);
-                currGear = null;
-                resourceManager.ClearSlots();
-                UpdateSlotData();
-            }
+            gearManager.AddGear(currGear);
+            currGear = null;
+            resourceManager.ClearSlots();
+            UpdateSlotData();
         }
+        
         lastClickTime = Time.time;
     }
 

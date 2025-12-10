@@ -108,6 +108,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}
+  deathScrap: {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
   nbreMana: 20
   layers:
     serializedVersion: 2
@@ -115,6 +116,7 @@ MonoBehaviour:
   lifePoints: 50
   nexusDamage: 10
   timeToExplode: 2
+  damageTextPrefab: {fileID: 790610433474755077, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
 --- !u!65 &995332826180663805
 BoxCollider:
   m_ObjectHideFlags: 0
