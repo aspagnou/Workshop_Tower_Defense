@@ -247,7 +247,7 @@ public class BaseTower : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < shortestDistance && distance <= currentRange)
                 {
-                    Debug.Log("Ground Enemy found within range");
+                    //Debug.Log("Ground Enemy found within range");
                     shortestDistance = distance;
                     nearestEnemy = enemy;
                 }
@@ -256,7 +256,7 @@ public class BaseTower : MonoBehaviour
                 target = nearestEnemy.transform;
             else
                 target = null;
-            Debug.Log("No ground enemy in range");
+            //Debug.Log("No ground enemy in range");
             return;
 
         }
@@ -278,7 +278,7 @@ public class BaseTower : MonoBehaviour
                     float distance = Vector3.Distance(transform.position, airEnemy.transform.position);
                     if (distance < shortestDistance && distance <= currentRange)
                     {
-                        Debug.Log("Aerial Enemy found within range");
+                        //Debug.Log("Aerial Enemy found within range");
                         shortestDistance = distance;
                         nearestEnemy = enemy;
                     }
@@ -287,7 +287,7 @@ public class BaseTower : MonoBehaviour
                     target = nearestEnemy.transform;
                 else
                     target = null;
-                Debug.Log("No Air enemy in range");
+                //Debug.Log("No Air enemy in range");
                 return;
 
             }

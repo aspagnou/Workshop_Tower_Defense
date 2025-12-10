@@ -153,14 +153,14 @@ public class Clicker : MonoBehaviour
             currentSelectedTower.inventoryMemory.DisplayInventory();
             ui_Manager.ShowGearMenu();
         }
-        // Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille était ouverte
+        //Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille était ouverte
         if (isGridOpen)
         {
             currentSelectedTower.ShowGrid();
             currentSelectedTower.inventoryMemory.DisplayInventory();
             ui_Manager.ShowGearMenu();
         }
-        
+
 
         // Ouvrir automatiquement le menu d'upgrade de la nouvelle tour seulement si le menu d'upgrade était ouvert
         if (isUpgradeOpen)

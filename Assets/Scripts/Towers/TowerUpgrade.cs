@@ -8,6 +8,9 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class TowerUpgrade : MonoBehaviour
 {
+    [Header("Upgrade Button")]
+    public CanvasGroup upgradeButtonCG;
+
     [Header("Upgrade Levels")]
     public UpgradeLevel[] upgradeLevels;
     public int sellAmount = 100;
@@ -16,7 +19,7 @@ public class TowerUpgrade : MonoBehaviour
     [SerializeField] Sprite manaIcon;
     [SerializeField] GameObject costLinePrefab;
     
-
+    public bool canUpgrade = false;
     private GameObject manaCostLine;
     private Transform lineSpawnTransform;
     private Clicker clicker;
@@ -29,11 +32,14 @@ public class TowerUpgrade : MonoBehaviour
     {
         clicker = FindAnyObjectByType<Clicker>();
         lineSpawnTransform = GameObject.FindWithTag("CostContainer").transform.GetChild(0).GetChild(0);
+       
     }
 
     public void Show(int level)
     {
         currentLevel = level;
+        
+
 
         // Supprime les anciennes lignes (si elles existent)
         foreach (Transform child in lineSpawnTransform)
@@ -57,6 +63,7 @@ public class TowerUpgrade : MonoBehaviour
             AddCostLine(upgradeLevels[level].scraps[i].itemIcon, upgradeLevels[level].costs[i], upgradeLevels[level].scraps[i].index);
         }
         AddManaCostLine(level);
+        UpdateUpgradeButtonState();
 
     }
 
@@ -119,6 +126,28 @@ public class TowerUpgrade : MonoBehaviour
         // Ajoute la ligne à la liste
         costLines.Add(statLine);
     }
+    public void UpdateUpgradeButtonState()
+    {
+        upgradeButtonCG = TowerSelectMenuManager.Instance.upgradeConfirmButtonCanvasGroup;
+        if (upgradeButtonCG == null) 
+        { 
+            Debug.LogError("Upgrade Button CanvasGroup is not assigned.");
+            return; 
+        }
+
+        if (CanUpgrade())
+        {
+            //Debug.Log("Can upgrade");
+            upgradeButtonCG.alpha = 1f;
+            
+        }
+        else
+        {
+            //ebug.Log("Cannot upgrade");
+            upgradeButtonCG.alpha = 0.7f;
+      
+        }
+    }
 
     public void UpdateCostLineColors()
     {
@@ -156,6 +185,8 @@ public class TowerUpgrade : MonoBehaviour
                     }
                 }
             }
+            
+
         }
 
         // Mettre à jour la couleur de la ligne de coût du mana
@@ -175,7 +206,32 @@ public class TowerUpgrade : MonoBehaviour
                 }
             }
         }
+        UpdateUpgradeButtonState();
     }
+
+    public bool CanUpgrade()
+    {
+        if ( currentLevel < 0 || currentLevel >= upgradeLevels.Length)
+        {
+            return false;
+        }
+        // Vérifie scraps
+        for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
+        {
+            int required = upgradeLevels[currentLevel].costs[i];
+            int available = ResourceManager.Instance.scraps[upgradeLevels[currentLevel].scraps[i].index].amount;
+
+            if (available < required)
+                return false;
+        }
+
+        // Vérifie mana
+        if (ResourceManager.Instance.mana < upgradeLevels[currentLevel].manaCost)
+            return false;
+
+        return true;
+    }
+
 
     public void ConfirmUpgrade()
     {

@@ -20,6 +20,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     private TowerUpgrade upgradeManager;
     private InventoryControler inventoryControler;
     public GameObject maxLevelPanel;
+    public CanvasGroup upgradeConfirmButtonCanvasGroup;
 
     [Space(10)]
     [Header("SlotMenu")]
@@ -110,6 +111,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     public void HideUpgradeMenu()
     {
         upGradeMenu.SetActive(false);
+        maxLevelPanel.SetActive(false);
         Clicker.Instance.isUpgradeOpen = false;
     }
 
@@ -126,6 +128,11 @@ public class TowerSelectMenuManager : MonoBehaviour
         // Réaffiche les coûts mis à jour si pas encore au max
         if (upgradeManager.currentLevel < upgradeManager.upgradeLevels.Length)
             upgradeManager.Show(upgradeManager.currentLevel);
+    }
+
+    public void UpdateUpgradeButton()
+    {
+        upgradeManager.UpdateUpgradeButtonState();
     }
 
     // Sell Tower ------------------------------------------------------------------

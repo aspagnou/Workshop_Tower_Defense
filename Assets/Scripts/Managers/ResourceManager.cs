@@ -54,7 +54,11 @@ public class ResourceManager : MonoBehaviour
         // Met à jour les couleurs des lignes de coût
         if (Clicker.Instance.currentSelectedTower != null)
         {
-            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+            
+            TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.towerUpgradeManager;
+            towerUpgrade.UpdateCostLineColors();
+            towerUpgrade.UpdateUpgradeButtonState();
+
         }
     }
 
@@ -81,8 +85,10 @@ public class ResourceManager : MonoBehaviour
         DispatchManaChanged();
         if (Clicker.Instance.currentSelectedTower != null)
         {
-            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
-            
+            TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.towerUpgradeManager;
+            towerUpgrade.UpdateCostLineColors();
+            towerUpgrade.UpdateUpgradeButtonState();
+
         }
     }
 
@@ -94,7 +100,9 @@ public class ResourceManager : MonoBehaviour
         DispatchManaChanged();
         if (Clicker.Instance.currentSelectedTower != null)
         {
-            Clicker.Instance.currentSelectedTower.towerUpgradeManager.UpdateCostLineColors();
+            TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.towerUpgradeManager;
+            towerUpgrade.UpdateCostLineColors();
+            towerUpgrade.UpdateUpgradeButtonState();
         }
     }
     private void DispatchManaChanged()
