@@ -108,7 +108,6 @@ public class Wave : MonoBehaviour
             spawnInterval = enemyCandidate.timeToSpawn;
             enemiesSpawned++;
             spawnerManager.totalSpawnedEnemiesPerWave++;
-            
         }
 
 

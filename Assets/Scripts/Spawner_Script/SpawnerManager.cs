@@ -88,7 +88,7 @@ public class SpawnerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentSpawnerIndex == 13)
+        if (currentSpawnerIndex == 13 && ) //&& nexus life < 0
         {
             Debug.Log("Congrats");
         }
