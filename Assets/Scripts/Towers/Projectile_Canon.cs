@@ -5,7 +5,7 @@ public class Projectile_Canon : MonoBehaviour
     public float speed = 20f;
     public float lifeTime = 3f;
 
-    public float explosionRadius = 3f;
+    public float explosionRadius = 3.5f;
     public float damage = 10f;
 
     public bool isCritical = false;
@@ -14,6 +14,9 @@ public class Projectile_Canon : MonoBehaviour
     [Header("Explosion Indicator")]
     public GameObject explosionIndicatorPrefab;
     public float indicatorDuration = 0.5f;
+
+    [Header("VFX & SFX")]
+    public GameObject explosionVFXPrefab;
 
     void Start()
     {
@@ -44,7 +47,8 @@ public class Projectile_Canon : MonoBehaviour
         ShowExplosionIndicator();
 
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
-
+        GameObject explosionVFX = Instantiate(explosionVFXPrefab, transform.position, Quaternion.identity);
+        Destroy(explosionVFX, 3f);
         foreach (Collider hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
