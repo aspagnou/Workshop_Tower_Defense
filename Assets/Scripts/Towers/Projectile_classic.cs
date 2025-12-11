@@ -26,7 +26,8 @@ public class Projectile_classic : MonoBehaviour
         if (target != null && target.enemyType != EnemyType.Flying)
         {
             Debug.Log("Arrow hit enemy, dealing " + damage + " damage.");
-            target.TakeDamage(Mathf.RoundToInt(damage));
+            target.TakeDamage(Mathf.RoundToInt(damage), isCritical);
+
             Destroy(gameObject);
         }
     }

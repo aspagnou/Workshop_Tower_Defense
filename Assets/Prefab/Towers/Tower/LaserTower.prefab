@@ -305,7 +305,7 @@ MonoBehaviour:
   equippedGears: []
   towerUpgradeManager: {fileID: 0}
   target: {fileID: 0}
-  pivot: {fileID: 4731179121687873164}
+  pivot: {fileID: 111154397041560662}
   projectilePrefab: {fileID: 3037506940108726906, guid: 7fdc64077ee3cb44482127c4d2bfbb49, type: 3}
   firePoint: {fileID: 8459278485861560056}
   rotationSpeed: 0.5

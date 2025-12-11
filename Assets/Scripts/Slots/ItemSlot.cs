@@ -14,6 +14,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
     public Canvas canvas;
 
     private bool hasDragged = false; // <--- AJOUTÉ
+    public bool isPreviewSlot = false;
 
     void Start()
     {
@@ -26,19 +27,28 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         if (currItem != null)
         {
             itemImage.sprite = currItem.itemIcon;
+
             Color newColor = itemImage.color;
-            newColor.a = 1f;
+
+            if (isPreviewSlot)
+                newColor.a = 0.5f;      // Preview = semi-transparent
+            else
+                newColor.a = 1f;        // Normal slots = opaque
+
             itemImage.color = newColor;
         }
         else
         {
             itemImage.sprite = null;
             Color newColor = itemImage.color;
-            newColor.a = 0f;
+
+            newColor.a = 0f;            // Invisible si vide
             itemImage.color = newColor;
         }
+
         itemTransform.anchoredPosition = Vector3.zero;
     }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {

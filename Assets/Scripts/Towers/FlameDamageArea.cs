@@ -38,7 +38,7 @@ public class FlameDamageArea : MonoBehaviour
             else
                 Debug.Log($"FlameDamageArea deals {finalDamage} dmg");
 
-            //e.TakeDamage(finalDamage);
+            e.TakeDamage(finalDamage, isCrit);
         }
     }
 }

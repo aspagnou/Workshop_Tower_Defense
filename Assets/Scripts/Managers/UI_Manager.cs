@@ -25,6 +25,7 @@ public class UI_Manager : MonoBehaviour
     private Vector2 craftMenuClosedPos;
     private Vector2 craftMenuOpenPos;
     private Coroutine slideRoutine;
+    [SerializeField ]private AiguilleCraft[] aiguilleCrafts;
 
     // Dictionnaire pour stocker les icônes instanciées par type de ressource
     private Dictionary<int, List<GameObject>> spawnedIcons = new Dictionary<int, List<GameObject>>();
@@ -41,12 +42,16 @@ public class UI_Manager : MonoBehaviour
 
         craftMenuRect.anchoredPosition = craftMenuClosedPos; // Start hidden
         HideCraftMenu();
-
+        foreach(AiguilleCraft aiguille in aiguilleCrafts)
+        {
+            aiguille.TogglePosition();
+        }
         // Initialiser le dictionnaire
         for (int i = 0; i < ressourceIcon.Length; i++)
         {
             spawnedIcons[i] = new List<GameObject>();
         }
+        
     }
 
     public void SpawnResource(int index)
@@ -87,10 +92,28 @@ public class UI_Manager : MonoBehaviour
     }
 
     // Affiche ou masque le menu d'artisanat
+    public void ToggleCraftMenu()
+    {
+        if (craftMenu.activeSelf)
+        {
+            HideCraftMenu();
+        }
+        else
+        {
+            ShowCraftMenu();
+            Debug.Log("Craft Menu Shown");
+        }
+    }
     public void ShowCraftMenu()
     {
         if (slideRoutine != null) StopCoroutine(slideRoutine);
         slideRoutine = StartCoroutine(SlideMenu(true));
+
+        
+        foreach (AiguilleCraft aiguille in aiguilleCrafts)
+        {
+            aiguille.TogglePosition();
+        }
     }
 
     public void HideCraftMenu()
@@ -103,6 +126,11 @@ public class UI_Manager : MonoBehaviour
 
         if (slideRoutine != null) StopCoroutine(slideRoutine);
         slideRoutine = StartCoroutine(SlideMenu(false));
+        
+        foreach (AiguilleCraft aiguille in aiguilleCrafts)
+        {
+            aiguille.TogglePosition();
+        }
     }
 
 
@@ -173,14 +201,7 @@ public class UI_Manager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if ( craftMenu.activeSelf)
-            {
-                HideCraftMenu();
-            }
-            else
-            {
-                ShowCraftMenu();
-            }
+           ToggleCraftMenu();
         }
         
     }

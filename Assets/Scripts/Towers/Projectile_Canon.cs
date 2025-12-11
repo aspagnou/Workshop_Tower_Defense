@@ -50,7 +50,7 @@ public class Projectile_Canon : MonoBehaviour
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy != null && enemy.enemyType != EnemyType.Flying)
             {
-                enemy.TakeDamage(Mathf.RoundToInt(damage));
+                enemy.TakeDamage(Mathf.RoundToInt(damage),isCritical);
             }
         }
 

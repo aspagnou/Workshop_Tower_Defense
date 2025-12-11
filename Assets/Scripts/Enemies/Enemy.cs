@@ -109,22 +109,23 @@ public class Enemy : MonoBehaviour
     
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, bool isCrit = false)
     {
         currentHealth -= amount;
-        ShowDamage(amount);
+        ShowDamage(amount, isCrit);
 
-        if (currentHealth <= 0) 
+        if (currentHealth <= 0)
         {
             ResourceManager.Instance.AddMana((int)nbreMana);
             ResourceManager.Instance.AddResource(deathScrap, 1);
+
             if (deathScrap != null)
-            {
                 FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap);
-            }
+
             Destroy(gameObject);
         }
     }
+
     public Color DamageToColor(float dmg, float maxDmg)
     {
         float t = Mathf.Clamp01(dmg / maxDmg);
@@ -135,19 +136,30 @@ public class Enemy : MonoBehaviour
         return Color.Lerp(new Color(1f, 0.5f, 0f), Color.red, (t - 0.66f) * 3);
     }
 
-    public void ShowDamage(float amount)
+    public void ShowDamage(float amount, bool isCrit = false)
     {
-        float maxDamage = 80f; // Ajuste selon ton jeu
+        float maxDamage = 80f;
 
-        // Couleur dynamique
-        Color dmgColor = DamageToColor(amount, maxDamage);
+        Color dmgColor;
+        float scale;
 
-        // Taille dynamique
-        float minScale = 1f;
-        float maxScale = 2f;
+        if (isCrit)
+        {
+            // 💥 CRIT STYLE — Violet + Plus Gros
+            dmgColor = new Color(0.8f, 0.2f, 1f); // Violet flashy
+            scale = 2.2f; // Toujours plus gros qu’un non-crit
+        }
+        else
+        {
+            // 🎨 Couleur dynamique normale
+            dmgColor = DamageToColor(amount, maxDamage);
 
-        float t = Mathf.Clamp01(amount / maxDamage);
-        float scale = Mathf.Lerp(minScale, maxScale, t);
+            float minScale = 1f;
+            float maxScale = 2f;
+
+            float t = Mathf.Clamp01(amount / maxDamage);
+            scale = Mathf.Lerp(minScale, maxScale, t);
+        }
 
         FlyingTextManager.Instance.SpawnText(
             transform.position,
@@ -156,6 +168,7 @@ public class Enemy : MonoBehaviour
             scale
         );
     }
+
 
 
 
