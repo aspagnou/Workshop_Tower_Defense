@@ -40,10 +40,10 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] public int lifePoints = 50;
     private float currentHealth;
-    [SerializeField] public float nexusDamage = 10;
+    [SerializeField] public int nexusDamage = 10;
     [SerializeField] private float timeToExplode = 2;
     public GameObject damageTextPrefab;
-    
+    public bool canDamageNexus = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,8 +100,9 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator StopAndApplyDamageToBase()
-    {
+    {   
         yield return new WaitForSeconds(timeToExplode);
+        canDamageNexus = true;
         nbreMana = 0;
         Destroy(gameObject);
 

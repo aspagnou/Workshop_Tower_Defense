@@ -86,9 +86,15 @@ public class Wave : MonoBehaviour
     private void OneEnemyIsDead(Enemy deadEn)
     {
 
-        spawnerManager.nexus.NexusDamaged(deadEn.nexusDamage);
+        
         spawnerManager.totalEnemiesToKill--;
         //manager.totalMana += deadEn.nbreMana;
+
+        if (deadEn.canDamageNexus == true)
+        {
+            spawnerManager.nexus.NexusDamaged(deadEn.nexusDamage);
+            deadEn.nbreMana = 0;
+        }
        
     }
 

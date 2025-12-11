@@ -138,8 +138,9 @@ MonoBehaviour:
     m_Bits: 0
   lifePoints: 50
   nexusDamage: 10
-  timeToExplode: 1
+  timeToExplode: 10
   damageTextPrefab: {fileID: 790610433474755077, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
+  canDamageNexus: 0
 --- !u!54 &-162669890680927648
 Rigidbody:
   m_ObjectHideFlags: 0
