@@ -1,69 +1,113 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDropThing : MonoBehaviour, IPointerClickHandler
+public class DragDropThing : MonoBehaviour,
+    IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private ResourceManager resourceManager;
+    public static DragDropThing currentDrag = null;
 
     [SerializeField] private ItemSO resource;
-    public bool resetPositionOnRelease = true;
 
-    private bool isSelected = false;
+    private Canvas canvas;
+    private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
+
     private Vector3 startPosition;
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
+
+        if (canvasGroup == null)
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+    }
 
     void Start()
     {
         resourceManager = FindFirstObjectByType<ResourceManager>();
+        canvas = GetComponentInParent<Canvas>();
     }
 
-    void Update()
+    // -------------------------------------------------------------
+    // 🔵 DEBUT DU DRAG
+    // -------------------------------------------------------------
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        // Si l�item est s�lectionn�, il suit la souris
-        if (isSelected)
-        {
-            transform.position = Input.mousePosition;
-        }
+        currentDrag = this;                             // <<< On retient qui est draggé
+        startPosition = rectTransform.anchoredPosition;
+
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0.7f;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    // -------------------------------------------------------------
+    // 🟡 LORS DU DRAG
+    // -------------------------------------------------------------
+    public void OnDrag(PointerEventData eventData)
     {
-        // 1er clic  S�lectionne l�objet
-        if (!isSelected)
-        {
-            isSelected = true;
-            startPosition = transform.position;
-            return;
-        }
+        transform.position = eventData.position;
+    }
 
-        // 2e clic  Tentative de placement
-        isSelected = false;
+    // -------------------------------------------------------------
+    // 🔴 FIN DU DRAG
+    // -------------------------------------------------------------
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
 
-        // Raycast UI sous le clic
-        var hits = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, hits);
+        currentDrag = null;                             // <<< Fin du drag
 
-        var hit = hits.FirstOrDefault(t => t.gameObject.CompareTag("Droppable"));
+
+        // Raycast UI pour voir ce qu’on a lâché
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        // Trouver un objet "Droppable"
+        var hit = results.FirstOrDefault(r => r.gameObject.CompareTag("Droppable"));
 
         if (hit.isValid)
         {
-            // On a cliqu� sur un slot valide
             if (hit.gameObject.TryGetComponent<ItemSlot>(out ItemSlot itemSlot))
             {
+                // Placement réussi
+
+                if (itemSlot.currItem != null)
+                {
+                    // Le slot est déjà occupé
+                    ResourceManager.Instance.AddResource(itemSlot.currItem, 1);
+
+
+
+                }
                 itemSlot.currItem = resource;
                 itemSlot.UpdateSlotData();
 
                 resourceManager.UseResource(resource, 1);
 
-                Destroy(gameObject);
+                Destroy(gameObject);  // Supprime l’item draggable
+                return;
             }
         }
-        else
-        {
-            // Clique hors d'un "Droppable"  Retour � la position d�origine
-            if (resetPositionOnRelease)
-                transform.position = startPosition;
-        }
+
+        // Aucun slot valide → retour à la position de départ
+        BackToStart();
+    }
+    public void ForceCancelDrag()
+    {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
+        currentDrag = null;
+
+        // Retour à la position initiale
+        rectTransform.anchoredPosition = startPosition;
+    }
+    private void BackToStart()
+    {
+        rectTransform.anchoredPosition = startPosition;
     }
 }

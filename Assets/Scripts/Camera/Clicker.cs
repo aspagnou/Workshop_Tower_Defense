@@ -55,7 +55,24 @@ public class Clicker : MonoBehaviour
             // ------------------------------------------------------
             if (towerSlot != null)
             {
-                // Si menu slot déjà ouvert et même slot -> fermer
+                // 1️⃣ Fermer la tour sélectionnée si existante
+                if (currentSelectedTower != null)
+                {
+                    currentSelectedTower.OnTowerDeselected();
+                    currentSelectedTower = null;
+                }
+
+                // 2️⃣ Fermer le Gear Menu et la grille si ouverts
+                ui_Manager.HideGearMenu();
+                CloseTowerInventoryGrid();
+
+                // 3️⃣ Fermer TowerMenu si ouvert
+                if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
+                {
+                    TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+                }
+
+                // 4️⃣ Si menu slot déjà ouvert et même slot -> fermer
                 if (TowerSelectMenuManager.Instance.IsSlotMenuOpen &&
                     TowerSelectMenuManager.Instance.IsCurrentSlot(towerSlot))
                 {
@@ -63,17 +80,13 @@ public class Clicker : MonoBehaviour
                     return;
                 }
 
-                // Si menu tower était ouvert → on le ferme
-                if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
-                {
-                    TowerSelectMenuManager.Instance.HideTowerSelectMenu();
-                }
-
-                // Ouvrir le menu pour ce slot
+                // 5️⃣ Ouvrir le menu pour ce slot
                 currentSelectedTowerSlot = towerSlot;
                 TowerSelectMenuManager.Instance.ShowSlotTowerMenu(towerSlot);
+
                 return;
             }
+
 
             // ------------------------------------------------------
             // 🟥 2️⃣ Gestion Tour + TowerSelectMenu
@@ -134,13 +147,20 @@ public class Clicker : MonoBehaviour
         currentSelectedTower = tower;
         currentSelectedTower.OnTowerSelected();
 
-        // Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille était ouverte
+        if ( !isGridOpen && !isUpgradeOpen)
+        {
+            currentSelectedTower.ShowGrid();
+            currentSelectedTower.inventoryMemory.DisplayInventory();
+            ui_Manager.ShowGearMenu();
+        }
+        //Ouvrir automatiquement la grille de la nouvelle tour seulement si la grille était ouverte
         if (isGridOpen)
         {
             currentSelectedTower.ShowGrid();
             currentSelectedTower.inventoryMemory.DisplayInventory();
             ui_Manager.ShowGearMenu();
         }
+
 
         // Ouvrir automatiquement le menu d'upgrade de la nouvelle tour seulement si le menu d'upgrade était ouvert
         if (isUpgradeOpen)
@@ -155,12 +175,13 @@ public class Clicker : MonoBehaviour
 
     public void DeselectTower()
     {
-        Debug.Log("Je ferme");
+        //Debug.Log("Je ferme");
         if (currentSelectedTower != null)
         {
             currentSelectedTower.OnTowerDeselected();
             ui_Manager.HideGearMenu();
             TowerSelectMenuManager.Instance.HideUpgradeMenu();
+            CloseTowerInventoryGrid();
             currentSelectedTower = null;
         }
         isGridOpen = false;

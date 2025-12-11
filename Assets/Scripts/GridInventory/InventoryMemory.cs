@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 public class InventoryMemory : MonoBehaviour
 {
-    BaseTower linkedTower;
+    
     public List<GearSO> storedGears = new List<GearSO>();
-    void Start()
+    public BaseTower linkedTower; // sérialisable pour pouvoir assigner manuellement
+
+    void Awake()
     {
-        linkedTower = GetComponentInParent<BaseTower>();
+        if (linkedTower == null)
+            linkedTower = GetComponentInParent<BaseTower>();
     }
+
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void AddGear(GearSO gear)
@@ -17,7 +22,7 @@ public class InventoryMemory : MonoBehaviour
         {
             storedGears.Add(gear);
             linkedTower.EquipGear(gear);
-            Debug.Log("Gear ajouté : " + gear.name);
+            //Debug.Log("Gear ajouté : " + gear.name);
         }
     }
 
@@ -28,7 +33,7 @@ public class InventoryMemory : MonoBehaviour
         {
             storedGears.Remove(gear);
             linkedTower.UnequipGear(gear);
-            Debug.Log("Gear retiré : " + gear.name);
+            //Debug.Log("Gear retiré : " + gear.name);
         }
     }
     void Update()
@@ -38,10 +43,10 @@ public class InventoryMemory : MonoBehaviour
 
     public void DisplayInventory()
     {
-        Debug.Log("Mémoire actuelle : " + storedGears.Count);
+        //Debug.Log("Mémoire actuelle : " + storedGears.Count);
         foreach (var g in storedGears)
         {
-            Debug.Log(" - " + g.name);
+           // Debug.Log(" - " + g.name);
         }
     }
 }

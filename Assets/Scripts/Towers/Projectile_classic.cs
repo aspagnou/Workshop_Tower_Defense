@@ -23,7 +23,7 @@ public class Projectile_classic : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy target = other.GetComponent<Enemy>();
-        if (target != null)
+        if (target != null && target.enemyType != EnemyType.Flying)
         {
             Debug.Log("Arrow hit enemy, dealing " + damage + " damage.");
             target.TakeDamage(Mathf.RoundToInt(damage));
