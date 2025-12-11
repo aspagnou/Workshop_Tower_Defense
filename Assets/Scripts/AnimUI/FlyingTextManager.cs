@@ -24,7 +24,7 @@ public class FlyingTextManager : MonoBehaviour
         spawnPoint += Vector3.up * verticalOffset;
 
         // --- Random autour de l'ennemi ---
-        float radius = 0.5f; // rayon autour de l’ennemi
+        float radius = 1f; // rayon autour de l’ennemi
         Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * radius;
         spawnPoint += new Vector3(randomCircle.x, 0, randomCircle.y);
 

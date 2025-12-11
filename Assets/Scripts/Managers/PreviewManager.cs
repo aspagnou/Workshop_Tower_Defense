@@ -50,6 +50,7 @@ public class PreviewManager : MonoBehaviour
 
         // ➜ Choisir un tier par défaut (Tier 1)
         SelectTier(1);
+        UpdatePreviewGearSlot();
     }
 
     // ----------------------------------------------------------

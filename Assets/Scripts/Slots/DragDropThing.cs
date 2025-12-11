@@ -7,6 +7,7 @@ public class DragDropThing : MonoBehaviour,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private ResourceManager resourceManager;
+    public static DragDropThing currentDrag = null;
 
     [SerializeField] private ItemSO resource;
 
@@ -36,10 +37,11 @@ public class DragDropThing : MonoBehaviour,
     // -------------------------------------------------------------
     public void OnBeginDrag(PointerEventData eventData)
     {
+        currentDrag = this;                             // <<< On retient qui est draggé
         startPosition = rectTransform.anchoredPosition;
 
-        canvasGroup.blocksRaycasts = false;   // Ne bloque plus les raycasts
-        canvasGroup.alpha = 0.7f;             // Léger fade durant le drag
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0.7f;
     }
 
     // -------------------------------------------------------------
@@ -58,6 +60,9 @@ public class DragDropThing : MonoBehaviour,
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
 
+        currentDrag = null;                             // <<< Fin du drag
+
+
         // Raycast UI pour voir ce qu’on a lâché
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
@@ -75,7 +80,7 @@ public class DragDropThing : MonoBehaviour,
                 {
                     // Le slot est déjà occupé
                     ResourceManager.Instance.AddResource(itemSlot.currItem, 1);
-                    
+
 
 
                 }
@@ -90,6 +95,19 @@ public class DragDropThing : MonoBehaviour,
         }
 
         // Aucun slot valide → retour à la position de départ
+        BackToStart();
+    }
+    public void ForceCancelDrag()
+    {
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
+        currentDrag = null;
+
+        // Retour à la position initiale
+        rectTransform.anchoredPosition = startPosition;
+    }
+    private void BackToStart()
+    {
         rectTransform.anchoredPosition = startPosition;
     }
 }

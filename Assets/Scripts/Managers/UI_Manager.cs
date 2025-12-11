@@ -1,3 +1,4 @@
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
 using TMPro;
@@ -17,14 +18,28 @@ public class UI_Manager : MonoBehaviour
     public TMP_Text[] statLines;
     public StatChangeFeedback[] statsUpFeedback;
 
+    [Header("Craft Menu Animation")]
+    public RectTransform craftMenuRect;
+    public float slideDuration = 0.25f;
 
-    // Dictionnaire pour stocker les icônes instanciées par type de ressource
+    private Vector2 craftMenuClosedPos;
+    private Vector2 craftMenuOpenPos;
+    private Coroutine slideRoutine;
+
+    // Dictionnaire pour stocker les icÃ´nes instanciÃ©es par type de ressource
     private Dictionary<int, List<GameObject>> spawnedIcons = new Dictionary<int, List<GameObject>>();
 
     private void Awake()
     {
         Instance = this;
         HideGearMenu();
+        
+        craftMenuRect = craftMenu.GetComponent<RectTransform>();
+
+        craftMenuOpenPos = craftMenuRect.anchoredPosition;
+        craftMenuClosedPos = craftMenuOpenPos + new Vector2(-600f, 0f); // DÃ©cale hors Ã©cran
+
+        craftMenuRect.anchoredPosition = craftMenuClosedPos; // Start hidden
         HideCraftMenu();
 
         // Initialiser le dictionnaire
@@ -36,26 +51,26 @@ public class UI_Manager : MonoBehaviour
 
     public void SpawnResource(int index)
     {
-        // Instancie l'icône comme enfant de rectImage
+        // Instancie l'icÃ´ne comme enfant de rectImage
         GameObject newIcon = Instantiate(ressourceIcon[index], rectImages[index]);
 
-        // Réinitialise la position locale à (0, 0, 0)
+        // RÃ©initialise la position locale Ã  (0, 0, 0)
         newIcon.GetComponent<RectTransform>().localPosition = Vector3.zero;
 
-        // Réinitialise l'échelle si nécessaire
+        // RÃ©initialise l'Ã©chelle si nÃ©cessaire
         newIcon.GetComponent<RectTransform>().localScale = Vector3.one;
 
-        // Ajoute l'icône à la liste correspondante
+        // Ajoute l'icÃ´ne Ã  la liste correspondante
         spawnedIcons[index].Add(newIcon);
     }
 
-    // Supprime les icônes de ressource en fonction de l'index et de la quantité
+    // Supprime les icÃ´nes de ressource en fonction de l'index et de la quantitÃ©
     public void RemoveResourceIcons(int index, int quantity)
     {
-        // Vérifie si l'index est valide
+        // VÃ©rifie si l'index est valide
         if (index >= 0 && index < spawnedIcons.Count && spawnedIcons[index].Count > 0)
         {
-            // Détruit les icônes correspondantes en fonction de la quantité
+            // DÃ©truit les icÃ´nes correspondantes en fonction de la quantitÃ©
             for (int i = 0; i < quantity && spawnedIcons[index].Count > 0; i++)
             {
                 GameObject iconToRemove = spawnedIcons[index][0];
@@ -74,16 +89,47 @@ public class UI_Manager : MonoBehaviour
     // Affiche ou masque le menu d'artisanat
     public void ShowCraftMenu()
     {
-        //Debug.Log("Jactive");
-        craftMenu.SetActive(true);
+        if (slideRoutine != null) StopCoroutine(slideRoutine);
+        slideRoutine = StartCoroutine(SlideMenu(true));
     }
 
     public void HideCraftMenu()
     {
-        craftMenu?.SetActive(false);
+        // ðŸ›‘ Si un item est en cours de drag â†’ on annule le drag proprement
+        if (DragDropThing.currentDrag != null)
+        {
+            DragDropThing.currentDrag.ForceCancelDrag();
+        }
+
+        if (slideRoutine != null) StopCoroutine(slideRoutine);
+        slideRoutine = StartCoroutine(SlideMenu(false));
     }
 
-    // Affiche ou masque le menu d'inventaire d'équipement
+
+    private IEnumerator SlideMenu(bool show)
+    {
+        Vector2 start = craftMenuRect.anchoredPosition;
+        Vector2 end = show ? craftMenuOpenPos : craftMenuClosedPos;
+
+        float t = 0f;
+
+        if (show)
+            craftMenu.SetActive(true);
+
+        while (t < slideDuration)
+        {
+            t += Time.deltaTime;
+            float lerp = Mathf.Clamp01(t / slideDuration);
+            craftMenuRect.anchoredPosition = Vector2.Lerp(start, end, lerp);
+            yield return null;
+        }
+
+        if (!show)
+            craftMenu.SetActive(false);
+    }
+
+
+    // Affiche ou masque le menu d'inventaire d'Ã©quipement
     public void HideGearMenu()
     {
         gearInventoryMenu?.SetActive(false);
@@ -94,7 +140,7 @@ public class UI_Manager : MonoBehaviour
         gearInventoryMenu?.SetActive(true);
     }
 
-    // Met à jour la couleur du texte des coûts dans le menu de sélection des tours
+    // Met Ã  jour la couleur du texte des coÃ»ts dans le menu de sÃ©lection des tours
     private void OnEnable()
     {
         if (ResourceManager.Instance != null)
