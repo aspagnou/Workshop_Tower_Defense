@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,13 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject mainCanvas;
     public Vector3 worldOffset = new Vector3(0, 2f, 0);
     public bool IsTowerMenuOpen => towerSelectPanel.activeSelf;
+    [Space(10)]
+    [Header("Tower Select Animation")]
+    public float towerSelectAnimDuration = 0.2f;
+    public AnimationCurve towerSelectScaleCurve;
+    private RectTransform towerSelectRect;
+    private Coroutine towerSelectAnimRoutine;
+
 
     [Header("Upgrade Menu")]
     public GameObject upGradeMenu;
@@ -31,6 +39,13 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject[] towerPrefabs;
     [SerializeField] GameObject slotPrefab;
 
+    [Header("Slot Menu Animation")]
+    public float slotAnimDuration = 0.2f;
+    public AnimationCurve slotScaleCurve;
+    private RectTransform slotRect;
+    private Coroutine slotAnimRoutine;
+
+
     public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
 
     void Awake()
@@ -38,22 +53,34 @@ public class TowerSelectMenuManager : MonoBehaviour
         Instance = this;
         towerSelectPanel.SetActive(false);
         slotSelectPanel.SetActive(false);
+
+        slotRect = slotSelectPanel.GetComponent<RectTransform>();
+        slotRect.localScale = Vector3.zero; // Caché au départ
+
+        towerSelectRect = towerSelectPanel.GetComponent<RectTransform>();
+        towerSelectRect.localScale = Vector3.zero; // Caché au départ
+
         inventoryControler = FindAnyObjectByType<InventoryControler>();
         saveGrid = GameObject.FindWithTag("FixGridSpawn").GetComponent<ItemGrid>();
         HideUpgradeMenu();
     }
 
-    // Slot Menu -------------------------------------------------------------------
+    // --------------------Slot Menu -------------------------------------------------------------------
     public void ShowSlotTowerMenu(TowerSlot towerSlot)
     {
         currentlySelectedTowerSlot = towerSlot;
-        Vector3 worldPos = towerSlot.transform.position;
-        worldPos += slotWorldOffset;
 
+        // Position
+        Vector3 worldPos = towerSlot.transform.position + slotWorldOffset;
         slotSelectPanel.transform.position = worldPos;
         slotSelectPanel.transform.LookAt(cam.transform);
         slotSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
+
         slotSelectPanel.SetActive(true);
+
+        // 🔥 Lance l’animation
+        if (slotAnimRoutine != null) StopCoroutine(slotAnimRoutine);
+        slotAnimRoutine = StartCoroutine(PlaySlotMenuPop());
 
         currentlySelectedTowerSlot.UpdateCostText();
 
@@ -63,14 +90,57 @@ public class TowerSelectMenuManager : MonoBehaviour
         HideTowerSelectMenu();
     }
 
+    private IEnumerator PlaySlotMenuPop()
+    {
+        float t = 0f;
+
+        // Start scale
+        slotRect.localScale = Vector3.zero;
+
+        while (t < slotAnimDuration)
+        {
+            t += Time.deltaTime;
+            float lerp = t / slotAnimDuration;
+
+            float scale = slotScaleCurve != null ?
+                          slotScaleCurve.Evaluate(lerp) :
+                          Mathf.Sin(lerp * Mathf.PI * 0.5f); // Ease-out default
+
+            slotRect.localScale = Vector3.one * scale;
+
+            yield return null;
+        }
+
+        slotRect.localScale = Vector3.one;
+    }
+
     public void HideSlotTowerMenu()
     {
-        slotSelectPanel.SetActive(false);
+        if (slotAnimRoutine != null) StopCoroutine(slotAnimRoutine);
+        slotAnimRoutine = StartCoroutine(CloseSlotMenu());
+
         ResourceManager.Instance.OnManaChanged -= UI_Manager.Instance.UpdateSlotColorText;
         currentlySelectedTowerSlot = null;
     }
+    private IEnumerator CloseSlotMenu()
+    {
+        float t = 0f;
+        Vector3 start = slotRect.localScale;
 
-    // Tower Select Menu -----------------------------------------------------------
+        while (t < slotAnimDuration)
+        {
+            t += Time.deltaTime;
+            float lerp = t / slotAnimDuration;
+
+            slotRect.localScale = Vector3.Lerp(start, Vector3.zero, lerp);
+            yield return null;
+        }
+
+        slotSelectPanel.SetActive(false);
+    }
+
+
+    //------------------------ Tower Select Menu -----------------------------------------------------------
     public void ShowTowerSelectMenu(BaseTower tower)
     {
         currentlySelectedTower = tower;
@@ -82,16 +152,67 @@ public class TowerSelectMenuManager : MonoBehaviour
         towerSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);
 
         towerSelectPanel.SetActive(true);
+
+        // 🔥 Animation pop
+        if (towerSelectAnimRoutine != null) StopCoroutine(towerSelectAnimRoutine);
+        towerSelectAnimRoutine = StartCoroutine(PlayTowerSelectPop());
+
         HideSlotTowerMenu();
     }
+    private IEnumerator PlayTowerSelectPop()
+    {
+        float t = 0f;
+        towerSelectRect.localScale = Vector3.zero;
+
+        while (t < towerSelectAnimDuration)
+        {
+            t += Time.deltaTime;
+            float lerp = t / towerSelectAnimDuration;
+
+            float scale = towerSelectScaleCurve != null ?
+                          towerSelectScaleCurve.Evaluate(lerp) :
+                          Mathf.Sin(lerp * Mathf.PI * 0.5f);
+
+            towerSelectRect.localScale = Vector3.one * scale;
+
+            yield return null;
+        }
+
+        towerSelectRect.localScale = Vector3.one;
+    }
+
+
 
     public void HideTowerSelectMenu()
     {
-        towerSelectPanel.SetActive(false);
+        if (!towerSelectPanel.activeSelf) return;
+
+        if (towerSelectAnimRoutine != null) StopCoroutine(towerSelectAnimRoutine);
+        towerSelectAnimRoutine = StartCoroutine(CloseTowerSelectPop());
+
         currentlySelectedTower = null;
     }
+    private IEnumerator CloseTowerSelectPop()
+    {
+        float t = 0f;
+        Vector3 start = towerSelectRect.localScale;
 
-    // Upgrade Menu ----------------------------------------------------------------
+        while (t < towerSelectAnimDuration)
+        {
+            t += Time.deltaTime;
+            float lerp = t / towerSelectAnimDuration;
+
+            towerSelectRect.localScale = Vector3.Lerp(start, Vector3.zero, lerp);
+
+            yield return null;
+        }
+
+        towerSelectPanel.SetActive(false);
+    }
+
+
+
+    //-------------------------------- Upgrade Menu ----------------------------------------------------------------
     public void ShowUpgradeMenu()
     {
         if (Clicker.Instance.currentSelectedTower != null)
@@ -135,7 +256,9 @@ public class TowerSelectMenuManager : MonoBehaviour
         upgradeManager.UpdateUpgradeButtonState();
     }
 
-    // Sell Tower ------------------------------------------------------------------
+
+
+    //----------------------- Sell Tower ------------------------------------------------------------------
     public void SellTower()
     {
         InventoryMemory gearInventory = Clicker.Instance.currentSelectedTower.inventoryMemory;
@@ -158,7 +281,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         }
     }
 
-    // Spawn Tower From Slot -------------------------------------------------------
+    // ---------------------Spawn Tower From Slot -------------------------------------------------------
     public void SpawnTowerFromSlot(int i)
     {
         Clicker.Instance.currentSelectedTowerSlot.SpawnTower(i);
