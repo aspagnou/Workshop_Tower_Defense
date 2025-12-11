@@ -39,7 +39,8 @@ public class Wave : MonoBehaviour
     private void OnEnable()
     {   //Spawner1
         numberOfEnemies = _enemyList.Count;
-        
+        nbrEnemiesKillCond = _enemyList.Count;
+
         _enemyStack = new Queue<Enemy>(_enemyList);  
     }
     void Start()
@@ -84,10 +85,16 @@ public class Wave : MonoBehaviour
 
     private void OneEnemyIsDead(Enemy deadEn)
     {
+
         
-        
-        nbrEnemiesKillCond--;
-        manager.totalMana += deadEn.nbreMana;
+        spawnerManager.totalEnemiesToKill--;
+        //manager.totalMana += deadEn.nbreMana;
+
+        if (deadEn.canDamageNexus == true)
+        {
+            spawnerManager.nexus.NexusDamaged(deadEn.nexusDamage);
+            deadEn.nbreMana = 0;
+        }
        
     }
 
@@ -103,12 +110,12 @@ public class Wave : MonoBehaviour
             enemyInstance.GetComponent<Enemy>().WayPoints = manager.wayPoints;
             enemyInstance.OnDead += OneEnemyIsDead;
 
+            spawnerManager.totalEnemiesToKill++;
             spawnerManager.RemoveEnemy(enemyInstance);
 
-            //spawnInterval = enemyCandidate.timeToSpawn;
+            spawnInterval = enemyCandidate.timeToSpawn;
             enemiesSpawned++;
             spawnerManager.totalSpawnedEnemiesPerWave++;
-            
         }
 
 

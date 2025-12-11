@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -31,16 +31,19 @@ public class Enemy : MonoBehaviour
     public Action<Enemy> OnDead;
 
     [Header("Economy")]
+    public ItemSO deathScrap;
     public float nbreMana = 20;
     [SerializeField] private LayerMask layers;
 
 
     [Header("Damage")]
+    
     [SerializeField] public int lifePoints = 50;
-    private int currentHealth;
+    private float currentHealth;
     [SerializeField] public int nexusDamage = 10;
     [SerializeField] private float timeToExplode = 2;
-    
+    public GameObject damageTextPrefab;
+    public bool canDamageNexus = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -97,27 +100,73 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator StopAndApplyDamageToBase()
-    {
-    yield return new WaitForSeconds(timeToExplode);
+    {   
+        yield return new WaitForSeconds(timeToExplode);
+        canDamageNexus = true;
         nbreMana = 0;
         Destroy(gameObject);
 
     
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+        ShowDamage(amount);
+
         if (currentHealth <= 0) 
-        { 
+        {
+            ResourceManager.Instance.AddMana((int)nbreMana);
+            ResourceManager.Instance.AddResource(deathScrap, 1);
+            if (deathScrap != null)
+            {
+                FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap);
+            }
             Destroy(gameObject);
         }
     }
-    
+    public Color DamageToColor(float dmg, float maxDmg)
+    {
+        float t = Mathf.Clamp01(dmg / maxDmg);
+
+        // Blanc → Jaune → Orange → Rouge
+        if (t < 0.33f) return Color.Lerp(Color.white, Color.yellow, t * 3);
+        if (t < 0.66f) return Color.Lerp(Color.yellow, new Color(1f, 0.5f, 0f), (t - 0.33f) * 3);
+        return Color.Lerp(new Color(1f, 0.5f, 0f), Color.red, (t - 0.66f) * 3);
+    }
+
+    public void ShowDamage(float amount)
+    {
+        float maxDamage = 80f; // Ajuste selon ton jeu
+
+        // Couleur dynamique
+        Color dmgColor = DamageToColor(amount, maxDamage);
+
+        // Taille dynamique
+        float minScale = 1f;
+        float maxScale = 2f;
+
+        float t = Mathf.Clamp01(amount / maxDamage);
+        float scale = Mathf.Lerp(minScale, maxScale, t);
+
+        FlyingTextManager.Instance.SpawnText(
+            transform.position,
+            amount.ToString(),
+            dmgColor,
+            scale
+        );
+    }
+
+
 
     private void OnDestroy()
     {
-        OnDead.Invoke(this);
+        // ⚠ Empêche les erreurs si OnDead n’a pas d'abonné
+        OnDead?.Invoke(this);
+        
 
+        // ✔ Spawn scrap si défini
+        
     }
+
 }

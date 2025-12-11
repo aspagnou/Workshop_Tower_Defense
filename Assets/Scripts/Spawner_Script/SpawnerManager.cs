@@ -6,11 +6,14 @@ using UnityEngine.Rendering;
 
 public class SpawnerManager : MonoBehaviour
 {
-    
+    public Nexus nexus;
+
     public Dictionary<EnemyType, int> totalEnemiesPerWave = new();
     public int totalSpawnedEnemiesPerWave;
     public int currentSpawnerIndex = 0;
     public int timeBetweenWaves;
+
+    public int totalEnemiesToKill;
     
     public SpawnerManager spawnerManager;
     public WaveManager[] allWavesManager;
@@ -86,12 +89,17 @@ public class SpawnerManager : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //if (currentSpawnerIndex == 12)
-        //{
 
-        //}
+        if (currentSpawnerIndex == 11 && totalEnemiesToKill == 0 && nexus.currentHealth > 0)
+        {
+            Debug.Log("you won");
+        }
 
+        if (nexus.currentHealth <= 0)
+        {
+            Debug.Log("you lost");
+        }
     }
 }

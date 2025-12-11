@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1473744087163845373}
-  - component: {fileID: 191240595365161771}
+  - component: {fileID: 6940136428881481928}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Untagged
@@ -252,7 +252,7 @@ Transform:
   - {fileID: 7041325759696430161}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &191240595365161771
+--- !u!114 &6940136428881481928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,7 +261,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5922313633042318791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b782df17afb6584dae252e2e868eb29, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e596b687a7aaf04e9cb763f5d57b2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pvNexus: 100
+  maxHealth: 100
+  currentHealth: 0
