@@ -1,11 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class TowerSlot : MonoBehaviour
 {
     [SerializeField] private GameObject[] towerPrefabs;
     private TMP_Text[] costsText;
     private ResourceManager resourceManager;
+    public VisualEffectAsset spawnVFX;  // Le VFX à jouer lors du spawn
+    public Vector3 vfxOffset = Vector3.up * 1f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +32,17 @@ public class TowerSlot : MonoBehaviour
         {
             resourceManager.SpendMana(towerPrefabs[i].GetComponent<BaseTower>().spawnCost);
             Instantiate(towerPrefabs[i], transform.position, Quaternion.identity);
+            if (spawnVFX != null)
+            {
+                VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+                vfx.visualEffectAsset = spawnVFX;
+
+                vfx.transform.position = transform.position + vfxOffset;
+
+                vfx.Play();
+
+                Destroy(vfx.gameObject, 2f); // Auto-clean
+            }
             TowerSelectMenuManager.Instance.HideSlotTowerMenu();
             Destroy(this.gameObject);
         }

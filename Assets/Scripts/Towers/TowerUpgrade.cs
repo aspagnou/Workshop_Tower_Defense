@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using static UnityEngine.Rendering.DebugUI;
 
 
@@ -20,6 +21,12 @@ public class TowerUpgrade : MonoBehaviour
     [SerializeField] GameObject costLinePrefab;
     
     public bool canUpgrade = false;
+
+    [Header("VFX & SFX")]
+    public VisualEffectAsset UpgradeVFX;  // Le VFX à jouer lors du spawn
+    public Vector3 vfxOffset = Vector3.up * 1f;
+
+
     private GameObject manaCostLine;
     private Transform lineSpawnTransform;
     private Clicker clicker;
@@ -270,6 +277,14 @@ public class TowerUpgrade : MonoBehaviour
         currentLevel++;
         Debug.Log("Upgrade successful to level " + currentLevel);
         sellAmount += 50;
+        VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+        vfx.visualEffectAsset = UpgradeVFX;
+
+        vfx.transform.position = transform.position + vfxOffset;
+
+        vfx.Play();
+
+        Destroy(vfx.gameObject, 2f); // Auto-clean
         ItemGrid grid = Clicker.Instance.currentSelectedTower.itemGrid;
         if (grid!= null)
             grid.ResizeGrid(grid.gridSizeWidth+1, grid.gridSizeHeight);

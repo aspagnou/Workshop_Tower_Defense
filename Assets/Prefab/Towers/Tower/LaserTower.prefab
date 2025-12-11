@@ -275,6 +275,8 @@ MonoBehaviour:
   manaIcon: {fileID: 21300000, guid: bdbb8987d2a196e439930512a6e54db7, type: 3}
   costLinePrefab: {fileID: 2569726068507241836, guid: 46d4af10cb868c049aa8e847dfe827f1, type: 3}
   canUpgrade: 0
+  UpgradeVFX: {fileID: 8926484042661614526, guid: 0b8a8a44663263144a93ea7cc0e79140, type: 3}
+  vfxOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &1760070714362164409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +307,7 @@ MonoBehaviour:
   equippedGears: []
   towerUpgradeManager: {fileID: 0}
   target: {fileID: 0}
+  muzzleFlash: {fileID: 0}
   pivot: {fileID: 111154397041560662}
   projectilePrefab: {fileID: 3037506940108726906, guid: 7fdc64077ee3cb44482127c4d2bfbb49, type: 3}
   firePoint: {fileID: 8459278485861560056}

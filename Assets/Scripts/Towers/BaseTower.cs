@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using static UnityEngine.GraphicsBuffer;
 
 public class BaseTower : MonoBehaviour
@@ -35,6 +36,8 @@ public class BaseTower : MonoBehaviour
     [Header("Aerial ?")]
     public bool canAttackAerial = false;
 
+    
+    [Space(10)]
     public List<GearSO> equippedGears = new List<GearSO>();
     public TowerUpgrade towerUpgradeManager;
 
@@ -43,7 +46,7 @@ public class BaseTower : MonoBehaviour
 
     // Attack cooldown
     private float attackCooldown = 0f;
-
+    [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private Transform pivot;
     [SerializeField] private GameObject projectilePrefab;
     public Transform firePoint;
@@ -54,6 +57,7 @@ public class BaseTower : MonoBehaviour
     void Awake()
     {
         mainCanvas = GameObject.FindWithTag("MainCanvas");
+
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
         towerUpgradeManager =GetComponent<TowerUpgrade>();
         gridUI.SetActive(false);
@@ -334,6 +338,7 @@ public class BaseTower : MonoBehaviour
         // Instancier projectile
         Quaternion rot = Quaternion.LookRotation(target.position - firePoint.position);
         SpawnProjectile(rot);
+        muzzleFlash.Play();
 
         // Reset cooldown en fonction de la vitesse d’attaque
         attackCooldown = 1f / currentAttackSpeed;

@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
     public float nbreMana = 20;
     [SerializeField] private LayerMask layers;
 
+    [Header("Explosion VFX")]
+    public GameObject explosionVFXPrefab;
 
     [Header("Damage")]
     
@@ -116,14 +118,21 @@ public class Enemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            ResourceManager.Instance.AddMana((int)nbreMana);
-            ResourceManager.Instance.AddResource(deathScrap, 1);
-
-            if (deathScrap != null)
-                FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap);
-
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        GameObject deathVFX = Instantiate(explosionVFXPrefab, transform.position, Quaternion.identity);
+        Destroy(deathVFX, 3f);
+        ResourceManager.Instance.AddMana((int)nbreMana);
+        ResourceManager.Instance.AddResource(deathScrap, 1);
+
+        if (deathScrap != null)
+            FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap);
+
+        Destroy(gameObject);
     }
 
     public Color DamageToColor(float dmg, float maxDmg)
