@@ -10,6 +10,7 @@ TagManager:
   - CostContainer
   - Highlighter
   - Enemy
+  - Audio
   layers:
   - Default
   - TransparentFX

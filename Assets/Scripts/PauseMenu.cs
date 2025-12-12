@@ -8,13 +8,16 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject _settingsPausePanel;
     [SerializeField] private GameObject _mainPausePanel;
+    [SerializeField] private GameObject _audioPanel;
+    [SerializeField] private GameObject _graphicsPanel;
+    [SerializeField] private GameObject _controlsPanel;
 
     private bool _paused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Resume();
     }
 
     // Update is called once per frame
@@ -23,6 +26,8 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
+            
+            
         }
         
     }
@@ -37,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         else
         {
             _mainPausePanel.SetActive(false);
+            _settingsPausePanel.SetActive(false);
             Time.timeScale = 1.0f;
             _paused = false;
         }
@@ -44,18 +50,25 @@ public class PauseMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Basics");
+        _paused = false;
     }
     public void Resume()
     {
         _mainPausePanel.SetActive(false);
+        _settingsPausePanel.SetActive(false);
         Time.timeScale = 1.0f;
         _paused = false;
     }
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OpenZoo()
+    {
+        SceneManager.LoadScene("Zoo");
     }
 
     public void ShowSettings()
@@ -67,6 +80,39 @@ public class PauseMenu : MonoBehaviour
     {
         _settingsPausePanel.SetActive(false);
         _mainPausePanel.SetActive(true);
+    }
+
+    public void GraphicsShow()
+    {
+        _graphicsPanel.SetActive(true);
+        _audioPanel.SetActive(false);
+        _controlsPanel.SetActive(false);
+    }
+
+    public void GraphicsClose()
+    {
+        _graphicsPanel.SetActive(false);
+    }
+    public void AudioShow()
+    {
+        _audioPanel.SetActive(true);
+        _graphicsPanel.SetActive(false);
+        _controlsPanel.SetActive(false);
+    }
+    public void AudioClose()
+    {
+        _audioPanel.SetActive(false);
+    }
+    public void ControlsShow()
+    {
+        _controlsPanel.SetActive(true);
+        _audioPanel.SetActive(false);
+        _graphicsPanel.SetActive(false);
+    }
+
+    public void ControlsClose()
+    {
+        _controlsPanel.SetActive(false);
     }
 
     public void QuitToDesktop()

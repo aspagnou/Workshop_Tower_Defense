@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class SpawnerManager : MonoBehaviour
 {
     public Nexus nexus;
+    public EndConditionUI endUi;
 
     public Dictionary<EnemyType, int> totalEnemiesPerWave = new();
     public int totalSpawnedEnemiesPerWave;
@@ -95,11 +96,13 @@ public class SpawnerManager : MonoBehaviour
         if (currentSpawnerIndex == 11 && totalEnemiesToKill == 0 && nexus.currentHealth > 0)
         {
             Debug.Log("you won");
+            endUi.Win();
         }
 
         if (nexus.currentHealth <= 0)
         {
             Debug.Log("you lost");
+            endUi.Loose();
         }
     }
 }
