@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 7552618962109335071}
   - component: {fileID: 397280260465273665}
   - component: {fileID: 3144373169000004905}
+  - component: {fileID: 3666925549001076684}
   m_Layer: 5
   m_Name: LeftHover
   m_TagString: Untagged
@@ -361,6 +362,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3666925549001076684
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074550383575725797}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8079375043796893942
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +438,8 @@ MonoBehaviour:
   _leftImage: {fileID: 7552618962109335071}
   leftHiddenPos: {x: -150, y: 0}
   leftVisiblePos: {x: -140, y: 0}
+  leftGroup: {fileID: 3666925549001076684}
+  fadeDuration: 0.2
   buttonText: {fileID: 6365506574525578469}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

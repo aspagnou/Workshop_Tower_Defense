@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Resume();
     }
 
     // Update is called once per frame
@@ -26,7 +26,8 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
-            CloseSettings();
+            
+            
         }
         
     }
@@ -41,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         else
         {
             _mainPausePanel.SetActive(false);
+            _settingsPausePanel.SetActive(false);
             Time.timeScale = 1.0f;
             _paused = false;
         }
@@ -49,10 +51,12 @@ public class PauseMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Basics");
+        _paused = false;
     }
     public void Resume()
     {
         _mainPausePanel.SetActive(false);
+        _settingsPausePanel.SetActive(false);
         Time.timeScale = 1.0f;
         _paused = false;
     }

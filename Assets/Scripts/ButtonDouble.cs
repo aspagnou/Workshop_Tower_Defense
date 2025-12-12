@@ -18,6 +18,9 @@ public class ButtonDouble : MonoBehaviour
     public RectTransform _rightImage;
     [SerializeField] private Vector2 leftHiddenPos;
     [SerializeField] private Vector2 leftVisiblePos;
+    public CanvasGroup leftGroup;
+    public CanvasGroup rightGroup;
+    [SerializeField] private float fadeDuration = 0.2f;
     [SerializeField] private Vector2 rightHiddenPos;
     [SerializeField] private Vector2 rightVisiblePos;
 
@@ -31,7 +34,9 @@ public class ButtonDouble : MonoBehaviour
     [SerializeField] private float duration = 0.2f;
     [SerializeField] private AnimationCurve curve =  AnimationCurve.EaseInOut(0, 0, 1, 1);
     private Coroutine animRoutine;
+    private Coroutine fadeRoutine;
     
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void OnEnable()
@@ -57,8 +62,15 @@ public class ButtonDouble : MonoBehaviour
     {
         leftImage.SetActive(true);
         rightImage.SetActive(true);
+
+        //gere le fade
+        leftGroup.alpha = 0f;
+        rightGroup.alpha = 0f;
+
         targetImage.sprite = hoverImage;
         StartSlide(leftVisiblePos, rightVisiblePos, false);
+
+        StartFade(1f);
     }
 
     public void OnHoverExit()
@@ -67,8 +79,8 @@ public class ButtonDouble : MonoBehaviour
         targetImage.sprite = nrmImage;
         buttonText.color = normalColor;
         StartSlide(leftHiddenPos, rightHiddenPos, true);
-        
 
+        StartFade(0f);
     }
 
     public void OnPressed()
@@ -77,6 +89,32 @@ public class ButtonDouble : MonoBehaviour
         buttonText.color = pressedColor;
 
         
+    }
+
+    private void StartFade(float targetAlpha)
+    {
+        if (fadeRoutine != null) {
+            StopCoroutine(fadeRoutine); }
+
+        fadeRoutine = StartCoroutine(FadeImages(targetAlpha));
+    }
+
+    private IEnumerator FadeImages(float targetAlpha)
+    {
+        float t = 0f;
+        float leftStart = leftGroup.alpha;
+        float rightStart = rightGroup.alpha;
+
+        while (t < 1f)
+        {
+            t += Time.unscaledDeltaTime / fadeDuration;
+            float eased = curve.Evaluate(t);
+
+            leftGroup.alpha = Mathf.Lerp(leftStart, targetAlpha, eased);
+            rightGroup.alpha = Mathf.Lerp(rightStart, targetAlpha, eased);
+
+            yield return null;
+        }
     }
     private void StartSlide(Vector2 leftTarget,  Vector2 rightTarget, bool hideAtEnd = false)
     {
@@ -110,6 +148,7 @@ public class ButtonDouble : MonoBehaviour
 
         if (hideAtEnd)
         {
+            yield return new WaitForSecondsRealtime(fadeDuration);
             leftImage.SetActive(false);
             rightImage.SetActive(false);
         }

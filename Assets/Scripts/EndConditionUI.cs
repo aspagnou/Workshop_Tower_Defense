@@ -73,6 +73,7 @@ public class EndConditionUI : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Basics");
+        _paused = false;
     }
     public void Resume()
     {

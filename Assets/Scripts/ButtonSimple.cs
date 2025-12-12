@@ -17,8 +17,8 @@ public class ButtonSimple : MonoBehaviour
    
     [SerializeField] private Vector2 leftHiddenPos;
     [SerializeField] private Vector2 leftVisiblePos;
-   
-
+    public CanvasGroup leftGroup;
+    [SerializeField] private float fadeDuration = 0.2f;
 
     public TMP_Text buttonText;
     [SerializeField] private Color normalColor = Color.white;
@@ -29,7 +29,7 @@ public class ButtonSimple : MonoBehaviour
     [SerializeField] private float duration = 0.2f;
     [SerializeField] private AnimationCurve curve =  AnimationCurve.EaseInOut(0, 0, 1, 1);
     private Coroutine animRoutine;
-    
+    private Coroutine fadeRoutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void OnEnable()
@@ -54,7 +54,12 @@ public class ButtonSimple : MonoBehaviour
     {
         leftImage.SetActive(true);
         targetImage.sprite = hoverImage;
+
+        leftGroup.alpha = 0f;
+        
         StartSlide(leftVisiblePos, false);
+
+        StartFade(1f);
 
     }
 
@@ -64,7 +69,8 @@ public class ButtonSimple : MonoBehaviour
         targetImage.sprite = nrmImage;
         buttonText.color = normalColor;
         StartSlide(leftHiddenPos, true);
-        
+
+        StartFade(0f);
 
     }
 
@@ -74,6 +80,32 @@ public class ButtonSimple : MonoBehaviour
         buttonText.color = pressedColor;
 
         
+    }
+
+    private void StartFade(float targetAlpha)
+    {
+        if (fadeRoutine != null)
+        {
+            StopCoroutine(fadeRoutine);
+        }
+
+        fadeRoutine = StartCoroutine(FadeImages(targetAlpha));
+    }
+
+    private IEnumerator FadeImages(float targetAlpha)
+    {
+        float t = 0f;
+        float leftStart = leftGroup.alpha;
+
+        while (t < 1f)
+        {
+            t += Time.unscaledDeltaTime / fadeDuration;
+            float eased = curve.Evaluate(t);
+
+            leftGroup.alpha = Mathf.Lerp(leftStart, targetAlpha, eased);
+
+            yield return null;
+        }
     }
     private void StartSlide(Vector2 leftTarget, bool hideAtEnd = false)
     {

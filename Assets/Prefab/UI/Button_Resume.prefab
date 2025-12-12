@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 5348555671088231824}
   - component: {fileID: 3034944761220719691}
   - component: {fileID: 3520399102154385962}
+  - component: {fileID: 5507177294750855262}
   m_Layer: 5
   m_Name: RightHover
   m_TagString: Untagged
@@ -286,6 +287,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5507177294750855262
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5619500781517194354}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6074550383575725797
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,6 +310,7 @@ GameObject:
   - component: {fileID: 7552618962109335071}
   - component: {fileID: 397280260465273665}
   - component: {fileID: 3144373169000004905}
+  - component: {fileID: 5360342987847929986}
   m_Layer: 5
   m_Name: LeftHover
   m_TagString: Untagged
@@ -361,6 +375,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5360342987847929986
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6074550383575725797}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8079375043796893942
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +453,9 @@ MonoBehaviour:
   _rightImage: {fileID: 5348555671088231824}
   leftHiddenPos: {x: -150, y: 0}
   leftVisiblePos: {x: -140, y: 0}
+  leftGroup: {fileID: 5360342987847929986}
+  rightGroup: {fileID: 5507177294750855262}
+  fadeDuration: 0.1
   rightHiddenPos: {x: 150, y: 0}
   rightVisiblePos: {x: 140, y: 0}
   buttonText: {fileID: 6365506574525578469}
