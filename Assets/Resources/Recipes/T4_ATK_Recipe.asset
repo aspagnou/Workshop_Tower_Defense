@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c53ea9b1ce76ad48a158cf81531e758, type: 3}
   m_Name: T4_ATK_Recipe
   m_EditorClassIdentifier: 
-  tier: 3
+  tier: 4
   topRow:
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   midRow:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
+  - {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
+  - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
   bottomRow:
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
   - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
   - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
-  output: {fileID: 11400000, guid: 176174180b1a35c49aa8fdb6bb4f8e96, type: 2}
+  output: {fileID: 11400000, guid: ad536ed0c5ce0034894af567331d072d, type: 2}

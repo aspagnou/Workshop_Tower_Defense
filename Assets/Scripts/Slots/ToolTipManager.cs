@@ -19,6 +19,11 @@ public class ToolTipManager : MonoBehaviour
     [SerializeField] private Transform lineSpawnTransform;
     [SerializeField] GameObject statLinePrefab;
 
+    [Header("Preview Grid")]
+    public Transform itemGridParent;
+    public GameObject tilePrefab;
+
+
     [Space (20)]
 
     [Header("Recycle ToolTip")]
@@ -88,36 +93,76 @@ public class ToolTipManager : MonoBehaviour
     }
 
 
-
+    //child.gameObject != Title.gameObject && 
     public void Show(GearSO gear)
     {
         if (gear == null) return;
-        toolTipCanvasGroup.alpha = 0;
-        Title.text = gear.gearName;
 
-        // Supprime les anciennes lignes (si elles existent)
+        toolTipCanvasGroup.alpha = 0;
+
+        // Nettoie anciennes lignes
         foreach (Transform child in lineSpawnTransform)
         {
-            if (child.gameObject != Title.gameObject) // Garde le titre
-            {
+            if (child.gameObject != itemGridParent.gameObject)
                 Destroy(child.gameObject);
-            }
         }
 
-        // Ajoute les stats flat
+        // Nettoie ancienne grille
+        foreach (Transform child in itemGridParent)
+            Destroy(child.gameObject);
+
+        // Ajoute statistiques
         AddStatLine(attackDamageIcon, gear.flatAttackDamage, false);
         AddStatLine(rangeIcon, gear.flatRange, false);
         AddStatLine(attackSpeedIcon, gear.flatAttackSpeed, false);
         AddStatLine(criticalChanceIcon, gear.flatCriticalChance, false);
 
-        // Ajoute les stats en pourcentage
         AddStatLine(attackDamageIcon, gear.percentAttackDamage, true);
         AddStatLine(rangeIcon, gear.percentRange, true);
         AddStatLine(attackSpeedIcon, gear.percentAttackSpeed, true);
 
+        // --- NOUVEAU : affichage de la grille ---
+        if (gear.gearInventoryData != null)
+        {
+            DrawItemGrid(
+                gear.gearInventoryData.width,
+                gear.gearInventoryData.height
+            );
+        }
+
         toolTipTransform.gameObject.SetActive(true);
         isShowingBase = true;
+
     }
+    private void DrawItemGrid(int width, int height)
+    {
+        if (tilePrefab == null || itemGridParent == null)
+        {
+            Debug.LogWarning("Tile prefab or grid parent is missing!");
+            return;
+        }
+
+        // Ajuste automatiquement la grille
+        GridLayoutGroup grid = itemGridParent.GetComponent<GridLayoutGroup>();
+        if (grid != null)
+        {
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            grid.constraintCount = width;
+        }
+
+        // Génère width * height tiles
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                Instantiate(tilePrefab, itemGridParent);
+            }
+        }
+
+        itemGridParent.gameObject.SetActive(true);
+    }
+
+
 
     // Méthode pour ajouter une ligne de stat
     private void AddStatLine(Sprite icon, float value, bool isPercent)

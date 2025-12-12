@@ -94,6 +94,7 @@ MonoBehaviour:
   itemImage: {fileID: 8868436848407405126}
   itemTransform: {fileID: 6431253989202162102}
   canvas: {fileID: 0}
+  isPreviewSlot: 0
 --- !u!225 &430175549916334565
 CanvasGroup:
   m_ObjectHideFlags: 0
