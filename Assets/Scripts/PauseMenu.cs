@@ -48,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Basics");
     }
     public void Resume()
     {
@@ -59,7 +59,12 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OpenZoo()
+    {
+        SceneManager.LoadScene("Zoo");
     }
 
     public void ShowSettings()
