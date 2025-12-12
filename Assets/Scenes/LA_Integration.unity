@@ -5708,8 +5708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   fastMultiplier: 2
-  minBounds: {x: -20, y: -20}
-  maxBounds: {x: 20, y: 20}
+  minBounds: {x: -45, y: 25}
+  maxBounds: {x: 45, y: 25}
   zoomSpeed: 10
   zoomSmoothness: 5
   minZoom: 20
