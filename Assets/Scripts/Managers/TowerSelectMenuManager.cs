@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class TowerSelectMenuManager : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     private RectTransform towerSelectRect;
     private Coroutine towerSelectAnimRoutine;
 
-
+    [Space(10)]
     [Header("Upgrade Menu")]
     public GameObject upGradeMenu;
     private BaseTower currentlySelectedTower;
@@ -39,11 +40,17 @@ public class TowerSelectMenuManager : MonoBehaviour
     public GameObject[] towerPrefabs;
     [SerializeField] GameObject slotPrefab;
 
+    [Space(10)]
     [Header("Slot Menu Animation")]
     public float slotAnimDuration = 0.2f;
     public AnimationCurve slotScaleCurve;
     private RectTransform slotRect;
     private Coroutine slotAnimRoutine;
+
+    [Space(10)]
+    [Header("Sell Tower")]
+    public VisualEffectAsset sellTowerVFX;
+    public Vector3 vfxOffset = Vector3.up * 1f;
 
 
     public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
@@ -275,7 +282,12 @@ public class TowerSelectMenuManager : MonoBehaviour
                 inventoryControler.RetrieveGear(gear);
                 inventoryControler.inventoryHighlight.SetParent(saveGrid);
             }
+            VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+            vfx.visualEffectAsset = sellTowerVFX;
 
+            vfx.transform.position = currentlySelectedTower.transform.position + vfxOffset;
+
+            vfx.Play();
             Clicker.Instance.DeselectTower();
             Destroy(towerUpgrade.gameObject);
         }

@@ -43,6 +43,7 @@ public class BaseTower : MonoBehaviour
 
     // Targeting
     public Transform target;
+    private Transform nexus;
 
     // Attack cooldown
     private float attackCooldown = 0f;
@@ -61,7 +62,7 @@ public class BaseTower : MonoBehaviour
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
         towerUpgradeManager =GetComponent<TowerUpgrade>();
         gridUI.SetActive(false);
-        
+        nexus = FindAnyObjectByType<Nexus>().transform;
         RecalculateStats();
         UpdateRangeCircle();
         ApplySpecialTowerStats();
