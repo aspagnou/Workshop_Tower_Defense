@@ -29,13 +29,14 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnEnable()
     {
+        cgPressAny.alpha = 0f;
+        StartCoroutine(FadeLoop());
+        textPressAny.gameObject.SetActive(true);
         //InputSystem.onEvent += OnInputEvent;
-
     }
     private void OnDisable()
     {
         //InputSystem.onEvent -= OnInputEvent;
-
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,7 +44,6 @@ public class MainMenuUI : MonoBehaviour
         cgPressAny.alpha = 0f;
         StartCoroutine(FadeLoop());
         textPressAny.gameObject.SetActive(true);
-
     }
 
     // Update is called once per frame
@@ -55,8 +55,9 @@ public class MainMenuUI : MonoBehaviour
             _mainPausePanel.SetActive(true);
             CloseSettings();
         }
-        
+
     }
+
     //private void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
     //{
     //    if (!eventPtr.IsA<StateEvent>() && !eventPtr.IsA<DeltaStateEvent>())
@@ -70,7 +71,6 @@ public class MainMenuUI : MonoBehaviour
     //    }
 
     //}
-
 
     private IEnumerator FadeLoop()
     {
