@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c53ea9b1ce76ad48a158cf81531e758, type: 3}
+  m_Name: T2_Range_Recipe
+  m_EditorClassIdentifier: 
+  tier: 2
+  topRow:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+  - {fileID: 0}
+  midRow:
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+  bottomRow:
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
+  - {fileID: 0}
+  output: {fileID: 11400000, guid: b04f3a8eab503f841b2f676c316458bd, type: 2}
