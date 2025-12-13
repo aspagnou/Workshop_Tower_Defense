@@ -12,9 +12,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanonTower
       objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[0].manaCost
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[1].manaCost
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[0]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[1]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].costs.Array.data[1]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].costs.Array.data[2]'
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].scraps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].scraps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].scraps.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: spawnCost
-      value: 500
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: projectilePrefab

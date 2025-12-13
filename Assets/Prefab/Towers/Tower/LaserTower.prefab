@@ -259,18 +259,16 @@ MonoBehaviour:
   upgradeButtonCG: {fileID: 0}
   upgradeLevels:
   - scraps:
-    - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
     - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
     - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
-    costs: 040000000400000004000000
-    manaCost: 500
+    costs: 0600000006000000
+    manaCost: 200
   - scraps:
-    - {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
     - {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
     - {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
     - {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
-    costs: 08000000080000000800000008000000
-    manaCost: 800
+    costs: 0a0000000c00000006000000
+    manaCost: 320
   sellAmount: 100
   currentLevel: 0
   manaIcon: {fileID: 21300000, guid: bdbb8987d2a196e439930512a6e54db7, type: 3}
@@ -293,7 +291,7 @@ MonoBehaviour:
   gridUI: {fileID: 2384073878758901224}
   itemGrid: {fileID: 886195416633796091}
   inventoryMemory: {fileID: 741925592922327412}
-  spawnCost: 100
+  spawnCost: 130
   rangeCirclePrefab: {fileID: 8978828711117275295}
   baseAttackDamage: 5
   baseRange: 10

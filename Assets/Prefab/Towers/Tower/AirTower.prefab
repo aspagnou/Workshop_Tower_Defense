@@ -12,9 +12,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirTower
       objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[0].manaCost
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[1].manaCost
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[1].scraps.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[0]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[1]'
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].costs.Array.data[0]'
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].costs.Array.data[2]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].scraps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f34d70d152c3083418166501043fc788, type: 2}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].scraps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8327a2a53ed96d84c93fd23d7c5a94a2, type: 2}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].scraps.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: spawnCost
-      value: 200
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: canAttackAerial

@@ -19,6 +19,7 @@ public class InventoryHighlight : MonoBehaviour
     }
     public void Show(bool b) 
     {
+        if (highlighter == null) { return; }
         highlighter.gameObject.SetActive(b);
     }
     public void SetSize(InventoryItem targetItem)
