@@ -331,7 +331,11 @@ public class TowerSelectMenuManager : MonoBehaviour
             }
             VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
             vfx.visualEffectAsset = sellTowerVFX;
-
+            if (vfx == null)
+            {
+                Debug.LogError("Sell Tower VFX is not assigned.");
+                return;
+            }
             vfx.transform.position = currentlySelectedTower.transform.position + vfxOffset;
 
             vfx.Play();
@@ -340,7 +344,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         }
     }
 
-    // ---------------------Spawn Tower From Slot -------------------------------------------------------
+    // ---------------------Spawn Tower From Slot --------------------------------- ----------------------
     public void SpawnTowerFromSlot(int i)
     {
         Clicker.Instance.currentSelectedTowerSlot.SpawnTower(i);

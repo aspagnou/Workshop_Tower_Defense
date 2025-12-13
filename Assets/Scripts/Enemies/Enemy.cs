@@ -147,7 +147,7 @@ public class Enemy : MonoBehaviour
 
     public void ShowDamage(float amount, bool isCrit = false)
     {
-        float maxDamage = 80f;
+        float maxDamage = 50f;
 
         Color dmgColor;
         float scale;

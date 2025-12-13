@@ -198,7 +198,7 @@ public class BaseTower : MonoBehaviour
         statLines[0].text = $"{currentAttackDamage:F0}";
         statLines[1].text = $"{currentAttackSpeed:F1}";
         statLines[2].text = $"{currentCriticalChance:F0}";
-        statLines[3].text = $"{currentRange:F0}";
+        statLines[3].text = $"{currentRange:F1}";
 
         // Si un feedback existe, on l'affiche
         feedback[0]?.ShowChange(deltaDamage);
@@ -242,6 +242,8 @@ public class BaseTower : MonoBehaviour
 
             // Vérifie type (aérien / sol)
             if (!canAttackAerial && enemy.enemyType == EnemyType.Flying)
+                continue;
+            if (canAttackAerial && enemy.enemyType != EnemyType.Flying)
                 continue;
 
             // Vérifie la portée de la tour
