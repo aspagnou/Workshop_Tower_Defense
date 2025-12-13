@@ -704,7 +704,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1840962053
+--- !u!1001 &1779038115
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -714,15 +714,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1045336025021301722, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.170061
-      objectReference: {fileID: 0}
-    - target: {fileID: 1045336025021301722, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1045336025021301722, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.939
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045336025021301722, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.2837963
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1045336025021301722, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -755,10 +755,6 @@ PrefabInstance:
     - target: {fileID: 1045336025021301725, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
       propertyPath: m_Name
       value: vfx_StylizedBeam_v1 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1045336025710730311, guid: 51b2271a05d1a794d87a473c1e65150e, type: 3}
-      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[16].m_Value
-      value: 9999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -849,4 +845,4 @@ SceneRoots:
   - {fileID: 541492339}
   - {fileID: 2141749846}
   - {fileID: 691008901}
-  - {fileID: 1840962053}
+  - {fileID: 1779038115}
