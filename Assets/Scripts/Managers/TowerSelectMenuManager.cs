@@ -252,7 +252,11 @@ public class TowerSelectMenuManager : MonoBehaviour
     {
         upGradeMenu.SetActive(false);
         maxLevelPanel.SetActive(false);
-        Clicker.Instance.isUpgradeOpen = false;
+
+        if (Clicker.Instance != null)
+        {
+            Clicker.Instance.isUpgradeOpen = false;
+        }
         CloseSellTowerPanel();
     }
 
