@@ -102,8 +102,11 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         ResourceManager.Instance.OnManaChanged += UI_Manager.Instance.UpdateSlotColorText;
         UI_Manager.Instance.UpdateSlotColorText(ResourceManager.Instance.mana);
+        
         CloseSellTowerPanel();
         HideTowerSelectMenu();
+        HideUpgradeMenu();
+        Clicker.Instance.DeselectTower();
     }
 
     private IEnumerator PlaySlotMenuPop()

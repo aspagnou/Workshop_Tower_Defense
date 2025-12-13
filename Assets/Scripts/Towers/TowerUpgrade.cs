@@ -81,7 +81,7 @@ public class TowerUpgrade : MonoBehaviour
 
         // Récupère les composants de la ligne
         Image iconImage = statLine.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        TMP_Text costText = statLine.transform.GetChild(1).GetComponent<TMP_Text>();
+        TMP_Text costText = statLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
 
         // Configure l'icône
         iconImage.sprite = manaIcon;
@@ -111,7 +111,7 @@ public class TowerUpgrade : MonoBehaviour
 
         // Récupère les composants de la ligne
         Image iconImage = statLine.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        TMP_Text costText = statLine.transform.GetChild(1).GetComponent<TMP_Text>();
+        TMP_Text costText = statLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
 
         // Configure l'icône
         iconImage.sprite = icon;
@@ -176,7 +176,7 @@ public class TowerUpgrade : MonoBehaviour
 
             if (i < upgradeLevels[currentLevel].costs.Length)
             {
-                TMP_Text costText = costLines[i].transform.GetChild(1).GetComponent<TMP_Text>();
+                TMP_Text costText = costLines[i].transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
                 if (costText != null)
                 {
                     int resourceIndex = upgradeLevels[currentLevel].scraps[i].index;
@@ -200,7 +200,7 @@ public class TowerUpgrade : MonoBehaviour
         if (manaCostLine != null)
         {
             Debug.Log("ajout de mana");
-            TMP_Text manaCostText = manaCostLine.transform.GetChild(1).GetComponent<TMP_Text>();
+            TMP_Text manaCostText = manaCostLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
             if (manaCostText != null)
             {
                 if (ResourceManager.Instance.mana >= upgradeLevels[currentLevel].manaCost)

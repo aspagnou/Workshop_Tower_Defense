@@ -231,75 +231,37 @@ public class BaseTower : MonoBehaviour
 
     void FindTarget()
     {
-       
-        if (canAttackAerial == false) 
+        Enemy[] allEnemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+
+        Enemy bestEnemy = null;
+        float closestToNexus = Mathf.Infinity;
+
+        foreach (Enemy enemy in allEnemies)
         {
-            Enemy[] allEnemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-            // Trouver uniquement les ennemis terrestres
+            if (enemy == null) continue;
 
-            List<Enemy> groundEnemies = new List<Enemy>();
-            foreach (Enemy enemy in allEnemies)
-            {
-                if (enemy != null && enemy.enemyType != EnemyType.Flying)
-                {
-                    groundEnemies.Add(enemy);
-                }
-            }
-            float shortestDistance = Mathf.Infinity;
-            Enemy nearestEnemy = null;
-            foreach (Enemy enemy in groundEnemies)
-            {
-                float distance = Vector3.Distance(transform.position, enemy.transform.position);
-                if (distance < shortestDistance && distance <= currentRange)
-                {
-                    //Debug.Log("Ground Enemy found within range");
-                    shortestDistance = distance;
-                    nearestEnemy = enemy;
-                }
-            }
-            if (nearestEnemy != null)
-                target = nearestEnemy.transform;
-            else
-                target = null;
-            //Debug.Log("No ground enemy in range");
-            return;
+            // Vérifie type (aérien / sol)
+            if (!canAttackAerial && enemy.enemyType == EnemyType.Flying)
+                continue;
 
+            // Vérifie la portée de la tour
+            float distanceToTower = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distanceToTower > currentRange)
+                continue;
+
+            // Distance au nexus (CRITÈRE PRINCIPAL)
+            float distanceToNexus = Vector3.Distance(nexus.position, enemy.transform.position);
+
+            if (distanceToNexus < closestToNexus)
+            {
+                closestToNexus = distanceToNexus;
+                bestEnemy = enemy;
+            }
         }
-        else 
-        {
-            Enemy[] allEnemies = UnityEngine.Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-            // Trouver tous les ennemis aériens
-            List<Enemy> aerialEnemies = new List<Enemy>();
-            foreach (Enemy enemy in allEnemies)
-            {
-                if (enemy != null && enemy.enemyType == EnemyType.Flying)
-                {
-                    aerialEnemies.Add(enemy);
-                }
-                float shortestDistance = Mathf.Infinity;
-                Enemy nearestEnemy = null;
-                foreach (Enemy airEnemy in aerialEnemies)
-                {
-                    float distance = Vector3.Distance(transform.position, airEnemy.transform.position);
-                    if (distance < shortestDistance && distance <= currentRange)
-                    {
-                        //Debug.Log("Aerial Enemy found within range");
-                        shortestDistance = distance;
-                        nearestEnemy = enemy;
-                    }
-                }
-                if (nearestEnemy != null)
-                    target = nearestEnemy.transform;
-                else
-                    target = null;
-                //Debug.Log("No Air enemy in range");
-                return;
 
-            }
-
-        }
-        
+        target = bestEnemy != null ? bestEnemy.transform : null;
     }
+
 
 
     protected virtual void AimAtTarget()
