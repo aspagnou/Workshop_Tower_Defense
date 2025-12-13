@@ -106,6 +106,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         CloseSellTowerPanel();
         HideTowerSelectMenu();
         HideUpgradeMenu();
+        Clicker.Instance.CloseTowerInventoryGrid();
         Clicker.Instance.DeselectTower();
     }
 
@@ -242,7 +243,7 @@ public class TowerSelectMenuManager : MonoBehaviour
 
             upgradeManager.Show(upgradeManager.currentLevel);
             Clicker.Instance.isUpgradeOpen = true;
-
+            
             // Vérifie si on est au niveau max
             maxLevelPanel.SetActive(upgradeManager.currentLevel >= 2);
         }
