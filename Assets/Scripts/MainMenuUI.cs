@@ -123,7 +123,7 @@ public class MainMenuUI : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Basics");
+        SceneManager.LoadScene(1);
     }
     public void Resume()
     {
@@ -134,12 +134,12 @@ public class MainMenuUI : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 
     public void OpenZoo()
     {
-        SceneManager.LoadScene("Zoo");
+        SceneManager.LoadScene(2);
     }
 
     public void LaunchCredit()

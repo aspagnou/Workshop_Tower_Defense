@@ -72,7 +72,7 @@ public class EndConditionUI : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Basics");
+        SceneManager.LoadScene(1);
         _paused = false;
     }
     public void Resume()
@@ -84,12 +84,12 @@ public class EndConditionUI : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(0);
     }
 
     public void OpenZoo()
     {
-        SceneManager.LoadScene("Zoo");
+        SceneManager.LoadScene(2);
     }
 
     public void ShowSettings()

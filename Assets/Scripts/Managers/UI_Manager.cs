@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class UI_Manager : MonoBehaviour
 {
+    [Header("AudioManager")]
+    [SerializeField] VolumeSettings audioVolumePanel;
+
     public static UI_Manager Instance;
     [Header("Ressource_Icons")]
     public RectTransform[] rectImages;
@@ -54,6 +57,10 @@ public class UI_Manager : MonoBehaviour
         
     }
 
+    public void Start()
+    {
+        audioVolumePanel.LoadVolume();
+    }
     public void SpawnResource(int index)
     {
         // Instancie l'icône comme enfant de rectImage
