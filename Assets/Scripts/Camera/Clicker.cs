@@ -82,6 +82,7 @@ public class Clicker : MonoBehaviour
 
                 // 5️⃣ Ouvrir le menu pour ce slot
                 currentSelectedTowerSlot = towerSlot;
+                DeselectTower();
                 TowerSelectMenuManager.Instance.ShowSlotTowerMenu(towerSlot);
 
                 return;
@@ -181,6 +182,7 @@ public class Clicker : MonoBehaviour
             currentSelectedTower.OnTowerDeselected();
             ui_Manager.HideGearMenu();
             TowerSelectMenuManager.Instance.HideUpgradeMenu();
+            TowerSelectMenuManager.Instance.CloseSellTowerPanel();
             CloseTowerInventoryGrid();
             currentSelectedTower = null;
         }
