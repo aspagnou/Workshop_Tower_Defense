@@ -49,8 +49,15 @@ public class TowerSelectMenuManager : MonoBehaviour
 
     [Space(10)]
     [Header("Sell Tower")]
+    public GameObject sellTowerPanel;
+    public TMP_Text sellAmountText;
     public VisualEffectAsset sellTowerVFX;
     public Vector3 vfxOffset = Vector3.up * 1f;
+
+    [Header("Sell Text Colors")]
+    [SerializeField] private Color amountColor = new Color(0.29f, 0.64f, 1f); // bleu
+    [SerializeField] private Color gearColor = new Color(1f, 0.84f, 0f);     // jaune
+
 
 
     public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
@@ -66,6 +73,8 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         towerSelectRect = towerSelectPanel.GetComponent<RectTransform>();
         towerSelectRect.localScale = Vector3.zero; // Caché au départ
+
+        CloseSellTowerPanel();
 
         inventoryControler = FindAnyObjectByType<InventoryControler>();
         saveGrid = GameObject.FindWithTag("FixGridSpawn").GetComponent<ItemGrid>();
@@ -93,8 +102,11 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         ResourceManager.Instance.OnManaChanged += UI_Manager.Instance.UpdateSlotColorText;
         UI_Manager.Instance.UpdateSlotColorText(ResourceManager.Instance.mana);
-
+        
+        CloseSellTowerPanel();
         HideTowerSelectMenu();
+        HideUpgradeMenu();
+        Clicker.Instance.DeselectTower();
     }
 
     private IEnumerator PlaySlotMenuPop()
@@ -241,6 +253,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         upGradeMenu.SetActive(false);
         maxLevelPanel.SetActive(false);
         Clicker.Instance.isUpgradeOpen = false;
+        CloseSellTowerPanel();
     }
 
     public void ConfirmUpgrade()
@@ -266,6 +279,36 @@ public class TowerSelectMenuManager : MonoBehaviour
 
 
     //----------------------- Sell Tower ------------------------------------------------------------------
+    public void OpenSellTowerPanel()
+    {
+        sellTowerPanel.SetActive(true);
+        currentlySelectedTower.HideGrid();
+        SetSellText(currentlySelectedTower.towerUpgradeManager.sellAmount);
+    }
+    public void CloseSellTowerPanel()
+    {
+        sellTowerPanel.SetActive(false);
+    }
+    private string ColorToHex(Color c)
+    {
+        return ColorUtility.ToHtmlStringRGB(c);
+    }
+
+    public void SetSellText(int sellAmount)
+    {
+        string amountHex = ColorToHex(amountColor);
+        string gearHex = ColorToHex(gearColor);
+
+        sellAmountText.text =
+            "Do you want to sell this tower ?\n" +
+            $"You get <color=#{amountHex}>{sellAmount}</color>" +
+            "<space=40>" +
+            "<voffset=10><size=150%><sprite name=\"mana_Icon_V2\"></size></voffset>" +
+            "<space=0>" +
+            $"and your <color=#{gearHex}>Gears</color> will be sent to your inventory";
+    }
+
+
     public void SellTower()
     {
         InventoryMemory gearInventory = Clicker.Instance.currentSelectedTower.inventoryMemory;
