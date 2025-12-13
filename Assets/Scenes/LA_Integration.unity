@@ -1712,11 +1712,9 @@ MonoBehaviour:
   - {fileID: 2091631124}
   - {fileID: 467281161}
   - {fileID: 1914826299}
-  craftMenuRect: {fileID: 26092585}
+  craftMenuRect: {fileID: 0}
   slideDuration: 0.25
-  aiguilleCrafts:
-  - {fileID: 7530582}
-  - {fileID: 29106678}
+  aiguilleCrafts: []
 --- !u!114 &67545918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1736,34 +1734,7 @@ MonoBehaviour:
   towerSelectAnimDuration: 0.2
   towerSelectScaleCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0011840388
-      value: 0.0000005813781
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.8748574
-      value: 1.0237888
-      inSlope: 0.54273844
-      outSlope: 0.54273844
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1786,25 +1757,7 @@ MonoBehaviour:
   slotAnimDuration: 0.2
   slotScaleCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -5726,7 +5679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80372bdb37f792441a1fbfb59d98b502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 354302143}
   towerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -23914,8 +23867,8 @@ MonoBehaviour:
   toolTipCanvasGroup: {fileID: 1340753907}
   lineSpawnTransform: {fileID: 1340753906}
   statLinePrefab: {fileID: 2315076005331330621, guid: d34cb973644cfc84e9372f918b25cd7d, type: 3}
-  itemGridParent: {fileID: 1374005888}
-  tilePrefab: {fileID: 2999310889662109873, guid: af6db869b0be60b47a50d492bd1afd00, type: 3}
+  itemGridParent: {fileID: 0}
+  tilePrefab: {fileID: 0}
   recycleCanvasGroup: {fileID: 547866327}
   RecycleToolTip: {fileID: 1149129662}
   recycleLineSpawnTransform: {fileID: 547866325}
