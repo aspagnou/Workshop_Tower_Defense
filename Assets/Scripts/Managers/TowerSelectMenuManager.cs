@@ -87,7 +87,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         currentlySelectedTowerSlot = towerSlot;
 
         // Position
-        Vector3 worldPos = towerSlot.transform.position + slotWorldOffset;
+        Vector3 worldPos = towerSlot.spawMenuTransform.position + slotWorldOffset;
         slotSelectPanel.transform.position = worldPos;
         slotSelectPanel.transform.LookAt(cam.transform);
         slotSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);

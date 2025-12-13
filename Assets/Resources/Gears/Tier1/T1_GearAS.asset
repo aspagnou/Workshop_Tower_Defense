@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T1_GearAS
   m_EditorClassIdentifier: 
   gearName: T1_AS_Gear
-  gearIcon: {fileID: 21300000, guid: 45ea9a6e0c301fc4ab9bd6396f2eeb16, type: 3}
+  gearIcon: {fileID: 21300000, guid: 088b6afbf333d2849a498e75a56dc7bd, type: 3}
   gearInventoryData: {fileID: 11400000, guid: 5504fdd5829d92e4892371eca035929a, type: 2}
   flatAttackDamage: 0
   flatRange: 0.1
