@@ -5,8 +5,13 @@ public class LaserTower : BaseTower
 {
     [Header("Laser Tower Specific")]
     public FlameDamageArea flameArea;
-    public ParticleSystem flameParticles;
+    
     public VisualEffect laserImpactVFX;
+
+    [Header("Laser VFX Binding")]
+    [SerializeField] private Transform laserEndPoint; // Empty ou direct calcul
+    [SerializeField] private string laserEndPropertyName = "BeamEndPoint";
+
 
     private bool isFiring = false;
 
@@ -17,19 +22,28 @@ public class LaserTower : BaseTower
     }
 
     void FixedUpdate()
+{
+    if (target != null)
     {
-        if (target != null)
-        {
-            if (!isFiring)
-                StartLaser();
+        if (!isFiring)
+            StartLaser();
 
-            UpdateLaserTransform();
-        }
-        else
-        {
-            if (isFiring)
-                StopLaser();
-        }
+        UpdateLaserTransform();
+            UpdateLaserEndPoint();
+    }
+    else
+    {
+        if (isFiring)
+            StopLaser();
+    }
+}
+
+    void UpdateLaserEndPoint()
+    {
+        if (laserEndPoint == null || firePoint == null) return;
+
+        laserEndPoint.position =
+            firePoint.position + firePoint.forward * currentRange;
     }
 
     // --------------------- LASER TOGGLE ----------------------
@@ -40,11 +54,16 @@ public class LaserTower : BaseTower
         if (flameArea != null)
             flameArea.gameObject.SetActive(true);
 
-        if (flameParticles != null && !flameParticles.isPlaying)
-            flameParticles.Play();
+       
 
-        if (laserImpactVFX != null && !laserImpactVFX.aliveParticleCount.Equals(0))
+        if (laserImpactVFX != null)
+        {
+            laserImpactVFX.enabled = true;
             laserImpactVFX.Play();
+        }
+           
+        //&& !laserImpactVFX.aliveParticleCount.Equals(0)
+        //laserImpactVFX.Play();
     }
 
     void StopLaser()
@@ -54,11 +73,14 @@ public class LaserTower : BaseTower
         if (flameArea != null)
             flameArea.gameObject.SetActive(false);
 
-        if (flameParticles != null && flameParticles.isPlaying)
-            flameParticles.Stop();
+        
 
-        if (laserImpactVFX != null)
+        if (laserImpactVFX != null) 
+        {
+            laserImpactVFX.enabled = false;
             laserImpactVFX.Stop();
+        }
+            
     }
 
     // ----------------------- UPDATE -------------------------
@@ -73,13 +95,14 @@ public class LaserTower : BaseTower
         if (flameArea == null) return;
 
         float length = currentRange;
-        flameArea.transform.localScale = new Vector3(1f, 1f, length);
+        flameArea.transform.localScale = new Vector3(1.2f, 1.2f, length);
 
         flameArea.transform.position =
             firePoint.position + firePoint.forward * (length / 2f);
 
         flameArea.transform.rotation = firePoint.rotation;
     }
+
 
     protected override void ApplySpecialTowerStats()
     {
@@ -92,4 +115,13 @@ public class LaserTower : BaseTower
         flameArea.critChance = currentCriticalChance;
         flameArea.critMultiplier = critMultiplier;
     }
+    void UpdateLaserVFX()
+    {
+        if (laserImpactVFX == null || firePoint == null) return;
+
+        Vector3 endPos = firePoint.position + firePoint.forward * currentRange;
+
+        laserImpactVFX.SetVector3(laserEndPropertyName, endPos);
+    }
+
 }
