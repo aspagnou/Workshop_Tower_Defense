@@ -8,12 +8,14 @@ public class AudioManager : MonoBehaviour
     
 
     public AudioClip background;
+    public AudioClip uiButton;
 
     //Where I want to play sfx = AudioManager audioManager; awake : audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>(); where : audioManager.PlaySfx(audioManager.clipName);
     public void Start()
     {
         audioPanel.LoadVolume();
         musicSource.clip = background;
+        
         musicSource.Play();
     }
 
