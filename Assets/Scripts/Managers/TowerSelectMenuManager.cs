@@ -29,7 +29,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     private TowerUpgrade upgradeManager;
     private InventoryControler inventoryControler;
     public GameObject maxLevelPanel;
-    public CanvasGroup upgradeConfirmButtonCanvasGroup;
+    public Image upgradeConfirmButtonCanvasGroup;
 
     [Space(10)]
     [Header("SlotMenu")]
@@ -87,7 +87,7 @@ public class TowerSelectMenuManager : MonoBehaviour
         currentlySelectedTowerSlot = towerSlot;
 
         // Position
-        Vector3 worldPos = towerSlot.transform.position + slotWorldOffset;
+        Vector3 worldPos = towerSlot.spawMenuTransform.position + slotWorldOffset;
         slotSelectPanel.transform.position = worldPos;
         slotSelectPanel.transform.LookAt(cam.transform);
         slotSelectPanel.transform.rotation = Quaternion.LookRotation(cam.transform.forward);

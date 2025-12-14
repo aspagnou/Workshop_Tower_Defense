@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,15 +8,22 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public Image highlightObject;
     public Color UpgradableColor = Color.yellow;
     public Color NonUpgradableColor = Color.red;
-    
-    
-    
+    private HoverScaleAndColor hoverHighlight;
+    //private Coroutine disableRoutine;
+
+
+
     public bool isUpgradable = true;
 
     private void Start()
     {
         if (highlightObject != null)
             highlightObject.enabled = false; // Masqué au départ
+        hoverHighlight = GetComponent<HoverScaleAndColor>();
+        if(hoverHighlight != null)
+        {
+            hoverHighlight.enabled = false;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -26,10 +34,16 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             return;
         if (towerUpgrade.CanUpgrade())
         {
+            //hoverHighlight.enabled = true;
+            Debug.Log("hover activé");
             highlightObject.enabled = true;
-            Debug.Log(highlightObject.name);
+            
         }
-        
+        else
+        {
+            //hoverHighlight.enabled = true;
+        }
+
         //highlightObject.enabled = true;
         //highlightObject.color = isUpgradable ? UpgradableColor : NonUpgradableColor;
     }
@@ -40,5 +54,49 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             return;
 
         highlightObject.enabled = false;
+
     }
+    private void Update()
+    {
+        //if (!Clicker.Instance.isUpgradeOpen) return;
+
+        //TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.towerUpgradeManager;
+
+        //towerUpgrade.UpdateUpgradeButtonState();
+
+        //if (towerUpgrade.CanUpgrade())
+        //{
+        //    // Réactive immédiatement si possible
+        //    if (!hoverHighlight.enabled)
+        //        hoverHighlight.enabled = true;
+
+        //    if (disableRoutine != null)
+        //    {
+        //        StopCoroutine(disableRoutine);
+        //        disableRoutine = null;
+        //    }
+        //}
+        //else
+        //{
+        //    // Lance le retour propre UNIQUEMENT si pas déjà en cours
+        //    if (hoverHighlight.enabled && disableRoutine == null)
+        //    {
+        //        disableRoutine = StartCoroutine(DisableHoverAfterReset());
+        //    }
+        //}
+    }
+    private IEnumerator DisableHoverAfterReset()
+    {
+        // Force le retour à l’état initial
+        hoverHighlight.ResetToInitial();
+
+        // Attend que le scale soit presque revenu
+        while (Vector3.Distance(transform.localScale, Vector3.one) > 0.01f)
+            yield return null;
+
+        hoverHighlight.enabled = false;
+        //disableRoutine = null;
+    }
+
+
 }

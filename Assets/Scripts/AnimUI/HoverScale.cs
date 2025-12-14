@@ -9,7 +9,8 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
     public float scaleSpeed = 10f;      // Vitesse de l’animation
 
     [Header("Color Settings")]
-    public Color hoverColor = Color.white;   // Couleur au survol
+    public Color hoverColor = Color.white;
+    public Color refuseColor = Color.red;// Couleur au survol
     public float colorSpeed = 10f;
 
     private Vector3 initialScale;
@@ -17,6 +18,9 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     private Color initialColor;
     private Color targetColor;
+
+    public bool isUpgradeButton = false;
+
 
     private Image img;   // L'Image du bouton
 
@@ -48,6 +52,23 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         targetScale = initialScale * hoverScale;
         targetColor = hoverColor;
+        
+        if (isUpgradeButton)
+        {
+            TowerUpgrade towerUpgrade = Clicker.Instance.currentSelectedTower.towerUpgradeManager;
+            towerUpgrade.UpdateUpgradeButtonState();
+            if (towerUpgrade.CanUpgrade())
+            {
+                //hoverHighlight.enabled = true;
+                targetColor = hoverColor;
+
+
+            }
+            else
+            {
+                targetColor = refuseColor;
+            }
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -55,4 +76,10 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
         targetScale = initialScale;
         targetColor = initialColor;
     }
+    public void ResetToInitial()
+    {
+        targetScale = initialScale;
+        targetColor = initialColor;
+    }
+
 }

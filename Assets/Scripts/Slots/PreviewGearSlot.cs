@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class PreviewGearSlot : MonoBehaviour
+public class PreviewGearSlot : MonoBehaviour, IPointerClickHandler
 {
     public GearSO currGear;
     public Image gearImage;
@@ -30,7 +30,7 @@ public class PreviewGearSlot : MonoBehaviour
             gearImage.sprite = currGear.gearIcon;
             // Réinitialiser l'alpha à 1 si un item est présent
             Color newColor = gearImage.color;
-            newColor.a = 0.6f;
+            newColor.a = 1f;
             gearImage.color = newColor;
         }
         else
@@ -45,4 +45,18 @@ public class PreviewGearSlot : MonoBehaviour
     }
 
     
+
+    
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount == 2)
+        {
+            Debug.Log("Double click sur PreviewGearSlot");
+
+            if (PreviewManager.Instance != null)
+            {
+                PreviewManager.Instance.ApplyPreviewRecipe();
+            }
+        }
+    }
 }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,8 +9,11 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class TowerUpgrade : MonoBehaviour
 {
+    [Header("Upgrade Meshes")]
+    public GameObject[] towerMeshes;
+
     [Header("Upgrade Button")]
-    public CanvasGroup upgradeButtonCG;
+    public Image upgradeButtonCG;
 
     [Header("Upgrade Levels")]
     public UpgradeLevel[] upgradeLevels;
@@ -23,7 +26,7 @@ public class TowerUpgrade : MonoBehaviour
     public bool canUpgrade = false;
 
     [Header("VFX & SFX")]
-    public VisualEffectAsset UpgradeVFX;  // Le VFX à jouer lors du spawn
+    public VisualEffectAsset UpgradeVFX;  // Le VFX Ã  jouer lors du spawn
     public Vector3 vfxOffset = Vector3.up * 1f;
 
 
@@ -39,7 +42,8 @@ public class TowerUpgrade : MonoBehaviour
     {
         clicker = FindAnyObjectByType<Clicker>();
         lineSpawnTransform = GameObject.FindWithTag("CostContainer").transform.GetChild(0).GetChild(0);
-       
+        UpdateTowerMesh();
+
     }
 
     public void Show(int level)
@@ -54,17 +58,17 @@ public class TowerUpgrade : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // Nettoie la liste des lignes de coût
+        // Nettoie la liste des lignes de coÃ»t
         costLines.Clear();
 
-        // Vérifie que le niveau est valide
+        // VÃ©rifie que le niveau est valide
         if (level < 0 || level >= upgradeLevels.Length)
         {
             
             return;
         }
 
-        // Affiche les coûts pour le niveau sélectionné
+        // Affiche les coÃ»ts pour le niveau sÃ©lectionnÃ©
         for (int i = 0; i < upgradeLevels[level].costs.Length; i++)
         {
             AddCostLine(upgradeLevels[level].scraps[i].itemIcon, upgradeLevels[level].costs[i], upgradeLevels[level].scraps[i].index);
@@ -77,20 +81,20 @@ public class TowerUpgrade : MonoBehaviour
     private void AddManaCostLine(int level)
     {
         GameObject statLine = Instantiate(costLinePrefab, lineSpawnTransform);
-        manaCostLine = statLine; // Stocke la ligne de coût du mana
+        manaCostLine = statLine; // Stocke la ligne de coÃ»t du mana
 
-        // Récupère les composants de la ligne
+        // RÃ©cupÃ¨re les composants de la ligne
         Image iconImage = statLine.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         TMP_Text costText = statLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
 
-        // Configure l'icône
+        // Configure l'icÃ´ne
         iconImage.sprite = manaIcon;
         iconImage.gameObject.SetActive(manaIcon != null);
 
         // Configure le texte
         costText.text = $"x{upgradeLevels[level].manaCost}";
 
-        // Vérifie si la quantité de mana est suffisante
+        // VÃ©rifie si la quantitÃ© de mana est suffisante
         if (ResourceManager.Instance.mana >= upgradeLevels[level].manaCost)
         {
             costText.color = Color.green; // Vert si assez de mana
@@ -109,18 +113,18 @@ public class TowerUpgrade : MonoBehaviour
         // Instancie une nouvelle ligne
         GameObject statLine = Instantiate(costLinePrefab, lineSpawnTransform);
 
-        // Récupère les composants de la ligne
+        // RÃ©cupÃ¨re les composants de la ligne
         Image iconImage = statLine.transform.GetChild(0).GetChild(0).GetComponent<Image>();
         TMP_Text costText = statLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
 
-        // Configure l'icône
+        // Configure l'icÃ´ne
         iconImage.sprite = icon;
         iconImage.gameObject.SetActive(icon != null);
 
         // Configure le texte
         costText.text = $"x{value}";
 
-        // Vérifie si la quantité de ressource est suffisante
+        // VÃ©rifie si la quantitÃ© de ressource est suffisante
         if (ResourceManager.Instance.scraps[resourceIndex].amount >= value)
         {
             costText.color = Color.green; // Vert si assez de ressources
@@ -130,31 +134,33 @@ public class TowerUpgrade : MonoBehaviour
             costText.color = Color.red; // Rouge si pas assez de ressources
         }
 
-        // Ajoute la ligne à la liste
+        // Ajoute la ligne Ã  la liste
         costLines.Add(statLine);
     }
     public void UpdateUpgradeButtonState()
     {
         upgradeButtonCG = TowerSelectMenuManager.Instance.upgradeConfirmButtonCanvasGroup;
-        if (upgradeButtonCG == null) 
-        { 
-            Debug.LogError("Upgrade Button CanvasGroup is not assigned.");
-            return; 
+
+        if (upgradeButtonCG == null)
+        {
+            Debug.LogError("Upgrade Button Image is not assigned.");
+            return;
         }
+
+        Color c = upgradeButtonCG.color;
 
         if (CanUpgrade())
         {
-            //Debug.Log("Can upgrade");
-            upgradeButtonCG.alpha = 1f;
-            
+            c.a = 1f;      // ðŸ”¥ totalement visible
         }
         else
         {
-            //ebug.Log("Cannot upgrade");
-            upgradeButtonCG.alpha = 0.7f;
-      
+            c.a = 0.5f;    // ðŸ”¥ grisÃ©
         }
+
+        upgradeButtonCG.color = c;
     }
+
 
     public void UpdateCostLineColors()
     {
@@ -164,12 +170,12 @@ public class TowerUpgrade : MonoBehaviour
             return;
         }
 
-        // Parcourir les lignes de coût
+        // Parcourir les lignes de coÃ»t
         for (int i = costLines.Count - 1; i >= 0; i--)
         {
             if (costLines[i] == null)
             {
-                // Supprimer les références nulles
+                // Supprimer les rÃ©fÃ©rences nulles
                 costLines.RemoveAt(i);
                 continue;
             }
@@ -196,7 +202,7 @@ public class TowerUpgrade : MonoBehaviour
 
         }
 
-        // Mettre à jour la couleur de la ligne de coût du mana
+        // Mettre Ã  jour la couleur de la ligne de coÃ»t du mana
         if (manaCostLine != null)
         {
             Debug.Log("ajout de mana");
@@ -216,13 +222,23 @@ public class TowerUpgrade : MonoBehaviour
         UpdateUpgradeButtonState();
     }
 
+    void UpdateTowerMesh()
+    {
+        for (int i = 0; i < towerMeshes.Length; i++)
+        {
+            if (towerMeshes[i] != null)
+                towerMeshes[i].SetActive(i == currentLevel);
+        }
+    }
+
+
     public bool CanUpgrade()
     {
         if ( currentLevel < 0 || currentLevel >= upgradeLevels.Length)
         {
             return false;
         }
-        // Vérifie scraps
+        // VÃ©rifie scraps
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
         {
             int required = upgradeLevels[currentLevel].costs[i];
@@ -232,7 +248,7 @@ public class TowerUpgrade : MonoBehaviour
                 return false;
         }
 
-        // Vérifie mana
+        // VÃ©rifie mana
         if (ResourceManager.Instance.mana < upgradeLevels[currentLevel].manaCost)
             return false;
 
@@ -242,14 +258,14 @@ public class TowerUpgrade : MonoBehaviour
 
     public void ConfirmUpgrade()
     {
-        //Vérifie que le niveau est valide
+        //VÃ©rifie que le niveau est valide
         if (currentLevel < 0 || currentLevel >= upgradeLevels.Length)
         {
             Debug.LogError("Niveau d'upgrade invalide.");
             return;
         }
 
-        // Vérifie les ressources disponibles
+        // VÃ©rifie les ressources disponibles
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
         {
             if (ResourceManager.Instance.scraps[i].amount < upgradeLevels[currentLevel].costs[i])
@@ -258,13 +274,13 @@ public class TowerUpgrade : MonoBehaviour
                 return;
             }
         }
-        // vérifie le mana
+        // vÃ©rifie le mana
         if ( ResourceManager.Instance.mana < upgradeLevels[currentLevel].manaCost) 
         {
             return;
         }
 
-        // Enlève les scraps
+        // EnlÃ¨ve les scraps
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
         {
             ResourceManager.Instance.UseResource(upgradeLevels[currentLevel].scraps[i], upgradeLevels[currentLevel].costs[i]);
@@ -283,6 +299,7 @@ public class TowerUpgrade : MonoBehaviour
         vfx.transform.position = transform.position + vfxOffset;
 
         vfx.Play();
+        UpdateTowerMesh();
 
         Destroy(vfx.gameObject, 2f); // Auto-clean
         ItemGrid grid = Clicker.Instance.currentSelectedTower.itemGrid;

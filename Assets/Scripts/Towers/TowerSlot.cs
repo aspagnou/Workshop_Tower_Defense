@@ -6,6 +6,7 @@ public class TowerSlot : MonoBehaviour
 {
     [SerializeField] private GameObject[] towerPrefabs;
     private TMP_Text[] costsText;
+    public Transform spawMenuTransform;
     private ResourceManager resourceManager;
     public VisualEffectAsset spawnVFX;  // Le VFX à jouer lors du spawn
     public Vector3 vfxOffset = Vector3.up * 1f;
