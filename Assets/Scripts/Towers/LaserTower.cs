@@ -7,6 +7,8 @@ public class LaserTower : BaseTower
     public FlameDamageArea flameArea;
     
     public VisualEffect laserImpactVFX;
+    public VisualEffect[] laserFusionVFX;
+    TowerUpgrade towerUpgrade;
 
     [Header("Laser VFX Binding")]
     [SerializeField] private Transform laserEndPoint; // Empty ou direct calcul
@@ -17,6 +19,7 @@ public class LaserTower : BaseTower
 
     void Start()
     {
+        towerUpgrade = GetComponent<TowerUpgrade>();
         ApplySpecialTowerStats();
         StopLaser();
     }
@@ -25,16 +28,39 @@ public class LaserTower : BaseTower
 {
     if (target != null)
     {
-        if (!isFiring)
-            StartLaser();
-
-        UpdateLaserTransform();
+        if (!isFiring) 
+        {
+            StartLaser(); 
+            UpdateLaserTransform();
             UpdateLaserEndPoint();
+                 
+            if (towerUpgrade != null && towerUpgrade.currentLevel ==2)
+            {
+                foreach (VisualEffect effect in laserFusionVFX)
+                {
+                        effect.enabled = true;
+                        effect.Play();
+                }
+            }
+        }
+            
+
+       
+
     }
     else
     {
-        if (isFiring)
-            StopLaser();
+        if (isFiring) 
+            {
+                StopLaser();
+                foreach (VisualEffect effect in laserFusionVFX)
+                {
+                    effect.enabled = false;
+                    effect.Play();
+                }
+            }
+            
+
     }
 }
 
@@ -44,6 +70,7 @@ public class LaserTower : BaseTower
 
         laserEndPoint.position =
             firePoint.position + firePoint.forward * currentRange;
+        
     }
 
     // --------------------- LASER TOGGLE ----------------------

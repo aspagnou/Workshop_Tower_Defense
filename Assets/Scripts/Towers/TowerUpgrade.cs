@@ -268,15 +268,21 @@ public class TowerUpgrade : MonoBehaviour
         // Vérifie les ressources disponibles
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
         {
-            if (ResourceManager.Instance.scraps[i].amount < upgradeLevels[currentLevel].costs[i])
+            int scrapIndex = upgradeLevels[currentLevel].scraps[i].index;
+            int required = upgradeLevels[currentLevel].costs[i];
+            int available = ResourceManager.Instance.scraps[scrapIndex].amount;
+
+            if (available < required)
             {
-                Debug.Log("Not enough resources");
+                Debug.Log($"Not enough scrap {scrapIndex}");
                 return;
             }
         }
+
         // vérifie le mana
         if ( ResourceManager.Instance.mana < upgradeLevels[currentLevel].manaCost) 
         {
+            Debug.Log("Not enough mana");
             return;
         }
 

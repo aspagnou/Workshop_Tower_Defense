@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: canAttackAerial
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1291471280468077645, guid: 86a18c73f334d714599b24ecbd946b03, type: 3}
     - target: {fileID: 4731179121687873164, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -130,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 47f2da2a231c68f4e9a39dca5fce0268, type: 2}
     - target: {fileID: 8459278485861560056, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 8459278485861560056, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: m_LocalPosition.z
