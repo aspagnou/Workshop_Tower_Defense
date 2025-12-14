@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff1d28a585f5cd149823a5754dc5e1f8, type: 3}
-  m_Name: Arc
+  m_Name: God
   m_EditorClassIdentifier: 
-  gearName: Bow
-  gearIcon: {fileID: 21300000, guid: a6151ea9c26412844aa4ba2b5ebabc4f, type: 3}
+  gearName: GOD
+  gearIcon: {fileID: 21300000, guid: b5c75ba3df4c9f44cb26f70f3e14c4a4, type: 3}
   gearInventoryData: {fileID: 11400000, guid: 224b6270790ac7a4f8374145c3c68e01, type: 2}
-  flatAttackDamage: 5
-  flatRange: 10
-  flatAttackSpeed: 3
-  flatCriticalChance: 50
+  flatAttackDamage: 999
+  flatRange: 999
+  flatAttackSpeed: 999
+  flatCriticalChance: 100
   percentAttackDamage: 0
   percentRange: 0
   percentAttackSpeed: 0

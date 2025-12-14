@@ -29,7 +29,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     private TowerUpgrade upgradeManager;
     private InventoryControler inventoryControler;
     public GameObject maxLevelPanel;
-    public CanvasGroup upgradeConfirmButtonCanvasGroup;
+    public Image upgradeConfirmButtonCanvasGroup;
 
     [Space(10)]
     [Header("SlotMenu")]

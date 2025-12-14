@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: T4_Crit_Gear
   m_EditorClassIdentifier: 
   gearName: T4_Crit_Gear
-  gearIcon: {fileID: 21300000, guid: 8c449423ce095c04bb67b87b4270b595, type: 3}
+  gearIcon: {fileID: 21300000, guid: 74fd5770332a47f469c0d496813d40d0, type: 3}
   gearInventoryData: {fileID: 11400000, guid: c2ee6b321ebff664e91122297785ab38, type: 2}
   flatAttackDamage: 0
   flatRange: 0

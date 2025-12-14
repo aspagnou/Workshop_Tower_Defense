@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PreviewManager : MonoBehaviour
 {
+    public static PreviewManager Instance;
     public PreviewGearSlot previewGearSlot;
     [Header("Tier Buttons")]
 
@@ -28,6 +29,10 @@ public class PreviewManager : MonoBehaviour
     public ItemSlot[] midRow = new ItemSlot[3];
     public ItemSlot[] bottomRow = new ItemSlot[3];
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         // Charger toutes les recettes
@@ -90,6 +95,7 @@ public class PreviewManager : MonoBehaviour
         if (currentRecipeIndex < 0) currentRecipeIndex = activeList.Count - 1;
 
         UpdatePreviewGearSlot();
+        ReturnCraftingScraps();
     }
 
     public void ShowNextRecipe()
@@ -100,6 +106,7 @@ public class PreviewManager : MonoBehaviour
         if (currentRecipeIndex >= activeList.Count) currentRecipeIndex = 0;
 
         UpdatePreviewGearSlot();
+        ReturnCraftingScraps();
     }
 
     // ----------------------------------------------------------
@@ -166,5 +173,113 @@ public class PreviewManager : MonoBehaviour
             img.color = (i == tier - 1) ? selectedColor : normalColor;
         }
     }
+    public void ApplyPreviewRecipe()
+    {
+        if (activeList == null || activeList.Count == 0)
+            return;
+
+        RecipeSO recipe = activeList[currentRecipeIndex];
+
+        // 1️⃣ Vérifier ressources
+        if (!HasRequiredResources(recipe))
+        {
+            Debug.Log("Pas assez de ressources");
+            return;
+        }
+
+        // 2️⃣ Renvoyer UNIQUEMENT les scraps du craft
+        ReturnCraftingScraps();
+
+        // 3️⃣ Placer la recette dans la grille de craft
+        PlaceRecipeIntoCraftingGrid(recipe);
+    }
+
+    private bool HasRequiredResources(RecipeSO recipe)
+    {
+        Dictionary<ItemSO, int> required = new Dictionary<ItemSO, int>();
+
+        CountItems(recipe.topRow, required);
+        CountItems(recipe.midRow, required);
+        CountItems(recipe.bottomRow, required);
+
+        foreach (var pair in required)
+        {
+            if (pair.Key.amount < pair.Value)
+                return false;
+        }
+
+        return true;
+    }
+
+    private void CountItems(ItemSO[] row, Dictionary<ItemSO, int> dict)
+    {
+        foreach (var item in row)
+        {
+            if (item == null) continue;
+
+            if (!dict.ContainsKey(item))
+                dict[item] = 0;
+
+            dict[item]++;
+        }
+    }
+    
+    private ItemSlot[] GetCraftingSlots()
+    {
+        return ResourceManager.Instance.craftingSlots; // 9 slots
+    }
+    private void ReturnCraftingScraps()
+    {
+        ItemSlot[] craftSlots = GetCraftingSlots();
+
+        foreach (ItemSlot slot in craftSlots)
+        {
+            if (slot.currItem != null)
+            {
+                ResourceManager.Instance.AddResource(slot.currItem, 1);
+                slot.currItem = null;
+                slot.UpdateSlotData();
+            }
+        }
+    }
+    private void PlaceRecipeIntoCraftingGrid(RecipeSO recipe)
+    {
+        ItemSlot[] craftSlots = GetCraftingSlots();
+
+        ItemSO[][] rows =
+        {
+        recipe.topRow,
+        recipe.midRow,
+        recipe.bottomRow
+    };
+
+        int slotIndex = 0;
+
+        for (int r = 0; r < 3; r++)
+        {
+            for (int c = 0; c < 3; c++)
+            {
+                if (rows[r].Length > c && rows[r][c] != null)
+                {
+                    ItemSO item = rows[r][c];
+
+                    ResourceManager.Instance.UseResource(item, 1);
+                    craftSlots[slotIndex].currItem = item;
+                    craftSlots[slotIndex].UpdateSlotData();
+                }
+                else
+                {
+                    craftSlots[slotIndex].currItem = null;
+                    craftSlots[slotIndex].UpdateSlotData();
+                }
+
+                slotIndex++;
+            }
+        }
+    }
+
+
+
+
 
 }
