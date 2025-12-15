@@ -6670,6 +6670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00217c80cec3f9c45b256409b9ab2fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPanel: {fileID: 808226181}
   musicSource: {fileID: 108895161}
   sfxSource: {fileID: 1956418760}
   background: {fileID: 8300000, guid: 80201e7628b4b804391e367cc6cf83fc, type: 3}

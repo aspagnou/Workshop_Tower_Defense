@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class ButtonSimple : MonoBehaviour
 {
+    [SerializeField] AudioManager audioManager;
 
     public Image targetImage;
     public Sprite hoverImage;
@@ -37,10 +38,10 @@ public class ButtonSimple : MonoBehaviour
         buttonText.color = normalColor;
         _leftImage.anchoredPosition = leftHiddenPos;
     }
-    void Start()
+    void Awake()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -78,8 +79,9 @@ public class ButtonSimple : MonoBehaviour
     {
         targetImage.sprite = pressedImage;
         buttonText.color = pressedColor;
+        audioManager.PlaySfx(audioManager.uiButton);
 
-        
+
     }
 
     private void StartFade(float targetAlpha)

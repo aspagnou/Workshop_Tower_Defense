@@ -1,12 +1,13 @@
-using UnityEngine;
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Utilities;
-using UnityEngine.InputSystem.LowLevel;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -21,41 +22,75 @@ public class MainMenuUI : MonoBehaviour
     [Header("PressAny")]
     [SerializeField] private TMP_Text textPressAny;
     public CanvasGroup cgPressAny;
-    [SerializeField] private Image KeyArt;
+    public CanvasGroup panelStart;
+    [SerializeField] private Image KeyArtBackground;
+    [SerializeField] private Image KeyArtPart1;
+    [SerializeField] private Image KeyArtPart2;
 
     public float fadeDuration = 0.5f;
     public float visibleTime = 1.5f;
     public float hiddenTime = 1.5f;
 
+    public float fadeInStartDuration = 1f;
+
+
+    public Animator animator;
+
+    private bool inputTriggered = false;
+    private Coroutine fadeLoopRoutine;
+
     private void OnEnable()
     {
+        //StopAllCoroutines();
+
+
         cgPressAny.alpha = 0f;
-        StartCoroutine(FadeLoop());
         textPressAny.gameObject.SetActive(true);
-        //InputSystem.onEvent += OnInputEvent;
+
+        animator.Rebind();
+        animator.Update(0f);
+
+
+        inputTriggered = false;
+
+        if (fadeLoopRoutine != null)
+        {
+            StopCoroutine(fadeLoopRoutine);
+        }
+
+        fadeLoopRoutine = StartCoroutine(FadeLoop());
+        
     }
     private void OnDisable()
     {
-        //InputSystem.onEvent -= OnInputEvent;
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cgPressAny.alpha = 0f;
-        StartCoroutine(FadeLoop());
-        textPressAny.gameObject.SetActive(true);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!inputTriggered && Input.anyKeyDown)
         {
             HidePressAny();
             _mainPausePanel.SetActive(true);
             CloseSettings();
+            //animator.Play("Idle", -1, 0f);
+            animator.SetTrigger("PlayMenuAnim");
+            //StartCoroutine(FadeInStartPanel(1f, fadeInStartDuration));
+            inputTriggered = true;
         }
 
+    }
+
+    private IEnumerator EnableInputNextFrame()
+    {
+        yield return null;
+        inputTriggered = false;
     }
 
     //private void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
@@ -101,6 +136,21 @@ public class MainMenuUI : MonoBehaviour
         cgPressAny.alpha = targetAlpha;
     }
 
+    private IEnumerator FadeInStartPanel(float targetAlpha, float fadeTime)
+    {
+        float t = 0f;
+        float start = panelStart.alpha;
+        yield return new WaitForSeconds (fadeTime);
+        while (t < 1f)
+        {
+            t += Time.deltaTime / fadeDuration;
+            panelStart.alpha = Mathf.Lerp(start, targetAlpha, t);
+            yield return null;
+        }
+
+        panelStart.alpha = targetAlpha;
+    }
+
     public void Pause()
     {
         if (_paused == false)
@@ -119,10 +169,15 @@ public class MainMenuUI : MonoBehaviour
 
     public void HidePressAny()
     {
-        textPressAny.gameObject.SetActive(false);
+        if (fadeLoopRoutine != null)
+        {
+            StopCoroutine(fadeLoopRoutine);
+        }
+        StartCoroutine(FadeText(0f));
     }
     public void StartGame()
     {
+        animator.SetTrigger("ReturnIdle");
         SceneManager.LoadScene(1);
     }
     public void Resume()
@@ -139,6 +194,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void OpenZoo()
     {
+        animator.SetTrigger("ReturnIdle");
         SceneManager.LoadScene(2);
     }
 
