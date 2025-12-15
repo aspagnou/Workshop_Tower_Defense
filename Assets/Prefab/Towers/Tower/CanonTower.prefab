@@ -242,6 +242,30 @@ PrefabInstance:
       value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[0].baseRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[1].baseRange
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[0].baseAttackSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[1].baseAttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[0].baseAttackDamage
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: upgradeLevels.Array.data[1].baseAttackDamage
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: 'upgradeLevels.Array.data[0].costs.Array.data[0]'
       value: 10
       objectReference: {fileID: 0}
@@ -272,6 +296,14 @@ PrefabInstance:
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: spawnCost
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: baseAttackSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: baseAttackDamage
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: projectilePrefab

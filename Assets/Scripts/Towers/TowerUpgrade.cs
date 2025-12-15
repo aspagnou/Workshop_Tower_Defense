@@ -43,6 +43,12 @@ public class TowerUpgrade : MonoBehaviour
         clicker = FindAnyObjectByType<Clicker>();
         lineSpawnTransform = GameObject.FindWithTag("CostContainer").transform.GetChild(0).GetChild(0);
         UpdateTowerMesh();
+        //if (upgradeLevels.Length > 0)
+        //{
+        //    GetComponent<BaseTower>()
+        //        .ApplyUpgradeStats(upgradeLevels[currentLevel]);
+        //}
+
 
     }
 
@@ -297,6 +303,13 @@ public class TowerUpgrade : MonoBehaviour
 
         // Passe au niveau suivant
         currentLevel++;
+
+        BaseTower tower = GetComponent<BaseTower>();
+        if (tower != null)
+        {
+            tower.ApplyUpgradeStats(upgradeLevels[currentLevel-1]);
+        }
+
         Debug.Log("Upgrade successful to level " + currentLevel);
         sellAmount += 50;
         VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();

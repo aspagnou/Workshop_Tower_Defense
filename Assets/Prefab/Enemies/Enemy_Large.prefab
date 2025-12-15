@@ -125,21 +125,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 3
-  speed: 2
+  speed: 0.6
   rotationSpeed: 1
   timeToSpawn: 3
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}
   deathScrap: {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
-  nbreMana: 50
+  scrapAmountOnDeath: 4
+  nbreMana: 15
   layers:
     serializedVersion: 2
     m_Bits: 0
   explosionVFXPrefab: {fileID: 1881982758383077995, guid: 86b3092715ca3224ea75eda65e7cacdf, type: 3}
-  lifePoints: 50
-  nexusDamage: 10
-  timeToExplode: 4
+  lifePoints: 250
+  nexusDamage: 250
+  timeToExplode: 5
   damageTextPrefab: {fileID: 790610433474755077, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
   canDamageNexus: 0
 --- !u!54 &-441973373468182913

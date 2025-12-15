@@ -442,11 +442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e596b687a7aaf04e9cb763f5d57b2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   currentHealth: 0
   healthBarRoot: {fileID: 8251118194625395827}
   healthFill: {fileID: 8429028550590147092}
   worldOffset: {x: 0, y: 5, z: 0}
+  healthLerpSpeed: 4
 --- !u!1 &8229925461541753631
 GameObject:
   m_ObjectHideFlags: 0

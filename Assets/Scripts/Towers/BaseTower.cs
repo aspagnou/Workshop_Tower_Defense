@@ -75,6 +75,17 @@ public class BaseTower : MonoBehaviour
     {
         // Par défaut, ne fait rien.
     }
+
+    public void ApplyUpgradeStats(UpgradeLevel level)
+    {
+        baseAttackDamage = level.baseAttackDamage;
+        baseRange = level.baseRange;
+        baseAttackSpeed = level.baseAttackSpeed;
+        baseCriticalChance = level.baseCriticalChance;
+
+        RecalculateStats();
+    }
+
     // Update is called once per frame
 
 
