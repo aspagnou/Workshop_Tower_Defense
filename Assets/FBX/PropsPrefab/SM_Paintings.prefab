@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5961390068086337074}
   m_Layer: 0
-  m_Name: PeintureChevalet
+  m_Name: SM_Paintings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5674171500884659502}
   m_Layer: 0
-  m_Name: Vase
+  m_Name: SM_Mortars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
