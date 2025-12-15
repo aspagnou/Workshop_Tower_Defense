@@ -42,7 +42,7 @@ public class FlyingTextManager : MonoBehaviour
         }
     }
 
-    public void SpawnScrap(Vector3 spawnPoint, ItemSO item)
+    public void SpawnScrap(Vector3 spawnPoint, ItemSO item, int amount)
     {
         if (item == null)
         {
@@ -80,6 +80,7 @@ public class FlyingTextManager : MonoBehaviour
         }
 
         scrapComponent.SetUpScrap(item);
+        scrapComponent.text.text = $"+ {amount}";
         StartCoroutine(Move(spawnedObj));
     }
 

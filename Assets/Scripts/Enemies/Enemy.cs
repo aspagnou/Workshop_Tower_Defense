@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
         ResourceManager.Instance.AddResource(deathScrap, scrapAmountOnDeath);
 
         if (deathScrap != null)
-            FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap);
+            FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap, scrapAmountOnDeath);
 
         Destroy(gameObject);
     }

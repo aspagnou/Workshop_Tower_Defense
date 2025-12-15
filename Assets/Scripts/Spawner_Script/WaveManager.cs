@@ -1,7 +1,8 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class WaveManager : MonoBehaviour
     [Header("Text UI")]
     [SerializeField] private TextMeshProUGUI waveCounterLabel;
     [SerializeField] private TextMeshProUGUI nextWaveLabel;
+
+    [Header("Warning UI")]
+    public Image warningImage; // fade rouge assigné dans l'inspector
+    [Header("Wave Warning")]
+    [SerializeField] private WaveWarningFade warningFade;
+
+
     //[SerializeField] private TextMeshProUGUI ManaLabel;
     public float totalMana;
 
@@ -65,7 +73,7 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-
+        warningFade = GetComponent<WaveWarningFade>();
         countDown = spawnerManager.timeBeforeFirstWave;
 
        
@@ -99,6 +107,7 @@ public class WaveManager : MonoBehaviour
             countDown = spawnerManager.timeBetweenWaves;
 
         }
+        
 
     }
 
@@ -110,15 +119,29 @@ public class WaveManager : MonoBehaviour
     void startWaves()
     {
         if (currentWaveIndex < waves.Length - 1)
-        { 
+        {
             currentWaveIndex++;
             waves[currentWaveIndex].StartWave();
+
+            // 🔥 Clignote UNIQUEMENT si ce spawner a des ennemis
+            if (waves[currentWaveIndex]._enemyList.Count > 0)
+            {
+                warningFade?.StartBlink();
+            }
         }
-        
-        
-        //totalEnemies = spawnerManager.totalEnemiesPerWave;
-        
-        
+    }
+
+    public void OnWaveFinished()
+    {
+        warningFade?.StopBlink();
+    }
+
+    public bool HasEnemiesInCurrentWave(int waveIndex)
+    {
+        if (waveIndex < 0 || waveIndex >= waves.Length)
+            return false;
+
+        return waves[waveIndex]._enemyList.Count > 0;
     }
 
 

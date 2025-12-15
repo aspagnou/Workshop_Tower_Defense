@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,25 +71,41 @@ public class SpawnerManager : MonoBehaviour
 
     public void RemoveEnemy(Enemy enemy)
     {
-        totalEnemiesPerWave[enemy.enemyType] -= 1;
-        totalEnemiesPerWave[EnemyType.Global]--; 
+        if (enemy == null)
+            return;
 
-        foreach (KeyValuePair<EnemyType, int> item in totalEnemiesPerWave)
-        {
-            //Debug.LogFormat("Key={0}, Value={1}", item.Key, item.Value);
-        }
+        if (totalEnemiesPerWave.ContainsKey(enemy.enemyType))
+            totalEnemiesPerWave[enemy.enemyType]--;
 
-        if (totalEnemiesPerWave[EnemyType.Global] == 0 && currentSpawnerIndex < allWavesManager[0].waves.Length-1)
+        totalEnemiesPerWave[EnemyType.Global]--;
+
+        if (totalEnemiesPerWave[EnemyType.Global] < 0)
+            totalEnemiesPerWave[EnemyType.Global] = 0;
+
+        // 🔥 Fin réelle de la vague
+        if (totalEnemiesPerWave[EnemyType.Global] == 0)
         {
-            currentSpawnerIndex++;
-            CalculTotalEnemies(currentSpawnerIndex);
-            for (int i = 0; i < allWavesManager.Length; i++)
+            // Stop uniquement les fades actifs
+            foreach (WaveManager wm in allWavesManager)
             {
-                allWavesManager[i].StartNextWave(timeBetweenWaves);
+                wm.OnWaveFinished();
+            }
+
+            if (currentSpawnerIndex < allWavesManager[0].waves.Length - 1)
+            {
+                currentSpawnerIndex++;
+                CalculTotalEnemies(currentSpawnerIndex);
+
+                foreach (WaveManager wm in allWavesManager)
+                {
+                    wm.StartNextWave(timeBetweenWaves);
+                }
             }
         }
     }
-    
+
+
+
     // Update is called once per frame
     void FixedUpdate()
     {

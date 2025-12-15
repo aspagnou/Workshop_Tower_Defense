@@ -782,6 +782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveCounterLabel: {fileID: 0}
   nextWaveLabel: {fileID: 0}
+  warningImage: {fileID: 0}
+  warningFade: {fileID: 0}
   totalMana: 0
   spawnerManager: {fileID: 0}
   waveManager: {fileID: 5643111127907971478}

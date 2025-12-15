@@ -5,10 +5,12 @@ public class FlyingScrap : MonoBehaviour
 {
     public Image flyingImage;
     public Camera cam;
+    public TMP_Text text;
 
     private void Start()
     {
         cam = Camera.main;
+        
     }
     public void SetUpScrap(ItemSO item)
     {
