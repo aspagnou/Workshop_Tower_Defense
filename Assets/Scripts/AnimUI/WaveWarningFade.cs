@@ -6,11 +6,11 @@ public class WaveWarningFade : MonoBehaviour
 {
     [SerializeField] private Image fadeImage;
     [SerializeField] private float blinkSpeed = 2f;
-    [SerializeField] private float maxAlpha = 0.6f;
+    [SerializeField] private float maxAlpha = 0.85f;
 
     private Coroutine blinkRoutine;
 
-    void Awake()
+    void Start()
     {
         SetAlpha(0f);
     }

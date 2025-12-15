@@ -103,20 +103,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 2
-  speed: 1
+  speed: 1.3
   rotationSpeed: 0.5
   timeToSpawn: 3
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}
   deathScrap: {fileID: 11400000, guid: 28900bdd1d1cd574cbca6a5ccf97b1c0, type: 2}
-  scrapAmountOnDeath: 2
-  nbreMana: 8
+  scrapAmountOnDeath: 1
+  nbreMana: 10
   layers:
     serializedVersion: 2
     m_Bits: 0
   explosionVFXPrefab: {fileID: 1881982758383077995, guid: 86b3092715ca3224ea75eda65e7cacdf, type: 3}
-  lifePoints: 100
+  lifePoints: 200
   nexusDamage: 100
   timeToExplode: 3
   damageTextPrefab: {fileID: 790610433474755077, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}

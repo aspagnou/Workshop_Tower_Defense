@@ -120,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: upgradeLevels.Array.data[0].baseRange
-      value: 8.5
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: upgradeLevels.Array.data[1].baseRange
@@ -159,6 +159,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: 'upgradeLevels.Array.data[1].costs.Array.data[1]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874853833063233487, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: 'upgradeLevels.Array.data[1].costs.Array.data[2]'
       value: 4
       objectReference: {fileID: 0}
@@ -176,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: de9cffd74d997e746ac1080999900e5b, type: 2}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: baseRange
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: spawnCost
