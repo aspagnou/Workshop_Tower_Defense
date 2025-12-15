@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2320531369581669587}
   - component: {fileID: 1874853833063233487}
   m_Layer: 6
-  m_Name: BasicTower
+  m_Name: ParentTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   spawnCost: 100
   rangeCirclePrefab: {fileID: 8978828711117275295}
   baseAttackDamage: 20
-  baseRange: 3
+  baseRange: 6
   baseAttackSpeed: 1
   baseCriticalChance: 0
   critMultiplier: 2
@@ -150,7 +150,7 @@ MonoBehaviour:
     costs: 0600000004000000
     manaCost: 150
     baseAttackDamage: 35
-    baseRange: 3.5
+    baseRange: 6.5
     baseAttackSpeed: 1.2
     baseCriticalChance: 0
   - scraps:
@@ -160,7 +160,7 @@ MonoBehaviour:
     costs: 0c0000000800000006000000
     manaCost: 250
     baseAttackDamage: 60
-    baseRange: 4
+    baseRange: 7
     baseAttackSpeed: 1.4
     baseCriticalChance: 0
   sellAmount: 100

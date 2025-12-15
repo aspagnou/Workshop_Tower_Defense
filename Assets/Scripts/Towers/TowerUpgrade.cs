@@ -211,7 +211,7 @@ public class TowerUpgrade : MonoBehaviour
         // Mettre à jour la couleur de la ligne de coût du mana
         if (manaCostLine != null)
         {
-            Debug.Log("ajout de mana");
+            //Debug.Log("ajout de mana");
             TMP_Text manaCostText = manaCostLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
             if (manaCostText != null)
             {
@@ -310,7 +310,7 @@ public class TowerUpgrade : MonoBehaviour
             tower.ApplyUpgradeStats(upgradeLevels[currentLevel-1]);
         }
 
-        Debug.Log("Upgrade successful to level " + currentLevel);
+        //Debug.Log("Upgrade successful to level " + currentLevel);
         sellAmount += 50;
         VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
         vfx.visualEffectAsset = UpgradeVFX;

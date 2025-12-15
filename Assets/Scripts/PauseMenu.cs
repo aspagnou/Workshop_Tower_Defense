@@ -38,6 +38,9 @@ public class PauseMenu : MonoBehaviour
             _mainPausePanel.SetActive(true);
             Time.timeScale = 0.0f;
             _paused = true;
+            InventoryControler controler = FindAnyObjectByType<InventoryControler>();
+            controler.TryEquipInFirstFreeGearSlot();
+            
         }
         else
         {

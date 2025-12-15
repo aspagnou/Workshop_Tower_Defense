@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: speed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 8349788093013007812, guid: 6da241a928bde4b44a7e4605fbc31ba7, type: 3}
+      propertyPath: isAerial
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3291497656764546188, guid: 6da241a928bde4b44a7e4605fbc31ba7, type: 3}

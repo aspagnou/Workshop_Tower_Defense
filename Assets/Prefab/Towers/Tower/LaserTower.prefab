@@ -301,7 +301,7 @@ MonoBehaviour:
     costs: 0600000006000000
     manaCost: 200
     baseAttackDamage: 50
-    baseRange: 5.5
+    baseRange: 9.5
     baseAttackSpeed: 1.75
     baseCriticalChance: 0
   - scraps:
@@ -311,7 +311,7 @@ MonoBehaviour:
     costs: 0a0000000c00000006000000
     manaCost: 320
     baseAttackDamage: 90
-    baseRange: 6
+    baseRange: 10
     baseAttackSpeed: 1.8
     baseCriticalChance: 0
   sellAmount: 100
@@ -339,7 +339,7 @@ MonoBehaviour:
   spawnCost: 130
   rangeCirclePrefab: {fileID: 8978828711117275295}
   baseAttackDamage: 25
-  baseRange: 5
+  baseRange: 9
   baseAttackSpeed: 1.7
   baseCriticalChance: 0
   critMultiplier: 2
@@ -355,7 +355,7 @@ MonoBehaviour:
   pivot: {fileID: 111154397041560662}
   projectilePrefab: {fileID: 3037506940108726906, guid: 7fdc64077ee3cb44482127c4d2bfbb49, type: 3}
   firePoint: {fileID: 8459278485861560056}
-  rotationSpeed: 0.5
+  rotationSpeed: 3
   flameArea: {fileID: 4570079142438423088}
   laserImpactVFX: {fileID: 7267507177424048663}
   laserFusionVFX:

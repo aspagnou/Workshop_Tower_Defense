@@ -6,6 +6,7 @@ public class Projectile_classic : MonoBehaviour
     public float lifeTime = 3f;
     public float damage = 10f;
     public bool isCritical = false;
+    public bool isAerial = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,11 @@ public class Projectile_classic : MonoBehaviour
             target.TakeDamage(Mathf.RoundToInt(damage), isCritical);
 
             Destroy(gameObject);
+        }
+        if (target != null && isAerial && target.enemyType == EnemyType.Flying) 
+        {
+            target.TakeDamage(damage, isCritical);
+            Destroy(gameObject) ;
         }
     }
 }
