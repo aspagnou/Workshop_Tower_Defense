@@ -65,9 +65,8 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-        
-      
-        countDown = TimeToStartFirstWave;
+
+        countDown = spawnerManager.timeBeforeFirstWave;
 
        
 
@@ -86,7 +85,7 @@ public class WaveManager : MonoBehaviour
         }
 
         //Start the first Wave
-        StartNextWave(spawnerManager.timeBetweenWaves);
+        StartNextWave(spawnerManager.timeBeforeFirstWave);
 
     }
 
@@ -95,8 +94,17 @@ public class WaveManager : MonoBehaviour
         
         Invoke("startWaves", delayBetweenWavesSetByPreviousWave);
         //TimeBetweenWaves = TimeBetweenWaves * timeModif;
-        countDown = spawnerManager.timeBetweenWaves;
+        if (currentWaveIndex >= 0)
+        {
+            countDown = spawnerManager.timeBetweenWaves;
 
+        }
+
+    }
+
+    public void FirstWaveCountDown()
+    {
+        countDown = spawnerManager.timeBetweenWaves;
     }
 
     void startWaves()

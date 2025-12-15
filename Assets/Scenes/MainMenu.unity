@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Play
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Play
@@ -377,6 +381,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Settings
@@ -790,6 +798,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Credit
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Credit
@@ -1249,7 +1261,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -9052673511909526687, guid: 8f311dc94c01de24ea759ef6f261427d, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 80201e7628b4b804391e367cc6cf83fc, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1257,7 +1269,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 52
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1479,6 +1491,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Quit
@@ -1685,6 +1701,7 @@ MonoBehaviour:
   musicSource: {fileID: 1317357119}
   sfxSource: {fileID: 1878643592}
   background: {fileID: 8300000, guid: 80201e7628b4b804391e367cc6cf83fc, type: 3}
+  uiButton: {fileID: 8300000, guid: e70794f47d0a54440afd0b2825bf50b4, type: 3}
 --- !u!4 &1730225917
 Transform:
   m_ObjectHideFlags: 0
@@ -1866,6 +1883,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1525159043682590346, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 1968880732722332259, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1910,6 +1931,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4035065113782861999, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 4145498440705711174, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1922,6 +1947,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MainMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 4784255582922032854, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 5340564159502717714, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_Name
       value: SettingsPanel
@@ -1962,6 +1991,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MainMenuUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8967356556554735425, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2005,7 +2038,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8818924736409368518, guid: 8f311dc94c01de24ea759ef6f261427d, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: e70794f47d0a54440afd0b2825bf50b4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2379,6 +2412,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Zoo
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1730225916}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Zoo

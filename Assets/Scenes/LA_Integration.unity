@@ -333,10 +333,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1001 &9303756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,6 +521,14 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &38760934
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,6 +586,18 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1001 &43123379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -958,10 +975,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &95004440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,8 +1029,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &95928467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1144,9 +1157,8 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &112223105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,10 +1212,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1001 &121229640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1829,9 +1838,11 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &156801929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,8 +1896,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &161971919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3054,6 +3064,10 @@ MonoBehaviour:
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1 &311746303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3107,10 +3121,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1001 &312364920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3242,7 +3253,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -3282,10 +3293,26 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[4]'
       value: 
       objectReference: {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
     - target: {fileID: 2010550728935428716, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
@@ -3390,7 +3417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2 (5)
+      value: WaveManager2-AerialBotanics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3511,8 +3538,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &319500002
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,6 +3682,15 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1001 &323571503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3783,6 +3818,10 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1001 &364520046
 PrefabInstance:
@@ -4155,6 +4194,15 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5787,8 +5835,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &460801601
 GameObject:
   m_ObjectHideFlags: 0
@@ -5928,12 +5975,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &479276076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6777,12 +6819,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &560722835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6954,6 +6991,15 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1001 &580997180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7122,7 +7168,8 @@ MonoBehaviour:
   endUi: {fileID: 2121179607}
   totalSpawnedEnemiesPerWave: 0
   currentSpawnerIndex: 0
-  timeBetweenWaves: 10
+  timeBetweenWaves: 20
+  timeBeforeFirstWave: 10
   totalEnemiesToKill: 0
   spawnerManager: {fileID: 598773631}
   allWavesManager: []
@@ -7288,6 +7335,10 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1001 &604531424
 PrefabInstance:
@@ -7477,12 +7528,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &618963614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7611,6 +7657,13 @@ MonoBehaviour:
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1001 &635522186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7721,10 +7774,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &639447629
 GameObject:
   m_ObjectHideFlags: 0
@@ -7778,12 +7828,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &642711338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7907,9 +7952,9 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &658700048
 GameObject:
   m_ObjectHideFlags: 0
@@ -8988,6 +9033,13 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1 &840149585
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,8 +9093,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &858590361
 GameObject:
   m_ObjectHideFlags: 0
@@ -9097,9 +9148,13 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1 &868962288
 GameObject:
   m_ObjectHideFlags: 0
@@ -9244,7 +9299,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -9310,6 +9365,10 @@ PrefabInstance:
       propertyPath: spawnerManager
       value: 
       objectReference: {fileID: 598773631}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: _enemyList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2010550728935428716, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.946
@@ -9440,7 +9499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2
+      value: WaveManager2-Workshop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9652,8 +9711,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &887184207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10143,9 +10201,13 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1001 &919480585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10417,6 +10479,10 @@ MonoBehaviour:
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1001 &941784117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10528,6 +10594,8 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
@@ -10743,6 +10811,10 @@ MonoBehaviour:
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1 &1010578036
 GameObject:
   m_ObjectHideFlags: 0
@@ -10882,10 +10954,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &1028069110
 GameObject:
   m_ObjectHideFlags: 0
@@ -10940,6 +11009,10 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1001 &1029286936
 PrefabInstance:
@@ -11141,9 +11214,11 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1001 &1050950059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11282,9 +11357,12 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &1069998844
 GameObject:
   m_ObjectHideFlags: 0
@@ -12187,6 +12265,13 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
 --- !u!1 &1134874881
 GameObject:
   m_ObjectHideFlags: 0
@@ -12327,9 +12412,12 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1001 &1173791821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12695,8 +12783,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &1231990346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13137,6 +13224,12 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1001 &1269466416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13256,7 +13349,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -13296,7 +13389,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -13408,7 +13501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2 (6)
+      value: WaveManager2-AerialWorkshop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -13941,9 +14034,10 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1 &1306713460
 GameObject:
   m_ObjectHideFlags: 0
@@ -14001,6 +14095,16 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!114 &1310171250 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6638311893547133065, guid: 8b550c2e54b07f6498e7ced7a3473191, type: 3}
@@ -14152,7 +14256,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -14210,6 +14314,10 @@ PrefabInstance:
       propertyPath: spawnerManager
       value: 
       objectReference: {fileID: 598773631}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: _enemyList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2010550728935428716, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.603998
@@ -14312,7 +14420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2 (3)
+      value: WaveManager2-SouvenirSHop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -15015,10 +15123,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1001 &1408112602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15195,10 +15300,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1001 &1419978041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15571,6 +15673,11 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
   - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
 --- !u!1001 &1463784360
 PrefabInstance:
@@ -15976,10 +16083,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &1536257567
 GameObject:
   m_ObjectHideFlags: 0
@@ -16034,9 +16138,14 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1001 &1548977718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16089,6 +16198,10 @@ PrefabInstance:
       propertyPath: spawnerManager
       value: 
       objectReference: {fileID: 598773631}
+    - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: _enemyList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1248593952111384230, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.26
@@ -16123,7 +16236,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -16247,7 +16360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2 (4)
+      value: WaveManager2-AerialSouvenir
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -16603,8 +16716,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &1589223193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17106,9 +17218,11 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1001 &1623567613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18771,10 +18885,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &1636600369
 GameObject:
   m_ObjectHideFlags: 0
@@ -18829,9 +18940,12 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1001 &1642952736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18886,7 +19000,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -18940,6 +19054,10 @@ PrefabInstance:
       propertyPath: spawnerManager
       value: 
       objectReference: {fileID: 598773631}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: _enemyList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2010550728935428716, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.603998
@@ -19042,7 +19160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2 (2)
+      value: WaveManager2-MainDoorRight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -19415,10 +19533,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1001 &1699108968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19908,12 +20023,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &1734337690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20170,12 +20280,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &1746336436
 GameObject:
   m_ObjectHideFlags: 0
@@ -20735,9 +20840,11 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1 &1810747951
 GameObject:
   m_ObjectHideFlags: 0
@@ -21077,8 +21184,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &1840387659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21194,8 +21300,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &1852815660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21678,8 +21783,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &1883513637
 GameObject:
   m_ObjectHideFlags: 0
@@ -21733,10 +21837,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &1885534153
 GameObject:
   m_ObjectHideFlags: 0
@@ -21880,6 +21981,18 @@ MonoBehaviour:
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
 --- !u!1 &1897953255
 GameObject:
   m_ObjectHideFlags: 0
@@ -21933,8 +22046,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &1925440209
 GameObject:
   m_ObjectHideFlags: 0
@@ -22388,7 +22500,7 @@ PrefabInstance:
       objectReference: {fileID: 598773631}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: _enemyList.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[0]'
@@ -22408,6 +22520,18 @@ PrefabInstance:
       objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
     - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: '_enemyList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 1179558831551535455, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[7]'
       value: 
       objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
     - target: {fileID: 1248593952111384230, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
@@ -22442,6 +22566,42 @@ PrefabInstance:
       propertyPath: spawnerManager
       value: 
       objectReference: {fileID: 598773631}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: _enemyList.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[7]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[8]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+    - target: {fileID: 2004986996037664116, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
+      propertyPath: '_enemyList.Array.data[9]'
+      value: 
+      objectReference: {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
     - target: {fileID: 2010550728935428716, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.603998
@@ -22556,7 +22716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9162315051519176704, guid: 239ed8af56b9e6647bea4eba5f232574, type: 3}
       propertyPath: m_Name
-      value: WaveManager2 (1)
+      value: WaveManager2-MainDoorLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -23138,9 +23298,12 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 01daa1f3e1d1ad54ba1512b33e506b93, type: 3}
+  - {fileID: 2815669147154018819, guid: 37ab65cd9465e9e42bd5d877d2d74715, type: 3}
 --- !u!1 &1979496426
 GameObject:
   m_ObjectHideFlags: 0
@@ -23668,10 +23831,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &2036431046
 GameObject:
   m_ObjectHideFlags: 0
@@ -23725,10 +23885,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
-  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  _enemyList: []
 --- !u!1 &2039274481
 GameObject:
   m_ObjectHideFlags: 0
@@ -23782,12 +23939,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &2043524235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24231,12 +24383,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1 &2095232150
 GameObject:
   m_ObjectHideFlags: 0
@@ -24608,12 +24755,7 @@ MonoBehaviour:
   nbrEnemiesKillCond: 0
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
-  _enemyList:
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
-  - {fileID: 2815669147154018819, guid: 3b8858a5db4913f429eed599631152cd, type: 3}
+  _enemyList: []
 --- !u!1001 &2121179606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24634,6 +24776,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EndConditionUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1764483747574534702, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1332095182}
     - target: {fileID: 2103723114033689710, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -24642,6 +24788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ==WinLooseUI==
       objectReference: {fileID: 0}
+    - target: {fileID: 2994671012601879463, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1332095182}
     - target: {fileID: 3360587321228149000, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -24670,6 +24820,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4001336639683824638, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1332095182}
     - target: {fileID: 4365644147266479043, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -24722,6 +24876,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EndConditionUI, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6904108201777361488, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1332095182}
     - target: {fileID: 7007575360976762608, guid: 4aa7db82a1f0fa542bdde2d4ba7df61b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -24796,6 +24954,15 @@ MonoBehaviour:
   waveActive: 0
   delayBetweenWaveSetByThisWave: 5
   _enemyList:
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
+  - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}
   - {fileID: 2815669147154018819, guid: 8ecb1fb393214e545b6f970eea33b47f, type: 3}

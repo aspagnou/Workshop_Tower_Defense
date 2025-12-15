@@ -105,7 +105,7 @@ MonoBehaviour:
   enemyType: 2
   speed: 2
   rotationSpeed: 0.5
-  timeToSpawn: 2
+  timeToSpawn: 3
   currentWaypointIndex: 0
   WayPoints: []
   currentWayPoint: {fileID: 0}

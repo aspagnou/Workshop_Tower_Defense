@@ -13,6 +13,7 @@ public class SpawnerManager : MonoBehaviour
     public int totalSpawnedEnemiesPerWave;
     public int currentSpawnerIndex = 0;
     public int timeBetweenWaves;
+    public int timeBeforeFirstWave;
 
     public int totalEnemiesToKill;
     
