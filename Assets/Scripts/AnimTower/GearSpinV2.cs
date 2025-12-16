@@ -14,11 +14,23 @@ public class GearSpinV2 : MonoBehaviour
     [Header("Rotate on Z axis")]
     [SerializeField] private Transform[] rotateZ;
 
+    [Header("Floating")]
+    public float floatSpeed = 2f;
+    public float floatAmplitude = 0.3f;
+    private Vector3 startPosition;
+
+    [SerializeField] private Transform body;
+
+    private void Start()
+    {
+        startPosition = body.transform.position;
+    }
     void Update()
     {
         RotateArray(rotateX, Vector3.right);
         RotateArray(rotateY, Vector3.up);
         RotateArray(rotateZ, Vector3.forward);
+        FloatMovement();
     }
 
     void RotateArray(Transform[] gears, Vector3 axis)
@@ -32,6 +44,12 @@ public class GearSpinV2 : MonoBehaviour
             gears[i].Rotate(axis, rotationSpeed * Time.deltaTime, Space.Self);
         }
     }
+    void FloatMovement()
+    {
+        float offsetY = Mathf.Sin(Time.time * floatSpeed) * floatAmplitude;
+        body.position = startPosition + Vector3.up * offsetY;
+    }
+
 }
 
 
