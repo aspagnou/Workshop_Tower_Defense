@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: b9e6fb967ae3c3b48a23724bb4f9cfd0, type: 3}
+        m_Texture: {fileID: 2800000, guid: ad1442f010db5034e94e2bd9016cb9d5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM_occclusion_roughness_metal:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smothness:
-        m_Texture: {fileID: 2800000, guid: 4fb1dd421ec0a284bb83b90118d2f44b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 31d41ae8da368ba44967f494b0a7e40e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
