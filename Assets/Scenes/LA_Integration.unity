@@ -2015,6 +2015,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ecc07858000e494bb71f9c89492aa25, type: 3}
+--- !u!114 &173366156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6638311893547133065, guid: 8b550c2e54b07f6498e7ced7a3473191, type: 3}
+  m_PrefabInstance: {fileID: 1623567613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25e709ecc4c5164aa770bb73c2768bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &183794187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8967,6 +8978,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1431034f1cdd7a24c8ec1d205a53cf38, type: 3}
+--- !u!1 &769578068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 769578069}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &769578069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769578068}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &785781292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9255,7 +9297,7 @@ MonoBehaviour:
   towerLayer:
     serializedVersion: 2
     m_Bits: 64
-  ui_Manager: {fileID: 0}
+  ui_Manager: {fileID: 173366156}
   currentSelectedTower: {fileID: 0}
   currentSelectedTowerSlot: {fileID: 0}
   isUpgradeOpen: 0
@@ -27120,3 +27162,4 @@ SceneRoots:
   - {fileID: 1671130312}
   - {fileID: 183794187}
   - {fileID: 242782368}
+  - {fileID: 769578069}
