@@ -35665,11 +35665,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5615162f0c450654cabb2b35446baede, type: 3}
---- !u!4 &1534979955 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1521803885540638487, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-  m_PrefabInstance: {fileID: 1618467400}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1535591719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37157,18 +37152,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1473744087163845373, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473744087163845373, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473744087163845373, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1473744087163845373, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.378002
       objectReference: {fileID: 0}
@@ -37212,25 +37195,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nexus
       objectReference: {fileID: 0}
-    - target: {fileID: 7041325759696430161, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674503119895265578, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: rotateY.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7674503119895265578, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: 'rotateY.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1534979955}
-    - target: {fileID: 9008482532860506283, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 2e1c5b194b775c847924c00f0d913146, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2664866229819172664, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f81a0660e38ab814e88f6f406a3d8c85, type: 3}
