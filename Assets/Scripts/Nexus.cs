@@ -32,6 +32,8 @@ public class Nexus : MonoBehaviour
     [SerializeField] private float damageScaleMultiplier = 1.15f;
     [SerializeField] private float scaleAnimSpeed = 12f;
 
+    [Header("DeathVFX")]
+    [SerializeField] private GameObject deathVFX;
     private Vector3 baseScale;
     private Coroutine scaleRoutine;
 
@@ -144,6 +146,7 @@ public class Nexus : MonoBehaviour
     // --- DEATH ---
     void NexusDeath()
     {
-        // Destroy(gameObject);
+        //GameObject vfx = Instantiate(deathVFX, transform);
+        //Destroy(vfx,2);
     }
 }

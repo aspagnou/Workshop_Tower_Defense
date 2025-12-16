@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8158174136717033518}
   - component: {fileID: 8075394959994391931}
   - component: {fileID: 4105961984149698258}
+  - component: {fileID: 6110622600489295635}
   m_Layer: 7
   m_Name: Enemy_Flying
   m_TagString: Untagged
@@ -170,6 +171,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6110622600489295635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296802755904404096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125a6d23c5e2ebe45bbbdf43469ace33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftWing: {fileID: 2192298078660078062}
+  rightWing: {fileID: 4919711459792605883}
+  flapAngle: 30
+  flapSpeed: 6
 --- !u!1001 &2390387333673406262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,8 +260,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88cd15d12fec1fa46a124e610bd9537e, type: 3}
+--- !u!4 &2192298078660078062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4665509441427446056, guid: 88cd15d12fec1fa46a124e610bd9537e, type: 3}
+  m_PrefabInstance: {fileID: 2390387333673406262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2785166169903933661 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88cd15d12fec1fa46a124e610bd9537e, type: 3}
+  m_PrefabInstance: {fileID: 2390387333673406262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4919711459792605883 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1915702075381441139, guid: 88cd15d12fec1fa46a124e610bd9537e, type: 3}
   m_PrefabInstance: {fileID: 2390387333673406262}
   m_PrefabAsset: {fileID: 0}

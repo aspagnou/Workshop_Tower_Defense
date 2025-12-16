@@ -205,7 +205,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5376827255343057565}
@@ -230,6 +230,11 @@ MonoBehaviour:
   healthFill: {fileID: 8429028550590147092}
   worldOffset: {x: 0, y: 5, z: 0}
   healthLerpSpeed: 4
+  hoverScale: 1.2
+  scaleSpeed: 10
+  damageScaleMultiplier: 1.15
+  scaleAnimSpeed: 12
+  deathVFX: {fileID: 2937892374536195089, guid: faea6b3a2d39c1542b1f1161b098a7e5, type: 3}
 --- !u!114 &7674503119895265578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +253,7 @@ MonoBehaviour:
   - {fileID: 5246641274057724128}
   - {fileID: 8159236951790249253}
   - {fileID: 1280509166074090533}
+  - {fileID: 1521803885540638487}
   rotateZ:
   - {fileID: 7272334536561847359}
   floatSpeed: 2
@@ -469,6 +475,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5759992075284652579, guid: 73b2a4257a1a81d418870a3b34b2b009, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e1c5b194b775c847924c00f0d913146, type: 2}
     - target: {fileID: 421995771349237142, guid: 73b2a4257a1a81d418870a3b34b2b009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.036719527
@@ -537,6 +547,11 @@ PrefabInstance:
 --- !u!4 &1280509166074090533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2535066073001379501, guid: 73b2a4257a1a81d418870a3b34b2b009, type: 3}
+  m_PrefabInstance: {fileID: 5554322195450293622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1521803885540638487 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6343990820136587873, guid: 73b2a4257a1a81d418870a3b34b2b009, type: 3}
   m_PrefabInstance: {fileID: 5554322195450293622}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5246641274057724128 stripped
