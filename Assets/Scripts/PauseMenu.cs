@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
             _audioManager = audioManager.GetComponent<AudioManager>();
         }
 
-        _audioManager.PlayMusic(_audioManager.backgroundInGame);
+        _audioManager.PlayMusic(_audioManager.background);
 
         Resume();
     }

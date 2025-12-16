@@ -54,27 +54,9 @@ public class MainMenuUI : MonoBehaviour
             _audioManager = audioManager.GetComponent<AudioManager>();
         }
 
-        _audioManager.PlayMusic(_audioManager.background);
-        StopAllCoroutines();
-
-
-        cgPressAny.alpha = 0f;
-        textPressAny.gameObject.SetActive(true);
-
-        panelStart.alpha = 0f;
-
-        animator.Rebind();
-        animator.Update(0f);
-
-
-        inputTriggered = false;
-
-        if (fadeLoopRoutine != null)
-        {
-            StopCoroutine(fadeLoopRoutine);
-        }
-
-        fadeLoopRoutine = StartCoroutine(FadeLoop());
+        _audioManager.PlayMusic(_audioManager.backgroundInGame);
+       
+        ResetMainMenu();
 
        
         
@@ -92,7 +74,7 @@ public class MainMenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!inputTriggered && Input.anyKeyDown)
+        if (!inputTriggered && Keyboard.current.anyKey.wasPressedThisFrame)
         {
             HidePressAny();
             _mainPausePanel.SetActive(true);
@@ -162,20 +144,31 @@ public class MainMenuUI : MonoBehaviour
         cgPressAny.alpha = targetAlpha;
     }
 
-    //private IEnumerator FadeInStartPanel(float targetAlpha, float fadeTime)
-    //{
-    //    float t = 0f;
-    //    float start = panelStart.alpha;
-    //    yield return new WaitForSeconds (fadeTime);
-    //    while (t < 1f)
-    //    {
-    //        t += Time.deltaTime / fadeInStartDuration;
-    //        panelStart.alpha = Mathf.Lerp(start, targetAlpha, t);
-    //        yield return null;
-    //    }
+    private void ResetMainMenu()
+    {
+        Time.timeScale = 1f;
 
-    //    panelStart.alpha = targetAlpha;
-    //}
+        inputTriggered = false;
+        _paused = false;
+
+        _mainPausePanel.SetActive(false);
+        _settingsPausePanel.SetActive(false);
+        _creditPanel.SetActive(false);
+        _audioPanel.SetActive(false);
+        _graphicsPanel.SetActive(false);
+        _controlsPanel.SetActive(false);
+
+        cgPressAny.alpha = 0f;
+        textPressAny.gameObject.SetActive(true);
+        panelStart.alpha = 0f;
+
+        if (fadeLoopRoutine != null)
+        {
+            StopCoroutine(fadeLoopRoutine);
+        }
+
+        fadeLoopRoutine = StartCoroutine(FadeLoop());
+    }
 
     public void Pause()
     {
@@ -215,6 +208,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
@@ -234,7 +228,6 @@ public class MainMenuUI : MonoBehaviour
         _creditPanel.SetActive(true);
         _settingsPausePanel.SetActive(false);
         _mainPausePanel.SetActive(false);
-
     }
 
     public void CloseCredit()
