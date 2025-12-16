@@ -304,6 +304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00217c80cec3f9c45b256409b9ab2fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPanel: {fileID: 0}
   musicSource: {fileID: 3841825381037878173}
   sfxSource: {fileID: 1836616283391979222}
   background: {fileID: 8300000, guid: 80201e7628b4b804391e367cc6cf83fc, type: 3}
+  backgroundInGame: {fileID: 8300000, guid: 7bfcf8e2407dec243929b17e103397ca, type: 3}
+  winJingle: {fileID: 8300000, guid: a08d99a4532718f4d9a34aaaa27e1754, type: 3}
+  loseJingle: {fileID: 8300000, guid: 4f5579cdd190dfe4f9fd497dc1d0762d, type: 3}
+  uiButton: {fileID: 8300000, guid: e70794f47d0a54440afd0b2825bf50b4, type: 3}

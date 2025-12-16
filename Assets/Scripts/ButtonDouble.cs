@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public class ButtonDouble : MonoBehaviour
 {
-    [SerializeField] AudioManager audioManager;
+    [SerializeField] AudioManager _audioManager;
 
     public Image targetImage;
     public Sprite hoverImage;
@@ -42,6 +42,13 @@ public class ButtonDouble : MonoBehaviour
 
     private void OnEnable()
     {
+        GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
+
+        if (audioManager != null)
+        {
+            _audioManager = audioManager.GetComponent<AudioManager>();
+        }
+
         buttonText.color = normalColor;
         _leftImage.anchoredPosition = leftHiddenPos;
         _rightImage.anchoredPosition = rightHiddenPos;
@@ -88,7 +95,7 @@ public class ButtonDouble : MonoBehaviour
     {
         targetImage.sprite = pressedImage;
         buttonText.color = pressedColor;
-        audioManager.PlaySfx(audioManager.uiButton);
+        _audioManager.PlaySfx(_audioManager.uiButton);
 
 
     }
