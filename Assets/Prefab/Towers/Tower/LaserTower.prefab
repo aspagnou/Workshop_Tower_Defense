@@ -248,6 +248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2767604748217849334}
   - {fileID: 6768854246837672173}
   - {fileID: 111154397041560662}
   - {fileID: 7974300144858805272}
@@ -336,6 +337,7 @@ MonoBehaviour:
   gridUI: {fileID: 2384073878758901224}
   itemGrid: {fileID: 886195416633796091}
   inventoryMemory: {fileID: 741925592922327412}
+  menuSpawnTransform: {fileID: 2767604748217849334}
   spawnCost: 130
   rangeCirclePrefab: {fileID: 8978828711117275295}
   baseAttackDamage: 25
@@ -363,6 +365,37 @@ MonoBehaviour:
   - {fileID: 6251960481927393028}
   laserEndPoint: {fileID: 8943398818594812207}
   laserEndPropertyName: BeamEndPoint
+--- !u!1 &3654525835353598824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2767604748217849334}
+  m_Layer: 6
+  m_Name: MenuSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2767604748217849334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654525835353598824}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.46, y: 6.577, z: 1.102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4731179121687873164}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4741706173810916581
 GameObject:
   m_ObjectHideFlags: 0

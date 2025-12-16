@@ -165,7 +165,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     {
         currentlySelectedTower = tower;
 
-        Vector3 worldPos = tower.transform.position + worldOffset;
+        Vector3 worldPos = tower.menuSpawnTransform.position ;
 
         towerSelectPanel.transform.position = worldPos;
         towerSelectPanel.transform.LookAt(cam.transform);

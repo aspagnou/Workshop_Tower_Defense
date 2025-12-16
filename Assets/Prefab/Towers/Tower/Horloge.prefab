@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &161624289861221652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4318133940792841848}
+  m_Layer: 6
+  m_Name: MenuSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4318133940792841848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161624289861221652}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.07, y: 4.18, z: 1.102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8472092476705560445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3763440699160662513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,6 +55,10 @@ PrefabInstance:
       propertyPath: baseRange
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2320531369581669587, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      propertyPath: menuSpawnTransform
+      value: 
+      objectReference: {fileID: 4318133940792841848}
     - target: {fileID: 4731179121687873164, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -66,6 +101,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4731179121687873164, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 4318133940792841848}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+--- !u!4 &8472092476705560445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4731179121687873164, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+  m_PrefabInstance: {fileID: 3763440699160662513}
+  m_PrefabAsset: {fileID: 0}
