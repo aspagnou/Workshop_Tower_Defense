@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Resume
@@ -497,6 +501,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Graphics
       objectReference: {fileID: 0}
+    - target: {fileID: 7757432819192033758, guid: c639b72d460bba747aa332d73755bb15, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: c639b72d460bba747aa332d73755bb15, type: 3}
       propertyPath: m_Name
       value: ButtonV2_Graphics
@@ -1447,6 +1455,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Quit
@@ -3007,6 +3019,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 6786624367722396132, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: 7e475b300d5ab374db001e7629a655a7, type: 3}
       propertyPath: m_Name
       value: Button_Settings
@@ -5462,6 +5478,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Controls
       objectReference: {fileID: 0}
+    - target: {fileID: 7757432819192033758, guid: c639b72d460bba747aa332d73755bb15, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: c639b72d460bba747aa332d73755bb15, type: 3}
       propertyPath: m_Name
       value: ButtonV2_Controls
@@ -5935,6 +5955,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Return
       objectReference: {fileID: 0}
+    - target: {fileID: 7757432819192033758, guid: c639b72d460bba747aa332d73755bb15, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: c639b72d460bba747aa332d73755bb15, type: 3}
       propertyPath: m_Name
       value: ButtonV2_Return
@@ -6674,6 +6698,7 @@ MonoBehaviour:
   musicSource: {fileID: 108895161}
   sfxSource: {fileID: 1956418760}
   background: {fileID: 8300000, guid: 80201e7628b4b804391e367cc6cf83fc, type: 3}
+  uiButton: {fileID: 8300000, guid: e70794f47d0a54440afd0b2825bf50b4, type: 3}
 --- !u!4 &1949747054
 Transform:
   m_ObjectHideFlags: 0
@@ -7862,6 +7887,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Audio
       objectReference: {fileID: 0}
+    - target: {fileID: 7757432819192033758, guid: c639b72d460bba747aa332d73755bb15, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1949747053}
     - target: {fileID: 8079375043796893942, guid: c639b72d460bba747aa332d73755bb15, type: 3}
       propertyPath: m_Name
       value: ButtonV2_Audio
