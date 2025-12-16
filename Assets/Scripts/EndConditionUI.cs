@@ -2,20 +2,29 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
 
 public class EndConditionUI : MonoBehaviour
 {
     public AudioManager _audioManager;
     
     [SerializeField] private GameObject _mainWin;
+    [SerializeField] private CanvasGroup _cgMainWin;
     [SerializeField] private GameObject _mainLoose;
-    //[SerializeField] private GameObject _audioPanel;
-    //[SerializeField] private GameObject _graphicsPanel;
-    //[SerializeField] private GameObject _controlsPanel;
-
+    [SerializeField] private CanvasGroup _cgMainLoose;
+    public float fadeDuration = 1f;
     private bool _paused = false;
 
+    private Coroutine fadeCore;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private void OnEnable()
+    {
+        ResetMainMenu();
+    }
+
     void Start()
     {
         GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
@@ -44,7 +53,13 @@ public class EndConditionUI : MonoBehaviour
     }
     public void PauseWin()
     {
+        _mainWin.SetActive(true);
+
+        StartCoroutine(FadeInUiWin());
+
+        _audioManager.musicSource.Stop();
         _audioManager.PlayMusic(_audioManager.winJingle);
+
         if (_paused == false)
         {
             _mainWin.SetActive(true);
@@ -60,6 +75,11 @@ public class EndConditionUI : MonoBehaviour
     }
     public void PauseLoose()
     {
+        _mainLoose.SetActive(true);
+
+        StartCoroutine(FadeInUiLoose());
+
+        _audioManager.musicSource.Stop();
         _audioManager.PlayMusic(_audioManager.loseJingle);
 
         if (_paused == false)
@@ -76,7 +96,27 @@ public class EndConditionUI : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator FadeInCg(CanvasGroup canvasGroup)
+    {
+        float t = 0f;
+        float startAlpha = canvasGroup.alpha;
+
+        while (t < 1f)
+        {
+            t += Time.unscaledDeltaTime / fadeDuration;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 1f, t);
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeInUiWin()
+    {
+        yield return StartCoroutine(FadeInCg(_cgMainWin));
+    }
+    private IEnumerator FadeInUiLoose()
+    {
+        yield return StartCoroutine(FadeInCg(_cgMainLoose));
+    }
 
     public void StartGame()
     {
@@ -108,7 +148,18 @@ public class EndConditionUI : MonoBehaviour
     {
         _mainWin.SetActive(true);
     }
+    private void ResetMainMenu()
+    {
+        Time.timeScale = 1f;
 
+       
+        _paused = false;
+
+       
+
+        _cgMainWin.alpha = 0f;
+       _cgMainLoose.alpha = 0f;
+    }
     //public void GraphicsShow()
     //{
     //    _graphicsPanel.SetActive(true);
