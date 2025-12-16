@@ -6337,7 +6337,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5be7f4bea93261246826dc9f9941e3df, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c018c657048fd734cb4f0aa770156e0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 3c3766c7f73dfbd46a39bfe6f36608e9, type: 2}
     - target: {fileID: 919132149155446097, guid: 5be7f4bea93261246826dc9f9941e3df, type: 3}
       propertyPath: m_Name
       value: SM_Shelf_01
