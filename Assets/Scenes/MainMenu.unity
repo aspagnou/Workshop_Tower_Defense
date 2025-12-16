@@ -1917,7 +1917,7 @@ MonoBehaviour:
   visibleTime: 1
   hiddenTime: 1
   fadeInStartDuration: 1.5
-  delayBefore: 1.5
+  delayBefore: 1.25
   animator: {fileID: 1461459667}
 --- !u!95 &1461459667
 Animator:
