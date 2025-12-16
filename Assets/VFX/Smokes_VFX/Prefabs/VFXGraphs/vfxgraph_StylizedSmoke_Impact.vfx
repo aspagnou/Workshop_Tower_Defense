@@ -2929,10 +2929,10 @@ MonoBehaviour:
       inputSlot: {fileID: 8926484042661614613}
     - outputSlot: {fileID: 8926484042661614692}
       inputSlot: {fileID: 8926484042661614694}
-    position: {x: 574, y: 2016}
+    position: {x: 490, y: 1991}
     expandedSlots: []
     expanded: 0
-    supecollapsed: 0
+    supecollapsed: 1
 --- !u!114 &8926484042661614692
 MonoBehaviour:
   m_ObjectHideFlags: 0

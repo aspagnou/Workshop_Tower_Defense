@@ -106,6 +106,7 @@ MonoBehaviour:
   gridUI: {fileID: 2384073878758901224}
   itemGrid: {fileID: 886195416633796091}
   inventoryMemory: {fileID: 741925592922327412}
+  menuSpawnTransform: {fileID: 0}
   spawnCost: 100
   rangeCirclePrefab: {fileID: 8978828711117275295}
   baseAttackDamage: 20
@@ -169,6 +170,7 @@ MonoBehaviour:
   costLinePrefab: {fileID: 2569726068507241836, guid: 46d4af10cb868c049aa8e847dfe827f1, type: 3}
   canUpgrade: 0
   UpgradeVFX: {fileID: 8926484042661614526, guid: 0b8a8a44663263144a93ea7cc0e79140, type: 3}
+  smokeVFX: {fileID: 1917465243149216906, guid: b522d984418e0a740b04df479c27ce75, type: 3}
   vfxOffset: {x: 0, y: 1, z: 0}
 --- !u!1 &4741706173810916581
 GameObject:
