@@ -5,6 +5,7 @@ using System.Collections;
 public class WaveWarningFade : MonoBehaviour
 {
     [SerializeField] private Image fadeImage;
+    [SerializeField] private CanvasGroup cg;
     [SerializeField] private float blinkSpeed = 2f;
     [SerializeField] private float maxAlpha = 0.85f;
 
@@ -47,8 +48,9 @@ public class WaveWarningFade : MonoBehaviour
 
     void SetAlpha(float a)
     {
-        Color c = fadeImage.color;
-        c.a = a;
-        fadeImage.color = c;
+        //Color c = fadeImage.color;
+        //c.a = a;
+        //fadeImage.color = c;
+        cg.alpha = a;
     }
 }
