@@ -69,7 +69,7 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
                 targetColor = refuseColor;
             }
         }
-    }
+    }                                    
 
     public void OnPointerExit(PointerEventData eventData)
     {
