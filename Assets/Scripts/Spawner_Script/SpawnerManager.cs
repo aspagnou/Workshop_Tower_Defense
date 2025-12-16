@@ -116,10 +116,13 @@ public class SpawnerManager : MonoBehaviour
             endUi.Win();
         }
 
-        if (nexus.currentHealth <= 0)
+        if (nexus != null)
         {
-            Debug.Log("you lost");
-            endUi.Loose();
+            if (nexus.currentHealth <= 0)
+            {
+                Debug.Log("you lost");
+                endUi.Loose();
+            }
         }
     }
 }
