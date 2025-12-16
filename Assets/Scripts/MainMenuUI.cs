@@ -14,6 +14,7 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] private GameObject _settingsPausePanel;
     [SerializeField] private GameObject _mainPausePanel;
+    [SerializeField] private GameObject _creditPanel;
     [SerializeField] private GameObject _audioPanel;
     [SerializeField] private GameObject _graphicsPanel;
     [SerializeField] private GameObject _controlsPanel;
@@ -46,7 +47,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnEnable()
     {
-        //StopAllCoroutines();
+        StopAllCoroutines();
 
 
         cgPressAny.alpha = 0f;
@@ -220,11 +221,28 @@ public class MainMenuUI : MonoBehaviour
         Debug.Log("Credit");
     }
 
+    public void ShowCredit()
+    {
+        _creditPanel.SetActive(true);
+        _settingsPausePanel.SetActive(false);
+        _mainPausePanel.SetActive(false);
+
+    }
+
+    public void CloseCredit()
+    {
+        _creditPanel.SetActive(false);
+        _settingsPausePanel.SetActive(false);
+        _mainPausePanel.SetActive(true);
+
+    }
     public void ShowSettings()
     {
         _settingsPausePanel.SetActive(true);
         _mainPausePanel.SetActive(false);
     }
+
+   
     public void CloseSettings()
     {
         _settingsPausePanel.SetActive(false);
