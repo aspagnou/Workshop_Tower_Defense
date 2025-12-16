@@ -18708,6 +18708,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2095232158}
+    - target: {fileID: 4071383245460742526, guid: 8b550c2e54b07f6498e7ced7a3473191, type: 3}
+      propertyPath: smokeVFX
+      value: 
+      objectReference: {fileID: 1917465243149216906, guid: b522d984418e0a740b04df479c27ce75, type: 3}
     - target: {fileID: 4147481589707997350, guid: 8b550c2e54b07f6498e7ced7a3473191, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -27,6 +27,7 @@ public class TowerUpgrade : MonoBehaviour
 
     [Header("VFX & SFX")]
     public VisualEffectAsset UpgradeVFX;  // Le VFX à jouer lors du spawn
+    public GameObject smokeVFX;
     public Vector3 vfxOffset = Vector3.up * 1f;
 
 
@@ -312,15 +313,22 @@ public class TowerUpgrade : MonoBehaviour
 
         //Debug.Log("Upgrade successful to level " + currentLevel);
         sellAmount += 50;
-        VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
-        vfx.visualEffectAsset = UpgradeVFX;
 
-        vfx.transform.position = transform.position + vfxOffset;
+        //VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+        //vfx.visualEffectAsset = UpgradeVFX;
 
-        vfx.Play();
+        //vfx.transform.position = transform.position + vfxOffset;
+
+        //vfx.Play();
+        if (smokeVFX != null) 
+        {
+            GameObject smoke = Instantiate(smokeVFX);
+            smoke.transform.position = transform.position + vfxOffset;
+            Destroy(smoke,2);
+        }
         UpdateTowerMesh();
 
-        Destroy(vfx.gameObject, 2f); // Auto-clean
+        //Destroy(vfx.gameObject, 2f); // Auto-clean
         ItemGrid grid = Clicker.Instance.currentSelectedTower.itemGrid;
         if (grid!= null)
             grid.ResizeGrid(grid.gridSizeWidth+1, grid.gridSizeHeight);
