@@ -14,6 +14,7 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] private GameObject _settingsPausePanel;
     [SerializeField] private GameObject _mainPausePanel;
+    [SerializeField] private GameObject _creditPanel;
     [SerializeField] private GameObject _audioPanel;
     [SerializeField] private GameObject _graphicsPanel;
     [SerializeField] private GameObject _controlsPanel;
@@ -32,6 +33,7 @@ public class MainMenuUI : MonoBehaviour
     public float hiddenTime = 1.5f;
 
     public float fadeInStartDuration = 1f;
+    public float delayBefore = 1f;
 
 
     public Animator animator;
@@ -39,13 +41,19 @@ public class MainMenuUI : MonoBehaviour
     private bool inputTriggered = false;
     private Coroutine fadeLoopRoutine;
 
+
+
+
+
     private void OnEnable()
     {
-        //StopAllCoroutines();
+        StopAllCoroutines();
 
 
         cgPressAny.alpha = 0f;
         textPressAny.gameObject.SetActive(true);
+
+        panelStart.alpha = 0f;
 
         animator.Rebind();
         animator.Update(0f);
@@ -59,6 +67,8 @@ public class MainMenuUI : MonoBehaviour
         }
 
         fadeLoopRoutine = StartCoroutine(FadeLoop());
+
+       
         
     }
     private void OnDisable()
@@ -83,8 +93,29 @@ public class MainMenuUI : MonoBehaviour
             animator.SetTrigger("PlayMenuAnim");
             //StartCoroutine(FadeInStartPanel(1f, fadeInStartDuration));
             inputTriggered = true;
+
+            StartCoroutine(FadeInButtons(delayBefore));
         }
 
+    }
+
+    private IEnumerator FadeInButtons(float delayBefore)
+    {
+        yield return new WaitForSeconds(delayBefore);
+        yield return StartCoroutine(FadeInCanvasGroup(panelStart));
+    }
+
+    private IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup)
+    {
+        float t = 0f;
+        float startAlpha = canvasGroup.alpha;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / fadeInStartDuration;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 1f, t);
+            yield return null;
+        }
     }
 
     private IEnumerator EnableInputNextFrame()
@@ -93,19 +124,6 @@ public class MainMenuUI : MonoBehaviour
         inputTriggered = false;
     }
 
-    //private void OnInputEvent(InputEventPtr eventPtr, InputDevice device)
-    //{
-    //    if (!eventPtr.IsA<StateEvent>() && !eventPtr.IsA<DeltaStateEvent>())
-    //        return;
-
-    //    if (device is Gamepad || device is Keyboard || device is Mouse)
-    //    {
-    //        HidePressAny();
-    //        _mainPausePanel.SetActive(true);
-
-    //    }
-
-    //}
 
     private IEnumerator FadeLoop()
     {
@@ -136,20 +154,20 @@ public class MainMenuUI : MonoBehaviour
         cgPressAny.alpha = targetAlpha;
     }
 
-    private IEnumerator FadeInStartPanel(float targetAlpha, float fadeTime)
-    {
-        float t = 0f;
-        float start = panelStart.alpha;
-        yield return new WaitForSeconds (fadeTime);
-        while (t < 1f)
-        {
-            t += Time.deltaTime / fadeDuration;
-            panelStart.alpha = Mathf.Lerp(start, targetAlpha, t);
-            yield return null;
-        }
+    //private IEnumerator FadeInStartPanel(float targetAlpha, float fadeTime)
+    //{
+    //    float t = 0f;
+    //    float start = panelStart.alpha;
+    //    yield return new WaitForSeconds (fadeTime);
+    //    while (t < 1f)
+    //    {
+    //        t += Time.deltaTime / fadeInStartDuration;
+    //        panelStart.alpha = Mathf.Lerp(start, targetAlpha, t);
+    //        yield return null;
+    //    }
 
-        panelStart.alpha = targetAlpha;
-    }
+    //    panelStart.alpha = targetAlpha;
+    //}
 
     public void Pause()
     {
@@ -203,11 +221,28 @@ public class MainMenuUI : MonoBehaviour
         Debug.Log("Credit");
     }
 
+    public void ShowCredit()
+    {
+        _creditPanel.SetActive(true);
+        _settingsPausePanel.SetActive(false);
+        _mainPausePanel.SetActive(false);
+
+    }
+
+    public void CloseCredit()
+    {
+        _creditPanel.SetActive(false);
+        _settingsPausePanel.SetActive(false);
+        _mainPausePanel.SetActive(true);
+
+    }
     public void ShowSettings()
     {
         _settingsPausePanel.SetActive(true);
         _mainPausePanel.SetActive(false);
     }
+
+   
     public void CloseSettings()
     {
         _settingsPausePanel.SetActive(false);
