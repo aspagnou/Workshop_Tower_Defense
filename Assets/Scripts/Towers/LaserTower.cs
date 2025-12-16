@@ -28,26 +28,22 @@ public class LaserTower : BaseTower
 {
     if (target != null)
     {
-        if (!isFiring) 
-        {
-            StartLaser(); 
             UpdateLaserTransform();
             UpdateLaserEndPoint();
-                 
-            if (towerUpgrade != null && towerUpgrade.currentLevel ==2)
+            if (!isFiring) 
+        {
+            StartLaser();     
+            
+        }
+            if (towerUpgrade != null && towerUpgrade.currentLevel == 2)
             {
                 foreach (VisualEffect effect in laserFusionVFX)
                 {
-                        effect.enabled = true;
-                        effect.Play();
+                    effect.enabled = true;
+                    effect.Play();
                 }
             }
         }
-            
-
-       
-
-    }
     else
     {
         if (isFiring) 
@@ -56,7 +52,7 @@ public class LaserTower : BaseTower
                 foreach (VisualEffect effect in laserFusionVFX)
                 {
                     effect.enabled = false;
-                    effect.Play();
+                    effect.Stop();
                 }
             }
             
