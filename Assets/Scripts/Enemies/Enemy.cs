@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Explosion VFX")]
     public GameObject explosionVFXPrefab;
+    public GameObject explosionNexusVFX;
 
     [Header("Damage")]
     
@@ -107,6 +108,8 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(timeToExplode);
         canDamageNexus = true;
         nbreMana = 0;
+        GameObject explosion = Instantiate (explosionNexusVFX, transform.position, transform.rotation);
+        Destroy (explosion,2);
         Destroy(gameObject);
 
     
