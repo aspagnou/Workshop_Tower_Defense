@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public AudioManager _audioManager;
 
     [SerializeField] private GameObject _settingsPausePanel;
     [SerializeField] private GameObject _mainPausePanel;
@@ -17,6 +18,15 @@ public class PauseMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
+
+        if (audioManager != null)
+        {
+            _audioManager = audioManager.GetComponent<AudioManager>();
+        }
+
+        _audioManager.PlayMusic(_audioManager.backgroundInGame);
+
         Resume();
     }
 

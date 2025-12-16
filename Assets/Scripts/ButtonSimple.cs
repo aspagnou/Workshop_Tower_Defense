@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public class ButtonSimple : MonoBehaviour
 {
-    [SerializeField] AudioManager audioManager;
+    [SerializeField] AudioManager _audioManager;
 
     public Image targetImage;
     public Sprite hoverImage;
@@ -35,6 +35,13 @@ public class ButtonSimple : MonoBehaviour
 
     private void OnEnable()
     {
+        GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
+
+        if (audioManager != null)
+        {
+            _audioManager = audioManager.GetComponent<AudioManager>();
+        }
+
         buttonText.color = normalColor;
         _leftImage.anchoredPosition = leftHiddenPos;
     }
@@ -79,7 +86,7 @@ public class ButtonSimple : MonoBehaviour
     {
         targetImage.sprite = pressedImage;
         buttonText.color = pressedColor;
-        audioManager.PlaySfx(audioManager.uiButton);
+        _audioManager.PlayMusic(_audioManager.uiButton);
 
 
     }

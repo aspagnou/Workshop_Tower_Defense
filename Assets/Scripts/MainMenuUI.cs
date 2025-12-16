@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
-
+    public AudioManager _audioManager;
     [SerializeField] private GameObject _settingsPausePanel;
     [SerializeField] private GameObject _mainPausePanel;
     [SerializeField] private GameObject _creditPanel;
@@ -47,6 +47,14 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnEnable()
     {
+        GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
+
+        if (audioManager != null)
+        {
+            _audioManager = audioManager.GetComponent<AudioManager>();
+        }
+
+        _audioManager.PlayMusic(_audioManager.background);
         StopAllCoroutines();
 
 

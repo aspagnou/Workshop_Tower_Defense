@@ -28050,7 +28050,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1836616283391979222, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
+      propertyPath: MaxDistance
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836616283391979222, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836616283391979222, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836616283391979222, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
       propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1836616283391979222, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3093841835779368462, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
@@ -28105,6 +28121,10 @@ PrefabInstance:
       propertyPath: audioPanel
       value: 
       objectReference: {fileID: 499947789}
+    - target: {fileID: 6254051365128558488, guid: 200894c00a06d48459a3e43ae461fe35, type: 3}
+      propertyPath: arbaletShoot
+      value: 
+      objectReference: {fileID: 8300000, guid: 98730d69b80a8c948afc646c130719c7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

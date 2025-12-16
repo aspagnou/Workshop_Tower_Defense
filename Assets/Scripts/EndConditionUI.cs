@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndConditionUI : MonoBehaviour
 {
-
+    public AudioManager _audioManager;
     
     [SerializeField] private GameObject _mainWin;
     [SerializeField] private GameObject _mainLoose;
@@ -18,7 +18,12 @@ public class EndConditionUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
+
+        if (audioManager != null)
+        {
+            _audioManager = audioManager.GetComponent<AudioManager>();
+        }
     }
 
     // Update is called once per frame
@@ -39,6 +44,7 @@ public class EndConditionUI : MonoBehaviour
     }
     public void PauseWin()
     {
+        _audioManager.PlayMusic(_audioManager.winJingle);
         if (_paused == false)
         {
             _mainWin.SetActive(true);
@@ -54,6 +60,8 @@ public class EndConditionUI : MonoBehaviour
     }
     public void PauseLoose()
     {
+        _audioManager.PlayMusic(_audioManager.loseJingle);
+
         if (_paused == false)
         {
             _mainLoose.SetActive(true);
