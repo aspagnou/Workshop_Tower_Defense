@@ -27,6 +27,7 @@ public class TowerUpgrade : MonoBehaviour
 
     [Header("VFX & SFX")]
     public VisualEffectAsset UpgradeVFX;  // Le VFX à jouer lors du spawn
+    public GameObject smokeVFX;
     public Vector3 vfxOffset = Vector3.up * 1f;
 
 
@@ -43,6 +44,12 @@ public class TowerUpgrade : MonoBehaviour
         clicker = FindAnyObjectByType<Clicker>();
         lineSpawnTransform = GameObject.FindWithTag("CostContainer").transform.GetChild(0).GetChild(0);
         UpdateTowerMesh();
+        //if (upgradeLevels.Length > 0)
+        //{
+        //    GetComponent<BaseTower>()
+        //        .ApplyUpgradeStats(upgradeLevels[currentLevel]);
+        //}
+
 
     }
 
@@ -205,7 +212,7 @@ public class TowerUpgrade : MonoBehaviour
         // Mettre à jour la couleur de la ligne de coût du mana
         if (manaCostLine != null)
         {
-            Debug.Log("ajout de mana");
+            //Debug.Log("ajout de mana");
             TMP_Text manaCostText = manaCostLine.transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
             if (manaCostText != null)
             {
@@ -268,15 +275,21 @@ public class TowerUpgrade : MonoBehaviour
         // Vérifie les ressources disponibles
         for (int i = 0; i < upgradeLevels[currentLevel].costs.Length; i++)
         {
-            if (ResourceManager.Instance.scraps[i].amount < upgradeLevels[currentLevel].costs[i])
+            int scrapIndex = upgradeLevels[currentLevel].scraps[i].index;
+            int required = upgradeLevels[currentLevel].costs[i];
+            int available = ResourceManager.Instance.scraps[scrapIndex].amount;
+
+            if (available < required)
             {
-                Debug.Log("Not enough resources");
+                Debug.Log($"Not enough scrap {scrapIndex}");
                 return;
             }
         }
+
         // vérifie le mana
         if ( ResourceManager.Instance.mana < upgradeLevels[currentLevel].manaCost) 
         {
+            Debug.Log("Not enough mana");
             return;
         }
 
@@ -291,17 +304,31 @@ public class TowerUpgrade : MonoBehaviour
 
         // Passe au niveau suivant
         currentLevel++;
-        Debug.Log("Upgrade successful to level " + currentLevel);
+
+        BaseTower tower = GetComponent<BaseTower>();
+        if (tower != null)
+        {
+            tower.ApplyUpgradeStats(upgradeLevels[currentLevel-1]);
+        }
+
+        //Debug.Log("Upgrade successful to level " + currentLevel);
         sellAmount += 50;
-        VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
-        vfx.visualEffectAsset = UpgradeVFX;
 
-        vfx.transform.position = transform.position + vfxOffset;
+        //VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+        //vfx.visualEffectAsset = UpgradeVFX;
 
-        vfx.Play();
+        //vfx.transform.position = transform.position + vfxOffset;
+
+        //vfx.Play();
+        if (smokeVFX != null) 
+        {
+            GameObject smoke = Instantiate(smokeVFX);
+            smoke.transform.position = transform.position + vfxOffset;
+            Destroy(smoke,2);
+        }
         UpdateTowerMesh();
 
-        Destroy(vfx.gameObject, 2f); // Auto-clean
+        //Destroy(vfx.gameObject, 2f); // Auto-clean
         ItemGrid grid = Clicker.Instance.currentSelectedTower.itemGrid;
         if (grid!= null)
             grid.ResizeGrid(grid.gridSizeWidth+1, grid.gridSizeHeight);

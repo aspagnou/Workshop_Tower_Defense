@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class Clicker : MonoBehaviour
 {
     public static Clicker Instance;
-
+    private InventoryControler inventoryControler;
     public Camera cam;           
     public LayerMask towerLayer; 
     [SerializeField] private UI_Manager ui_Manager;
@@ -21,6 +21,7 @@ public class Clicker : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        inventoryControler = FindAnyObjectByType<InventoryControler>();
     }
     private void Start()
     {
@@ -119,14 +120,26 @@ public class Clicker : MonoBehaviour
         // 🟩 3️⃣ Aucun hit → clic dans le vide
         // ------------------------------------------------------
         // Fermer SlotMenu si ouvert
-        if (TowerSelectMenuManager.Instance.IsSlotMenuOpen)
-            TowerSelectMenuManager.Instance.HideSlotTowerMenu();
+        if (inventoryControler != null) 
+        {
+            if (inventoryControler.selectedItem != null)
+            {
+                inventoryControler.TryEquipInFirstFreeGearSlot();
+            }
+            else 
+            {
+                if (TowerSelectMenuManager.Instance.IsSlotMenuOpen)
+                    TowerSelectMenuManager.Instance.HideSlotTowerMenu();
 
-        // Fermer TowerMenu si ouvert
-        if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
-            TowerSelectMenuManager.Instance.HideTowerSelectMenu();
-        // Désélectionner la tour actuelle
-        DeselectTower();
+                // Fermer TowerMenu si ouvert
+                if (TowerSelectMenuManager.Instance.IsTowerMenuOpen)
+                    TowerSelectMenuManager.Instance.HideTowerSelectMenu();
+                // Désélectionner la tour actuelle
+                DeselectTower();
+
+            }
+        }
+       
     }
 
 

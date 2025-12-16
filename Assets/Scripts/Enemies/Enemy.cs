@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Economy")]
     public ItemSO deathScrap;
+    public int scrapAmountOnDeath=1;
     public float nbreMana = 20;
     [SerializeField] private LayerMask layers;
 
@@ -127,10 +128,10 @@ public class Enemy : MonoBehaviour
         GameObject deathVFX = Instantiate(explosionVFXPrefab, transform.position, Quaternion.identity);
         Destroy(deathVFX, 3f);
         ResourceManager.Instance.AddMana((int)nbreMana);
-        ResourceManager.Instance.AddResource(deathScrap, 1);
+        ResourceManager.Instance.AddResource(deathScrap, scrapAmountOnDeath);
 
         if (deathScrap != null)
-            FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap);
+            FlyingTextManager.Instance.SpawnScrap(transform.position, deathScrap, scrapAmountOnDeath);
 
         Destroy(gameObject);
     }

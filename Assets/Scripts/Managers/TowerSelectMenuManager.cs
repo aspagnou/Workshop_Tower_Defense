@@ -53,6 +53,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     public TMP_Text sellAmountText;
     public VisualEffectAsset sellTowerVFX;
     public Vector3 vfxOffset = Vector3.up * 1f;
+    public GameObject smokeVFX;
 
     [Header("Sell Text Colors")]
     [SerializeField] private Color amountColor = new Color(0.29f, 0.64f, 1f); // bleu
@@ -165,7 +166,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     {
         currentlySelectedTower = tower;
 
-        Vector3 worldPos = tower.transform.position + worldOffset;
+        Vector3 worldPos = tower.menuSpawnTransform.position ;
 
         towerSelectPanel.transform.position = worldPos;
         towerSelectPanel.transform.LookAt(cam.transform);
@@ -330,16 +331,22 @@ public class TowerSelectMenuManager : MonoBehaviour
                 inventoryControler.RetrieveGear(gear);
                 inventoryControler.inventoryHighlight.SetParent(saveGrid);
             }
-            VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
-            vfx.visualEffectAsset = sellTowerVFX;
-            if (vfx == null)
-            {
-                Debug.LogError("Sell Tower VFX is not assigned.");
-                return;
-            }
-            vfx.transform.position = currentlySelectedTower.transform.position + vfxOffset;
+            //VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+            //vfx.visualEffectAsset = sellTowerVFX;
+            //if (vfx == null)
+            //{
+            //    Debug.LogError("Sell Tower VFX is not assigned.");
+            //    return;
+            //}
+            //vfx.transform.position = currentlySelectedTower.transform.position + vfxOffset;
 
-            vfx.Play();
+            //vfx.Play();
+            if (smokeVFX != null) 
+            {
+                GameObject vfx = Instantiate(smokeVFX.gameObject);
+                vfx.transform.position = currentlySelectedTower.transform.position + vfxOffset;
+                Destroy(vfx,2);
+            }
             Clicker.Instance.DeselectTower();
             Destroy(towerUpgrade.gameObject);
         }

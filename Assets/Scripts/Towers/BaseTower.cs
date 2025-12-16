@@ -13,6 +13,7 @@ public class BaseTower : MonoBehaviour
     public ItemGrid itemGrid;
     public InventoryMemory inventoryMemory;
     private RectTransform fixRectTransform;
+    public Transform menuSpawnTransform;
 
     [Header("Tower Price")]
     public int spawnCost = 100;
@@ -75,6 +76,17 @@ public class BaseTower : MonoBehaviour
     {
         // Par défaut, ne fait rien.
     }
+
+    public void ApplyUpgradeStats(UpgradeLevel level)
+    {
+        baseAttackDamage = level.baseAttackDamage;
+        baseRange = level.baseRange;
+        baseAttackSpeed = level.baseAttackSpeed;
+        baseCriticalChance = level.baseCriticalChance;
+
+        RecalculateStats();
+    }
+
     // Update is called once per frame
 
 

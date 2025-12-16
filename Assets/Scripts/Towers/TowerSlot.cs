@@ -8,7 +8,8 @@ public class TowerSlot : MonoBehaviour
     private TMP_Text[] costsText;
     public Transform spawMenuTransform;
     private ResourceManager resourceManager;
-    public VisualEffectAsset spawnVFX;  // Le VFX à jouer lors du spawn
+    //public VisualEffectAsset spawnVFX;  // Le VFX à jouer lors du spawn
+    public GameObject smokeVFX;
     public Vector3 vfxOffset = Vector3.up * 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,16 +34,22 @@ public class TowerSlot : MonoBehaviour
         {
             resourceManager.SpendMana(towerPrefabs[i].GetComponent<BaseTower>().spawnCost);
             Instantiate(towerPrefabs[i], transform.position, Quaternion.identity);
-            if (spawnVFX != null)
+            //if (spawnVFX != null)
+            //{
+            //    VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
+            //    vfx.visualEffectAsset = spawnVFX;
+
+            //    vfx.transform.position = transform.position + vfxOffset;
+
+            //    vfx.Play();
+
+            //    Destroy(vfx.gameObject, 2f); // Auto-clean
+            //}
+            if (smokeVFX != null) 
             {
-                VisualEffect vfx = new GameObject("SpawnVFX").AddComponent<VisualEffect>();
-                vfx.visualEffectAsset = spawnVFX;
-
-                vfx.transform.position = transform.position + vfxOffset;
-
-                vfx.Play();
-
-                Destroy(vfx.gameObject, 2f); // Auto-clean
+                GameObject vfx = Instantiate(smokeVFX, transform.position, Quaternion.identity);
+                vfx.transform.position = transform.position+vfxOffset;
+                Destroy(vfx,2);
             }
             TowerSelectMenuManager.Instance.HideSlotTowerMenu();
             Destroy(this.gameObject);

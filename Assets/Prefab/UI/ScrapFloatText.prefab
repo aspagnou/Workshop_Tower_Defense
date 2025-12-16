@@ -146,6 +146,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8464349977792855023}
   m_SourcePrefab: {fileID: 100100000, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
+--- !u!114 &3520783381285489685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2006367222351924663, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
+  m_PrefabInstance: {fileID: 3099700914753683874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7760623334726379665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4024132124660881387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2079765103300744777, guid: 6ec712ee1c3d3b04eb2e65e1262a88f1, type: 3}
@@ -170,3 +181,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingImage: {fileID: 951151826135544396}
   cam: {fileID: 0}
+  text: {fileID: 3520783381285489685}

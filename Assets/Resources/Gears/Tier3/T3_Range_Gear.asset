@@ -16,7 +16,7 @@ MonoBehaviour:
   gearIcon: {fileID: 21300000, guid: 70b2a000ad2aa7049b1be37dd35486ca, type: 3}
   gearInventoryData: {fileID: 11400000, guid: 40577856cdb988c4d8812ca6e0c79334, type: 2}
   flatAttackDamage: 0
-  flatRange: 1.8
+  flatRange: 2.8
   flatAttackSpeed: 0
   flatCriticalChance: 0
   percentAttackDamage: 0

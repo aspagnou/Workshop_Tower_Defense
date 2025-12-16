@@ -15,7 +15,7 @@ public class TowerIdle : MonoBehaviour
 
     void Start()
     {
-        startPosition = transform.position;
+        startPosition = body.transform.position;
     }
 
     void Update()

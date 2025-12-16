@@ -194,12 +194,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefabs:
-  - {fileID: 1513403617039848939, guid: 7e12cb85ea100724580f039677cb6ad3, type: 3}
+  - {fileID: 2394470183718323226, guid: 60e4ae079d6b52c4ca367788a4e9a80a, type: 3}
   - {fileID: 1777082860707924404, guid: 52734e67b5353a048a782f2f9c0bfebc, type: 3}
   - {fileID: 1513403617039848939, guid: 8aa7557e1545a3f4bb7f689fe9db978d, type: 3}
   - {fileID: 7339196387734497220, guid: 22fcef4e1e6d84c40878e430b3fb6c91, type: 3}
   spawMenuTransform: {fileID: 9128778023858801855}
-  spawnVFX: {fileID: 8926484042661614526, guid: 0b8a8a44663263144a93ea7cc0e79140, type: 3}
+  smokeVFX: {fileID: 1917465243149216906, guid: b522d984418e0a740b04df479c27ce75, type: 3}
   vfxOffset: {x: 0, y: 3, z: 0}
 --- !u!1001 &1285567602408238998
 PrefabInstance:

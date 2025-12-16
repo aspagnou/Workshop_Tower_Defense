@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+
 public class CameraController : MonoBehaviour
 {
     [Header("Movement")]
@@ -18,11 +19,14 @@ public class CameraController : MonoBehaviour
     private float _currentZoom;
 
     private Camera _camera;
+    private Camera _UIcamera;
 
     void Start()
     {
         _camera = Camera.main;
+        _UIcamera = transform.GetChild(0).GetComponent<Camera>();
         _currentZoom = _camera.fieldOfView;  // initialise le zoom à la valeur actuelle
+        
     }
 
     void Update()
@@ -64,6 +68,11 @@ public class CameraController : MonoBehaviour
 
         // zoom fluide
         _camera.fieldOfView = Mathf.Lerp(
+            _camera.fieldOfView,
+            _currentZoom,
+            Time.deltaTime * zoomSmoothness
+        );
+        _UIcamera.fieldOfView = Mathf.Lerp(
             _camera.fieldOfView,
             _currentZoom,
             Time.deltaTime * zoomSmoothness
