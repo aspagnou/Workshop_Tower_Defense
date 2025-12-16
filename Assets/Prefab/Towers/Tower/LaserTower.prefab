@@ -357,6 +357,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3037506940108726906, guid: 7fdc64077ee3cb44482127c4d2bfbb49, type: 3}
   firePoint: {fileID: 8459278485861560056}
   rotationSpeed: 3
+  attackSound: {fileID: 0}
+  _equipGear: {fileID: 8300000, guid: 598819326a733374186c85721b09a2b7, type: 3}
+  _unequipGear: {fileID: 8300000, guid: 98730d69b80a8c948afc646c130719c7, type: 3}
   flameArea: {fileID: 4570079142438423088}
   laserImpactVFX: {fileID: 1724654311313673818}
   laserFusionVFX:

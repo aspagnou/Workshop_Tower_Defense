@@ -55,9 +55,23 @@ public class BaseTower : MonoBehaviour
 
     [SerializeField] private float rotationSpeed=5f;
 
+    [Header("Audio")]
+    private AudioManager _audioManager;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioClip _equipGear;
+    [SerializeField] private AudioClip _unequipGear;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        //Get audio manager
+        GameObject audioManager = GameObject.FindGameObjectWithTag("Audio");
+
+        if (audioManager != null)
+        {
+            _audioManager = audioManager.GetComponent<AudioManager>();
+        }
+
         mainCanvas = GameObject.FindWithTag("MainCanvas");
 
         fixRectTransform = GameObject.FindWithTag("FixGridSpawn").GetComponent<RectTransform>();
@@ -93,6 +107,9 @@ public class BaseTower : MonoBehaviour
     //----------------------------- GEAR EQUIP/UNEQUIP ------
     public void EquipGear(GearSO gear)
     {
+        //Sound 
+        _audioManager.PlaySfx(_equipGear);
+
         if (gear == null) return;
 
         equippedGears.Add(gear);
@@ -102,6 +119,9 @@ public class BaseTower : MonoBehaviour
 
     public void UnequipGear(GearSO gear)
     {
+        //Sound
+        _audioManager.PlaySfx(_unequipGear);
+
         if (gear == null) return;
 
         equippedGears.Remove(gear);
@@ -298,6 +318,8 @@ public class BaseTower : MonoBehaviour
 
     protected virtual void Shoot()
     {
+        
+
         // Si pas de cible → ne pas tirer
         if (target == null) return;
 
@@ -324,6 +346,8 @@ public class BaseTower : MonoBehaviour
 
     void SpawnProjectile(Quaternion rotation)
     {
+        //Sound
+        _audioManager.PlaySfx(attackSound);
         //calcul critique
         bool isCrit = Random.value <= (currentCriticalChance / 100f);
         float finalDamage = isCrit ? currentAttackDamage * critMultiplier : currentAttackDamage;

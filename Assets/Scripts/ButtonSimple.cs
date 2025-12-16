@@ -86,7 +86,7 @@ public class ButtonSimple : MonoBehaviour
     {
         targetImage.sprite = pressedImage;
         buttonText.color = pressedColor;
-        _audioManager.PlaySfx(_audioManager.uiButton);
+        _audioManager.PlayMusic(_audioManager.uiButton);
 
 
     }
