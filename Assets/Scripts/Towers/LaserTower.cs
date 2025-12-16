@@ -64,10 +64,13 @@ public class LaserTower : BaseTower
     {
         if (laserEndPoint == null || firePoint == null) return;
 
+        float firePointOffset = Vector3.Distance(transform.position, firePoint.position);
+        float laserLength = Mathf.Max(0f, currentRange - firePointOffset);
+
         laserEndPoint.position =
-            firePoint.position + firePoint.forward * currentRange;
-        
+            firePoint.position + firePoint.forward * laserLength;
     }
+
 
     // --------------------- LASER TOGGLE ----------------------
     void StartLaser()
@@ -115,16 +118,19 @@ public class LaserTower : BaseTower
 
     void UpdateLaserTransform()
     {
-        if (flameArea == null) return;
+        if (flameArea == null || firePoint == null) return;
 
-        float length = currentRange;
-        flameArea.transform.localScale = new Vector3(1.2f, 1.2f, length);
+        float firePointOffset = Vector3.Distance(transform.position, firePoint.position);
+        float laserLength = Mathf.Max(0f, currentRange - firePointOffset);
+
+        flameArea.transform.localScale = new Vector3(1.2f, 1.2f, laserLength);
 
         flameArea.transform.position =
-            firePoint.position + firePoint.forward * (length / 2f);
+            firePoint.position + firePoint.forward * (laserLength / 2f);
 
         flameArea.transform.rotation = firePoint.rotation;
     }
+
 
 
     protected override void ApplySpecialTowerStats()
