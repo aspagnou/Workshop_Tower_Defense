@@ -3158,19 +3158,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 19513782174999782, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2306.2446
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 19513782174999782, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1153.1223
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 19513782174999782, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 926
+      value: 956
       objectReference: {fileID: 0}
     - target: {fileID: 19513782174999782, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 476
+      value: 430
       objectReference: {fileID: 0}
     - target: {fileID: 1149881989159303743, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_Pivot.x
@@ -3276,10 +3276,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2550877101552699825, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+    - target: {fileID: 2364374048826503909, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2550877101552699825, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695875919116150012, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3303,6 +3307,10 @@ PrefabInstance:
     - target: {fileID: 2776631915553814949, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968501821142968790, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4035065113782861999, guid: d8024c70b0d4f9044940e409ee1238b7, type: 3}
       propertyPath: audioManager
@@ -4039,7 +4047,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1764113032}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124964749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 345496a1745464142ac6cf19215d6696, type: 3}
   m_Name: 
