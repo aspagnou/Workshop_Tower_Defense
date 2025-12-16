@@ -23937,7 +23937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 589163347}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!1001 &876689071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33309,7 +33309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1782342153}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!4 &1271183715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6534038015873854261, guid: 4cb57906ab787114c97fa2673213d4f4, type: 3}
@@ -35533,7 +35533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1698852857}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!4 &1327645647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4865681837547206591, guid: 74f52b5ba0c7a244eb21eb482a223da9, type: 3}
@@ -43392,7 +43392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1698852857}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!4 &1489579250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fba830678a30c044da0f87090047d0c6, type: 3}
@@ -64932,7 +64932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1604837276}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!1001 &1955416227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66934,7 +66934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1698852857}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!4 &2054523236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5961390068086337074, guid: 13e9c23b6bb98ff4e8d4b7501461450c, type: 3}
@@ -66959,7 +66959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1698852857}
   blinkSpeed: 2
-  maxAlpha: 0.7
+  maxAlpha: 1
 --- !u!4 &2056855562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5961390068086337074, guid: 13e9c23b6bb98ff4e8d4b7501461450c, type: 3}

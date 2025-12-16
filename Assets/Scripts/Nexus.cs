@@ -1,3 +1,4 @@
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +18,23 @@ public class Nexus : MonoBehaviour
 
     private Camera cam;
 
-    private float currentFill;                // valeur affichée
-    private float targetFill;                 // valeur réelle à atteindre
+    private float currentFill;                // valeur affichÃ©e
+    private float targetFill;                 // valeur rÃ©elle Ã  atteindre
+
+    
+    [Header("Scale Settings")]
+    public float hoverScale = 1.2f;     // Taille au survol
+    public float scaleSpeed = 10f;
+    private Vector3 initialScale;
+    private Vector3 targetScale;
+
+    [Header("Damage Scale Animation")]
+    [SerializeField] private float damageScaleMultiplier = 1.15f;
+    [SerializeField] private float scaleAnimSpeed = 12f;
+
+    private Vector3 baseScale;
+    private Coroutine scaleRoutine;
+
 
     void Start()
     {
@@ -29,8 +45,12 @@ public class Nexus : MonoBehaviour
         targetFill = 1f;
 
         if (healthBarRoot != null)
+        {
+            baseScale = healthBarRoot.transform.localScale;
             UpdateHealthbarPosition();
+        }
     }
+
 
     void Update()
     {
@@ -49,12 +69,52 @@ public class Nexus : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;
 
-        // Calcul fill
         targetFill = (float)currentHealth / maxHealth;
+
+        // ðŸ”¥ Animation de scale
+        PlayDamageScaleAnim();
 
         if (currentHealth <= 0)
             NexusDeath();
     }
+    void PlayDamageScaleAnim()
+    {
+        if (healthBarRoot == null) return;
+
+        if (scaleRoutine != null)
+            StopCoroutine(scaleRoutine);
+
+        scaleRoutine = StartCoroutine(DamageScaleRoutine());
+    }
+
+    IEnumerator DamageScaleRoutine()
+    {
+        Vector3 targetScale = baseScale * damageScaleMultiplier;
+
+        float t = 0f;
+
+        // Scale UP
+        while (t < 1f)
+        {
+            t += Time.deltaTime * scaleAnimSpeed;
+            healthBarRoot.transform.localScale = Vector3.Lerp(baseScale, targetScale, t);
+            yield return null;
+        }
+
+        t = 0f;
+
+        // Scale DOWN
+        while (t < 1f)
+        {
+            t += Time.deltaTime * scaleAnimSpeed;
+            healthBarRoot.transform.localScale = Vector3.Lerp(targetScale, baseScale, t);
+            yield return null;
+        }
+
+        healthBarRoot.transform.localScale = baseScale;
+        scaleRoutine = null;
+    }
+
 
     // --- ANIMATED HEALTH FILL ---
     void AnimateHealthFill()
@@ -66,6 +126,7 @@ public class Nexus : MonoBehaviour
 
         healthFill.fillAmount = currentFill;
     }
+
 
     // --- POSITION + ROTATION ---
     void UpdateHealthbarPosition()

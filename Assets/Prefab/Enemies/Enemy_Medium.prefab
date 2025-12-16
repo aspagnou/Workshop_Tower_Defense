@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2815669147154018819}
   - component: {fileID: 995332826180663805}
   - component: {fileID: 227774105251917156}
+  - component: {fileID: 6363697453681580053}
   m_Layer: 7
   m_Name: Enemy_Medium
   m_TagString: Enemy
@@ -169,6 +170,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6363697453681580053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296802755904404096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80696c298320de84186911e0b54017d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gears:
+  - gear: {fileID: 9082276858854674343}
+    localAxis: {x: 0, y: 0, z: 1}
+    speed: 50
+  - gear: {fileID: 7074860030033712860}
+    localAxis: {x: 0, y: 0, z: 1}
+    speed: 50
 --- !u!1001 &5082808792862667612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -217,9 +237,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5900937498473367167, guid: 0536e7c6417a43c41b8f9d70d0e6ca6d, type: 3}
+      propertyPath: m_Name
+      value: Roue
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0536e7c6417a43c41b8f9d70d0e6ca6d, type: 3}
       propertyPath: m_Name
       value: Normal_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998320063995617139, guid: 0536e7c6417a43c41b8f9d70d0e6ca6d, type: 3}
+      propertyPath: m_Name
+      value: Roue2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -229,5 +257,15 @@ PrefabInstance:
 --- !u!4 &4684723104209097911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0536e7c6417a43c41b8f9d70d0e6ca6d, type: 3}
+  m_PrefabInstance: {fileID: 5082808792862667612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7074860030033712860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6582239432453429888, guid: 0536e7c6417a43c41b8f9d70d0e6ca6d, type: 3}
+  m_PrefabInstance: {fileID: 5082808792862667612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9082276858854674343 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5151140489956213509, guid: 0536e7c6417a43c41b8f9d70d0e6ca6d, type: 3}
   m_PrefabInstance: {fileID: 5082808792862667612}
   m_PrefabAsset: {fileID: 0}
