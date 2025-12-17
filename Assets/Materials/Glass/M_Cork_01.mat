@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Liquid_01
+  m_Name: M_Cork_01
   m_Shader: {fileID: -6465566751694194690, guid: 52da6c24f383fbb4ba29aae5eae50fa1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 408f4bec42012b14fa8718ab95e1acab, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5fbf2b88aae8ef44a9c0bd32ba5a8a84, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
@@ -37,11 +37,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 2800000, guid: 86281ac2ff4d47b419ab56f16c3533c3, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: b88c676a125cdd541ab438bab71b221d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 55d955f6e6a08174594565a4db3798ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM_occclusion_roughness_metal:
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smothness:
-        m_Texture: {fileID: 2800000, guid: 7164651e6ffd462479726037ba948a09, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b1004d9693a5a345aa29c480da7c85f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -75,14 +75,14 @@ Material:
     - _UseAO: 0
     - _UseBaseColor: 1
     - _UseEmissive: 0
-    - _UseMetallic: 1
+    - _UseMetallic: 0
     - _UseORM: 0
     - _UseSmothness: 1
     m_Colors:
     - _FlatColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5671646466803768959
+--- !u!114 &1419725636208414940
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
