@@ -29,6 +29,15 @@ public class PreviewManager : MonoBehaviour
     public ItemSlot[] midRow = new ItemSlot[3];
     public ItemSlot[] bottomRow = new ItemSlot[3];
 
+    public enum GearType
+    {
+        Attack,
+        AttackSpeed,
+        Crit,
+        Range
+    }
+    private GearType currentGearType = GearType.Attack; // défaut
+
     private void Awake()
     {
         Instance = this;
@@ -75,14 +84,18 @@ public class PreviewManager : MonoBehaviour
 
         if (activeList == null || activeList.Count == 0)
         {
-            Debug.LogWarning($"Aucune recette dans le tier {tier} !");
             ClearPreview();
             return;
         }
 
-        currentRecipeIndex = 0;
+        // ⭐ chercher une recette du même GearType
+        int index = activeList.FindIndex(r => r.output.gearType == currentGearType);
+
+        currentRecipeIndex = (index != -1) ? index : 0;
+
         UpdatePreviewGearSlot();
     }
+
 
     // ----------------------------------------------------------
     // --------------------- NAVIGATION -------------------------
@@ -119,11 +132,14 @@ public class PreviewManager : MonoBehaviour
 
         RecipeSO current = activeList[currentRecipeIndex];
 
+        currentGearType = current.output.gearType; // ⭐ mémorise le type
+
         previewGearSlot.currGear = current.output;
         previewGearSlot.UpdateSlotData();
 
         ShowPreviewScraps(current);
     }
+
 
     private void ShowPreviewScraps(RecipeSO recipe)
     {

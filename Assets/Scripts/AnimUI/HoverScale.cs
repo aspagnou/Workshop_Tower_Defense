@@ -23,6 +23,7 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
 
 
     private Image img;   // L'Image du bouton
+    private float dt => Time.unscaledDeltaTime;
 
     private void Start()
     {
@@ -41,11 +42,11 @@ public class HoverScaleAndColor : MonoBehaviour, IPointerEnterHandler, IPointerE
     private void Update()
     {
         // Animation de scale
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * scaleSpeed);
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, dt * scaleSpeed);
 
         // Animation de couleur
         if (img != null)
-            img.color = Color.Lerp(img.color, targetColor, Time.deltaTime * colorSpeed);
+            img.color = Color.Lerp(img.color, targetColor, dt * colorSpeed);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -60,7 +60,7 @@ public class TowerSelectMenuManager : MonoBehaviour
     [SerializeField] private Color gearColor = new Color(1f, 0.84f, 0f);     // jaune
 
 
-
+    private float dt => Time.unscaledDeltaTime;
     public bool IsSlotMenuOpen => slotSelectPanel.activeSelf;
 
     void Awake()
@@ -120,7 +120,7 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         while (t < slotAnimDuration)
         {
-            t += Time.deltaTime;
+            t += dt;
             float lerp = t / slotAnimDuration;
 
             float scale = slotScaleCurve != null ?
@@ -187,7 +187,7 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         while (t < towerSelectAnimDuration)
         {
-            t += Time.deltaTime;
+            t += dt;
             float lerp = t / towerSelectAnimDuration;
 
             float scale = towerSelectScaleCurve != null ?
@@ -220,7 +220,7 @@ public class TowerSelectMenuManager : MonoBehaviour
 
         while (t < towerSelectAnimDuration)
         {
-            t += Time.deltaTime;
+            t += dt;
             float lerp = t / towerSelectAnimDuration;
 
             towerSelectRect.localScale = Vector3.Lerp(start, Vector3.zero, lerp);

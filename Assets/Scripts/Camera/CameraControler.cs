@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class CameraController : MonoBehaviour
 {
     [Header("Movement")]
@@ -12,23 +11,27 @@ public class CameraController : MonoBehaviour
     public Vector2 maxBounds = new Vector2(20f, 20f);
 
     [Header("Zoom")]
-    public float zoomSpeed = 6f;          // vitesse du zoom scroll
-    public float zoomSmoothness = 5f;     // fluidité
-    public float minZoom = 5f;            // FOV min → zoom IN
-    public float maxZoom = 22f;           // FOV max → zoom OUT
+    public float zoomSpeed = 6f;
+    public float zoomSmoothness = 5f;
+    public float minZoom = 5f;
+    public float maxZoom = 22f;
+
     private float _currentZoom;
 
     private Camera _camera;
-    private Camera _UIcamera;
-    private bool isSpeeded= false;
+    private Camera _UICamera;
+
+    private bool isSpeeded = false;
+
+    // 🟢 raccourci propre
+    private float dt => Time.unscaledDeltaTime;
 
     void Start()
     {
         _camera = Camera.main;
-        _UIcamera = transform.GetChild(0).GetComponent<Camera>();
-        _currentZoom = _camera.fieldOfView;  // initialise le zoom à la valeur actuelle
-        isSpeeded = false;
-        
+        _UICamera = transform.GetChild(0).GetComponent<Camera>();
+
+        _currentZoom = _camera.fieldOfView;
     }
 
     void Update()
@@ -36,32 +39,21 @@ public class CameraController : MonoBehaviour
         HandleMovement();
         HandleZoom();
         ClampPosition();
-        if (Input.GetKeyDown(KeyCode.X)) 
+
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             ToggleTimeScale();
         }
-
-    }
-    void ToggleTimeScale() 
-    {
-        if (!isSpeeded)
-        {
-            isSpeeded = true;
-            Time.timeScale = 3.5f;
-        }
-        else 
-        { 
-            isSpeeded = false;
-            Time.timeScale = 1;
-        }
     }
 
     // ----------------------------------------------
-    // 🔵 Déplacement iso basé sur la direction caméra
+    // 🔵 Déplacement caméra (INSENSIBLE au slow-mo)
     // ----------------------------------------------
     void HandleMovement()
     {
-        float speed = Input.GetKey(KeyCode.LeftShift) ? moveSpeed * fastMultiplier : moveSpeed;
+        float speed = Input.GetKey(KeyCode.LeftShift)
+            ? moveSpeed * fastMultiplier
+            : moveSpeed;
 
         Vector3 dir = Vector3.zero;
 
@@ -70,37 +62,42 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) dir += transform.right;
         if (Input.GetKey(KeyCode.A)) dir -= transform.right;
 
-        dir.y = 0; // pas de montée/descente
-        transform.position += dir.normalized * speed * Time.deltaTime;
+        dir.y = 0f;
+
+        if (dir.sqrMagnitude > 0.001f)
+        {
+            transform.position += dir.normalized * speed * dt;
+        }
     }
 
     // ----------------------------------------------
-    // 🟡 Zoom fluide à la molette (FOV)
+    // 🟡 Zoom fluide molette (INSENSIBLE au slow-mo)
     // ----------------------------------------------
     void HandleZoom()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
+
         if (Mathf.Abs(scroll) > 0.0001f)
         {
-            _currentZoom -= scroll * zoomSpeed;                  // scroll ↑ = zoom IN
+            _currentZoom -= scroll * zoomSpeed;
             _currentZoom = Mathf.Clamp(_currentZoom, minZoom, maxZoom);
         }
 
-        // zoom fluide
         _camera.fieldOfView = Mathf.Lerp(
             _camera.fieldOfView,
             _currentZoom,
-            Time.deltaTime * zoomSmoothness
+            dt * zoomSmoothness
         );
-        _UIcamera.fieldOfView = Mathf.Lerp(
-            _camera.fieldOfView,
+
+        _UICamera.fieldOfView = Mathf.Lerp(
+            _UICamera.fieldOfView,
             _currentZoom,
-            Time.deltaTime * zoomSmoothness
+            dt * zoomSmoothness
         );
     }
 
     // ----------------------------------------------
-    // 🔴 Limites de la map
+    // 🔴 Clamp map
     // ----------------------------------------------
     void ClampPosition()
     {
@@ -108,5 +105,14 @@ public class CameraController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, minBounds.x, maxBounds.x);
         pos.z = Mathf.Clamp(pos.z, minBounds.y, maxBounds.y);
         transform.position = pos;
+    }
+
+    // ----------------------------------------------
+    // ⏱️ Toggle time scale (DEBUG)
+    // ----------------------------------------------
+    void ToggleTimeScale()
+    {
+        isSpeeded = !isSpeeded;
+        Time.timeScale = isSpeeded ? 3.5f : 1f;
     }
 }

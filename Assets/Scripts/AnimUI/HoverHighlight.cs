@@ -9,6 +9,7 @@ public class HoverHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public Color UpgradableColor = Color.yellow;
     public Color NonUpgradableColor = Color.red;
     private HoverScaleAndColor hoverHighlight;
+    private float dt => Time.unscaledDeltaTime;
     //private Coroutine disableRoutine;
 
 

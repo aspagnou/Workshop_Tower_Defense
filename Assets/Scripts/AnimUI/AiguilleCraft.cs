@@ -11,19 +11,19 @@ public class AiguilleCraft : MonoBehaviour
 
     private float targetAngle;
     private bool isAtPos1 = true;
-
+    private float dt => Time.unscaledDeltaTime;
     private void Start()
     {
         // On part sur la première position
         targetAngle = angle1;
         SetRotationInstant(angle1);
     }
-
+    
     private void Update()
     {
         // Rotation vers l’angle cible
         float currentZ = transform.eulerAngles.z;
-        float newAngle = Mathf.MoveTowardsAngle(currentZ, targetAngle, rotationSpeed * Time.deltaTime);
+        float newAngle = Mathf.MoveTowardsAngle(currentZ, targetAngle, rotationSpeed * dt);
 
         transform.rotation = Quaternion.Euler(0, 0, newAngle);
     }

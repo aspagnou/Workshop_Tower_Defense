@@ -29,6 +29,7 @@ public class UI_Manager : MonoBehaviour
     private Vector2 craftMenuOpenPos;
     private Coroutine slideRoutine;
     [SerializeField ]private AiguilleCraft[] aiguilleCrafts;
+    private float dt => Time.unscaledDeltaTime;
 
     // Dictionnaire pour stocker les icônes instanciées par type de ressource
     private Dictionary<int, List<GameObject>> spawnedIcons = new Dictionary<int, List<GameObject>>();
@@ -104,10 +105,12 @@ public class UI_Manager : MonoBehaviour
         if (craftMenu.activeSelf)
         {
             HideCraftMenu();
+            Time.timeScale = 1.0f;
         }
         else
         {
             ShowCraftMenu();
+            Time.timeScale = 0.65f;
             Debug.Log("Craft Menu Shown");
         }
     }
@@ -153,7 +156,7 @@ public class UI_Manager : MonoBehaviour
 
         while (t < slideDuration)
         {
-            t += Time.deltaTime;
+            t += dt;
             float lerp = Mathf.Clamp01(t / slideDuration);
             craftMenuRect.anchoredPosition = Vector2.Lerp(start, end, lerp);
             yield return null;
@@ -206,7 +209,7 @@ public class UI_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.C))
         {
            ToggleCraftMenu();
         }

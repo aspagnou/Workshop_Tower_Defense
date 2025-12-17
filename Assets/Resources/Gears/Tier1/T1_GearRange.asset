@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearName: T1_Range_Gear
   gearIcon: {fileID: 21300000, guid: 09057f7736e50674187310fba219e744, type: 3}
+  gearType: 3
   gearInventoryData: {fileID: 11400000, guid: c1c66b27db5388b4b940a9a45e8fb604, type: 2}
   flatAttackDamage: 0
   flatRange: 1.5

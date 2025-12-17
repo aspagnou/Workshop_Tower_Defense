@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearName: T1_AS_Gear
   gearIcon: {fileID: 21300000, guid: 088b6afbf333d2849a498e75a56dc7bd, type: 3}
+  gearType: 1
   gearInventoryData: {fileID: 11400000, guid: 5504fdd5829d92e4892371eca035929a, type: 2}
   flatAttackDamage: 0
   flatRange: 0

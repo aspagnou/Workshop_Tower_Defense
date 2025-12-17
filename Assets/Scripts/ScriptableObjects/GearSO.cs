@@ -1,10 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
+using static PreviewManager;
 
 [CreateAssetMenu(fileName = "GearSO", menuName = "Gear /New Gear")]
 public class GearSO : ScriptableObject
 {
     public string gearName;
     public Sprite gearIcon;
+
+    public GearType gearType;   // ⭐ IMPORTANT
 
     public ItemData gearInventoryData;
 
@@ -14,7 +17,7 @@ public class GearSO : ScriptableObject
     public float flatAttackSpeed;
     public float flatCriticalChance;
 
-    [Header("Percentage Modifiers (in %�")]
+    [Header("Percentage Modifiers (in %)")]
     public float percentAttackDamage;
     public float percentRange;
     public float percentAttackSpeed;
@@ -22,7 +25,4 @@ public class GearSO : ScriptableObject
     [Header("Scraps when recycling")]
     public ItemSO[] recycleRessources;
     public int[] amounts;
-
-   
-
 }
