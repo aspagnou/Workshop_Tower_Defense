@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
             _audioManager = audioManager.GetComponent<AudioManager>();
         }
 
-        _audioManager.PlayMusic(_audioManager.background);
+        //_audioManager.PlayMusic(_audioManager.background);
 
         Resume();
     }
@@ -49,7 +49,10 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0.0f;
             _paused = true;
             InventoryControler controler = FindAnyObjectByType<InventoryControler>();
-            controler.TryEquipInFirstFreeGearSlot();
+            if (controler != null)
+            {
+                controler.TryEquipInFirstFreeGearSlot();
+            }
             
         }
         else
