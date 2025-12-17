@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 787c325908113a1488df64799d59f3e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 39a5845c741ffb04aa02a10875e19e35, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM_occclusion_roughness_metal:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smothness:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6d87888484f60c84f8c1b260114ca747, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -86,11 +86,11 @@ Material:
     - _QueueOffset: 0
     - _SmothnessValue: 0.5
     - _UseAO: 0
-    - _UseBaseColor: 0
+    - _UseBaseColor: 1
     - _UseEmissive: 0
     - _UseMetallic: 0
     - _UseORM: 0
-    - _UseSmothness: 0
+    - _UseSmothness: 1
     m_Colors:
     - _FlatColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
