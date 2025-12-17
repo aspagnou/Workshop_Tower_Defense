@@ -229,7 +229,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c9ed475045bd6a9438ca6866cdb86ffe, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d3ad929907b7fbd428d503fbcf76085b, type: 2}
+      objectReference: {fileID: 2100000, guid: 61b1c2556ac4bfc40a21c3401bd70814, type: 2}
     - target: {fileID: 919132149155446097, guid: c9ed475045bd6a9438ca6866cdb86ffe, type: 3}
       propertyPath: m_Name
       value: SM_Reading_desk_01
