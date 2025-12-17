@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float timeToExplode = 2;
     public GameObject damageTextPrefab;
     public bool canDamageNexus = false;
+    private bool reachedEnd = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,50 +60,48 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   //lifePoints check
+    {
+        if (reachedEnd)
+            return;
+
         if (lifePoints <= 0)
         {
             Destroy(gameObject);
+            return;
         }
 
-        // Direction system and waypoints
         float distToCurrentWaypoint = Vector3.Distance(transform.position, currentWayPoint.position);
 
         if (distToCurrentWaypoint < 0.1f && currentWaypointIndex < WayPoints.Length - 1)
         {
             currentWaypointIndex++;
-            if (currentWaypointIndex>= WayPoints.Length)
-            {
-                currentWaypointIndex = 0;
-            }
             currentWayPoint = WayPoints[currentWaypointIndex];
         }
         else if (distToCurrentWaypoint < 0.1f && currentWaypointIndex == WayPoints.Length - 1)
         {
-            StartCoroutine (StopAndApplyDamageToBase());
+            reachedEnd = true;
+            StartCoroutine(StopAndApplyDamageToBase());
+            return;
         }
 
         MoveTowards(currentWayPoint);
-
-        
-
     }
+
 
     void MoveTowards(Transform target)
     {
-        //Calculate direction from this object to the target
-        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 direction = target.position - transform.position;
 
-        // Create a rotation
+        if (direction.sqrMagnitude < 0.0001f)
+            return;
+
+        direction.Normalize();
+
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-        // Gradually rotate
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed*Time.deltaTime);
-
-        // Move the enemy towards the target
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         transform.position += direction * speed * Time.deltaTime;
-
     }
+
 
     private IEnumerator StopAndApplyDamageToBase()
     {   

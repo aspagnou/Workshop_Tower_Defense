@@ -79,7 +79,7 @@ MonoBehaviour:
     m_Bits: 384
   explosionIndicatorPrefab: {fileID: 9135577822144700603}
   indicatorDuration: 0.5
-  explosionVFXPrefab: {fileID: 1881982758383077995, guid: 3342ed16fc889af49ab07665dd071a46, type: 3}
+  explosionVFXPrefab: {fileID: 2937892374536195089, guid: 383fa566be4b19d4cbc4853d5f340605, type: 3}
 --- !u!54 &7062801429709129518
 Rigidbody:
   m_ObjectHideFlags: 0

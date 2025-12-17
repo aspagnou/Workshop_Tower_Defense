@@ -116,7 +116,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   explosionVFXPrefab: {fileID: 2937892374536195089, guid: 5d4f3376f1c4ac848a052f0cbeba7807, type: 3}
-  explosionNexusVFX: {fileID: 2937892374536195089, guid: 383fa566be4b19d4cbc4853d5f340605, type: 3}
+  explosionNexusVFX: {fileID: 2937892374536195089, guid: a0713abdea9e14b40a73f0c252c88ede, type: 3}
   lifePoints: 500
   nexusDamage: 250
   timeToExplode: 5
@@ -221,7 +221,7 @@ PrefabInstance:
     - target: {fileID: -7474313995399147612, guid: 8ac5fbd43fa75ac48baae2236335845d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0d7f66bfa05938a4c84404e37b4a0d63, type: 2}
+      objectReference: {fileID: 2100000, guid: b0ff639bed14bbe408acf0f635cf508f, type: 2}
     - target: {fileID: 919132149155446097, guid: 8ac5fbd43fa75ac48baae2236335845d, type: 3}
       propertyPath: m_Name
       value: Mutant Walking

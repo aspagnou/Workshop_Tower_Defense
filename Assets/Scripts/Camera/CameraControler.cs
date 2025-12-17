@@ -20,12 +20,14 @@ public class CameraController : MonoBehaviour
 
     private Camera _camera;
     private Camera _UIcamera;
+    private bool isSpeeded= false;
 
     void Start()
     {
         _camera = Camera.main;
         _UIcamera = transform.GetChild(0).GetComponent<Camera>();
         _currentZoom = _camera.fieldOfView;  // initialise le zoom à la valeur actuelle
+        isSpeeded = false;
         
     }
 
@@ -34,6 +36,24 @@ public class CameraController : MonoBehaviour
         HandleMovement();
         HandleZoom();
         ClampPosition();
+        if (Input.GetKeyDown(KeyCode.X)) 
+        {
+            ToggleTimeScale();
+        }
+
+    }
+    void ToggleTimeScale() 
+    {
+        if (!isSpeeded)
+        {
+            isSpeeded = true;
+            Time.timeScale = 3.5f;
+        }
+        else 
+        { 
+            isSpeeded = false;
+            Time.timeScale = 1;
+        }
     }
 
     // ----------------------------------------------
