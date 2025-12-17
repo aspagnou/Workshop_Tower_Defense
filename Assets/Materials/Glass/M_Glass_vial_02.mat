@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Glass_vial_05
+  m_Name: M_Glass_vial_02
   m_Shader: {fileID: -6465566751694194690, guid: 52da6c24f383fbb4ba29aae5eae50fa1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColor:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e8f178c5724162c44840fc810b55cff9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
@@ -37,11 +37,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fc158a819c9fa3941805698a2417c918, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b8c6e31c095f7124db9463752e918c52, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM_occclusion_roughness_metal:
@@ -49,7 +49,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Smothness:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: dd838e9ee4d312049a15ecbd1cc924a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -73,16 +73,16 @@ Material:
     - _QueueOffset: 0
     - _SmothnessValue: 0.5
     - _UseAO: 0
-    - _UseBaseColor: 0
+    - _UseBaseColor: 1
     - _UseEmissive: 0
-    - _UseMetallic: 0
+    - _UseMetallic: 1
     - _UseORM: 0
-    - _UseSmothness: 0
+    - _UseSmothness: 1
     m_Colors:
     - _FlatColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7618469210620765630
+--- !u!114 &4783760713158151174
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

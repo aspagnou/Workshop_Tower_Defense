@@ -315,6 +315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6707391451246795911, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c882d8361f631554eb841adea861dc9e, type: 2}
     - target: {fileID: 919132149155446097, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
       propertyPath: m_Name
       value: SM_Glass_vial_07
@@ -1521,15 +1525,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.564774
+      value: -2.268
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.1118044e-10
+      value: 1.9277
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.192225
+      value: -9.992226
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1559,6 +1563,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6707391451246795911, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c882d8361f631554eb841adea861dc9e, type: 2}
     - target: {fileID: 919132149155446097, guid: 93869aa574ae2fc4da10bcc5437692a7, type: 3}
       propertyPath: m_Name
       value: SM_Glass_vial_07 (1)
