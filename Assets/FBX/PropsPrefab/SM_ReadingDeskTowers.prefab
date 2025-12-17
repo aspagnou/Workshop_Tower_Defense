@@ -102,7 +102,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 877d7f32b4cd89f4d887e4aa2e0611d2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c018c657048fd734cb4f0aa770156e0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 174957f816e70b34590a584084c2d371, type: 2}
     - target: {fileID: 919132149155446097, guid: 877d7f32b4cd89f4d887e4aa2e0611d2, type: 3}
       propertyPath: m_Name
       value: SM_Book_02
@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 877d7f32b4cd89f4d887e4aa2e0611d2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c018c657048fd734cb4f0aa770156e0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 174957f816e70b34590a584084c2d371, type: 2}
     - target: {fileID: 919132149155446097, guid: 877d7f32b4cd89f4d887e4aa2e0611d2, type: 3}
       propertyPath: m_Name
       value: SM_Book_02 (1)

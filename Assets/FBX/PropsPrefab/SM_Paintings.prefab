@@ -546,6 +546,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 87.592
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d6ff1b7c9b1c28d4ab571864225fba9d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f05a9b8b778d8754e92957858512f8f2, type: 2}
     - target: {fileID: 919132149155446097, guid: d6ff1b7c9b1c28d4ab571864225fba9d, type: 3}
       propertyPath: m_Name
       value: SM_Silverpoint_01
@@ -608,6 +612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 87.592
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 051e0448c6e4bec4280edc9349a5b5ae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fc05e81031b8758408aa8ae427c1dfae, type: 2}
     - target: {fileID: 919132149155446097, guid: 051e0448c6e4bec4280edc9349a5b5ae, type: 3}
       propertyPath: m_Name
       value: SM_PaintBrush_01
