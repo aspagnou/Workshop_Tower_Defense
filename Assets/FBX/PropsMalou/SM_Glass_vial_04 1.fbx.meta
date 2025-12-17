@@ -3,7 +3,12 @@ guid: a937d11c35e20d149aca36afbf5ed543
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Maya_Blinn1
+    second: {fileID: 2100000, guid: 0b8400130e2c0df449fa803c5a5f9eb9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
