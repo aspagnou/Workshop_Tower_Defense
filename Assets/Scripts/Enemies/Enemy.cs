@@ -40,6 +40,12 @@ public class Enemy : MonoBehaviour
     public GameObject explosionVFXPrefab;
     public GameObject explosionNexusVFX;
 
+    [Header("Nexus Charge Light")]
+    [SerializeField] private Light chargeLight;
+    [SerializeField] private float maxLightIntensity = 8f;
+    [SerializeField] private AnimationCurve lightCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+
     [Header("Damage")]
     
     [SerializeField] public int lifePoints = 50;
@@ -104,16 +110,41 @@ public class Enemy : MonoBehaviour
 
 
     private IEnumerator StopAndApplyDamageToBase()
-    {   
-        yield return new WaitForSeconds(timeToExplode);
+    {
+        reachedEnd = true;
+
+        if (chargeLight != null)
+        {
+            chargeLight.enabled = true;
+            chargeLight.intensity = 0f;
+        }
+
+        float timer = 0f;
+
+        while (timer < timeToExplode)
+        {
+            timer += Time.deltaTime;
+            float t = timer / timeToExplode;
+
+            if (chargeLight != null)
+            {
+                chargeLight.intensity = maxLightIntensity * lightCurve.Evaluate(t);
+            }
+
+            yield return null;
+        }
+
         canDamageNexus = true;
         nbreMana = 0;
-        GameObject explosion = Instantiate (explosionNexusVFX, transform.position, transform.rotation);
-        Destroy (explosion,2);
-        Destroy(gameObject);
 
-    
+        if (chargeLight != null)
+            chargeLight.enabled = false;
+
+        GameObject explosion = Instantiate(explosionNexusVFX, transform.position, transform.rotation);
+        Destroy(explosion, 2f);
+        Destroy(gameObject);
     }
+
 
     public void TakeDamage(float amount, bool isCrit = false)
     {
