@@ -14,6 +14,7 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public bool gridDetection;
     bool hasMouse;
+    private float dt => Time.unscaledDeltaTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +30,7 @@ public class ToolTipDetails : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         if (hasMouse && timer < toolTipDelay) 
         {
-            timer += Time.deltaTime;
+            timer += dt;
             if (timer >= toolTipDelay) 
             {
                 

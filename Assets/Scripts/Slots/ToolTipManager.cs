@@ -45,7 +45,8 @@ public class ToolTipManager : MonoBehaviour
     
     private InventoryControler inventoryControler;
     private ToolTipManager toolTipManager;
-    
+    private float dt => Time.unscaledDeltaTime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,7 +65,7 @@ public class ToolTipManager : MonoBehaviour
         {
             if (toolTipCanvasGroup.alpha < 1)
             {
-                toolTipCanvasGroup.alpha += Time.deltaTime * 3;
+                toolTipCanvasGroup.alpha += dt * 3;
             }
 
             // Vérifie si la souris est toujours sur un objet UI
@@ -87,7 +88,7 @@ public class ToolTipManager : MonoBehaviour
         {
             if (recycleCanvasGroup.alpha < 1)
             {
-                recycleCanvasGroup.alpha += Time.deltaTime * 3;
+                recycleCanvasGroup.alpha += dt * 3;
             }
         }
     }
